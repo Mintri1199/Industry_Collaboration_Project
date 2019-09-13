@@ -14,10 +14,16 @@ class CreateGoalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         createGoalView.frame = view.frame
         view.addSubview(createGoalView)
         navigationItem.title = "Create Goal"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
     }
 }
 
