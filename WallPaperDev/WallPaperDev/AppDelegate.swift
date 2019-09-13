@@ -13,13 +13,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,
-                                NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 40)]
+                                NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 40)]
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
         let nav = UINavigationController()
-        let vc = HomeViewController()
+        let vc = CreateGoalViewController()
         nav.viewControllers = [vc]
         setNavigation(navigationBar: nav.navigationBar)
         window?.rootViewController = nav
