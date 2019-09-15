@@ -10,19 +10,30 @@ import UIKit
 
 class CreateGoalViewController: UIViewController {
 
-    let createGoalView = CreateGoalView()
+    lazy var createGoalView = CreateGoalView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createGoalView.frame = view.frame
-        view.addSubview(createGoalView)
-        navigationItem.title = "Create Goal"
+        _setupCreateGoalView()
+        _setupNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         navigationController?.navigationBar.isHidden = false
+    }
+}
+
+// MARK: Setup UI functions
+extension CreateGoalViewController {
+    private func _setupCreateGoalView() {
+        createGoalView.frame = self.view.frame
+        self.view.addSubview(createGoalView)
+    }
+    
+    private func _setupNavBar() {
+        navigationItem.title = "Create Goal"
     }
 }

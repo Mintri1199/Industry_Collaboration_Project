@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4467167D232DC7AF005C910E /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167C232DC7AF005C910E /* BlueLabel.swift */; };
+		4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167E232DC9E8005C910E /* BigBlueButton.swift */; };
 		4F2FDA7F410F858BC484E89A /* Pods_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A502B4B663DD1FAC667DC34F /* Pods_WallPaperDevUITests.framework */; };
 		565274D1ABBE06339214BE60 /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47BB523AE4EF33A00ED5918 /* Pods_WallPaperDev.framework */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
@@ -40,6 +42,8 @@
 		0229E01D05EF1DC2A575B53E /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
 		0FA498DE116D7593CF41BA83 /* Pods-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3CDE004E6DB3143FC176262F /* Pods-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4467167C232DC7AF005C910E /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLabel.swift; sourceTree = "<group>"; };
+		4467167E232DC9E8005C910E /* BigBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueButton.swift; sourceTree = "<group>"; };
 		4AF58B3DF177BDB9B36FB4E8 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* WallPaperDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallPaperDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D03ED092328161E006068CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +93,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44671678232DC5D9005C910E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		44671679232DC5E5005C910E /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
 		4F48B4EBA738503813B22A9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,11 +155,13 @@
 		5D03ED082328161E006068CB /* WallPaperDev */ = {
 			isa = PBXGroup;
 			children = (
-				5D03ED092328161E006068CB /* AppDelegate.swift */,
-				5D03ED1023281620006068CB /* Assets.xcassets */,
+				44671678232DC5D9005C910E /* Models */,
+				44671679232DC5E5005C910E /* View Models */,
 				5D9C52A1232B14D800608D6D /* Controllers */,
-				5D03ED1523281620006068CB /* Info.plist */,
 				5D9C52A2232B14E700608D6D /* Views */,
+				5D03ED092328161E006068CB /* AppDelegate.swift */,
+				5D03ED1523281620006068CB /* Info.plist */,
+				5D03ED1023281620006068CB /* Assets.xcassets */,
 			);
 			path = WallPaperDev;
 			sourceTree = "<group>";
@@ -176,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				5D03ED37232816D3006068CB /* CreateGoalView.swift */,
+				4467167E232DC9E8005C910E /* BigBlueButton.swift */,
+				4467167C232DC7AF005C910E /* BlueLabel.swift */,
 				5D03ED1223281620006068CB /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -402,7 +424,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */,
+				4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
+				4467167D232DC7AF005C910E /* BlueLabel.swift in Sources */,
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
