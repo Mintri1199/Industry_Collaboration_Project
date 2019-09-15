@@ -26,4 +26,3 @@ class CreateGoalViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
     }
 }
-
