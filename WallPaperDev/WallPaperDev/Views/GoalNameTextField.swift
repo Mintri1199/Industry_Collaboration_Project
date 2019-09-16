@@ -10,7 +10,7 @@ import UIKit
 
 class GoalNameTextField: UITextField {
     
-    // Provide padding to the text
+    // Text padding constant
     private let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     
     override init(frame: CGRect) {
@@ -19,13 +19,14 @@ class GoalNameTextField: UITextField {
         layer.borderWidth = 1
         font = UIFont(name: "HelveticaNeue", size: 25)
         placeholder = "Climbing Mount Everest"
-        translatesAutoresizingMaskIntoConstraints = false 
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Adding text padding to the text, placeholder, and while editing
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: padding)
     }

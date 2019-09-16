@@ -9,12 +9,13 @@
 import UIKit
 
 class CreateGoalViewController: UIViewController {
-
+    
+    let createGoalView = CreateGoalView()
+    
+    // Turn the status bar on this VC white
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    lazy var createGoalView = CreateGoalView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class CreateGoalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -47,3 +48,5 @@ extension UINavigationController {
         return topViewController?.preferredStatusBarStyle ?? .default
     }
 }
+
+// TODO: Implement TextField and TextView delegate (max length feature)
