@@ -41,9 +41,8 @@ extension CreateGoalViewController {
     }
 }
 
-// MARK: -Changing the status when using a navigation controller
+// MARK: - Changing the status when using a navigation controller
 extension UINavigationController {
-    
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return topViewController?.preferredStatusBarStyle ?? .default
     }

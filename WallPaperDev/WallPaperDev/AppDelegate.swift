@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
     // navigation bar UI
     private func _setNavigation(navigationBar: UINavigationBar) {
         let appearance = UINavigationBar.appearance()
