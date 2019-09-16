@@ -10,19 +10,22 @@ import UIKit
 
 class CreateGoalViewController: UIViewController {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     lazy var createGoalView = CreateGoalView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.setNeedsStatusBarAppearanceUpdate()
         _setupCreateGoalView()
         _setupNavBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
+       navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -35,5 +38,13 @@ extension CreateGoalViewController {
     
     private func _setupNavBar() {
         navigationItem.title = "Create Goal"
+    }
+}
+
+// MARK: -Changing the status when using a navigation controller
+extension UINavigationController {
+    
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return topViewController?.preferredStatusBarStyle ?? .default
     }
 }
