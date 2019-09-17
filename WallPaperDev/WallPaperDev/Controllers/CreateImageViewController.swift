@@ -26,16 +26,6 @@ class CreateImageViewController: UIViewController {
         _setupChooseImageLabel()
         _setupImageCollectionView()
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
 }
 
 // MARK: - Setup UI functions
@@ -75,7 +65,6 @@ extension CreateImageViewController {
 
     private func setupNavBar() {
         navigationItem.title = "Create Wallpaper"
-        
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: .long)
     }
 }

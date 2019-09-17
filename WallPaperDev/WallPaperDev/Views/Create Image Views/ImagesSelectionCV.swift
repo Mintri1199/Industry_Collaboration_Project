@@ -13,10 +13,12 @@ class ImagesSelectionCV: UICollectionView {
     let cellID = "cell"
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(frame: frame, collectionViewLayout: ImageSelectionLayout())
+        super.init(frame: frame, collectionViewLayout: layout)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .yellow
-        self.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        backgroundColor = .white
+        showsHorizontalScrollIndicator = false
+        
+        self.register(ImageSelectionCell.self, forCellWithReuseIdentifier: cellID)
         self.dataSource = self
         self.delegate = self
     }
@@ -29,11 +31,12 @@ class ImagesSelectionCV: UICollectionView {
 extension ImagesSelectionCV: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        cell.backgroundColor = .blue
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        return 3
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

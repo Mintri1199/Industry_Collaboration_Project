@@ -11,6 +11,8 @@ import UIKit
 class ImageSelectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
+        layer.cornerRadius = frame.size.width / 5
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
