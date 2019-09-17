@@ -9,13 +9,37 @@
 import UIKit
 
 class ImagesSelectionCV: UICollectionView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    let headerID = "headerView"
+    let cellID = "cell"
+    
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(frame: frame, collectionViewLayout: ImageSelectionLayout())
+        translatesAutoresizingMaskIntoConstraints = false
+        backgroundColor = .yellow
+        self.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        self.dataSource = self
+        self.delegate = self
     }
-    */
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
+extension ImagesSelectionCV: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+}
+
+extension ImagesSelectionCV: UICollectionViewDelegate {
 }

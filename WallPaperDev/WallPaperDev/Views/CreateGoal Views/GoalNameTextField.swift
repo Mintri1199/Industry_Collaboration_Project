@@ -15,6 +15,7 @@ class GoalNameTextField: UITextField {
         layer.borderWidth = 1
         font = UIFont(name: "HelveticaNeue", size: 25)
         placeholder = "Climbing Mount Everest"
+        adjustsFontSizeToFitWidth = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -25,9 +26,5 @@ class GoalNameTextField: UITextField {
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         super.drawText(in: rect.inset(by: insets))
-    }
-    
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: 300)
     }
 }

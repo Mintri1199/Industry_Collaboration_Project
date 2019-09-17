@@ -16,6 +16,7 @@ class BlueLabel: UILabel {
         textAlignment = .left
         textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        adjustsFontSizeToFitWidth = true
     }
     
     required init?(coder aDecoder: NSCoder) {
