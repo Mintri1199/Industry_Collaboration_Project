@@ -9,9 +9,8 @@
 import UIKit
 
 class ImagesSelectionCV: UICollectionView {
-    let cellID = "cell"
-    
-    let viewModel = SelectionViewModel()
+    private let cellID = "cell"
+    private let viewModel = SelectionViewModel()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -28,21 +27,13 @@ class ImagesSelectionCV: UICollectionView {
     }
 }
 
+// MARK: - Datasource
 extension ImagesSelectionCV: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? ImageSelectionCell else {
             return UICollectionViewCell()
         }
-        
-        // Last cell of the collectionView
-        if indexPath.row == viewModel.imageArray.count {
-            cell.setupShowMoreViews()
-        } else {
-            if let image = viewModel.imageArray[indexPath.row] {
-                cell.image = image
-            }
-        }
-        
+        indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
         return cell
     }
     
@@ -55,5 +46,6 @@ extension ImagesSelectionCV: UICollectionViewDataSource {
     }
 }
 
+// MARK: - Delegate
 extension ImagesSelectionCV: UICollectionViewDelegate {
 }

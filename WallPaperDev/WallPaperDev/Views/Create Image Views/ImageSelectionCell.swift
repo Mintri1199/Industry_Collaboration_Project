@@ -11,7 +11,7 @@ import UIKit
 class ImageSelectionCell: UICollectionViewCell {
     
     // MARK: - UIs
-    let showMoreLabel: UILabel = {
+    lazy var showMoreLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Show more"
@@ -22,42 +22,38 @@ class ImageSelectionCell: UICollectionViewCell {
         return label
     }()
     
-    let showMoreButton: UIButton = {
+    lazy var showMoreButton: UIButton = {
         var button = UIButton(frame: .zero)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    var image: UIImage? = nil {
+    var cellImage: UIImage? = nil {
         didSet {
-            photoLayer.contents = image?.cgImage
+            photoLayer.contents = cellImage?.cgImage
         }
     }
     
     // Using layer to hold uninteractable images
-    let photoLayer = CALayer()
-    let maskLayer = CAShapeLayer()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        layer.addSublayer(photoLayer)
-        photoLayer.backgroundColor = UIColor.red.cgColor
-        photoLayer.frame = bounds
-        maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
-        layer.mask = maskLayer
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    lazy var photoLayer = CALayer()
+    lazy var maskLayer = CAShapeLayer()
 }
 
 // MARK: - Setup UI functions
 extension ImageSelectionCell {
     
+    func getImage(_ image: UIImage?) {
+        layer.addSublayer(photoLayer)
+        photoLayer.backgroundColor = UIColor.red.cgColor
+        photoLayer.frame = bounds
+        maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
+        layer.mask = maskLayer
+        if let image = image {
+            cellImage = image
+        }
+    }
+    
     func setupShowMoreViews() {
-        photoLayer.removeFromSuperlayer()
-        layer.mask = nil
         setupLabel()
         setupButton()
     }
