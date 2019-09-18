@@ -12,7 +12,9 @@ class CreateImageViewController: UIViewController {
     // MARK: - Custom UIs
     lazy var createImageButton = BigBlueButton(frame: .zero)
     lazy var chooseImageLabel = BlueLabel(frame: .zero)
+    lazy var chooseGoalLabel = BlueLabel(frame: .zero)
     lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -25,6 +27,7 @@ class CreateImageViewController: UIViewController {
         setupBlueButton()
         setupChooseImageLabel()
         setupImageCollectionView()
+        setupChooseGoalLabel()
     }
 }
 
@@ -45,9 +48,19 @@ extension CreateImageViewController {
         self.view.addSubview(chooseImageLabel)
         NSLayoutConstraint.activate([
             chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
-            chooseImageLabel.heightAnchor.constraint(equalToConstant: 50),
-            chooseImageLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.view.safeAreaLayoutGuide.leftAnchor, multiplier: 2),
+            chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
+            chooseImageLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.view.safeAreaLayoutGuide.leftAnchor, multiplier: 1),
             chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
+            ])
+    }
+    private func setupChooseGoalLabel() {
+        chooseGoalLabel.text = "Choose Goal"
+        self.view.addSubview(chooseGoalLabel)
+        NSLayoutConstraint.activate([
+            chooseGoalLabel.widthAnchor.constraint(equalTo: chooseImageLabel.widthAnchor),
+            chooseGoalLabel.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
+            chooseGoalLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.view.safeAreaLayoutGuide.leftAnchor, multiplier: 1),
+            chooseGoalLabel.topAnchor.constraint(equalTo: imageSelectionCV.bottomAnchor)
             ])
     }
     
