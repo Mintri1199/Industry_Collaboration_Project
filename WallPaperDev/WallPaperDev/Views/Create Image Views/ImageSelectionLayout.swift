@@ -22,7 +22,7 @@ class ImageSelectionLayout: UICollectionViewFlowLayout {
         let cellWidth = Int(availableWidth / 2.5)
         
         self.itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height))
-        self.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        self.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         self.sectionInsetReference = .fromSafeArea
         self.minimumLineSpacing = 25
     }

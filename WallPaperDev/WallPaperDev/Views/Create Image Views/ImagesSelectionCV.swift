@@ -9,8 +9,9 @@
 import UIKit
 
 class ImagesSelectionCV: UICollectionView {
-    let headerID = "headerView"
     let cellID = "cell"
+    
+    let viewModel = SelectionViewModel()
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -30,8 +31,14 @@ class ImagesSelectionCV: UICollectionView {
 
 extension ImagesSelectionCV: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
-        cell.backgroundColor = .blue
+        guard let cell = dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? ImageSelectionCell else {
+            return UICollectionViewCell()
+        }
+        
+        if let image = viewModel.imageArray[indexPath.row] {
+            cell.image = image
+        }
+        
         return cell
     }
     

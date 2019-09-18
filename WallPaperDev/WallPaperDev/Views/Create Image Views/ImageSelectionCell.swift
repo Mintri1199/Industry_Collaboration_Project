@@ -9,13 +9,28 @@
 import UIKit
 
 class ImageSelectionCell: UICollectionViewCell {
+    
+    var image: UIImage? = nil {
+        didSet {
+            photoLayer.contents = image?.cgImage
+        }
+    }
+    
+    // Using layer to hold uninteractable images
+    let photoLayer = CALayer()
+    let maskLayer = CAShapeLayer()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = frame.size.width / 5
-        
+        layer.addSublayer(photoLayer)
+        photoLayer.backgroundColor = UIColor.red.cgColor
+        photoLayer.frame = bounds
+        maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
+        layer.mask = maskLayer
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
 }

@@ -22,16 +22,16 @@ class CreateImageViewController: UIViewController {
         self.view.backgroundColor = .white
         // Do any additional setup after loading the view.
         setupNavBar()
-        _setupBlueButton()
-        _setupChooseImageLabel()
-        _setupImageCollectionView()
+        setupBlueButton()
+        setupChooseImageLabel()
+        setupImageCollectionView()
     }
 }
 
 // MARK: - Setup UI functions
 extension CreateImageViewController {
     
-    private func _setupImageCollectionView() {
+    private func setupImageCollectionView() {
         self.view.addSubview(imageSelectionCV)
         NSLayoutConstraint.activate([
             imageSelectionCV.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1),
@@ -40,7 +40,7 @@ extension CreateImageViewController {
             ])
     }
     
-    private func _setupChooseImageLabel() {
+    private func setupChooseImageLabel() {
         chooseImageLabel.text = "Choose Image"
         self.view.addSubview(chooseImageLabel)
         NSLayoutConstraint.activate([
@@ -51,14 +51,14 @@ extension CreateImageViewController {
             ])
     }
     
-    private func _setupBlueButton() {
+    private func setupBlueButton() {
         self.view.addSubview(createImageButton)
         createImageButton.setTitle("Create", for: .normal)
         createImageButton.addTarget(self, action: #selector(pushToPreview), for: .touchUpInside)
         NSLayoutConstraint.activate([
             createImageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6),
             createImageButton.heightAnchor.constraint(equalToConstant: 50),
-            createImageButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: 100),
+            createImageButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             createImageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
     }
