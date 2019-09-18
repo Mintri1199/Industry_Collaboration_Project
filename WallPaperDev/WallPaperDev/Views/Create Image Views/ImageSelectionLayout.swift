@@ -14,16 +14,12 @@ class ImageSelectionLayout: UICollectionViewFlowLayout {
         guard let cv = collectionView else {
             return            
         }
-        
-        self.scrollDirection = .horizontal
-        
-        // This is the available width of the screen
+        scrollDirection = .horizontal
         let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
         let cellWidth = Int(availableWidth / 2.5)
-        
-        self.itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height))
-        self.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        self.sectionInsetReference = .fromSafeArea
-        self.minimumLineSpacing = 25
+        itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height) - 10)
+        sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 25)
+        sectionInsetReference = .fromSafeArea
+        minimumLineSpacing = 15
     }
 }

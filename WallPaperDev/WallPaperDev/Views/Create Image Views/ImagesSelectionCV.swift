@@ -18,7 +18,6 @@ class ImagesSelectionCV: UICollectionView {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .white
         showsHorizontalScrollIndicator = false
-        
         self.register(ImageSelectionCell.self, forCellWithReuseIdentifier: cellID)
         self.dataSource = self
         self.delegate = self
@@ -35,15 +34,20 @@ extension ImagesSelectionCV: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        if let image = viewModel.imageArray[indexPath.row] {
-            cell.image = image
+        // Last cell of the collectionView
+        if indexPath.row == viewModel.imageArray.count {
+            cell.setupShowMoreViews()
+        } else {
+            if let image = viewModel.imageArray[indexPath.row] {
+                cell.image = image
+            }
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return viewModel.imageArray.count + 1
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
