@@ -14,6 +14,7 @@ class CreateImageViewController: UIViewController {
     lazy var chooseImageLabel = BlueLabel(frame: .zero)
     lazy var chooseGoalLabel = BlueLabel(frame: .zero)
     lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
+    lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -22,17 +23,22 @@ class CreateImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        // Do any additional setup after loading the view.
-        setupNavBar()
-        setupBlueButton()
-        setupChooseImageLabel()
-        setupImageCollectionView()
-        setupChooseGoalLabel()
+        setupViews()
+        goalsTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.001))
     }
 }
 
 // MARK: - Setup UI functions
 extension CreateImageViewController {
+    
+    private func setupViews() {
+        setupNavBar()
+        setupBlueButton()
+        setupChooseImageLabel()
+        setupImageCollectionView()
+        setupChooseGoalLabel()
+        setupTableView()
+    }
     
     private func setupImageCollectionView() {
         self.view.addSubview(imageSelectionCV)
@@ -49,7 +55,7 @@ extension CreateImageViewController {
         NSLayoutConstraint.activate([
             chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
             chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-            chooseImageLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.view.safeAreaLayoutGuide.leftAnchor, multiplier: 1),
+            chooseImageLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
             ])
     }
@@ -59,7 +65,7 @@ extension CreateImageViewController {
         NSLayoutConstraint.activate([
             chooseGoalLabel.widthAnchor.constraint(equalTo: chooseImageLabel.widthAnchor),
             chooseGoalLabel.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
-            chooseGoalLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.view.safeAreaLayoutGuide.leftAnchor, multiplier: 1),
+            chooseGoalLabel.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
             chooseGoalLabel.topAnchor.constraint(equalTo: imageSelectionCV.bottomAnchor)
             ])
     }
@@ -75,9 +81,20 @@ extension CreateImageViewController {
             createImageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
     }
-
+    
+    private func setupTableView() {
+        self.view.addSubview(goalsTableView)
+        NSLayoutConstraint.activate([
+            goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
+            goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
+            goalsTableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            goalsTableView.bottomAnchor.constraint(equalTo: createImageButton.topAnchor, constant: -10)
+            ])
+    }
+    
     private func setupNavBar() {
         navigationItem.title = "Create Wallpaper"
+        
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: .long)
     }
 }

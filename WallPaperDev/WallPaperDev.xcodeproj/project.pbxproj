@@ -18,6 +18,8 @@
 		44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B529233034580015110B /* ImageSelectionCell.swift */; };
 		44C0B5382331AFE50015110B /* S.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5372331AFE50015110B /* S.swift */; };
 		44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5392331C5460015110B /* GraphicExtensions.swift */; };
+		44C0B53C2331CF870015110B /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53B2331CF870015110B /* MockData.swift */; };
+		44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53D2331D0250015110B /* GoalsTableView.swift */; };
 		4F2FDA7F410F858BC484E89A /* Pods_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A502B4B663DD1FAC667DC34F /* Pods_WallPaperDevUITests.framework */; };
 		565274D1ABBE06339214BE60 /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47BB523AE4EF33A00ED5918 /* Pods_WallPaperDev.framework */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
@@ -62,6 +64,8 @@
 		44C0B529233034580015110B /* ImageSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionCell.swift; sourceTree = "<group>"; };
 		44C0B5372331AFE50015110B /* S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S.swift; sourceTree = "<group>"; };
 		44C0B5392331C5460015110B /* GraphicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicExtensions.swift; sourceTree = "<group>"; };
+		44C0B53B2331CF870015110B /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		44C0B53D2331D0250015110B /* GoalsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableView.swift; sourceTree = "<group>"; };
 		4AF58B3DF177BDB9B36FB4E8 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* WallPaperDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallPaperDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D03ED092328161E006068CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				44C0B52523302FE80015110B /* ImagesSelectionCV.swift */,
 				44C0B529233034580015110B /* ImageSelectionCell.swift */,
 				44C0B5272330341A0015110B /* ImageSelectionLayout.swift */,
+				44C0B53D2331D0250015110B /* GoalsTableView.swift */,
 			);
 			path = "Create Image Views";
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 				5D9C52A2232B14E700608D6D /* Views */,
 				5D03ED092328161E006068CB /* AppDelegate.swift */,
 				44C0B52323302C920015110B /* UINavigationExtensions.swift */,
+				44C0B53B2331CF870015110B /* MockData.swift */,
 				44C0B5392331C5460015110B /* GraphicExtensions.swift */,
 				5D03ED1523281620006068CB /* Info.plist */,
 				5D03ED1023281620006068CB /* Assets.xcassets */,
@@ -470,9 +476,11 @@
 				5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */,
 				44C0B52423302C920015110B /* UINavigationExtensions.swift in Sources */,
 				4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */,
+				44C0B53C2331CF870015110B /* MockData.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44C0B51A23301A1B0015110B /* GoalNameTextField.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
+				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
 				4467167D232DC7AF005C910E /* BlueLabel.swift in Sources */,
 				44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */,
 				44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */,

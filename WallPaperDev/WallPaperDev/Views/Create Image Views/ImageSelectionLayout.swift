@@ -18,7 +18,7 @@ class ImageSelectionLayout: UICollectionViewFlowLayout {
         let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
         let cellWidth = Int(availableWidth / 2.5)
         itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height) - 10)
-        sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 25)
+        sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 25)
         sectionInsetReference = .fromSafeArea
         minimumLineSpacing = 15
     }
