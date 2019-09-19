@@ -38,5 +38,6 @@ extension CreateGoalViewController {
     
     private func _setupNavBar() {
         navigationItem.title = "Create Goal"
+        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
     }
 }

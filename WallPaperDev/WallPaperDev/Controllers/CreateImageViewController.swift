@@ -20,6 +20,8 @@ class CreateImageViewController: UIViewController {
         return .lightContent
     }
     
+    private let viewModel = SelectionViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -42,6 +44,8 @@ extension CreateImageViewController {
     
     private func setupImageCollectionView() {
         self.view.addSubview(imageSelectionCV)
+        imageSelectionCV.delegate = self
+        imageSelectionCV.dataSource = self
         NSLayoutConstraint.activate([
             imageSelectionCV.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1),
             imageSelectionCV.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3),
@@ -95,7 +99,7 @@ extension CreateImageViewController {
     private func setupNavBar() {
         navigationItem.title = "Create Wallpaper"
         
-        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: .long)
+        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
     }
 }
 
@@ -106,3 +110,42 @@ extension CreateImageViewController {
         navigationController?.pushViewController(previewVC, animated: true)
     }
 }
+
+// MARK: - CollectionViewDatasource
+extension CreateImageViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
+            return UICollectionViewCell()
+        }
+        indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.imageArray.count + 1
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+}
+
+// MARK: - CollectionViewDelegate
+extension CreateImageViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        imageSelectionCV.indexPathsForVisibleItems.forEach { (index) in
+            if index != indexPath {
+                if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
+                    otherCell.borderLayer.lineWidth = 0
+                }
+            } else {
+                if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
+                    otherCell.borderLayer.lineWidth = 5
+                }
+            }
+        }
+    }
+}
+

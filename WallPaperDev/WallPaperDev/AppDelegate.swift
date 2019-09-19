@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.barTintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         appearance.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         appearance.prefersLargeTitles = true
-        appearance.largeTitleTextAttributes = navigationBar.configLargeText(length: .short)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

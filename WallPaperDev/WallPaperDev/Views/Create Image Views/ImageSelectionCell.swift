@@ -9,6 +9,8 @@
 import UIKit
 
 class ImageSelectionCell: UICollectionViewCell {
+    let identifier = "cellID"
+    var lastCell: Bool = false
     
     // MARK: - UIs
     lazy var showMoreLabel: UILabel = {
@@ -34,20 +36,30 @@ class ImageSelectionCell: UICollectionViewCell {
         }
     }
     
-    // Using layer to hold uninteractable images
+    // Using layers to hold uninteractable images
     lazy var photoLayer = CALayer()
     lazy var maskLayer = CAShapeLayer()
+    lazy var borderLayer = CAShapeLayer()
 }
 
 // MARK: - Setup UI functions
 extension ImageSelectionCell {
     
     func getImage(_ image: UIImage?) {
-        layer.addSublayer(photoLayer)
         photoLayer.backgroundColor = UIColor.red.cgColor
         photoLayer.frame = bounds
         maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
-        layer.mask = maskLayer
+        
+        borderLayer.frame = bounds
+        borderLayer.path = maskLayer.path
+        borderLayer.fillColor = UIColor.clear.cgColor
+        borderLayer.lineWidth = 0
+        borderLayer.strokeColor = UIColor.green.cgColor
+        
+        photoLayer.mask = maskLayer
+        layer.addSublayer(photoLayer)
+        layer.addSublayer(borderLayer)
+        
         if let image = image {
             cellImage = image
         }
@@ -56,6 +68,7 @@ extension ImageSelectionCell {
     func setupShowMoreViews() {
         setupLabel()
         setupButton()
+        lastCell = true
     }
     
     private func setupLabel() {

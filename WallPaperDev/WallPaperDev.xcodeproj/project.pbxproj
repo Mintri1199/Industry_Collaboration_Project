@@ -16,7 +16,7 @@
 		44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B52523302FE80015110B /* ImagesSelectionCV.swift */; };
 		44C0B5282330341A0015110B /* ImageSelectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5272330341A0015110B /* ImageSelectionLayout.swift */; };
 		44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B529233034580015110B /* ImageSelectionCell.swift */; };
-		44C0B5382331AFE50015110B /* S.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5372331AFE50015110B /* S.swift */; };
+		44C0B5382331AFE50015110B /* SelectionVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5372331AFE50015110B /* SelectionVIewModel.swift */; };
 		44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5392331C5460015110B /* GraphicExtensions.swift */; };
 		44C0B53C2331CF870015110B /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53B2331CF870015110B /* MockData.swift */; };
 		44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53D2331D0250015110B /* GoalsTableView.swift */; };
@@ -62,7 +62,7 @@
 		44C0B52523302FE80015110B /* ImagesSelectionCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesSelectionCV.swift; sourceTree = "<group>"; };
 		44C0B5272330341A0015110B /* ImageSelectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionLayout.swift; sourceTree = "<group>"; };
 		44C0B529233034580015110B /* ImageSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionCell.swift; sourceTree = "<group>"; };
-		44C0B5372331AFE50015110B /* S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S.swift; sourceTree = "<group>"; };
+		44C0B5372331AFE50015110B /* SelectionVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionVIewModel.swift; sourceTree = "<group>"; };
 		44C0B5392331C5460015110B /* GraphicExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphicExtensions.swift; sourceTree = "<group>"; };
 		44C0B53B2331CF870015110B /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		44C0B53D2331D0250015110B /* GoalsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableView.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		44671679232DC5E5005C910E /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				44C0B5372331AFE50015110B /* S.swift */,
+				44C0B5372331AFE50015110B /* SelectionVIewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -486,7 +486,7 @@
 				44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */,
 				44C0B5282330341A0015110B /* ImageSelectionLayout.swift in Sources */,
 				44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */,
-				44C0B5382331AFE50015110B /* S.swift in Sources */,
+				44C0B5382331AFE50015110B /* SelectionVIewModel.swift in Sources */,
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
