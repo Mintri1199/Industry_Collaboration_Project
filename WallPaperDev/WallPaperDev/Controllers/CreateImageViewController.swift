@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreImage
 
 class CreateImageViewController: UIViewController {
     // MARK: - Custom UIs
@@ -19,6 +20,8 @@ class CreateImageViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+    
+    var selectedImage: UIImage?
     
     private let viewModel = SelectionViewModel()
     
@@ -107,6 +110,7 @@ extension CreateImageViewController {
 extension CreateImageViewController {
     @objc func pushToPreview() {
         let previewVC = ImagePreviewViewController()
+        previewVC.imageView.image = selectedImage
         navigationController?.pushViewController(previewVC, animated: true)
     }
 }
@@ -134,6 +138,10 @@ extension CreateImageViewController: UICollectionViewDataSource {
 // MARK: - CollectionViewDelegate
 extension CreateImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Doesn't let the last cell do anything
+        if indexPath.row == viewModel.imageArray.count {
+            return
+        }
         
         imageSelectionCV.indexPathsForVisibleItems.forEach { (index) in
             if index != indexPath {
@@ -141,11 +149,11 @@ extension CreateImageViewController: UICollectionViewDelegate {
                     otherCell.borderLayer.lineWidth = 0
                 }
             } else {
-                if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-                    otherCell.borderLayer.lineWidth = 5
+                if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
+                    selectedCell.borderLayer.lineWidth = 5
+                    selectedImage = selectedCell.cellImage
                 }
             }
         }
     }
 }
-
