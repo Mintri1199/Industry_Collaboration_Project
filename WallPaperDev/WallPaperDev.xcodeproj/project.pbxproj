@@ -19,6 +19,8 @@
 		5D03ED1F23281620006068CB /* WallPaperDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED1E23281620006068CB /* WallPaperDevTests.swift */; };
 		5D03ED2A23281620006068CB /* WallPaperDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED2923281620006068CB /* WallPaperDevUITests.swift */; };
 		5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED37232816D3006068CB /* CreateGoalView.swift */; };
+		5D4A1B3123396BA800CB79D4 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1B3023396BA800CB79D4 /* CoreDataStack.swift */; };
+		5D4A1B3523396EA200CB79D4 /* WallPaperDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D4A1B3323396EA200CB79D4 /* WallPaperDev.xcdatamodeld */; };
 		A08D33C462BFF6682E9EB0DB /* Pods_WallPaperDevTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		5D03ED2923281620006068CB /* WallPaperDevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPaperDevUITests.swift; sourceTree = "<group>"; };
 		5D03ED2B23281620006068CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D03ED37232816D3006068CB /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalView.swift; sourceTree = "<group>"; };
+		5D4A1B3023396BA800CB79D4 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		5D4A1B3423396EA200CB79D4 /* WallPaperDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallPaperDev.xcdatamodel; sourceTree = "<group>"; };
 		733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDevTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBCEEB6B01429933B9BCD6B /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
 		A502B4B663DD1FAC667DC34F /* Pods_WallPaperDevUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDevUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				5D03ED082328161E006068CB /* WallPaperDev */,
+				5D4A1B3223396E5100CB79D4 /* Resources */,
 				5D03ED1D23281620006068CB /* WallPaperDevTests */,
 				5D03ED2823281620006068CB /* WallPaperDevUITests */,
 				5D03ED072328161E006068CB /* Products */,
@@ -186,10 +191,19 @@
 			path = WallPaperDevUITests;
 			sourceTree = "<group>";
 		};
+		5D4A1B3223396E5100CB79D4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D4A1B3323396EA200CB79D4 /* WallPaperDev.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */,
+				5D4A1B3023396BA800CB79D4 /* CoreDataStack.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -426,6 +440,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4A1B3523396EA200CB79D4 /* WallPaperDev.xcdatamodeld in Sources */,
+				5D4A1B3123396BA800CB79D4 /* CoreDataStack.swift in Sources */,
 				5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */,
 				4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
@@ -600,7 +616,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -619,7 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -758,6 +774,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5D4A1B3323396EA200CB79D4 /* WallPaperDev.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5D4A1B3423396EA200CB79D4 /* WallPaperDev.xcdatamodel */,
+			);
+			currentVersion = 5D4A1B3423396EA200CB79D4 /* WallPaperDev.xcdatamodel */;
+			path = WallPaperDev.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5D03ECFE2328161E006068CB /* Project object */;
 }
