@@ -68,7 +68,7 @@ class HomeBackgroundView: UIView {
         currentDateLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.8).isActive = true
         currentDateLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         currentDateLabel.leftAnchor.constraint(equalTo: morningTitleLabel.leftAnchor).isActive = true
-        currentDateLabel.topAnchor.constraint(equalToSystemSpacingBelow: morningTitleLabel.bottomAnchor, multiplier: 5).isActive = true
+        currentDateLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 25).isActive = true
     }
 }
 
