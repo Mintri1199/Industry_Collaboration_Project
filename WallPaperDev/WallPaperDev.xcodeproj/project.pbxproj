@@ -13,7 +13,7 @@
 		5D03ED1F23281620006068CB /* WallPaperDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED1E23281620006068CB /* WallPaperDevTests.swift */; };
 		5D03ED2A23281620006068CB /* WallPaperDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED2923281620006068CB /* WallPaperDevUITests.swift */; };
 		5D051784232C020000B94C4B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051783232C020000B94C4B /* HomeViewController.swift */; };
-		5D051786232C025200B94C4B /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051785232C025200B94C4B /* HomeTitleView.swift */; };
+		5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051785232C025200B94C4B /* HomeBackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,7 @@
 		5D03ED2923281620006068CB /* WallPaperDevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPaperDevUITests.swift; sourceTree = "<group>"; };
 		5D03ED2B23281620006068CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D051783232C020000B94C4B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		5D051785232C025200B94C4B /* HomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
+		5D051785232C025200B94C4B /* HomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +101,7 @@
 				5D03ED1023281620006068CB /* Assets.xcassets */,
 				5D9C52A1232B14D800608D6D /* Controllers */,
 				5D03ED1523281620006068CB /* Info.plist */,
+				5D4CB528233873FE00187B33 /* ViewModels */,
 				5D9C52A2232B14E700608D6D /* Views */,
 			);
 			path = WallPaperDev;
@@ -124,6 +125,13 @@
 			path = WallPaperDevUITests;
 			sourceTree = "<group>";
 		};
+		5D4CB528233873FE00187B33 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +143,7 @@
 		5D9C52A2232B14E700608D6D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5D051785232C025200B94C4B /* HomeTitleView.swift */,
+				5D051785232C025200B94C4B /* HomeBackgroundView.swift */,
 				5D03ED1223281620006068CB /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -273,7 +281,7 @@
 			files = (
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
-				5D051786232C025200B94C4B /* HomeTitleView.swift in Sources */,
+				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

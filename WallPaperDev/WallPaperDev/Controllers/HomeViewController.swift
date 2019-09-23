@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
         
         view.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         let titleViewFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2.3)
-        let titleView = HomeTitleView(frame: titleViewFrame)
+        let titleView = HomeBackgroundView(frame: titleViewFrame)
         view.addSubview(titleView)
     }
     
