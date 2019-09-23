@@ -28,7 +28,6 @@ class HomeViewController: UIViewController {
     private func initViews() {
         let titleViewFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 2.3)
         let emptyStateViewFrame = CGRect(x: 0, y: view.bounds.height * 0.38, width: view.frame.width * 0.9, height: view.frame.height / 2.3)
-       
         titleView.frame = titleViewFrame
         emptyStateView.frame = emptyStateViewFrame
         emptyStateView.center.x = view.center.x
