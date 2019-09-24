@@ -10,6 +10,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    // Turn the status bar on this VC white
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     let titleView = HomeBackgroundView(frame: .zero)
     let emptyStateView = EmptyStateView(frame: .zero)
     let addButton = AddButton(frame: .zero)
@@ -48,6 +53,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc func addTapped() {
-        print("tapped")
+        print("add tapped")
+        let vc = CreateGoalViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
