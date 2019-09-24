@@ -40,6 +40,6 @@ class EmptyStateView: UIView {
         noGoalsLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
         noGoalsLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         noGoalsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        noGoalsLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 20).isActive = true
+        noGoalsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 }
