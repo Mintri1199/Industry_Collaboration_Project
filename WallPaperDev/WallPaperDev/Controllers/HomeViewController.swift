@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     
     let titleView = HomeBackgroundView(frame: .zero)
     let emptyStateView = EmptyStateView(frame: .zero)
-//    let addButton = AddButton(frame: .zero)
+    let addButton = AddButton(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         initViews()
-//        initButton()
+        initButton()
     }
     
     private func initViews() {
@@ -35,12 +35,12 @@ class HomeViewController: UIViewController {
         view.addSubview(emptyStateView)
     }
     
-//    private func initButton() {
-//        let addButtonFrame = CGRect(x: view.bounds.width * 0.75, y: view.bounds.height * 0.85, width: view.bounds.width / 5, height: view.bounds.width / 5)
-//        addButton.frame = addButtonFrame
-//        addButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
-//        view.addSubview(addButton)
-//    }
+    private func initButton() {
+        let addButtonFrame = CGRect(x: view.bounds.width * 0.75, y: view.bounds.height * 0.85, width: view.bounds.width / 5, height: view.bounds.width / 5)
+        addButton.frame = addButtonFrame
+        addButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+        view.addSubview(addButton)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
