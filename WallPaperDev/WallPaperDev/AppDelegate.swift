@@ -12,15 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let navBarTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white,
+    let navBarTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
                                 NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 40)]
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        let nav = UINavigationController()
         let vc = HomeViewController()
-        nav.viewControllers = [vc]
+        
+        let nav = UINavigationController(rootViewController: vc)
         setNavigation(navigationBar: nav.navigationBar)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.barTintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
         appearance.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         appearance.prefersLargeTitles = true
-        appearance.largeTitleTextAttributes = navBarTextAttributes as [NSAttributedString.Key : Any]
+        appearance.largeTitleTextAttributes = navBarTextAttributes as [NSAttributedString.Key: Any]
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -58,7 +58,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

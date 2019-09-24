@@ -71,4 +71,3 @@ class HomeBackgroundView: UIView {
         currentDateLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 25).isActive = true
     }
 }
-

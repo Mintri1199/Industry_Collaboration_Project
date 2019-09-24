@@ -48,5 +48,3 @@ extension UINavigationController {
         return topViewController?.preferredStatusBarStyle ?? .default
     }
 }
-
-// TODO: Implement TextField and TextView delegate (max length feature)

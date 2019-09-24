@@ -41,4 +41,3 @@ class HomeTitleView: UIView {
         morningTitleLabel.heightAnchor.constraint(equalToConstant: 120).isActive = true
     }
 }
-
