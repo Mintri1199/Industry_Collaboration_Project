@@ -50,7 +50,11 @@ extension CreateGoalViewController {
     }
     
     private func saveUserGoal(from userGoal: Goal) {
-        print("\(userGoal)")
+//        print("\(userGoal)")
+        let user = User(context: coreDataStack.context)
+        user.name = "current user"
+        user.addToGoals(userGoal)
+        retrieveGoals()
     }
     
     @objc func addTapped() {
@@ -60,8 +64,13 @@ extension CreateGoalViewController {
         let userGoal = Goal(context: coreDataStack.context)
         userGoal.name = userGoalName
         userGoal.summary = userGoalSummary
-        
+    
         saveUserGoal(from: userGoal)
+    }
+    
+    private func retrieveGoals() {
+        let user = coreDataStack.fetch(User.self) as [User]
+        print("\(user)")
     }
 }
 
