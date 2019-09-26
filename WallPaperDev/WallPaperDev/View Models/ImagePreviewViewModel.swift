@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-
 class ImagePreviewViewModel {
     
     var unprocessImage: UIImage?
+    var selectedGoals: [String] = []
     
-    
-    func processImage(_ image: UIImage) -> UIImage? {
+    func processImage(_ image: UIImage, _ goalArray: [String]) -> UIImage? {
         // crop the image into the right ratio
         let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
         let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
@@ -39,8 +38,7 @@ class ImagePreviewViewModel {
             return nil
         }
         
-        return textToImage(drawText: ["Buy A House", "Go Abroad", "Start a family"], inImage: UIImage(cgImage: cropImage))
-        
+        return textToImage(drawText: goalArray, inImage: UIImage(cgImage: cropImage))
     }
     
     private func textToImage(drawText textArray: [String], inImage image: UIImage) -> UIImage? {
@@ -58,7 +56,6 @@ class ImagePreviewViewModel {
                                                                NSAttributedString.Key.paragraphStyle: paragraphStyle ]
         
         let textSize = combinedText.size(withAttributes: textAttributes)
-        print(textSize)
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
         let rect = CGRect(origin: CGPoint(x: 0, y: image.size.height - textSize.height), size: image.size)
         combinedText.draw(in: rect, withAttributes: textAttributes)

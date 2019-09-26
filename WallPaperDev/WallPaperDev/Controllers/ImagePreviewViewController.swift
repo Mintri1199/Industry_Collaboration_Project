@@ -15,12 +15,11 @@ class ImagePreviewViewController: UIViewController {
     private lazy var saveButton = BigBlueButton(frame: .zero)
     let viewModel = ImagePreviewViewModel()
     
-    private var image: UIImage?{
+    private var image: UIImage? {
         didSet {
             imageView.image = image
         }
     }
-    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -30,7 +29,7 @@ class ImagePreviewViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViews()
-        image = viewModel.processImage(viewModel.unprocessImage!)
+        image = viewModel.processImage(viewModel.unprocessImage!, viewModel.selectedGoals)
     }
 }
 

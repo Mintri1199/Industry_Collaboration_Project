@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CoreGraphics
 
-
 class SelectionViewModel {
     let imageArray: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3")]
     
@@ -32,7 +31,7 @@ class SelectionViewModel {
         }
     }
     
-    // TODO: Worry about animation later. Find a way to reference the viewController
+    // MARK: Implement Animations
     private func animateButtonAppearance(_ button: BigBlueButton) {
         let moveUp = CABasicAnimation(keyPath: "position.y")
         moveUp.fromValue = 100
@@ -68,4 +67,3 @@ class SelectionViewModel {
         button.layer.add(group, forKey: nil)
     }
 }
-

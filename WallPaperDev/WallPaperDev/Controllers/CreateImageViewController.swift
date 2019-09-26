@@ -26,8 +26,6 @@ class CreateImageViewController: UIViewController {
         return .lightContent
     }
     
-    var selectedImage: UIImage?
-    
     private let viewModel = SelectionViewModel()
     
     override func viewDidLoad() {
@@ -113,9 +111,7 @@ extension CreateImageViewController {
     
     private func setupTableView() {
         self.view.addSubview(goalsTableView)
-        goalsTableView.delegate = self
         goalsTableView.dataSource = self
-//        goalsTableView.isUserInteractionEnabled = false
         NSLayoutConstraint.activate([
             goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
             goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
@@ -157,6 +153,7 @@ extension CreateImageViewController {
         }
         let previewVC = ImagePreviewViewController()
         previewVC.viewModel.unprocessImage = image
+        previewVC.viewModel.selectedGoals = viewModel.selectedGoals
         navigationController?.pushViewController(previewVC, animated: true)
     }
     
@@ -217,18 +214,13 @@ extension CreateImageViewController: UICollectionViewDelegate {
                 if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
                     selectedCell.borderLayer.lineWidth = 5
                     viewModel.selectedImage = selectedCell.cellImage
-                    selectedImage = selectedCell.cellImage
                 }
             }
         }
-        
         viewModel.validation(button: createImageButton)
     }
 }
 
-// MARK: - TableViewDelegate
-extension CreateImageViewController: UITableViewDelegate {
-}
 // MARK: - TableViewDataSource
 extension CreateImageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

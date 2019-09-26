@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PassSelectedGoals {
+protocol PassSelectedGoals: class {
     func passSelectedGoals(_ array: [String])
 }
 
@@ -16,7 +16,7 @@ class GoalsSelectionViewController: UIViewController {
     private let cellId: String = "chooseGoalCell"
     private let tableView = GoalsTableView(frame: .zero, style: .plain)
     
-    var delegate: PassSelectedGoals?
+    weak var delegate: PassSelectedGoals?
     let viewModel = ChooseGoalViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -64,7 +64,6 @@ extension GoalsSelectionViewController {
     }
 }
 
-
 // MARK: - Objc functions
 extension GoalsSelectionViewController {
     @objc private func newBackButtonTapped() {
@@ -106,7 +105,7 @@ extension GoalsSelectionViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        viewModel.selectedGoals = viewModel.selectedGoals.filter({$0 != goalArray[indexPath.row]})
+        viewModel.selectedGoals = viewModel.selectedGoals.filter({ $0 != goalArray[indexPath.row] })
         print("Deselect: \(indexPath)")
     }
 }
