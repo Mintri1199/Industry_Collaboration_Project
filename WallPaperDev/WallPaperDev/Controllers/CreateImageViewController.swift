@@ -11,11 +11,13 @@ import CoreImage
 
 class CreateImageViewController: UIViewController {
     // MARK: - Custom UIs
-    lazy var createImageButton = BigBlueButton(frame: .zero)
-    lazy var chooseImageLabel = BlueLabel(frame: .zero)
-    lazy var chooseGoalLabel = BlueLabel(frame: .zero)
-    lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
-    lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
+    private lazy var createImageButton = BigBlueButton(frame: .zero)
+    private lazy var chooseImageLabel = BlueLabel(frame: .zero)
+    private lazy var chooseGoalLabel = BlueLabel(frame: .zero)
+    private lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
+    private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
+    private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
+    private lazy var emptyView = SelectedGoalsEmptyView()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -29,7 +31,7 @@ class CreateImageViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViews()
-        goalsTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.001))
+        goalsTableView.tableFooterView = UIView(frame: .zero)
     }
 }
 
@@ -42,6 +44,7 @@ extension CreateImageViewController {
         setupChooseImageLabel()
         setupImageCollectionView()
         setupChooseGoalLabel()
+        setupChangeGoalsButtonButton()
         setupTableView()
     }
     
@@ -50,7 +53,8 @@ extension CreateImageViewController {
         imageSelectionCV.delegate = self
         imageSelectionCV.dataSource = self
         NSLayoutConstraint.activate([
-            imageSelectionCV.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1),
+            imageSelectionCV.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            imageSelectionCV.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             imageSelectionCV.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3),
             imageSelectionCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5)
             ])
@@ -79,6 +83,7 @@ extension CreateImageViewController {
     
     private func setupBlueButton() {
         self.view.addSubview(createImageButton)
+        createImageButton.isHidden = true
         createImageButton.setTitle("Create", for: .normal)
         createImageButton.addTarget(self, action: #selector(pushToPreview), for: .touchUpInside)
         NSLayoutConstraint.activate([
@@ -89,8 +94,23 @@ extension CreateImageViewController {
             ])
     }
     
+    private func setupChangeGoalsButtonButton() {
+        self.view.addSubview(changeGoalsButton)
+        changeGoalsButton.isHidden = true
+        changeGoalsButton.label.text = "Change goals"
+        changeGoalsButton.label.textAlignment = .right
+        NSLayoutConstraint.activate([
+            changeGoalsButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
+            changeGoalsButton.topAnchor.constraint(equalTo: chooseGoalLabel.topAnchor),
+            changeGoalsButton.leadingAnchor.constraint(equalTo: chooseGoalLabel.trailingAnchor, constant: 50)
+            ])
+    }
+    
     private func setupTableView() {
         self.view.addSubview(goalsTableView)
+        goalsTableView.delegate = self
+        goalsTableView.dataSource = self
         NSLayoutConstraint.activate([
             goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
             goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
@@ -99,19 +119,30 @@ extension CreateImageViewController {
             ])
     }
     
+    private func setupCustomEmptyView() {
+        emptyView.frame = goalsTableView.bounds
+        goalsTableView.backgroundView = emptyView
+        emptyView.chooseGoalButton.addTarget(self, action: #selector(pushToGoalSelection), for: .touchUpInside)
+        goalsTableView.separatorStyle = .none
+    }
+    
     private func setupNavBar() {
         navigationItem.title = "Create Wallpaper"
-        
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
     }
 }
 
 // MARK: - Objc functions
 extension CreateImageViewController {
-    @objc func pushToPreview() {
+    @objc private func pushToPreview() {
         let previewVC = ImagePreviewViewController()
         previewVC.imageView.image = selectedImage
         navigationController?.pushViewController(previewVC, animated: true)
+    }
+    
+    @objc private func pushToGoalSelection() {
+        let goalsVC = GoalsSelectionViewController()
+        navigationController?.pushViewController(goalsVC, animated: true)
     }
 }
 
@@ -155,5 +186,20 @@ extension CreateImageViewController: UICollectionViewDelegate {
                 }
             }
         }
+    }
+}
+
+// MARK: - TableViewDelegate
+extension CreateImageViewController: UITableViewDelegate {
+}
+// MARK: - TableViewDataSource
+extension CreateImageViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        setupCustomEmptyView()
+        return 0
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
 }

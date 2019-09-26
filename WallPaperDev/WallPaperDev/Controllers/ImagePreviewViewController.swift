@@ -10,7 +10,6 @@ import UIKit
 
 class ImagePreviewViewController: UIViewController {
     
-    
     // Custom UIs
     lazy var imageView = CompleteImageVIew(frame: .zero)
     lazy var setAsWallpaperButton = BigBlueButton(frame: .zero)
@@ -23,7 +22,6 @@ class ImagePreviewViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

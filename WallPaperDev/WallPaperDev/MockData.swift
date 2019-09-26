@@ -9,3 +9,4 @@
 import Foundation
 
 let goalArray = ["Buy a house", "Increase your level of fitness", "Go abroad", "Start a family"]
+let descriptionArray = ["Descrption 1", "Descrption 2", "Descrption 3", "Descrption 4"]

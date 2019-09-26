@@ -18,10 +18,6 @@ class CreateGoalView: UIView {
         let textField = GoalNameTextField(frame: .zero)
         textField.font = UIFont(name: "HelveticaNeue", size: 25)
         textField.placeholder = "Climbing Mount Everest"
-        //        textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        //        textField.layer.shadowRadius = 3
-        //        textField.layer.shadowOpacity = 1
-        //        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
         return textField
     }()
     
