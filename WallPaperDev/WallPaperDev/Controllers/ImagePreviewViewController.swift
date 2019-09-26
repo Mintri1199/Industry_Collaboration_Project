@@ -13,6 +13,8 @@ class ImagePreviewViewController: UIViewController {
     // Custom UIs
     private lazy var imageView = CompleteImageVIew(frame: .zero)
     private lazy var saveButton = BigBlueButton(frame: .zero)
+    private lazy var previewButton = BigBlueButton(frame: .zero)
+    
     let viewModel = ImagePreviewViewModel()
     
     private var image: UIImage? {
@@ -40,6 +42,7 @@ extension ImagePreviewViewController {
         setupNavBar()
         setupBlueButton()
         setupImageView()
+        setupPreviewButton()
     }
     
     private func setupImageView() {
@@ -52,7 +55,18 @@ extension ImagePreviewViewController {
             imageView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20)
             ])
     }
-
+    private func setupPreviewButton() {
+        view.addSubview(previewButton)
+        previewButton.setTitle("Live", for: .normal)
+        previewButton.addTarget(self, action: #selector(presentPreview), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            previewButton.widthAnchor.constraint(equalToConstant: 75),
+            previewButton.heightAnchor.constraint(equalToConstant: 50),
+            previewButton.bottomAnchor.constraint(equalTo: saveButton.bottomAnchor),
+            previewButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+        ])
+    }
+    
     private func setupBlueButton() {
         self.view.addSubview(saveButton)
         saveButton.setTitle("Save Image", for: .normal)
@@ -74,6 +88,12 @@ extension ImagePreviewViewController {
 // MARK: - Objc functions
 extension ImagePreviewViewController {
 
+    @objc private func presentPreview() {
+        let previewVC = LivePreviewViewController()
+        previewVC.livePreview.image = image
+        present(previewVC, animated: true, completion: nil)
+    }
+    
     @objc private func saveTapped() {
         guard let image = imageView.image else {
             return

@@ -8,5 +8,5 @@
 
 import Foundation
 
-let goalArray = ["Buy a house", "Increase your level of fitness", "Go abroad", "Start a family"]
-let descriptionArray = ["Descrption 1", "Descrption 2", "Descrption 3", "Descrption 4"]
+let goalArray = ["Buy a house", "Increase your level of fitness", "Go abroad", "Start a family", "Code 20 hours"]
+let descriptionArray = ["Description 1", "Description 2", "Description 3", "Description 4", "Description 5" ]

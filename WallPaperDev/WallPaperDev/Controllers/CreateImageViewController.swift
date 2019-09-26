@@ -112,6 +112,7 @@ extension CreateImageViewController {
     private func setupTableView() {
         self.view.addSubview(goalsTableView)
         goalsTableView.dataSource = self
+        goalsTableView.allowsSelection = false
         NSLayoutConstraint.activate([
             goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
             goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
@@ -218,6 +219,13 @@ extension CreateImageViewController: UICollectionViewDelegate {
             }
         }
         viewModel.validation(button: createImageButton)
+    }
+}
+
+// MARK: - TableViewDelegate
+extension CreateImageViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return nil
     }
 }
 

@@ -42,7 +42,7 @@ class ImagePreviewViewModel {
     }
     
     private func textToImage(drawText textArray: [String], inImage image: UIImage) -> UIImage? {
-        let combinedText = textArray.joined(separator: "\n") + "\n\n\n"
+        let combinedText = textArray.joined(separator: "\n") + String(repeating: "\n", count: 5)
         let textColor = UIColor.white
         let textFont = UIFont(name: "Helvetica Bold", size: 20)!
         let scale = UIScreen.main.scale

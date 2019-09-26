@@ -39,12 +39,12 @@ extension GoalsSelectionViewController {
     }
     
     private func setupNavBar() {
-        navigationItem.title = "Choose Goal"
+        navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
         navigationItem.hidesBackButton = true
         
         let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(newBackButtonTapped))
         navigationItem.leftBarButtonItem = newBackButton
-        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Choose Goal")
+        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Choose Goal \(viewModel.selectedGoals.count) / 4")
     }
     
     private func setupTableView() {
@@ -100,12 +100,22 @@ extension GoalsSelectionViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         viewModel.selectedGoals.append(goalArray[indexPath.row])
+        navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
         print("Select: \(indexPath)")
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if viewModel.selectedGoals.count == 4 {
+            return nil
+        }
+        return indexPath
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         viewModel.selectedGoals = viewModel.selectedGoals.filter({ $0 != goalArray[indexPath.row] })
+        navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
         print("Deselect: \(indexPath)")
     }
 }

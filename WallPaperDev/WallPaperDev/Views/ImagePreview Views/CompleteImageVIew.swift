@@ -13,8 +13,7 @@ class CompleteImageVIew: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .yellow
-        contentMode = .scaleToFill
+        contentMode = .scaleAspectFit
     }
     
     required init?(coder aDecoder: NSCoder) {
