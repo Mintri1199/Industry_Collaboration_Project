@@ -63,14 +63,39 @@ final class CoreDataStack {
 //        }
 //    }
     
-    
-    
-    
-    
-    func delete(_ object: NSManagedObject) {
-        
+    func fetchGoals() -> [Goal] {
+        var goalNameArr: [Goal] = []
+        let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
+            do {
+                goalNameArr = try context.fetch(fetchRequest)
+            } catch let error as NSError {
+                print("Could not fetch. \(error), \(error.userInfo)")
+            }
+//        let goals: [Goal] = goalNameArr as? [Goal] ?? []
+        return goalNameArr
+    }
+
+    func delete(_ objectID: NSManagedObjectID) {
+        let object = context.object(with: objectID)
         context.delete(object)
         //        saveContext()
     }
+    
+    func createGoal(_ name: String, _ summary: String) {
+        let entity = NSEntityDescription.entity(forEntityName:"Goal", in: context)
+        guard let unwrappedEntity = entity else {
+            print("failure obtaining entity")
+            return
+        }
+        
+//        let goal = NSManagedObject(entity: unwrappedEntity, insertInto: context)
+//        goal.setValue(name, forKey: "name")
+//        goal.setValue(summary, forKey: "summary")
+        let goal = Goal(entity: unwrappedEntity, insertInto: context)
+        goal.name = name
+        goal.summary = summary
+        saveContext()
+    }
+    
 
 }
