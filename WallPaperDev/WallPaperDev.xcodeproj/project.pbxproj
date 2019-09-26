@@ -25,6 +25,9 @@
 		44E0BA692339B7F0007AA20D /* TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA682339B7F0007AA20D /* TableViewExtensions.swift */; };
 		44E0BA6B233A87DE007AA20D /* GrayTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */; };
 		44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA6C233AC9F6007AA20D /* SelectedGoalsEmptyView.swift */; };
+		44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */; };
+		44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */; };
+		44E0BA75233CD370007AA20D /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA74233CD370007AA20D /* StringExtension.swift */; };
 		4F2FDA7F410F858BC484E89A /* Pods_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A502B4B663DD1FAC667DC34F /* Pods_WallPaperDevUITests.framework */; };
 		565274D1ABBE06339214BE60 /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47BB523AE4EF33A00ED5918 /* Pods_WallPaperDev.framework */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
@@ -76,6 +79,9 @@
 		44E0BA682339B7F0007AA20D /* TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExtensions.swift; sourceTree = "<group>"; };
 		44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTextButton.swift; sourceTree = "<group>"; };
 		44E0BA6C233AC9F6007AA20D /* SelectedGoalsEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedGoalsEmptyView.swift; sourceTree = "<group>"; };
+		44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewModel.swift; sourceTree = "<group>"; };
+		44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewModel.swift; sourceTree = "<group>"; };
+		44E0BA74233CD370007AA20D /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		4AF58B3DF177BDB9B36FB4E8 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* WallPaperDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallPaperDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D03ED092328161E006068CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				44C0B5372331AFE50015110B /* SelectionVIewModel.swift */,
+				44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */,
+				44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -178,6 +186,7 @@
 				44C0B52323302C920015110B /* UINavigationExtensions.swift */,
 				44E0BA682339B7F0007AA20D /* TableViewExtensions.swift */,
 				44C0B5392331C5460015110B /* GraphicExtensions.swift */,
+				44E0BA74233CD370007AA20D /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -507,6 +516,7 @@
 				44E0BA692339B7F0007AA20D /* TableViewExtensions.swift in Sources */,
 				44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */,
 				5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */,
+				44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */,
 				44C0B52423302C920015110B /* UINavigationExtensions.swift in Sources */,
 				4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */,
 				44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */,
@@ -517,10 +527,12 @@
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
 				4467167D232DC7AF005C910E /* BlueLabel.swift in Sources */,
+				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,
 				44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */,
 				44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */,
 				44C0B5282330341A0015110B /* ImageSelectionLayout.swift in Sources */,
 				44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */,
+				44E0BA75233CD370007AA20D /* StringExtension.swift in Sources */,
 				44C0B5382331AFE50015110B /* SelectionVIewModel.swift in Sources */,
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
 				44E0BA652339B549007AA20D /* GoalsSelectionViewController.swift in Sources */,

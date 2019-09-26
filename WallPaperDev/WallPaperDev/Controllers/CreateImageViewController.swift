@@ -10,6 +10,7 @@ import UIKit
 import CoreImage
 
 class CreateImageViewController: UIViewController {
+    
     // MARK: - Custom UIs
     private lazy var createImageButton = BigBlueButton(frame: .zero)
     private lazy var chooseImageLabel = BlueLabel(frame: .zero)
@@ -18,6 +19,8 @@ class CreateImageViewController: UIViewController {
     private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
     private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
     private lazy var emptyView = SelectedGoalsEmptyView()
+    
+    private let goalsVC = GoalsSelectionViewController()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -57,7 +60,7 @@ extension CreateImageViewController {
             imageSelectionCV.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
             imageSelectionCV.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.3),
             imageSelectionCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5)
-            ])
+        ])
     }
     
     private func setupChooseImageLabel() {
@@ -68,7 +71,7 @@ extension CreateImageViewController {
             chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
             chooseImageLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
-            ])
+        ])
     }
     private func setupChooseGoalLabel() {
         chooseGoalLabel.text = "Choose Goal"
@@ -78,7 +81,7 @@ extension CreateImageViewController {
             chooseGoalLabel.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
             chooseGoalLabel.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
             chooseGoalLabel.topAnchor.constraint(equalTo: imageSelectionCV.bottomAnchor)
-            ])
+        ])
     }
     
     private func setupBlueButton() {
@@ -91,7 +94,7 @@ extension CreateImageViewController {
             createImageButton.heightAnchor.constraint(equalToConstant: 50),
             createImageButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             createImageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-            ])
+        ])
     }
     
     private func setupChangeGoalsButtonButton() {
@@ -99,24 +102,26 @@ extension CreateImageViewController {
         changeGoalsButton.isHidden = true
         changeGoalsButton.label.text = "Change goals"
         changeGoalsButton.label.textAlignment = .right
+        changeGoalsButton.addTarget(self, action: #selector(changeGoalTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
             changeGoalsButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
             changeGoalsButton.topAnchor.constraint(equalTo: chooseGoalLabel.topAnchor),
             changeGoalsButton.leadingAnchor.constraint(equalTo: chooseGoalLabel.trailingAnchor, constant: 50)
-            ])
+        ])
     }
     
     private func setupTableView() {
         self.view.addSubview(goalsTableView)
         goalsTableView.delegate = self
         goalsTableView.dataSource = self
+//        goalsTableView.isUserInteractionEnabled = false
         NSLayoutConstraint.activate([
             goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
             goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
             goalsTableView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
             goalsTableView.bottomAnchor.constraint(equalTo: createImageButton.topAnchor, constant: -10)
-            ])
+        ])
     }
     
     private func setupCustomEmptyView() {
@@ -132,17 +137,46 @@ extension CreateImageViewController {
     }
 }
 
+// MARK: - CAAnimationDelegate
+extension CreateImageViewController: CAAnimationDelegate {
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        if let button = anim.value(forKey: "button") as? BigBlueButton {
+            if let value = anim.value(forKey: "name") as? String {
+                button.isHidden = value == "moveDown"
+            }
+        }
+    }
+}
+
 // MARK: - Objc functions
 extension CreateImageViewController {
     @objc private func pushToPreview() {
+        guard let image = viewModel.selectedImage else {
+            return
+        }
         let previewVC = ImagePreviewViewController()
-        previewVC.imageView.image = selectedImage
+        previewVC.viewModel.unprocessImage = image
         navigationController?.pushViewController(previewVC, animated: true)
     }
     
     @objc private func pushToGoalSelection() {
-        let goalsVC = GoalsSelectionViewController()
+        goalsVC.delegate = self
         navigationController?.pushViewController(goalsVC, animated: true)
+    }
+    
+    @objc private func changeGoalTapped() {
+        goalsVC.viewModel.preselectGoals(viewModel.selectedGoals)
+        navigationController?.pushViewController(goalsVC, animated: true)
+    }
+}
+
+extension CreateImageViewController: PassSelectedGoals {
+    func passSelectedGoals(_ array: [String]) {
+        viewModel.selectedGoals = array.isEmpty ? [] : array
+        changeGoalsButton.isHidden = array.isEmpty
+        viewModel.validation(button: createImageButton)
+        goalsTableView.reloadData()
     }
 }
 
@@ -152,7 +186,8 @@ extension CreateImageViewController: UICollectionViewDataSource {
         guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
             return UICollectionViewCell()
         }
-        indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
+        indexPath.row == viewModel.imageArray.count ?   cell.setupShowMoreViews() :
+            cell.getImage(viewModel.imageArray[indexPath.row])
         
         return cell
     }
@@ -169,7 +204,6 @@ extension CreateImageViewController: UICollectionViewDataSource {
 // MARK: - CollectionViewDelegate
 extension CreateImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Doesn't let the last cell do anything
         if indexPath.row == viewModel.imageArray.count {
             return
         }
@@ -182,10 +216,13 @@ extension CreateImageViewController: UICollectionViewDelegate {
             } else {
                 if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
                     selectedCell.borderLayer.lineWidth = 5
+                    viewModel.selectedImage = selectedCell.cellImage
                     selectedImage = selectedCell.cellImage
                 }
             }
         }
+        
+        viewModel.validation(button: createImageButton)
     }
 }
 
@@ -195,11 +232,18 @@ extension CreateImageViewController: UITableViewDelegate {
 // MARK: - TableViewDataSource
 extension CreateImageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        setupCustomEmptyView()
-        return 0
+        if viewModel.selectedGoals.isEmpty {
+            setupCustomEmptyView()
+            return 0
+        } else {
+            tableView.restore()
+            return viewModel.selectedGoals.count
+        }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: GoalsTableView.cellId, for: indexPath)
+        cell.textLabel?.text = viewModel.selectedGoals[indexPath.row]
+        return cell
     }
 }

@@ -11,17 +11,16 @@ import UIKit
 class ImagePreviewViewController: UIViewController {
     
     // Custom UIs
-    lazy var imageView = CompleteImageVIew(frame: .zero)
-    lazy var setAsWallpaperButton = BigBlueButton(frame: .zero)
-    lazy var mockGoalLabel: UILabel = {
-        var label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Buy a house"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 50)
-        label.textAlignment = .center
-        return label
-    }()
+    private lazy var imageView = CompleteImageVIew(frame: .zero)
+    private lazy var saveButton = BigBlueButton(frame: .zero)
+    let viewModel = ImagePreviewViewModel()
+    
+    private var image: UIImage?{
+        didSet {
+            imageView.image = image
+        }
+    }
+    
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -31,6 +30,7 @@ class ImagePreviewViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViews()
+        image = viewModel.processImage(viewModel.unprocessImage!)
     }
 }
 
@@ -41,7 +41,6 @@ extension ImagePreviewViewController {
         setupNavBar()
         setupBlueButton()
         setupImageView()
-        setupLabel()
     }
     
     private func setupImageView() {
@@ -51,18 +50,19 @@ extension ImagePreviewViewController {
             imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             imageView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
             imageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            imageView.bottomAnchor.constraint(equalTo: setAsWallpaperButton.topAnchor, constant: -20)
+            imageView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20)
             ])
     }
 
     private func setupBlueButton() {
-        self.view.addSubview(setAsWallpaperButton)
-        setAsWallpaperButton.setTitle("Complete", for: .normal)
+        self.view.addSubview(saveButton)
+        saveButton.setTitle("Save Image", for: .normal)
+        saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
-            setAsWallpaperButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6),
-            setAsWallpaperButton.heightAnchor.constraint(equalToConstant: 50),
-            setAsWallpaperButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            setAsWallpaperButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+            saveButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.4),
+            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            saveButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            saveButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
             ])
     }
     
@@ -70,14 +70,28 @@ extension ImagePreviewViewController {
         navigationItem.title = "Preview"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Preview")
     }
+}
+
+// MARK: - Objc functions
+extension ImagePreviewViewController {
+
+    @objc private func saveTapped() {
+        guard let image = imageView.image else {
+            return
+        }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
     
-    private func setupLabel() {
-        imageView.addSubview(mockGoalLabel)
-        NSLayoutConstraint.activate([
-            mockGoalLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
-            mockGoalLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -20),
-            mockGoalLabel.heightAnchor.constraint(equalToConstant: 100),
-            mockGoalLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor)
-            ])
+    // Saving image handler
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
 }

@@ -9,31 +9,15 @@
 import UIKit
 
 class GoalsTableView: UITableView {
-    
-    private let cellId: String = "cell"
-    
+    static let cellId = "selectedGoal"
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         translatesAutoresizingMaskIntoConstraints = false
         bounces = false
-        register(UITableViewCell.self, forCellReuseIdentifier: cellId)
-        dataSource = self
+        register(UITableViewCell.self, forCellReuseIdentifier: GoalsTableView.cellId)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-}
-
-// MARK: - Datasource
-extension GoalsTableView: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goalArray.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = goalArray[indexPath.row]
-        return cell
     }
 }

@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol PassSelectedGoals {
+    func passSelectedGoals(_ array: [String])
+}
+
 class GoalsSelectionViewController: UIViewController {
     private let cellId: String = "chooseGoalCell"
     private let tableView = GoalsTableView(frame: .zero, style: .plain)
+    
+    var delegate: PassSelectedGoals?
+    let viewModel = ChooseGoalViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -28,10 +35,15 @@ extension GoalsSelectionViewController {
     private func setupUIs() {
         setupNavBar()
         setupTableView()
+        registerSwipe()
     }
     
     private func setupNavBar() {
         navigationItem.title = "Choose Goal"
+        navigationItem.hidesBackButton = true
+        
+        let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(newBackButtonTapped))
+        navigationItem.leftBarButtonItem = newBackButton
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Choose Goal")
     }
     
@@ -39,8 +51,25 @@ extension GoalsSelectionViewController {
         tableView.frame = view.bounds
         tableView.dataSource = self
         tableView.delegate = self
-        view.addSubview(tableView)
+        tableView.allowsMultipleSelection = true
+        tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+        view.addSubview(tableView)
+    }
+    
+    private func registerSwipe() {
+        let swipingRight = UISwipeGestureRecognizer(target: self, action: #selector(newBackButtonTapped))
+        swipingRight.direction = .right
+        view.addGestureRecognizer(swipingRight)
+    }
+}
+
+
+// MARK: - Objc functions
+extension GoalsSelectionViewController {
+    @objc private func newBackButtonTapped() {
+        delegate?.passSelectedGoals(viewModel.selectedGoals)
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -53,6 +82,11 @@ extension GoalsSelectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.accessoryType = .detailButton
+        
+        if viewModel.selectedGoals.contains(goalArray[indexPath.row]) {
+            cell.isSelected = true
+        }
+        
         cell.textLabel?.text = goalArray[indexPath.row]
         return cell
     }
@@ -60,10 +94,19 @@ extension GoalsSelectionViewController: UITableViewDataSource {
 
 extension GoalsSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        print(indexPath)
         let alertView = UIAlertController(title: goalArray[indexPath.row], message: descriptionArray[indexPath.row], preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertView.addAction(okAction)
         present(alertView, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectedGoals.append(goalArray[indexPath.row])
+        print("Select: \(indexPath)")
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        viewModel.selectedGoals = viewModel.selectedGoals.filter({$0 != goalArray[indexPath.row]})
+        print("Deselect: \(indexPath)")
     }
 }
