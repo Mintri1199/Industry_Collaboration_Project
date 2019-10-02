@@ -28,7 +28,19 @@
 		5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
 		5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
 		5DD33D48233D43A800137E3C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D47233D43A800137E3C /* CoreDataStack.swift */; };
-		5DD33D4A2342A62A00137E3C /* CreateGoalVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D492342A62A00137E3C /* CreateGoalVCTests.swift */; };
+		5DD33D4D2342CA3C00137E3C /* CreateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */; };
+		5DD33D4E2342CA4B00137E3C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB52923388B2A00187B33 /* EmptyStateView.swift */; };
+		5DD33D4F2342CA4B00137E3C /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF925502339BFF5004CE8AA /* AddButton.swift */; };
+		5DD33D502342CA4B00137E3C /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051785232C025200B94C4B /* HomeBackgroundView.swift */; };
+		5DD33D512342CA4B00137E3C /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED37232816D3006068CB /* CreateGoalView.swift */; };
+		5DD33D522342CA4B00137E3C /* GoalDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */; };
+		5DD33D532342CA4B00137E3C /* GoalNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51923301A1B0015110B /* GoalNameTextField.swift */; };
+		5DD33D542342CA4B00137E3C /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167E232DC9E8005C910E /* BigBlueButton.swift */; };
+		5DD33D552342CA4B00137E3C /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167C232DC7AF005C910E /* BlueLabel.swift */; };
+		5DD33D562342CA5B00137E3C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D47233D43A800137E3C /* CoreDataStack.swift */; };
+		5DD33D572342CA6200137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
+		5DD33D582342CA6500137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
+		5DD33D5A2342CB0D00137E3C /* CreateGoalVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D492342A62A00137E3C /* CreateGoalVCTests.swift */; };
 		5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF925502339BFF5004CE8AA /* AddButton.swift */; };
 		A08D33C462BFF6682E9EB0DB /* Pods_WallPaperDevTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */; };
 /* End PBXBuildFile section */
@@ -196,6 +208,7 @@
 		5D03ED1D23281620006068CB /* WallPaperDevTests */ = {
 			isa = PBXGroup;
 			children = (
+				5DD33D492342A62A00137E3C /* CreateGoalVCTests.swift */,
 				5D03ED1E23281620006068CB /* WallPaperDevTests.swift */,
 				5D03ED2023281620006068CB /* Info.plist */,
 			);
@@ -206,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				5D03ED2923281620006068CB /* WallPaperDevUITests.swift */,
-				5DD33D492342A62A00137E3C /* CreateGoalVCTests.swift */,
 				5D03ED2B23281620006068CB /* Info.plist */,
 			);
 			path = WallPaperDevUITests;
@@ -480,7 +492,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DD33D4E2342CA4B00137E3C /* EmptyStateView.swift in Sources */,
 				5D03ED1F23281620006068CB /* WallPaperDevTests.swift in Sources */,
+				5DD33D572342CA6200137E3C /* Goal+CoreDataProperties.swift in Sources */,
+				5DD33D5A2342CB0D00137E3C /* CreateGoalVCTests.swift in Sources */,
+				5DD33D4D2342CA3C00137E3C /* CreateGoalViewController.swift in Sources */,
+				5DD33D522342CA4B00137E3C /* GoalDescriptionTextView.swift in Sources */,
+				5DD33D512342CA4B00137E3C /* CreateGoalView.swift in Sources */,
+				5DD33D502342CA4B00137E3C /* HomeBackgroundView.swift in Sources */,
+				5DD33D582342CA6500137E3C /* Goal+CoreDataClass.swift in Sources */,
+				5DD33D562342CA5B00137E3C /* CoreDataStack.swift in Sources */,
+				5DD33D4F2342CA4B00137E3C /* AddButton.swift in Sources */,
+				5DD33D542342CA4B00137E3C /* BigBlueButton.swift in Sources */,
+				5DD33D552342CA4B00137E3C /* BlueLabel.swift in Sources */,
+				5DD33D532342CA4B00137E3C /* GoalNameTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +514,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D03ED2A23281620006068CB /* WallPaperDevUITests.swift in Sources */,
-				5DD33D4A2342A62A00137E3C /* CreateGoalVCTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,10 +585,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -620,6 +641,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -642,7 +664,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,7 +683,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -760,6 +782,126 @@
 			};
 			name = Release;
 		};
+		5DD33D5D23453C4D00137E3C /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = XCTest;
+		};
+		5DD33D5E23453C4D00137E3C /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FBCEEB6B01429933B9BCD6B /* Pods-WallPaperDev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
+				INFOPLIST_FILE = WallPaperDev/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.WallPaperDev";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = XCTest;
+		};
+		5DD33D5F23453C4D00137E3C /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CDE004E6DB3143FC176262F /* Pods-WallPaperDevTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7Y8QKEC95;
+				INFOPLIST_FILE = WallPaperDevTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.WallPaperDevTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WallPaperDev.app/WallPaperDev";
+			};
+			name = XCTest;
+		};
+		5DD33D6023453C4D00137E3C /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C25928146D38DF836F7363F4 /* Pods-WallPaperDevUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R7Y8QKEC95;
+				INFOPLIST_FILE = WallPaperDevUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Stephen-Ouyang.WallPaperDevUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WallPaperDev;
+			};
+			name = XCTest;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -767,6 +909,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D03ED2C23281620006068CB /* Debug */,
+				5DD33D5D23453C4D00137E3C /* XCTest */,
 				5D03ED2D23281620006068CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -776,6 +919,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D03ED2F23281620006068CB /* Debug */,
+				5DD33D5E23453C4D00137E3C /* XCTest */,
 				5D03ED3023281620006068CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -785,6 +929,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D03ED3223281620006068CB /* Debug */,
+				5DD33D5F23453C4D00137E3C /* XCTest */,
 				5D03ED3323281620006068CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -794,6 +939,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5D03ED3523281620006068CB /* Debug */,
+				5DD33D6023453C4D00137E3C /* XCTest */,
 				5D03ED3623281620006068CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
