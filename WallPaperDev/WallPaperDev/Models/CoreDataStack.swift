@@ -76,7 +76,6 @@ final class CoreDataStack {
         return goalNameArr
     }
     
-    // Implement this by EOD
     func fetchOneGoal(_ objectID: NSManagedObjectID) {
     }
     
