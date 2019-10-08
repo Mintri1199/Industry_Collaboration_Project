@@ -172,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				5D03ED082328161E006068CB /* WallPaperDev */,
+				5D4A1B3223396E5100CB79D4 /* Resources */,
 				5D03ED1D23281620006068CB /* WallPaperDevTests */,
 				5D03ED2823281620006068CB /* WallPaperDevUITests */,
 				5D03ED072328161E006068CB /* Products */,
@@ -224,11 +225,20 @@
 			path = WallPaperDevUITests;
 			sourceTree = "<group>";
 		};
+		5D4A1B3223396E5100CB79D4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5D4A1B3323396EA200CB79D4 /* WallPaperDev.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5D051783232C020000B94C4B /* HomeViewController.swift */,
 				5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */,
+				5D4A1B3023396BA800CB79D4 /* CoreDataStack.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -469,6 +479,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D4A1B3523396EA200CB79D4 /* WallPaperDev.xcdatamodeld in Sources */,
+				5D4A1B3123396BA800CB79D4 /* CoreDataStack.swift in Sources */,
 				5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
 				5D008DE2233945B500C73DD1 /* (null) in Sources */,
