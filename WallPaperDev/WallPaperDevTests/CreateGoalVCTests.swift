@@ -5,22 +5,30 @@
 //  Created by Jamar Gibbs on 9/30/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
-
-
 import XCTest
+
 
 @testable import WallPaperDev
 
 class CreateGoalVCTests: XCTestCase {
-// ----> Arrange, Act, Assert
+    
+    let createGoalVC = CreateGoalViewController()
+    let createGoalView = CreateGoalView()
+    let coreDataStack = CoreDataStack.shared
+    
+    override func setUp() {
+        super.setUp()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+    }
+    
+    // ----> Arrange, Act, Assert
     func testCreateGoal() {
     // Arrange
-        let createGoalVC = CreateGoalViewController()
-        let createGoalView = CreateGoalView()
-        
         let userGoalName = createGoalView.goalNameTextField.text
         let userGoalSummary = createGoalView.goalDescriptionTextView.text
-        
     // Act
         createGoalVC.addTapped()
 
@@ -29,18 +37,34 @@ class CreateGoalVCTests: XCTestCase {
         XCTAssert(!(userGoalSummary == nil))
     }
     
-    func testArrangeActAssert() {
-        // Arrange --> Given
-        let x = 20
-        let y = 40
-        let expected = 60
-
-        // Act --> When
-        let actual = x + y
-
-        // Assert --> Then
-        XCTAssertEqual(expected, actual)
+    func testCoreDataSave() {
+        let goalName = "new goal"
+        let goalSummary = "goal summary"
+        
+        coreDataStack.createGoal(goalName, goalSummary)
+        
+        let goals = coreDataStack.fetchGoals()
+        let retGoalName = goals.filter {
+            $0.name == goalName
+        }
+        XCTAssertEqual(goalName, retGoalName[0].name)
     }
+    
+    func testCoreDataDelete() {
+        let goals = coreDataStack.fetchGoals()
+        let goalName = "goal name"
+        
+        let retGoals = goals.filter {
+            $0.name == goalName
+        }
+        coreDataStack.delete(retGoals[0].objectID)
+    }
+    
+    func testCoreDataRetrieve() {
+        let goals = coreDataStack.fetchGoals()
+        XCTAssert(!(goals.isEmpty))
+    }
+    
 }
 
 

@@ -57,6 +57,9 @@ extension CreateGoalViewController {
     
     private func retrieveGoals() {
         let goals = coreDataStack.fetchGoals()
+        for goal in goals {
+            print(goal.name ?? "")
+        }
     }
 }
 
