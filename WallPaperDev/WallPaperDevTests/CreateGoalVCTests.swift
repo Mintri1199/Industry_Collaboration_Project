@@ -64,7 +64,6 @@ class CreateGoalVCTests: XCTestCase {
         let goals = coreDataStack.fetchGoals()
         XCTAssert(!(goals.isEmpty))
     }
-    
 }
 
 
