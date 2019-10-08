@@ -15,7 +15,10 @@ class ImagePreviewViewModel {
     var unprocessImage: UIImage?
     var selectedGoals: [String] = []
     
-    func processImage(_ image: UIImage, _ goalArray: [String]) -> UIImage? {
+    func processImage(_ goalArray: [String]) -> UIImage? {
+        guard let image = unprocessImage else {
+            return nil
+        }
         // crop the image into the right ratio
         let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
         let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width

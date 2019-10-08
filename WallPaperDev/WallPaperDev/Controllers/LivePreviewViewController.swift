@@ -24,16 +24,22 @@ class LivePreviewViewController: UIViewController {
         super.viewDidLoad()
         setupLivePreview()
     }
-    
-    @objc private func dismissPreview() {
-        dismiss(animated: true, completion: nil)
-    }
-    
+}
+
+// MARK: - UIs functions
+extension LivePreviewViewController {
     private func setupLivePreview() {
         view.addSubview(livePreview)
         livePreview.backgroundColor = .brown
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissPreview))
         swipeDown.direction = .down
         view.addGestureRecognizer(swipeDown)
+    }
+}
+
+// MARK: - OBJC functions
+extension LivePreviewViewController {
+    @objc private func dismissPreview() {
+        dismiss(animated: true, completion: nil)
     }
 }

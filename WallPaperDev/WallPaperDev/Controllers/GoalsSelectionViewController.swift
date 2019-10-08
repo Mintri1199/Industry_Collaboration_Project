@@ -13,9 +13,9 @@ protocol PassSelectedGoals: class {
 }
 
 class GoalsSelectionViewController: UIViewController {
+    
     private let cellId: String = "chooseGoalCell"
     private let tableView = GoalsTableView(frame: .zero, style: .plain)
-    
     weak var delegate: PassSelectedGoals?
     let viewModel = ChooseGoalViewModel()
     
@@ -91,6 +91,7 @@ extension GoalsSelectionViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - TableViewDelegate
 extension GoalsSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         let alertView = UIAlertController(title: goalArray[indexPath.row], message: descriptionArray[indexPath.row], preferredStyle: .alert)
@@ -100,7 +101,6 @@ extension GoalsSelectionViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         viewModel.selectedGoals.append(goalArray[indexPath.row])
         navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
         print("Select: \(indexPath)")

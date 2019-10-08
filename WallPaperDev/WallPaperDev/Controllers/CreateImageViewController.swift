@@ -19,20 +19,17 @@ class CreateImageViewController: UIViewController {
     private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
     private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
     private lazy var emptyView = SelectedGoalsEmptyView()
-    
     private let goalsVC = GoalsSelectionViewController()
+    private let viewModel = SelectionViewModel()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
-    private let viewModel = SelectionViewModel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViews()
-        goalsTableView.tableFooterView = UIView(frame: .zero)
     }
 }
 
@@ -71,6 +68,7 @@ extension CreateImageViewController {
             chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
         ])
     }
+    
     private func setupChooseGoalLabel() {
         chooseGoalLabel.text = "Choose Goal"
         self.view.addSubview(chooseGoalLabel)
@@ -113,6 +111,7 @@ extension CreateImageViewController {
         self.view.addSubview(goalsTableView)
         goalsTableView.dataSource = self
         goalsTableView.allowsSelection = false
+        goalsTableView.tableFooterView = UIView(frame: .zero)
         NSLayoutConstraint.activate([
             goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
             goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
@@ -136,7 +135,7 @@ extension CreateImageViewController {
 
 // MARK: - CAAnimationDelegate
 extension CreateImageViewController: CAAnimationDelegate {
-    
+    // TODO: Figure out to implement animation inn MVVM
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let button = anim.value(forKey: "button") as? BigBlueButton {
             if let value = anim.value(forKey: "name") as? String {
@@ -224,9 +223,7 @@ extension CreateImageViewController: UICollectionViewDelegate {
 
 // MARK: - TableViewDelegate
 extension CreateImageViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return nil
-    }
+    // Currently serving no purpose at the moment
 }
 
 // MARK: - TableViewDataSource

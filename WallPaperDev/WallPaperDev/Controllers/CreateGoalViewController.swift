@@ -13,7 +13,6 @@ class CreateGoalViewController: UIViewController {
     let createGoalView = CreateGoalView()
     let coreDataStack = CoreDataStack.shared
     
-    // Turn the status bar on this VC white
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -21,10 +20,7 @@ class CreateGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
-        _setupCreateGoalView()
-        _setupNavBar()
-        _setupButton()
-        retrieveGoals()
+        setupUIs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,20 +31,38 @@ class CreateGoalViewController: UIViewController {
 
 // MARK: Setup UI functions
 extension CreateGoalViewController {
-    private func _setupCreateGoalView() {
+    
+    private func setupUIs() {
+        setupCreateGoalView()
+        setupNavBar()
+        setupButton()
+    }
+    
+    private func setupCreateGoalView() {
         createGoalView.frame = self.view.frame
         self.view.addSubview(createGoalView)
     }
     
-    private func _setupNavBar() {
+    private func setupNavBar() {
         navigationItem.title = "Create Goal"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
     }
     
-    private func _setupButton() {
+    private func setupButton() {
         createGoalView.createButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
     }
     
+    // MARK: Why is this here? It currently does nothing
+    private func retrieveGoals() {
+        let goals = coreDataStack.fetchGoals()
+        for goal in goals {
+            print(goal.name ?? "")
+        }
+    }
+}
+
+// MARK: - Objc functions
+extension CreateGoalViewController {
     @objc func addTapped() {
         guard let userGoalName = createGoalView.goalNameTextField.text,
             let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
@@ -56,12 +70,5 @@ extension CreateGoalViewController {
         }
         
         coreDataStack.createGoal(userGoalName, userGoalSummary)
-    }
-    
-    private func retrieveGoals() {
-        let goals = coreDataStack.fetchGoals()
-        for goal in goals {
-            print(goal.name ?? "")
-        }
     }
 }

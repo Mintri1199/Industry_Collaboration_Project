@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-// An extension to configuring the font of the nav bar base on length
 extension UINavigationBar {
     func configLargeText(length: String) -> [NSAttributedString.Key: Any] {
         return length.count > 12 ?  [NSAttributedString.Key.foregroundColor: UIColor.white,

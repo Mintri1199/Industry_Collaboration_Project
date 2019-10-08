@@ -10,7 +10,7 @@ import UIKit
 
 class ImagePreviewViewController: UIViewController {
     
-    // Custom UIs
+    // MARK: Custom UIs
     private lazy var imageView = CompleteImageVIew(frame: .zero)
     private lazy var saveButton = BigBlueButton(frame: .zero)
     private lazy var previewButton = BigBlueButton(frame: .zero)
@@ -31,7 +31,7 @@ class ImagePreviewViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViews()
-        image = viewModel.processImage(viewModel.unprocessImage!, viewModel.selectedGoals)
+        image = viewModel.processImage(viewModel.selectedGoals)
     }
 }
 
@@ -46,7 +46,7 @@ extension ImagePreviewViewController {
     }
     
     private func setupImageView() {
-        self.view.addSubview(imageView)
+        view.addSubview(imageView)
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
             imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
@@ -68,7 +68,7 @@ extension ImagePreviewViewController {
     }
     
     private func setupBlueButton() {
-        self.view.addSubview(saveButton)
+        view.addSubview(saveButton)
         saveButton.setTitle("Save Image", for: .normal)
         saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
@@ -98,11 +98,10 @@ extension ImagePreviewViewController {
         guard let image = imageView.image else {
             return
         }
-        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingImageHandler(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-    
-    // Saving image handler
-    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+
+    @objc func savingImageHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
