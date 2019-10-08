@@ -26,6 +26,10 @@ class HomeViewController: UIViewController {
         initTitleView()
         setupTableView()
         initButton()
+        for goal in CoreDataStack.shared.fetchGoals() {
+            print(goal.name)
+            print(goal.summary)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,8 +37,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setupTableView() {
-        let tableViewFrame = CGRect(x: 0, y: view.bounds.height * 0.4, width: view.bounds.width * 0.85, height: view.bounds.height * 0.5)
-        homeTableView.frame = tableViewFrame
+        homeTableView.frame = CGRect(x: 0, y: view.bounds.height * 0.34, width: view.bounds.width * 0.85, height: view.bounds.height * 0.5)
         homeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
         homeTableView.delegate = self
         homeTableView.dataSource = self
@@ -64,20 +67,21 @@ class HomeViewController: UIViewController {
     }
     
     @objc func addTapped() {
-        print("add tapped")
         let vc = CreateGoalViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension HomeViewController: UITableViewDelegate {
-}
+// MARK: - TableViewDataDelegate
+extension HomeViewController: UITableViewDelegate { }
 
+// MARK: - TableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if homeViewModel.goalsArr.isEmpty {
-            homeTableView.backgroundView = emptyStateView
-        }
+        
+        homeViewModel.goalsArr.isEmpty ? homeTableView.setEmptyView(title: "Set a goal today!", message: "") :
+                                         homeTableView.restore()
+        
         return homeViewModel.goalsArr.count
     }
     

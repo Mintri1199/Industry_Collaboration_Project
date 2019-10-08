@@ -49,7 +49,7 @@ extension CreateGoalViewController {
     }
     
     private func setupButton() {
-        createGoalView.createButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+        createGoalView.createButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
     }
     
     // MARK: Why is this here? It currently does nothing
@@ -63,12 +63,12 @@ extension CreateGoalViewController {
 
 // MARK: - Objc functions
 extension CreateGoalViewController {
-    @objc func addTapped() {
+    @objc func createTapped() {
         guard let userGoalName = createGoalView.goalNameTextField.text,
             let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
                 return
         }
-        
         coreDataStack.createGoal(userGoalName, userGoalSummary)
+        navigationController?.popViewController(animated: true)
     }
 }

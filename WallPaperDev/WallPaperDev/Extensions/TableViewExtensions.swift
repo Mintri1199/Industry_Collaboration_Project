@@ -19,8 +19,8 @@ extension UITableView {
         let messageLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
-        messageLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        titleLabel.font = UIFont(name: "Avenir-Medium", size: 20)
+        messageLabel.font = UIFont(name: "Avenir-Medium", size: 17)
         emptyView.addSubview(titleLabel)
         emptyView.addSubview(messageLabel)
         titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true

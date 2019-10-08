@@ -27,6 +27,7 @@ final class CoreDataStack {
     
     lazy var context = persistentContainer.viewContext
     
+    // Why does this need to be here?
     private init() {}
     
     // MARK: - Core Data Saving support
@@ -74,7 +75,11 @@ final class CoreDataStack {
 //        let goals: [Goal] = goalNameArr as? [Goal] ?? []
         return goalNameArr
     }
-
+    
+    // Implement this by EOD
+    func fetchOneGoal(_ objectID: NSManagedObjectID) {
+    }
+    
     func delete(_ objectID: NSManagedObjectID) {
         let object = context.object(with: objectID)
         context.delete(object)
@@ -95,5 +100,16 @@ final class CoreDataStack {
         goal.name = name
         goal.summary = summary
         saveContext()
+    }
+    
+    func clearCoreData() {
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }

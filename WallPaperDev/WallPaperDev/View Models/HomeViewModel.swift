@@ -11,5 +11,9 @@ import CoreData
 
 class HomeViewModel {
     
-    var goalsArr: [String] = ["Hi"]
+    var goalsArr: [String] = []
+    
+    let coreDataStack: CoreDataStack = CoreDataStack.shared
+    
+    
 }
