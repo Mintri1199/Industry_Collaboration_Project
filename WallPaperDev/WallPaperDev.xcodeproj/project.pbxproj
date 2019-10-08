@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4467167D232DC7AF005C910E /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167C232DC7AF005C910E /* BlueLabel.swift */; };
-		4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167E232DC9E8005C910E /* BigBlueButton.swift */; };
-		44C0B51A23301A1B0015110B /* GoalNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51923301A1B0015110B /* GoalNameTextField.swift */; };
+		44B56606234D165400DEBB86 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
+		44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56607234D168C00DEBB86 /* CreateGoalView.swift */; };
+		44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56609234D16C100DEBB86 /* BlueLabel.swift */; };
+		44B5660C234D177400DEBB86 /* GoalNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5660B234D177400DEBB86 /* GoalNameTextField.swift */; };
+		44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */; };
 		44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51D23302A570015110B /* CreateImageViewController.swift */; };
 		44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51F23302A680015110B /* ImagePreviewViewController.swift */; };
 		44C0B52423302C920015110B /* UINavigationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B52323302C920015110B /* UINavigationExtensions.swift */; };
@@ -28,17 +30,14 @@
 		44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */; };
 		44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */; };
 		44E0BA77233D723E007AA20D /* LivePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA76233D723E007AA20D /* LivePreviewViewController.swift */; };
-		44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */; };
 		4F2FDA7F410F858BC484E89A /* Pods_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A502B4B663DD1FAC667DC34F /* Pods_WallPaperDevUITests.framework */; };
 		565274D1ABBE06339214BE60 /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47BB523AE4EF33A00ED5918 /* Pods_WallPaperDev.framework */; };
-		5D008DE2233945B500C73DD1 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
 		5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */; };
 		5D03ED1123281620006068CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D03ED1023281620006068CB /* Assets.xcassets */; };
 		5D03ED1423281620006068CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D03ED1223281620006068CB /* LaunchScreen.storyboard */; };
 		5D03ED1F23281620006068CB /* WallPaperDevTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED1E23281620006068CB /* WallPaperDevTests.swift */; };
 		5D03ED2A23281620006068CB /* WallPaperDevUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED2923281620006068CB /* WallPaperDevUITests.swift */; };
-		5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED37232816D3006068CB /* CreateGoalView.swift */; };
 		5D051784232C020000B94C4B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051783232C020000B94C4B /* HomeViewController.swift */; };
 		5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051785232C025200B94C4B /* HomeBackgroundView.swift */; };
 		5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB52923388B2A00187B33 /* EmptyStateView.swift */; };
@@ -50,11 +49,7 @@
 		5DD33D4E2342CA4B00137E3C /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB52923388B2A00187B33 /* EmptyStateView.swift */; };
 		5DD33D4F2342CA4B00137E3C /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF925502339BFF5004CE8AA /* AddButton.swift */; };
 		5DD33D502342CA4B00137E3C /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051785232C025200B94C4B /* HomeBackgroundView.swift */; };
-		5DD33D512342CA4B00137E3C /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED37232816D3006068CB /* CreateGoalView.swift */; };
 		5DD33D522342CA4B00137E3C /* GoalDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */; };
-		5DD33D532342CA4B00137E3C /* GoalNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51923301A1B0015110B /* GoalNameTextField.swift */; };
-		5DD33D542342CA4B00137E3C /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167E232DC9E8005C910E /* BigBlueButton.swift */; };
-		5DD33D552342CA4B00137E3C /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4467167C232DC7AF005C910E /* BlueLabel.swift */; };
 		5DD33D562342CA5B00137E3C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D47233D43A800137E3C /* CoreDataStack.swift */; };
 		5DD33D572342CA6200137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
 		5DD33D582342CA6500137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
@@ -86,9 +81,11 @@
 		0229E01D05EF1DC2A575B53E /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
 		0FA498DE116D7593CF41BA83 /* Pods-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3CDE004E6DB3143FC176262F /* Pods-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4467167C232DC7AF005C910E /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLabel.swift; sourceTree = "<group>"; };
-		4467167E232DC9E8005C910E /* BigBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueButton.swift; sourceTree = "<group>"; };
-		44C0B51923301A1B0015110B /* GoalNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNameTextField.swift; sourceTree = "<group>"; };
+		44B56605234D165400DEBB86 /* BigBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueButton.swift; sourceTree = "<group>"; };
+		44B56607234D168C00DEBB86 /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalView.swift; sourceTree = "<group>"; };
+		44B56609234D16C100DEBB86 /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLabel.swift; sourceTree = "<group>"; };
+		44B5660B234D177400DEBB86 /* GoalNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoalNameTextField.swift; path = ../GoalNameTextField.swift; sourceTree = "<group>"; };
+		44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDescriptionTextView.swift; sourceTree = "<group>"; };
 		44C0B51D23302A570015110B /* CreateImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateImageViewController.swift; sourceTree = "<group>"; };
 		44C0B51F23302A680015110B /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
 		44C0B52323302C920015110B /* UINavigationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationExtensions.swift; sourceTree = "<group>"; };
@@ -107,7 +104,6 @@
 		44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewModel.swift; sourceTree = "<group>"; };
 		44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewModel.swift; sourceTree = "<group>"; };
 		44E0BA76233D723E007AA20D /* LivePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePreviewViewController.swift; sourceTree = "<group>"; };
-		44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDescriptionTextView.swift; sourceTree = "<group>"; };
 		4AF58B3DF177BDB9B36FB4E8 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* WallPaperDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallPaperDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D03ED092328161E006068CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,7 +117,6 @@
 		5D03ED2523281620006068CB /* WallPaperDevUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WallPaperDevUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D03ED2923281620006068CB /* WallPaperDevUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPaperDevUITests.swift; sourceTree = "<group>"; };
 		5D03ED2B23281620006068CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5D03ED37232816D3006068CB /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGoalView.swift; sourceTree = "<group>"; };
 		5D051783232C020000B94C4B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5D051785232C025200B94C4B /* HomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackgroundView.swift; sourceTree = "<group>"; };
 		5D4CB52923388B2A00187B33 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
@@ -203,12 +198,9 @@
 		44C0B52B23303F9B0015110B /* CreateGoal Views */ = {
 			isa = PBXGroup;
 			children = (
-				5D03ED37232816D3006068CB /* CreateGoalView.swift */,
-				44C0B51923301A1B0015110B /* GoalNameTextField.swift */,
-				4467167E232DC9E8005C910E /* BigBlueButton.swift */,
-				4467167C232DC7AF005C910E /* BlueLabel.swift */,
 				44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */,
 				44E0BA6C233AC9F6007AA20D /* SelectedGoalsEmptyView.swift */,
+				44B5660B234D177400DEBB86 /* GoalNameTextField.swift */,
 			);
 			path = "CreateGoal Views";
 			sourceTree = "<group>";
@@ -316,7 +308,6 @@
 		5D4A1B3223396E5100CB79D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5D4A1B3323396EA200CB79D4 /* WallPaperDev.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -330,7 +321,6 @@
 				44C0B51F23302A680015110B /* ImagePreviewViewController.swift */,
 				44E0BA642339B549007AA20D /* GoalsSelectionViewController.swift */,
 				44E0BA76233D723E007AA20D /* LivePreviewViewController.swift */,
-				5D4A1B3023396BA800CB79D4 /* CoreDataStack.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -342,13 +332,12 @@
 				44C0B52B23303F9B0015110B /* CreateGoal Views */,
 				44C0B52123302A730015110B /* Create Image Views */,
 				5DF925502339BFF5004CE8AA /* AddButton.swift */,
-				4467167E232DC9E8005C910E /* BigBlueButton.swift */,
-				4467167C232DC7AF005C910E /* BlueLabel.swift */,
-				5D03ED37232816D3006068CB /* CreateGoalView.swift */,
 				5D4CB52923388B2A00187B33 /* EmptyStateView.swift */,
+				44B56605234D165400DEBB86 /* BigBlueButton.swift */,
 				44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */,
-				44C0B51923301A1B0015110B /* GoalNameTextField.swift */,
+				44B56607234D168C00DEBB86 /* CreateGoalView.swift */,
 				5D051785232C025200B94C4B /* HomeBackgroundView.swift */,
+				44B56609234D16C100DEBB86 /* BlueLabel.swift */,
 				5DFF6B97233D7C460077F712 /* PaddingLabel.swift */,
 				5D03ED1223281620006068CB /* LaunchScreen.storyboard */,
 			);
@@ -575,22 +564,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */,
 				44E0BA6B233A87DE007AA20D /* GrayTextButton.swift in Sources */,
+				44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */,
 				44E0BA692339B7F0007AA20D /* TableViewExtensions.swift in Sources */,
 				44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */,
 				44E0BA77233D723E007AA20D /* LivePreviewViewController.swift in Sources */,
+				44B56606234D165400DEBB86 /* BigBlueButton.swift in Sources */,
 				44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */,
 				44C0B52423302C920015110B /* UINavigationExtensions.swift in Sources */,
-				5D4A1B3523396EA200CB79D4 /* WallPaperDev.xcdatamodeld in Sources */,
-				5D4A1B3123396BA800CB79D4 /* CoreDataStack.swift in Sources */,
 				5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 				5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */,
-				5D03ED38232816D3006068CB /* CreateGoalView.swift in Sources */,
 				5DD33D48233D43A800137E3C /* CoreDataStack.swift in Sources */,
-				4467167F232DC9E8005C910E /* BigBlueButton.swift in Sources */,
 				44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */,
 				44C0B53C2331CF870015110B /* MockData.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
@@ -599,15 +587,14 @@
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
 				44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */,
-				44C0B51A23301A1B0015110B /* GoalNameTextField.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
-				4467167D232DC7AF005C910E /* BlueLabel.swift in Sources */,
 				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,
 				44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */,
 				44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */,
 				44C0B5282330341A0015110B /* ImageSelectionLayout.swift in Sources */,
 				44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */,
+				44B5660C234D177400DEBB86 /* GoalNameTextField.swift in Sources */,
 				44C0B5382331AFE50015110B /* SelectionVIewModel.swift in Sources */,
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
 				44E0BA652339B549007AA20D /* GoalsSelectionViewController.swift in Sources */,
@@ -625,14 +612,10 @@
 				5DD33D5A2342CB0D00137E3C /* CreateGoalVCTests.swift in Sources */,
 				5DD33D4D2342CA3C00137E3C /* CreateGoalViewController.swift in Sources */,
 				5DD33D522342CA4B00137E3C /* GoalDescriptionTextView.swift in Sources */,
-				5DD33D512342CA4B00137E3C /* CreateGoalView.swift in Sources */,
 				5DD33D502342CA4B00137E3C /* HomeBackgroundView.swift in Sources */,
 				5DD33D582342CA6500137E3C /* Goal+CoreDataClass.swift in Sources */,
 				5DD33D562342CA5B00137E3C /* CoreDataStack.swift in Sources */,
 				5DD33D4F2342CA4B00137E3C /* AddButton.swift in Sources */,
-				5DD33D542342CA4B00137E3C /* BigBlueButton.swift in Sources */,
-				5DD33D552342CA4B00137E3C /* BlueLabel.swift in Sources */,
-				5DD33D532342CA4B00137E3C /* GoalNameTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
