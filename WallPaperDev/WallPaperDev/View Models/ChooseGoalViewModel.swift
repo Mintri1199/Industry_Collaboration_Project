@@ -12,6 +12,7 @@ class ChooseGoalViewModel {
         
     var selectedGoals: [String] = []
     
+    
     // An array of goals to populate the table view
     
     // function to fetch the goals from core data
