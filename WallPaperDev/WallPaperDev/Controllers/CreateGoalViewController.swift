@@ -27,6 +27,11 @@ class CreateGoalViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
     }
+    
+    func setupNavBar() {
+        navigationItem.title = "Create Goal"
+        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
+    }
 }
 
 // MARK: Setup UI functions
@@ -41,11 +46,6 @@ extension CreateGoalViewController {
     private func setupCreateGoalView() {
         createGoalView.frame = self.view.frame
         self.view.addSubview(createGoalView)
-    }
-    
-    private func setupNavBar() {
-        navigationItem.title = "Create Goal"
-        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
     }
     
     private func setupButton() {

@@ -102,6 +102,12 @@ final class CoreDataStack {
         saveContext()
     }
     
+    func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {
+        goal.name = name
+        goal.summary = summary
+        saveContext()
+    }
+    
     func clearCoreData() {
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)

@@ -64,6 +64,8 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        homeViewModel.goalsArr = homeViewModel.coreDataStack.fetchGoals()
+        homeTableView.reloadData()
     }
     
     @objc func addTapped() {
@@ -73,7 +75,15 @@ class HomeViewController: UIViewController {
 }
 
 // MARK: - TableViewDataDelegate
-extension HomeViewController: UITableViewDelegate { }
+extension HomeViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedGoal = homeViewModel.goalsArr[indexPath.row]
+        let detailGoalVC = DetailGoalViewController()
+        detailGoalVC.goal = selectedGoal
+        navigationController?.pushViewController(detailGoalVC, animated: true)
+    }
+}
 
 // MARK: - TableViewDataSource
 extension HomeViewController: UITableViewDataSource {
@@ -87,7 +97,7 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ID", for: indexPath)
-        cell.textLabel?.text = homeViewModel.goalsArr[indexPath.row]
+        cell.textLabel?.text = homeViewModel.goalsArr[indexPath.row].name
         return cell
     }
     
@@ -96,6 +106,7 @@ extension HomeViewController: UITableViewDataSource {
         label.frame = view.frame
         label.text = "Goals"
         label.font = UIFont(name: "Avenir-Heavy", size: 25)
+        label.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return label
     }
     
