@@ -7,7 +7,6 @@
 //
 import XCTest
 
-
 @testable import WallPaperDev
 
 class CreateGoalVCTests: XCTestCase {
@@ -65,16 +64,3 @@ class CreateGoalVCTests: XCTestCase {
         XCTAssert(!(goals.isEmpty))
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

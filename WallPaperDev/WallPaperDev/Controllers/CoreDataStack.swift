@@ -11,8 +11,6 @@ import CoreData
 
 final class CoreDataStack {
     
-    private init() {}
-    
     static let shared = CoreDataStack()
     
     lazy var persistentContainer: NSPersistentContainer = {
@@ -23,7 +21,7 @@ final class CoreDataStack {
          error conditions that could cause the creation of the store to fail.
          */
         let container = NSPersistentContainer(name: "GoalPersistence")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { ( _, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -43,8 +41,8 @@ final class CoreDataStack {
     
     lazy var context = persistentContainer.viewContext
     
-    
     // MARK: - Core Data Saving support
+    private init() {}
     
     func saveContext () {
         let context = persistentContainer.viewContext
@@ -72,7 +70,6 @@ final class CoreDataStack {
         if let filter = filter {
             let filterPredicate = NSPredicate(format: "name =[c] %@", filter)
             fetchRequest.predicate = filterPredicate
-            
         }
         do {
             let fetchedObjects = try context.fetch(fetchRequest) as? [T]
@@ -88,5 +85,4 @@ final class CoreDataStack {
         context.delete(object)
         //        saveContext()
     }
-    
 }

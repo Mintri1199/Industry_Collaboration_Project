@@ -11,14 +11,12 @@ import CoreData
 
 final class CoreDataStack {
     
-    private init() {}
-    
     static let shared = CoreDataStack()
     
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "WallPaperDev")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { ( _, error) in
             if let error = error as NSError? {
                 
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -28,6 +26,8 @@ final class CoreDataStack {
     }()
     
     lazy var context = persistentContainer.viewContext
+    
+    private init() {}
     
     // MARK: - Core Data Saving support
     func saveContext () {
@@ -82,7 +82,7 @@ final class CoreDataStack {
     }
     
     func createGoal(_ name: String, _ summary: String) {
-        let entity = NSEntityDescription.entity(forEntityName:"Goal", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
         guard let unwrappedEntity = entity else {
             print("failure obtaining entity")
             return
@@ -96,6 +96,4 @@ final class CoreDataStack {
         goal.summary = summary
         saveContext()
     }
-    
-
 }

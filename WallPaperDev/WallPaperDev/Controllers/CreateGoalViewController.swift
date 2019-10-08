@@ -50,8 +50,10 @@ extension CreateGoalViewController {
     }
     
     @objc func addTapped() {
-        guard let userGoalName = createGoalView.goalNameTextField.text else {return}
-        guard let userGoalSummary = createGoalView.goalDescriptionTextView.text else{return}
+        guard let userGoalName = createGoalView.goalNameTextField.text,
+            let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
+                return
+        }
         
         coreDataStack.createGoal(userGoalName, userGoalSummary)
     }

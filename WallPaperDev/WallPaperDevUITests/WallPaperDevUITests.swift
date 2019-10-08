@@ -8,7 +8,6 @@
 
 import XCTest
 
-
 class WallPaperDevUITests: XCTestCase {
 
     override func setUp() {
