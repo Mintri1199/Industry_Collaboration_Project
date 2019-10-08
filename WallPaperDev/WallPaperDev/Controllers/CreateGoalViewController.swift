@@ -9,23 +9,27 @@
 import UIKit
 
 class CreateGoalViewController: UIViewController {
-
+    
+    let createGoalView = CreateGoalView()
+    let coreDataStack = CoreDataStack.shared
+    
+    // Turn the status bar on this VC white
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    lazy var createGoalView = CreateGoalView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
         _setupCreateGoalView()
         _setupNavBar()
+        _setupButton()
+        retrieveGoals()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.isHidden = false
     }
 }
 
@@ -39,5 +43,30 @@ extension CreateGoalViewController {
     private func _setupNavBar() {
         navigationItem.title = "Create Goal"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
+    }
+    
+    private func _setupButton() {
+        createGoalView.createButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+    }
+    
+    @objc func addTapped() {
+        guard let userGoalName = createGoalView.goalNameTextField.text else {return}
+        guard let userGoalSummary = createGoalView.goalDescriptionTextView.text else{return}
+        
+        coreDataStack.createGoal(userGoalName, userGoalSummary)
+    }
+    
+    private func retrieveGoals() {
+        let goals = coreDataStack.fetchGoals()
+        for goal in goals {
+            print(goal.name ?? "")
+        }
+    }
+}
+
+// MARK: - Changing the status when using a navigation controller
+extension UINavigationController {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return topViewController?.preferredStatusBarStyle ?? .default
     }
 }

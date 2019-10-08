@@ -10,52 +10,39 @@ import UIKit
 
 class CreateGoalView: UIView {
     
-    let goalNameLabel = BlueLabel(frame: .zero)
-    let goalDescriptionLabel = BlueLabel(frame: .zero)
-    let createButton = BigBlueButton(frame: .zero)
-    
-    let goalNameTextField: GoalNameTextField = {
-        let textField = GoalNameTextField(frame: .zero)
-        textField.font = UIFont(name: "HelveticaNeue", size: 25)
-        textField.placeholder = "Climbing Mount Everest"
-        return textField
-    }()
-    
-    let goalDescriptionTextView: UITextView = {
-        let textView = UITextView()
-        textView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        textView.layer.borderWidth = 1
-        textView.font = UIFont(name: "HelveticaNeue", size: 25)
-        
-        return textView
-    }()
+    // MARK: - Custom UIViews
+    lazy var goalNameLabel = BlueLabel(frame: .zero)
+    lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
+    lazy var createButton = BigBlueButton(frame: .zero)
+    lazy var goalNameTextField = GoalNameTextField(frame: .zero)
+    lazy var goalDescriptionTextView = GoalDescriptionTextView(frame: .zero, textContainer: nil)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        _configView()
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Setup UI functions
+extension CreateGoalView {
     
-    private func _configView() {
+    private func setupViews() {
         addSubview(goalNameLabel)
         addSubview(goalNameTextField)
         addSubview(goalDescriptionLabel)
         addSubview(goalDescriptionTextView)
         addSubview(createButton)
         _setupGoalNameLabel()
-        goalNameTextFieldConstraints()
+        _goalNameTextFieldConstraints()
         _setupDescriptionLabel()
-        goalDescriptionTextViewConstraints()
+        _goalDescriptionTextViewConstraints()
         _setupBlueButton()
     }
-}
-
-// MARK: setup UI functions
-extension CreateGoalView {
     
     private func _setupGoalNameLabel() {
         goalNameLabel.text = "Goal Name"
@@ -67,8 +54,7 @@ extension CreateGoalView {
             ])
     }
     
-    func goalNameTextFieldConstraints() {
-        goalNameTextField.translatesAutoresizingMaskIntoConstraints = false
+    private func _goalNameTextFieldConstraints() {
         NSLayoutConstraint.activate([
             goalNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalNameTextField.heightAnchor.constraint(equalToConstant: 50),
@@ -88,8 +74,7 @@ extension CreateGoalView {
             ])
     }
     
-    func goalDescriptionTextViewConstraints() {
-        goalDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+    private func _goalDescriptionTextViewConstraints() {
         NSLayoutConstraint.activate([
             goalDescriptionTextView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalDescriptionTextView.heightAnchor.constraint(equalTo: goalNameTextField.heightAnchor, multiplier: 3),
