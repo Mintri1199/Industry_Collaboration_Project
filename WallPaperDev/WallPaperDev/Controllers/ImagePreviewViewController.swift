@@ -31,7 +31,8 @@ class ImagePreviewViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViews()
-        image = viewModel.processImage(viewModel.selectedGoals)
+        let nameArray = viewModel.selectedGoals.compactMap { $0.name }
+        image = viewModel.processImage(nameArray)
     }
 }
 

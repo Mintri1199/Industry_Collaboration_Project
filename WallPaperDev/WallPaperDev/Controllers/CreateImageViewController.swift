@@ -31,6 +31,11 @@ class CreateImageViewController: UIViewController {
         self.view.backgroundColor = .white
         setupViews()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
 // MARK: - Setup UI functions
@@ -169,7 +174,7 @@ extension CreateImageViewController {
 }
 
 extension CreateImageViewController: PassSelectedGoals {
-    func passSelectedGoals(_ array: [String]) {
+    func passSelectedGoals(_ array: [Goal]) {
         viewModel.selectedGoals = array.isEmpty ? [] : array
         changeGoalsButton.isHidden = array.isEmpty
         viewModel.validation(button: createImageButton)
@@ -183,14 +188,15 @@ extension CreateImageViewController: UICollectionViewDataSource {
         guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
             return UICollectionViewCell()
         }
-        indexPath.row == viewModel.imageArray.count ?   cell.setupShowMoreViews() :
-            cell.getImage(viewModel.imageArray[indexPath.row])
-        
+        // Commented until integrating Image API
+//        indexPath.row == viewModel.imageArray.count ?   cell.setupShowMoreViews() :
+//            cell.getImage(viewModel.imageArray[indexPath.row])
+        cell.getImage(viewModel.imageArray[indexPath.row])
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.imageArray.count + 1
+        return viewModel.imageArray.count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -201,9 +207,10 @@ extension CreateImageViewController: UICollectionViewDataSource {
 // MARK: - CollectionViewDelegate
 extension CreateImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.imageArray.count {
-            return
-        }
+        // Commented until integrating Image API
+//        if indexPath.row == viewModel.imageArray.count {
+//            return
+//        }
         
         imageSelectionCV.indexPathsForVisibleItems.forEach { (index) in
             if index != indexPath {
@@ -223,24 +230,21 @@ extension CreateImageViewController: UICollectionViewDelegate {
 
 // MARK: - TableViewDelegate
 extension CreateImageViewController: UITableViewDelegate {
-    // Currently serving no purpose at the moment
+    // Currently serving no purpose at the moment but later can use drag to order
 }
 
 // MARK: - TableViewDataSource
 extension CreateImageViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.selectedGoals.isEmpty {
-            setupCustomEmptyView()
-            return 0
-        } else {
-            tableView.restore()
-            return viewModel.selectedGoals.count
-        }
+        viewModel.selectedGoals.isEmpty ? setupCustomEmptyView() : tableView.restore()
+        return viewModel.selectedGoals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GoalsTableView.cellId, for: indexPath)
-        cell.textLabel?.text = viewModel.selectedGoals[indexPath.row]
+        if let name = viewModel.selectedGoals[indexPath.row].name {
+            cell.textLabel?.text = name
+        }
         return cell
     }
 }

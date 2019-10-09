@@ -13,7 +13,7 @@ import CoreGraphics
 class SelectionViewModel {
     let imageArray: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3")]
     
-    var selectedGoals: [String] = []
+    var selectedGoals: [Goal] = []
     
     var selectedImage: UIImage?
     

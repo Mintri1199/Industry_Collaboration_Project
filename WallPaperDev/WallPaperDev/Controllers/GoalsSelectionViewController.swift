@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PassSelectedGoals: class {
-    func passSelectedGoals(_ array: [String])
+    func passSelectedGoals(_ array: [Goal])
 }
 
 class GoalsSelectionViewController: UIViewController {
@@ -27,6 +27,7 @@ class GoalsSelectionViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupUIs()
+        viewModel.populateDataSource()
     }
 }
 
@@ -75,18 +76,18 @@ extension GoalsSelectionViewController {
 // MARK: - TableViewDataSource
 extension GoalsSelectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return goalArray.count
+        return viewModel.goals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         cell.accessoryType = .detailButton
         
-        if viewModel.selectedGoals.contains(goalArray[indexPath.row]) {
+        if viewModel.selectedGoals.contains(viewModel.goals[indexPath.row]) {
             cell.isSelected = true
         }
         
-        cell.textLabel?.text = goalArray[indexPath.row]
+        cell.textLabel?.text = viewModel.goals[indexPath.row].name!
         return cell
     }
 }
@@ -94,16 +95,16 @@ extension GoalsSelectionViewController: UITableViewDataSource {
 // MARK: - TableViewDelegate
 extension GoalsSelectionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let alertView = UIAlertController(title: goalArray[indexPath.row], message: descriptionArray[indexPath.row], preferredStyle: .alert)
+        let description = viewModel.goals[indexPath.row].summary == nil ? "There is no description for this goal" : viewModel.goals[indexPath.row].summary!
+        let alertView = UIAlertController(title: viewModel.goals[indexPath.row].name!, message: description, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alertView.addAction(okAction)
         present(alertView, animated: true)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.selectedGoals.append(goalArray[indexPath.row])
+        viewModel.selectedGoals.append(viewModel.goals[indexPath.row])
         navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
-        print("Select: \(indexPath)")
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
@@ -114,8 +115,7 @@ extension GoalsSelectionViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        viewModel.selectedGoals = viewModel.selectedGoals.filter({ $0 != goalArray[indexPath.row] })
+        viewModel.selectedGoals = viewModel.selectedGoals.filter({ $0 != viewModel.goals[indexPath.row] })
         navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
-        print("Deselect: \(indexPath)")
     }
 }

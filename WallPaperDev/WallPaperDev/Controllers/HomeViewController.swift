@@ -18,6 +18,7 @@ class HomeViewController: UIViewController {
     private let titleView = HomeBackgroundView(frame: .zero)
     private let emptyStateView = EmptyStateView(frame: .zero)
     private let addButton = AddButton(frame: .zero)
+    private let wallpaperButton = AddButton(frame: .zero)
     private let homeViewModel = HomeViewModel()
     
     override func viewDidLoad() {
@@ -26,10 +27,7 @@ class HomeViewController: UIViewController {
         initTitleView()
         setupTableView()
         initButton()
-        for goal in CoreDataStack.shared.fetchGoals() {
-            print(goal.name)
-            print(goal.summary)
-        }
+        setupWallpaperButton()
     }
     
     override func viewDidLayoutSubviews() {
@@ -45,6 +43,7 @@ class HomeViewController: UIViewController {
         homeTableView.separatorStyle = .none
         homeTableView.center.x = view.center.x
         homeTableView.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        homeTableView.tableFooterView = UIView()
         view.addSubview(homeTableView)
     }
     
@@ -55,10 +54,29 @@ class HomeViewController: UIViewController {
     }
     
     private func initButton() {
-        let addButtonFrame = CGRect(x: view.bounds.width * 0.75, y: view.bounds.height * 0.85, width: view.bounds.width / 5, height: view.bounds.width / 5)
+        let addButtonFrame = CGRect(x: view.bounds.width * 0.75,
+                                    y: view.bounds.height * 0.85,
+                                    width: view.bounds.width / 5,
+                                    height: view.bounds.width / 5)
+        
         addButton.frame = addButtonFrame
         addButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
         view.addSubview(addButton)
+    }
+    
+    private func setupWallpaperButton() {
+        let wallpaperButtonFrame = CGRect(x: addButton.frame.minX - addButton.frame.width - 20,
+                                          y: view.bounds.height * 0.85,
+                                          width: addButton.frame.width,
+                                          height: addButton.frame.height)
+        wallpaperButton.frame = wallpaperButtonFrame
+        view.addSubview(wallpaperButton)
+        
+        wallpaperButton.backgroundColor = .blue
+        wallpaperButton.setTitle("", for: .normal)
+        wallpaperButton.addTarget(self, action: #selector(wallpaperButtonTapped), for: .touchUpInside)
+        wallpaperButton.isHidden = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,8 +86,13 @@ class HomeViewController: UIViewController {
         homeTableView.reloadData()
     }
     
-    @objc func addTapped() {
+    @objc private func addTapped() {
         let vc = CreateGoalViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func wallpaperButtonTapped() {
+        let vc = CreateImageViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -88,9 +111,17 @@ extension HomeViewController: UITableViewDelegate {
 // MARK: - TableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        homeViewModel.goalsArr.isEmpty ? homeTableView.setEmptyView(title: "Set a goal today!", message: "") :
-                                         homeTableView.restore()
+        if homeViewModel.goalsArr.isEmpty {
+            homeTableView.setEmptyView(title: "Set a goal today!", message: "")
+            if !wallpaperButton.isHidden {
+                wallpaperButton.isHidden.toggle()
+            }
+        } else {
+             homeTableView.restore()
+            if wallpaperButton.isHidden {
+                wallpaperButton.isHidden.toggle()
+            }
+        }
         
         return homeViewModel.goalsArr.count
     }

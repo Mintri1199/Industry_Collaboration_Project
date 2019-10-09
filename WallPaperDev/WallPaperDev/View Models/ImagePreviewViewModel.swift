@@ -13,7 +13,7 @@ import CoreGraphics
 class ImagePreviewViewModel {
     
     var unprocessImage: UIImage?
-    var selectedGoals: [String] = []
+    var selectedGoals: [Goal] = []
     
     func processImage(_ goalArray: [String]) -> UIImage? {
         guard let image = unprocessImage else {

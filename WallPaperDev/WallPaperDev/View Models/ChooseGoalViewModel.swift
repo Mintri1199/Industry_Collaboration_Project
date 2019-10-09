@@ -10,17 +10,16 @@ import Foundation
 
 class ChooseGoalViewModel {
         
-    var selectedGoals: [String] = []
+    var selectedGoals: [Goal] = []
+    var goals: [Goal] = []
     
+    private let coreDataStack: CoreDataStack = CoreDataStack.shared
     
-    // An array of goals to populate the table view
-    
-    // function to fetch the goals from core data
-    
-    // function to preSelect the goals when the user want to change the selected goals
-    func preselectGoals(_ array: [String]) {
-        selectedGoals = array
+    func populateDataSource() {
+        goals = coreDataStack.fetchGoals()
     }
     
-    // function to limit the goals selection to 4
+    func preselectGoals(_ array: [Goal]) {
+        selectedGoals = array
+    }
 }
