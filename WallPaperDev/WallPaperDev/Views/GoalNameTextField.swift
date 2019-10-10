@@ -15,7 +15,7 @@ class GoalNameTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 1
         autocorrectionType = .no
         returnKeyType = .next

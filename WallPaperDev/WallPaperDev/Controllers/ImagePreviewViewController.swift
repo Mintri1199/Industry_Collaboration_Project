@@ -83,12 +83,22 @@ extension ImagePreviewViewController {
     private func setupNavBar() {
         navigationItem.title = "Preview"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Preview")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(popToHomeScreen))
     }
 }
 
 // MARK: - Objc functions
 extension ImagePreviewViewController {
-
+    
+    @objc private func popToHomeScreen() {
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKind(of: HomeViewController.self) {
+                _ = self.navigationController!.popToViewController(controller, animated: true)
+                break
+            }
+        }
+    }
+    
     @objc private func presentPreview() {
         let previewVC = LivePreviewViewController()
         previewVC.livePreview.image = image

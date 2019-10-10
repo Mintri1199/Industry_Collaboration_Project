@@ -16,6 +16,7 @@ class DetailGoalViewController: CreateGoalViewController {
         super.viewDidLoad()
         setupNavBar()
         configButton()
+        createGoalView.goalNameTextField.resignFirstResponder()
         if let goal = viewModel.goal {
             configTextFields(goal: goal)
         }
@@ -32,6 +33,7 @@ class DetailGoalViewController: CreateGoalViewController {
               let unwrappedDescription = goal.summary else { return }
         createGoalView.goalNameTextField.text = unwrappedName
         createGoalView.goalDescriptionTextView.text = unwrappedDescription
+        createGoalView.goalDescriptionTextView.textColor = .black
     }
     
     private func configButton() {
@@ -52,7 +54,6 @@ class DetailGoalViewController: CreateGoalViewController {
     }
     
     @objc private func deleteTapped() {
-        // Todo: Implement alertView to prompt the user first
         viewModel.delete()
         navigationController?.popViewController(animated: true)
     }

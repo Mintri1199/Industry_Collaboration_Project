@@ -20,7 +20,7 @@ class CreateGoalView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        self.backgroundColor =  .foregroundWhite
         setupViews()
     }
     
@@ -60,7 +60,7 @@ extension CreateGoalView {
         toolbar.barStyle = .default
         toolbar.items = [
             UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonTapped)),
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         ]
         goalNameTextField.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
@@ -88,7 +88,7 @@ extension CreateGoalView {
         toolbar.items = [
             UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(prevButtonTapped)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped)),
+            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
         ]
         goalDescriptionTextView.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([

@@ -37,7 +37,6 @@ class ImagePreviewViewModel {
         
         let cropRect = CGRect(x: horizontalInset, y: verticalInset, width: cropWidth, height: cropHeight)
         guard let cropImage = image.cgImage?.cropping(to: cropRect) else {
-            print("Woah something is definitely wrong")
             return nil
         }
         

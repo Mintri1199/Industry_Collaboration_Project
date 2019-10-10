@@ -64,7 +64,7 @@ extension CreateGoalViewController {
                 return
         }
         
-        if userGoalName.isEmpty && userGoalSummary.isEmpty {
+        if userGoalName.isEmpty && userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
             // prompt an alert for the user
             let alertView = UIAlertController(title: "Invalid", message: "You can't create a goal without a name and description", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

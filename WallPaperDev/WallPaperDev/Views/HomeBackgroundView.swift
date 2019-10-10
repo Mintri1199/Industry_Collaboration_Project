@@ -13,7 +13,7 @@ class HomeBackgroundView: UIView {
     private let morningTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Good Morning"
-        label.textColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont(name: "Avenir-Black", size: 40)
         label.textAlignment = .left
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -23,7 +23,7 @@ class HomeBackgroundView: UIView {
     
     private let currentDateLabel: UILabel = {
         let label = UILabel()
-        label.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        label.textColor = .white
         label.font = UIFont(name: "Avenir-Medium", size: 25)
         label.textAlignment = .left
         return label
@@ -31,7 +31,7 @@ class HomeBackgroundView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor =  #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+        backgroundColor =  .navBarBlue
         addSubview(morningTitleLabel)
         addSubview(currentDateLabel)
         setDateLabel()

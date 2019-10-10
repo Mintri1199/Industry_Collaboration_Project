@@ -96,8 +96,6 @@ extension ImageSelectionCell {
         showMoreButton.backgroundColor = .lightGray
         showMoreButton.layer.cornerRadius = sizeContant / 2
         
-        // Draw an arrow layer instead of using a picture
-        // Credit: Jake https://stackoverflow.com/questions/48625763/how-to-draw-a-directional-arrow-head
         let arrowPath = UIBezierPath()
         arrowPath.addArrow(start: CGPoint(x: sizeContant / 4, y: sizeContant / 2), end: CGPoint(x: sizeContant * 0.75, y: sizeContant / 2), pointerLineLength: sizeContant / 5, arrowAngle: CGFloat(Double.pi / 4))
         

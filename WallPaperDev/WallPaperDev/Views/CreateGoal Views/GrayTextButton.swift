@@ -16,7 +16,7 @@ class GrayTextButton: UIButton {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false 
         setupLabel()
-        label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        label.textColor = .gray
     }
     
     required init?(coder: NSCoder) {

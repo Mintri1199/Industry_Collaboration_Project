@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setNavigation(navigationBar: UINavigationBar) {
         
         let appearance = UINavigationBar.appearance()
-        appearance.barTintColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-        appearance.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        appearance.barTintColor = .navBarBlue
+        appearance.tintColor = .white
         appearance.prefersLargeTitles = true
     }
 

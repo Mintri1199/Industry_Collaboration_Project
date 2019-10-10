@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		442D2E38234ECD6A00EE9991 /* GoalDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D2E37234ECD6A00EE9991 /* GoalDetailViewModel.swift */; };
-		442D2E3A234EE7E900EE9991 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D2E39234EE7E900EE9991 /* ViewControllerExtension.swift */; };
 		44B56606234D165400DEBB86 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
 		44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56607234D168C00DEBB86 /* CreateGoalView.swift */; };
 		44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56609234D16C100DEBB86 /* BlueLabel.swift */; };
@@ -85,7 +84,6 @@
 		0FA498DE116D7593CF41BA83 /* Pods-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3CDE004E6DB3143FC176262F /* Pods-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
 		442D2E37234ECD6A00EE9991 /* GoalDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewModel.swift; sourceTree = "<group>"; };
-		442D2E39234EE7E900EE9991 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		44B56605234D165400DEBB86 /* BigBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueButton.swift; sourceTree = "<group>"; };
 		44B56607234D168C00DEBB86 /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateGoalView.swift; path = ../CreateGoalView.swift; sourceTree = "<group>"; };
 		44B56609234D16C100DEBB86 /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueLabel.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 				44E0BA682339B7F0007AA20D /* TableViewExtensions.swift */,
 				44C0B5392331C5460015110B /* GraphicExtensions.swift */,
 				44B5660D234D386D00DEBB86 /* ColorExtension.swift */,
-				442D2E39234EE7E900EE9991 /* ViewControllerExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -596,7 +593,6 @@
 				44C0B53C2331CF870015110B /* MockData.swift in Sources */,
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
-				442D2E3A234EE7E900EE9991 /* ViewControllerExtension.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,

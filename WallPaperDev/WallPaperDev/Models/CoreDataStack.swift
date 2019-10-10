@@ -32,7 +32,6 @@ final class CoreDataStack {
     // MARK: - Core Data Saving support
     func saveContext () {
         let context = persistentContainer.viewContext
-        print(context)
         if context.hasChanges {
             do {
                 try context.save()
@@ -68,7 +67,9 @@ final class CoreDataStack {
             do {
                 goalNameArr = try context.fetch(fetchRequest)
             } catch let error as NSError {
-                print("Could not fetch. \(error), \(error.userInfo)")
+                #if DEBUG
+                    print("Could not fetch. \(error), \(error.userInfo)")
+                #endif
             }
 //        let goals: [Goal] = goalNameArr as? [Goal] ?? []
         return goalNameArr
@@ -108,7 +109,9 @@ final class CoreDataStack {
             try context.execute(deleteRequest)
             try context.save()
         } catch {
-            print(error.localizedDescription)
+            #if DEBUG
+                print(error.localizedDescription)
+            #endif
         }
     }
 }

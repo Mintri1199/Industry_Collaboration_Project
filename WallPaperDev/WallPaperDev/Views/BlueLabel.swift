@@ -15,7 +15,7 @@ class BlueLabel: UILabel {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         textAlignment = .left
-        textColor =  #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        textColor = .sectionBlue
         font = UIFont(name: "HelveticaNeue-Bold", size: 30)
         adjustsFontSizeToFitWidth = true
     }

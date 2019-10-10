@@ -25,7 +25,7 @@ class EmptyStateView: UIView {
     }
     
     private func configView() {
-        backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        backgroundColor = .white
         layer.cornerRadius = 25
         addSubview(noGoalsLabel)
         noGoalsLabelConstraints()

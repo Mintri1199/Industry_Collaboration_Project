@@ -12,10 +12,10 @@ class GoalDescriptionTextView: UITextView {
     let placeHolder = "Train six days a week with one day completely dedicated to rest."
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
-        layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 1
         text = placeHolder
-        textColor = .lightGray
+        textColor = .placeholderGray
         autocorrectionType = .no
         font = UIFont(name: "HelveticaNeue", size: 25)
         translatesAutoresizingMaskIntoConstraints = false
