@@ -20,6 +20,7 @@ class CreateGoalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNeedsStatusBarAppearanceUpdate()
+        createGoalView.goalNameTextField.becomeFirstResponder()
         setupUIs()
     }
     
@@ -45,19 +46,13 @@ extension CreateGoalViewController {
     
     private func setupCreateGoalView() {
         createGoalView.frame = self.view.frame
+        createGoalView.goalDescriptionTextView.delegate = self
+        createGoalView.goalNameTextField.delegate = self 
         self.view.addSubview(createGoalView)
     }
     
     private func setupButton() {
         createGoalView.createButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
-    }
-    
-    // MARK: Why is this here? It currently does nothing
-    private func retrieveGoals() {
-        let goals = coreDataStack.fetchGoals()
-        for goal in goals {
-            print(goal.name ?? "")
-        }
     }
 }
 
@@ -68,7 +63,42 @@ extension CreateGoalViewController {
               let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
                 return
         }
+        
+        if userGoalName.isEmpty && userGoalSummary.isEmpty {
+            // prompt an alert for the user
+            let alertView = UIAlertController(title: "Invalid", message: "You can't create a goal without a name and description", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alertView.addAction(action)
+            self.present(alertView, animated: true, completion: nil)
+            return
+        }
         coreDataStack.createGoal(userGoalName, userGoalSummary)
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension CreateGoalViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        guard let view = textView as? GoalDescriptionTextView else {
+            return
+        }
+        
+        if view.text.isEmpty {
+            view.text = view.placeHolder
+            view.textColor = .lightGray
+        }
+    }
+}
+
+extension CreateGoalViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        createGoalView.goalDescriptionTextView.becomeFirstResponder()
     }
 }

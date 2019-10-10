@@ -38,14 +38,14 @@ extension CreateGoalView {
         addSubview(goalDescriptionLabel)
         addSubview(goalDescriptionTextView)
         addSubview(createButton)
-        _setupGoalNameLabel()
-        _goalNameTextFieldConstraints()
-        _setupDescriptionLabel()
-        _goalDescriptionTextViewConstraints()
-        _setupBlueButton()
+        setupGoalNameLabel()
+        goalNameTextFieldConstraints()
+        setupDescriptionLabel()
+        goalDescriptionTextViewConstraints()
+        setupBlueButton()
     }
     
-    private func _setupGoalNameLabel() {
+    private func setupGoalNameLabel() {
         goalNameLabel.text = "Goal Name"
         NSLayoutConstraint.activate([
             goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
@@ -55,7 +55,14 @@ extension CreateGoalView {
             ])
     }
     
-    private func _goalNameTextFieldConstraints() {
+    private func goalNameTextFieldConstraints() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonTapped)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+        ]
+        goalNameTextField.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
             goalNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalNameTextField.heightAnchor.constraint(equalToConstant: 50),
@@ -64,7 +71,7 @@ extension CreateGoalView {
             ])
     }
     
-    private func _setupDescriptionLabel() {
+    private func setupDescriptionLabel() {
         goalDescriptionLabel.text = "Goal Description"
         NSLayoutConstraint.activate([
             goalDescriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
@@ -75,7 +82,15 @@ extension CreateGoalView {
             ])
     }
     
-    private func _goalDescriptionTextViewConstraints() {
+    private func goalDescriptionTextViewConstraints() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(prevButtonTapped)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped)),
+        ]
+        goalDescriptionTextView.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
             goalDescriptionTextView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalDescriptionTextView.heightAnchor.constraint(equalTo: goalNameTextField.heightAnchor, multiplier: 3),
@@ -84,7 +99,7 @@ extension CreateGoalView {
             ])
     }
     
-    private func _setupBlueButton() {
+    private func setupBlueButton() {
         createButton.setTitle("Create", for: .normal)
         NSLayoutConstraint.activate([
             createButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
@@ -93,5 +108,17 @@ extension CreateGoalView {
                                               multiplier: 15),
             createButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             ])
+    }
+    
+    @objc private func nextButtonTapped() {
+        goalDescriptionTextView.becomeFirstResponder()
+    }
+    
+    @objc private func prevButtonTapped() {
+        goalNameTextField.becomeFirstResponder()
+    }
+    
+    @objc private func doneTapped() {
+        goalDescriptionTextView.resignFirstResponder()
     }
 }

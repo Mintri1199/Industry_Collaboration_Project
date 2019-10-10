@@ -19,7 +19,7 @@ class ImagePreviewViewModel {
         guard let image = unprocessImage else {
             return nil
         }
-        // crop the image into the right ratio
+        
         let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
         let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
         

@@ -18,7 +18,6 @@ final class CoreDataStack {
         let container = NSPersistentContainer(name: "WallPaperDev")
         container.loadPersistentStores(completionHandler: { ( _, error) in
             if let error = error as NSError? {
-                
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -37,7 +36,6 @@ final class CoreDataStack {
         if context.hasChanges {
             do {
                 try context.save()
-                print("saved successfully")
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -76,19 +74,15 @@ final class CoreDataStack {
         return goalNameArr
     }
     
-    func fetchOneGoal(_ objectID: NSManagedObjectID) {
-    }
-    
     func delete(_ objectID: NSManagedObjectID) {
         let object = context.object(with: objectID)
         context.delete(object)
-        //        saveContext()
+        saveContext()
     }
     
     func createGoal(_ name: String, _ summary: String) {
         let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
         guard let unwrappedEntity = entity else {
-            print("failure obtaining entity")
             return
         }
         

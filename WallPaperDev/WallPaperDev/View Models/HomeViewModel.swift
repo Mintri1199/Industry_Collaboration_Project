@@ -12,5 +12,10 @@ import CoreData
 class HomeViewModel {
     
     var goalsArr: [Goal] = []
-    let coreDataStack: CoreDataStack = CoreDataStack.shared
+    private let coreDataStack: CoreDataStack = CoreDataStack.shared
+    
+    func update(completion: @escaping () -> Void) {
+        goalsArr = coreDataStack.fetchGoals()
+        completion()
+    }
 }

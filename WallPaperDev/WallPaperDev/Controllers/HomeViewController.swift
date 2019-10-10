@@ -10,7 +10,6 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    // Turn the status bar on this VC white
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -34,8 +33,49 @@ class HomeViewController: UIViewController {
         super.viewDidLayoutSubviews()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        homeViewModel.update {
+            DispatchQueue.main.async {
+                self.homeTableView.reloadData()
+            }
+        }
+    }
+    
+    @objc private func addTapped() {
+        let vc = CreateGoalViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func wallpaperButtonTapped() {
+        let vc = CreateImageViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - UIs functions
+extension HomeViewController {
+    private func setupWallpaperButton() {
+        let wallpaperButtonFrame = CGRect(x: addButton.frame.minX - addButton.frame.width - 20,
+                                          y: view.bounds.height * 0.85,
+                                          width: addButton.frame.width,
+                                          height: addButton.frame.height)
+        
+        wallpaperButton.frame = wallpaperButtonFrame
+        view.addSubview(wallpaperButton)
+        wallpaperButton.backgroundColor = .blue
+        wallpaperButton.setTitle("", for: .normal)
+        wallpaperButton.addTarget(self, action: #selector(wallpaperButtonTapped), for: .touchUpInside)
+        wallpaperButton.isHidden = true
+    }
+    
     private func setupTableView() {
-        homeTableView.frame = CGRect(x: 0, y: view.bounds.height * 0.34, width: view.bounds.width * 0.85, height: view.bounds.height * 0.5)
+        homeTableView.frame = CGRect(x: 0,
+                                     y: view.bounds.height * 0.34,
+                                     width: view.bounds.width * 0.85,
+                                     height: view.bounds.height * 0.5)
+        
         homeTableView.register(UITableViewCell.self, forCellReuseIdentifier: "ID")
         homeTableView.delegate = self
         homeTableView.dataSource = self
@@ -103,7 +143,7 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedGoal = homeViewModel.goalsArr[indexPath.row]
         let detailGoalVC = DetailGoalViewController()
-        detailGoalVC.goal = selectedGoal
+        detailGoalVC.viewModel.goal = selectedGoal
         navigationController?.pushViewController(detailGoalVC, animated: true)
     }
 }
