@@ -48,6 +48,11 @@ class DetailGoalViewController: CreateGoalViewController {
                 return
         }
         
+        if userGoalName.isEmpty || userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
+            presentError()
+            return
+        }
+
         viewModel.updateGoal(userGoalName, userGoalSummary)
         
         navigationController?.popViewController(animated: true)

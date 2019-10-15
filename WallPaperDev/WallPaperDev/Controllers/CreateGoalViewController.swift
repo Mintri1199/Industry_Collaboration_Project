@@ -64,22 +64,25 @@ extension CreateGoalViewController {
                 return
         }
         
-        if userGoalName.isEmpty && userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
-            // prompt an alert for the user
-            let alertView = UIAlertController(title: "Invalid", message: "You can't create a goal without a name and description", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alertView.addAction(action)
-            self.present(alertView, animated: true, completion: nil)
+        if userGoalName.isEmpty || userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
+            presentError()
             return
         }
         coreDataStack.createGoal(userGoalName, userGoalSummary)
         navigationController?.popViewController(animated: true)
     }
+    
+    func presentError() {
+        let alertView = UIAlertController(title: "Invalid", message: "You can't create a goal without a name and description", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alertView.addAction(action)
+        self.present(alertView, animated: true, completion: nil)
+    }
 }
 
 extension CreateGoalViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor.placeholderGray {
             textView.text = nil
             textView.textColor = UIColor.black
         }
@@ -92,7 +95,7 @@ extension CreateGoalViewController: UITextViewDelegate {
         
         if view.text.isEmpty {
             view.text = view.placeHolder
-            view.textColor = .lightGray
+            view.textColor = .placeholderGray
         }
     }
 }
