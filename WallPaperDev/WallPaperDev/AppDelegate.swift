@@ -18,8 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nav = UINavigationController()
         coordinator = MainCoordinator(navigationController: nav)
-        coordinator?.start()
-        
+        UserDefaults.standard.bool(forKey: "Welcome") ? coordinator?.start() : coordinator?.startWelcome()
         setNavigation(navigationBar: nav.navigationBar)
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -30,11 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // navigation bar UI
     func setNavigation(navigationBar: UINavigationBar) {
-        
         let appearance = UINavigationBar.appearance()
         appearance.barTintColor = .navBarBlue
         appearance.tintColor = .white
-        appearance.prefersLargeTitles = true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

@@ -59,6 +59,12 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func startWelcome() {
+        let vc = WelcomeViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func showGoal(selectedGoal: Goal) {
         let vc = DetailGoalViewController()
         vc.viewModel.goal = selectedGoal

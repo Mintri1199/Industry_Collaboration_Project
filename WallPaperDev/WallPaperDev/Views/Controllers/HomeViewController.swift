@@ -37,6 +37,8 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationItem.hidesBackButton = true
+        navigationController?.navigationBar.prefersLargeTitles = true
         homeViewModel.update {
             DispatchQueue.main.async {
                 self.homeTableView.reloadData()
