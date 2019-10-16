@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     private let addButton = AddButton(frame: .zero)
     private let wallpaperButton = AddButton(frame: .zero)
     private let homeViewModel = HomeViewModel()
+    weak var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,13 +98,11 @@ extension HomeViewController {
     }
     
     @objc private func addTapped() {
-        let vc = CreateGoalViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.showCreateGoal()
     }
     
     @objc private func wallpaperButtonTapped() {
-        let vc = CreateImageViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        coordinator?.showImageCreation()
     }
 }
 
@@ -112,9 +111,7 @@ extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedGoal = homeViewModel.goalsArr[indexPath.row]
-        let detailGoalVC = DetailGoalViewController()
-        detailGoalVC.viewModel.goal = selectedGoal
-        navigationController?.pushViewController(detailGoalVC, animated: true)
+        coordinator?.showGoal(selectedGoal: selectedGoal)
     }
 }
 

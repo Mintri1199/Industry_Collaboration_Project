@@ -21,6 +21,7 @@ class CreateImageViewController: UIViewController {
     private lazy var emptyView = SelectedGoalsEmptyView()
     private let goalsVC = GoalsSelectionViewController()
     private let viewModel = SelectionViewModel()
+    weak var coordinator: MainCoordinator?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -156,10 +157,7 @@ extension CreateImageViewController {
         guard let image = viewModel.selectedImage else {
             return
         }
-        let previewVC = ImagePreviewViewController()
-        previewVC.viewModel.unprocessImage = image
-        previewVC.viewModel.selectedGoals = viewModel.selectedGoals
-        navigationController?.pushViewController(previewVC, animated: true)
+        coordinator?.showImagePreview(image, viewModel.selectedGoals)
     }
     
     @objc private func pushToGoalSelection() {
@@ -168,6 +166,7 @@ extension CreateImageViewController {
     }
     
     @objc private func changeGoalTapped() {
+        // TODO: Figure out how to use coordinator for passing data back
         goalsVC.viewModel.preselectGoals(viewModel.selectedGoals)
         navigationController?.pushViewController(goalsVC, animated: true)
     }

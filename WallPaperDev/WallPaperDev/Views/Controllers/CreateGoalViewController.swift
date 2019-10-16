@@ -12,6 +12,7 @@ class CreateGoalViewController: UIViewController {
     
     let createGoalView = CreateGoalView()
     let coreDataStack = CoreDataStack.shared
+    weak var coordinator: MainCoordinator?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

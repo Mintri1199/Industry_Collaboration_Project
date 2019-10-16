@@ -14,8 +14,8 @@ class ImagePreviewViewController: UIViewController {
     private lazy var imageView = CompleteImageVIew(frame: .zero)
     private lazy var saveButton = BigBlueButton(frame: .zero)
     private lazy var previewButton = BigBlueButton(frame: .zero)
-    
     let viewModel = ImagePreviewViewModel()
+    weak var coordinator: MainCoordinator?
     
     private var image: UIImage? {
         didSet {
@@ -91,12 +91,7 @@ extension ImagePreviewViewController {
 extension ImagePreviewViewController {
     
     @objc private func popToHomeScreen() {
-        for controller in self.navigationController!.viewControllers as Array {
-            if controller.isKind(of: HomeViewController.self) {
-                _ = self.navigationController!.popToViewController(controller, animated: true)
-                break
-            }
-        }
+        coordinator?.popToHome()
     }
     
     @objc private func presentPreview() {
