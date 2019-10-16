@@ -25,7 +25,7 @@ class WelcomeCollectionView: UICollectionView {
         showsHorizontalScrollIndicator = true
         bounces = false
         isPagingEnabled = true
-        isScrollEnabled = true
+        isScrollEnabled = false
         dataSource = self
         register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
@@ -38,7 +38,8 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = .yellow
+        let colors: [UIColor] = [.red, .green, .yellow, .blue]
+        cell.backgroundColor = colors[indexPath.row]
         return cell
     }
 }

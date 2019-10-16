@@ -51,51 +51,9 @@ class WelcomeViewController: UIViewController {
         setupUI()
     }
     
-    @objc private func nextTapped() {
-        if backButton.isHidden {
-            backButton.isHidden = false
-            backButton.isEnabled = true
-        }
-        
-        cellIndex += 1
-        
-        pageIndicators.selectPage(at: cellIndex, prev: cellIndex - 1)
-        
-        if cellIndex == 3 {
-            nextButton.isHidden = true
-            nextButton.isEnabled = false
-            startButtonTrailingConstraint?.constant = -20
-            UIView.animate(withDuration: 0.2, animations: {
-                self.view.layoutIfNeeded()
-            }, completion: { _ in
-                self.startButton.isEnabled = true
-            })
-        }
-    }
     
-    @objc private func backTapped() {
-        
-        if startButton.isEnabled {
-            startButton.isEnabled = false
-            startButtonTrailingConstraint?.constant = 100
-            UIView.animate(withDuration: 0.2, animations: {
-                self.view.layoutIfNeeded()
-            }, completion: { _ in
-                self.nextButton.isHidden = false
-                self.nextButton.isEnabled = true
-            })
-        }
-        
-        cellIndex -= 1
-        
-        pageIndicators.selectPage(at: cellIndex, prev: cellIndex + 1)
-        
-        
-        if cellIndex == 0 {
-            backButton.isHidden = true
-            backButton.isEnabled = false
-        }
-    }
+    
+    
 }
 
 // MARK: - UI functions
@@ -118,6 +76,15 @@ extension WelcomeViewController {
     
     private func setupCollectionView() {
         view.addSubview(collectionView)
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(nextTapped))
+        swipeLeft.direction = .left
+
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(backTapped))
+        swipeRight.direction = .right
+
+        collectionView.addGestureRecognizer(swipeRight)
+        collectionView.addGestureRecognizer(swipeLeft)
+
         NSLayoutConstraint.activate([
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -174,7 +141,57 @@ extension WelcomeViewController {
 
 // MARK: - OBJC functions
 extension WelcomeViewController {
+    
     @objc private func skipTapped() {
+        // Set true to UserDefault and navigate to homescreen.
         print("SKIP tapped")
+    }
+    
+    @objc private func backTapped() {
+        
+        if startButton.isEnabled {
+            startButton.isEnabled = false
+            startButtonTrailingConstraint?.constant = 100
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.nextButton.isHidden = false
+                self.nextButton.isEnabled = true
+            })
+        }
+        
+        cellIndex -= 1
+        
+        pageIndicators.selectPage(at: cellIndex, prev: cellIndex + 1)
+        let indexPath = IndexPath(row: cellIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        if cellIndex == 0 {
+            backButton.isHidden = true
+            backButton.isEnabled = false
+        }
+    }
+    
+    @objc private func nextTapped() {
+        if backButton.isHidden {
+            backButton.isHidden = false
+            backButton.isEnabled = true
+        }
+        
+        cellIndex += 1
+        
+        pageIndicators.selectPage(at: cellIndex, prev: cellIndex - 1)
+        let indexPath = IndexPath(row: cellIndex, section: 0)
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        if cellIndex == 3 {
+            nextButton.isHidden = true
+            nextButton.isEnabled = false
+            startButtonTrailingConstraint?.constant = -20
+            UIView.animate(withDuration: 0.2, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.startButton.isEnabled = true
+            })
+        }
     }
 }
