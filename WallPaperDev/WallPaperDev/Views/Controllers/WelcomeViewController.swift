@@ -25,7 +25,6 @@ class WelcomeViewController: UIViewController {
         button.backgroundColor = .white
         return button
     }()
-    
     private let nextButton: UIButton = {
         var button = UIButton(type: UIButton.ButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +35,6 @@ class WelcomeViewController: UIViewController {
         button.backgroundColor = .white
         return button
     }()
-    
     private let startButton = BigBlueButton(frame: .zero)
     private var startButtonTrailingConstraint: NSLayoutConstraint?
     
@@ -50,10 +48,6 @@ class WelcomeViewController: UIViewController {
         configNavBar()
         setupUI()
     }
-    
-    
-    
-    
 }
 
 // MARK: - UI functions
@@ -130,6 +124,7 @@ extension WelcomeViewController {
         startButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         startButtonTrailingConstraint = startButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 100)
         startButtonTrailingConstraint?.isActive = true
+        startButton.addTarget(self, action: #selector(startTapped), for: .touchUpInside)
         startButton.layer.cornerRadius = 20
         NSLayoutConstraint.activate([
             startButton.centerYAnchor.constraint(equalTo: pageIndicators.centerYAnchor),
@@ -143,8 +138,13 @@ extension WelcomeViewController {
 extension WelcomeViewController {
     
     @objc private func skipTapped() {
-        // Set true to UserDefault and navigate to homescreen.
-        print("SKIP tapped")
+        // Set true to UserDefault
+        coordinator?.start()
+    }
+    
+    @objc private func startTapped() {
+        // Trigger guided onboarding
+        coordinator?.start()
     }
     
     @objc private func backTapped() {

@@ -38,6 +38,8 @@
 		44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */; };
 		44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */; };
 		44E0BA77233D723E007AA20D /* LivePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA76233D723E007AA20D /* LivePreviewViewController.swift */; };
+		44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F4086023570E5200EE0409 /* WelcomeCellViews.swift */; };
+		44F4086523570EF000EE0409 /* WelcomeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F4086423570EF000EE0409 /* WelcomeLabel.swift */; };
 		4F2FDA7F410F858BC484E89A /* Pods_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A502B4B663DD1FAC667DC34F /* Pods_WallPaperDevUITests.framework */; };
 		565274D1ABBE06339214BE60 /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C47BB523AE4EF33A00ED5918 /* Pods_WallPaperDev.framework */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
@@ -119,6 +121,8 @@
 		44E0BA70233C6076007AA20D /* ChooseGoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGoalViewModel.swift; sourceTree = "<group>"; };
 		44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewModel.swift; sourceTree = "<group>"; };
 		44E0BA76233D723E007AA20D /* LivePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePreviewViewController.swift; sourceTree = "<group>"; };
+		44F4086023570E5200EE0409 /* WelcomeCellViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCellViews.swift; sourceTree = "<group>"; };
+		44F4086423570EF000EE0409 /* WelcomeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLabel.swift; sourceTree = "<group>"; };
 		4AF58B3DF177BDB9B36FB4E8 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* WallPaperDev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WallPaperDev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D03ED092328161E006068CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				443F7E4F2356A97C00102331 /* WelcomeCollectionView.swift */,
 				443F7E512356BFFE00102331 /* WelcomeCVLayout.swift */,
 				443F7E532356DAE600102331 /* PageIndicator.swift */,
+				44F4086023570E5200EE0409 /* WelcomeCellViews.swift */,
+				44F4086423570EF000EE0409 /* WelcomeLabel.swift */,
 			);
 			path = "Welcome Views";
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				44E0BA6B233A87DE007AA20D /* GrayTextButton.swift in Sources */,
 				44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */,
 				44B5660E234D386D00DEBB86 /* ColorExtension.swift in Sources */,
+				44F4086523570EF000EE0409 /* WelcomeLabel.swift in Sources */,
 				44E0BA692339B7F0007AA20D /* TableViewExtensions.swift in Sources */,
 				44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */,
 				44E0BA77233D723E007AA20D /* LivePreviewViewController.swift in Sources */,
@@ -627,6 +634,7 @@
 				443F7E48235683F700102331 /* MainCoordinator.swift in Sources */,
 				5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
+				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 				5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */,
