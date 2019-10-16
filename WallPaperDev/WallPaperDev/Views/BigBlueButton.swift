@@ -15,8 +15,9 @@ class BigBlueButton: UIButton {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
+        titleLabel?.adjustsFontSizeToFitWidth = true
         setTitleColor(.white, for: .normal)
-        setTitleColor(.darkGray, for: .highlighted)
+        setTitleColor(.lightGray, for: .highlighted)
         backgroundColor =  .sectionBlue
         layer.cornerRadius = 25
     }

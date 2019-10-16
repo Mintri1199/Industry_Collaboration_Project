@@ -13,6 +13,7 @@
 		443F7E4D23569B1100102331 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F7E4C23569B1100102331 /* WelcomeViewController.swift */; };
 		443F7E502356A97C00102331 /* WelcomeCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F7E4F2356A97C00102331 /* WelcomeCollectionView.swift */; };
 		443F7E522356BFFE00102331 /* WelcomeCVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F7E512356BFFE00102331 /* WelcomeCVLayout.swift */; };
+		443F7E542356DAE600102331 /* PageIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F7E532356DAE600102331 /* PageIndicator.swift */; };
 		44B56606234D165400DEBB86 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
 		44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56607234D168C00DEBB86 /* CreateGoalView.swift */; };
 		44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56609234D16C100DEBB86 /* BlueLabel.swift */; };
@@ -93,6 +94,7 @@
 		443F7E4C23569B1100102331 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		443F7E4F2356A97C00102331 /* WelcomeCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCollectionView.swift; sourceTree = "<group>"; };
 		443F7E512356BFFE00102331 /* WelcomeCVLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCVLayout.swift; sourceTree = "<group>"; };
+		443F7E532356DAE600102331 /* PageIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageIndicator.swift; sourceTree = "<group>"; };
 		44B56605234D165400DEBB86 /* BigBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BigBlueButton.swift; path = ../BigBlueButton.swift; sourceTree = "<group>"; };
 		44B56607234D168C00DEBB86 /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateGoalView.swift; path = ../CreateGoalView.swift; sourceTree = "<group>"; };
 		44B56609234D16C100DEBB86 /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlueLabel.swift; path = ../BlueLabel.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			children = (
 				443F7E4F2356A97C00102331 /* WelcomeCollectionView.swift */,
 				443F7E512356BFFE00102331 /* WelcomeCVLayout.swift */,
+				443F7E532356DAE600102331 /* PageIndicator.swift */,
 			);
 			path = "Welcome Views";
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
 				44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
+				443F7E542356DAE600102331 /* PageIndicator.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
 				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,
 				44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */,

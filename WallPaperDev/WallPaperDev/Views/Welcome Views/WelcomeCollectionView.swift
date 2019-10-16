@@ -22,7 +22,7 @@ class WelcomeCollectionView: UICollectionView {
     
     private func configCollectionView() {
         translatesAutoresizingMaskIntoConstraints = false 
-        showsHorizontalScrollIndicator = false
+        showsHorizontalScrollIndicator = true
         bounces = false
         isPagingEnabled = true
         isScrollEnabled = true
