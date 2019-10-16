@@ -148,7 +148,9 @@ extension WelcomeViewController {
     }
     
     @objc private func backTapped() {
-        
+        if cellIndex == 0 {
+            return 
+        }
         if startButton.isEnabled {
             startButton.isEnabled = false
             startButtonTrailingConstraint?.constant = 100
@@ -173,6 +175,9 @@ extension WelcomeViewController {
     }
     
     @objc private func nextTapped() {
+        if cellIndex == 3 {
+            return 
+        }
         if backButton.isHidden {
             backButton.isHidden = false
             backButton.isEnabled = true
@@ -183,6 +188,7 @@ extension WelcomeViewController {
         pageIndicators.selectPage(at: cellIndex, prev: cellIndex - 1)
         let indexPath = IndexPath(row: cellIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
         if cellIndex == 3 {
             nextButton.isHidden = true
             nextButton.isEnabled = false
