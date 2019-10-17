@@ -10,8 +10,13 @@ import UIKit
 
 class WelcomeCollectionView: UICollectionView {
     private let cellId = "WelcomeCell"
-    private let headerText = ["Welcome to Kamigami"]
-    private let subheaderText = ["We help you keep organize and keep track of your goals"]
+    private let imageName = ["welcome", "todo"]
+    private let headerText = ["Welcome to Kamigami", "Write it Down", "Be Creative", "Remind Yourself"]
+    private let subheaderText = ["We help you keep organize and keep track of your goals",
+                                 "Start your goal by writing them down. Update your progress anytime",
+                                 "Create a beautiful wallpaper with your goals in it",
+                                 "See your goals in the lock screen with the picture you’ve created"
+                                ]
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -29,7 +34,24 @@ class WelcomeCollectionView: UICollectionView {
         isPagingEnabled = true
         isScrollEnabled = false
         dataSource = self
-        register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        delegate = self
+        register(WelcomeCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+    }
+}
+extension WelcomeCollectionView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? WelcomeCollectionViewCell else {
+            return
+        }
+        
+        if let demoView = cell.containerView as? DemoView {
+            DispatchQueue.main.async {
+                demoView.resetAnimation()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                demoView.resumeAnimation()
+            }
+        }
     }
 }
 
@@ -39,13 +61,22 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? WelcomeCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
         let colors: [UIColor] = [.red, .green, .yellow, .blue]
-        let welcomeView = WelcomeCellViews(frame: cell.bounds)
-        welcomeView.setupUI(headerText[0], subheaderText[0])
-        welcomeView.setupPhotoLayer(UIImage(named: "welcome")!)
+        
+        if indexPath.row == 0 || indexPath.row == 1 {
+            let welcomeView = FirstTwoCellView(frame: cell.bounds)
+            welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
+            welcomeView.setupPhotoLayer(UIImage(named: imageName[indexPath.row])!)
+            cell.containerView = welcomeView
+        } else if indexPath.row == 2 {
+            let demoView = DemoView(frame: cell.bounds)
+            cell.containerView = demoView
+        }
         cell.backgroundColor = colors[indexPath.row]
-        cell.addSubview(welcomeView)
         return cell
     }
 }
