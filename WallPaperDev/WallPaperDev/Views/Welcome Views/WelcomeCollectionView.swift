@@ -11,12 +11,9 @@ import UIKit
 class WelcomeCollectionView: UICollectionView {
     private let cellId = "WelcomeCell"
     private let imageName = ["welcome", "todo"]
-    private let headerText = ["Welcome to Kamigami", "Write it Down", "Be Creative", "Remind Yourself"]
+    private let headerText = ["Welcome to Kamigami", "Write it Down"]
     private let subheaderText = ["We help you keep organize and keep track of your goals",
-                                 "Start your goal by writing them down. Update your progress anytime",
-                                 "Create a beautiful wallpaper with your goals in it",
-                                 "See your goals in the lock screen with the picture you’ve created"
-                                ]
+                                 "Start your goal by writing them down. Update your progress anytime"]
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -51,6 +48,14 @@ extension WelcomeCollectionView: UICollectionViewDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 demoView.resumeAnimation()
             }
+        } else if let showView = cell.containerView as? ShowCaseView {
+            DispatchQueue.main.async {
+                showView.resetAnimation()
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                showView.resumeAnimation()
+            }
+            
         }
     }
 }
@@ -75,6 +80,9 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
         } else if indexPath.row == 2 {
             let demoView = DemoView(frame: cell.bounds)
             cell.containerView = demoView
+        } else {
+            let showCaseView = ShowCaseView(frame: cell.bounds)
+            cell.containerView = showCaseView
         }
         cell.backgroundColor = colors[indexPath.row]
         return cell

@@ -138,12 +138,13 @@ extension WelcomeViewController {
 extension WelcomeViewController {
     
     @objc private func skipTapped() {
-        // Set true to UserDefault
+        UserDefaults.standard.set(true, forKey: "Welcome")
         coordinator?.start()
     }
     
     @objc private func startTapped() {
-        // Trigger guided onboarding
+        // TODO: Trigger guided onboarding
+        UserDefaults.standard.set(true, forKey: "Welcome")
         coordinator?.start()
     }
     

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let nav = UINavigationController()
         coordinator = MainCoordinator(navigationController: nav)
-        UserDefaults.standard.bool(forKey: "Welcome") ? coordinator?.start() : coordinator?.startWelcome()
+        coordinator?.start()
         setNavigation(navigationBar: nav.navigationBar)
         
         window = UIWindow(frame: UIScreen.main.bounds)

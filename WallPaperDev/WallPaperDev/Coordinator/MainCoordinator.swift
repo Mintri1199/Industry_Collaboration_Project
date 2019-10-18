@@ -54,15 +54,16 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = HomeViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func startWelcome() {
-        let vc = WelcomeViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        
+        if UserDefaults.standard.bool(forKey: "Welcome") {
+            let vc = HomeViewController()
+            vc.coordinator = self
+            navigationController.pushViewController(vc, animated: true)
+        } else {
+            let vc = WelcomeViewController()
+            vc.coordinator = self
+            navigationController.pushViewController(vc, animated: true)
+        }
     }
     
     func showGoal(selectedGoal: Goal) {
