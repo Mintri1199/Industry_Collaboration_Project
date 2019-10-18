@@ -97,6 +97,9 @@ extension ImagePreviewViewController {
     @objc private func presentPreview() {
         let previewVC = LivePreviewViewController()
         previewVC.livePreview.image = image
+        if #available(iOS 13.0, *) {
+            previewVC.modalPresentationStyle = .fullScreen
+        }
         present(previewVC, animated: true, completion: nil)
     }
     

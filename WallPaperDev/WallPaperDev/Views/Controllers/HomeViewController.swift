@@ -39,6 +39,8 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationItem.hidesBackButton = true
         navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.barTintColor = .white
+//        navigationController?.navigationBar.tintColor = .navBarBlue
         homeViewModel.update {
             DispatchQueue.main.async {
                 self.homeTableView.reloadData()
