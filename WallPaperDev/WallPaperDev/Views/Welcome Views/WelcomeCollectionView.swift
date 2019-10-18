@@ -55,7 +55,6 @@ extension WelcomeCollectionView: UICollectionViewDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 showView.resumeAnimation()
             }
-            
         }
     }
 }
