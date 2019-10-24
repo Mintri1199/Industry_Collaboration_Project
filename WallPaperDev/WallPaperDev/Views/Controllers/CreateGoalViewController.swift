@@ -33,9 +33,8 @@ class CreateGoalViewController: UIViewController {
     
     func setupNavBar() {
         navigationItem.title = "Create Goal"
-        coordinator?.navigationController.navigationBar.barTintColor = .navBarBlue
-        coordinator?.navigationController.navigationBar.tintColor = .white
-
+        navigationController?.navigationBar.barTintColor = .navBarBlue
+        navigationController?.navigationBar.tintColor = .white
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
     }
 }

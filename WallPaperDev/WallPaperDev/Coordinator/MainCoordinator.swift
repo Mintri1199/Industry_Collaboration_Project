@@ -54,7 +54,6 @@ class MainCoordinator: Coordinator {
     }
     
     func start() {
-        
         if UserDefaults.standard.bool(forKey: "Welcome") {
             let vc = HomeViewController()
             vc.coordinator = self
