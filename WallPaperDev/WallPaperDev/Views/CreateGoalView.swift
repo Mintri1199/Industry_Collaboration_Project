@@ -2,66 +2,50 @@
 //  CreateGoalView.swift
 //  WallPaperDev
 //
-//  Created by Stephen Ouyang on 9/10/19.
+//  Created by Jackson Ho on 10/8/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class CreateGoalView: UIView {
     
-    let goalNameLabel = BlueLabel(frame: .zero)
-    let goalDescriptionLabel = BlueLabel(frame: .zero)
-    let createButton = BigBlueButton(frame: .zero)
-    
-    let goalNameTextField: GoalNameTextField = {
-        let textField = GoalNameTextField(frame: .zero)
-        textField.font = UIFont(name: "HelveticaNeue", size: 25)
-        textField.placeholder = "Climbing Mount Everest"
-        //        textField.layer.shadowColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-        //        textField.layer.shadowRadius = 3
-        //        textField.layer.shadowOpacity = 1
-        //        textField.layer.shadowOffset = CGSize(width: 0, height: 3)
-        return textField
-    }()
-    
-    let goalDescriptionTextView: UITextView = {
-        let textView = UITextView()
-        textView.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        textView.layer.borderWidth = 1
-        textView.font = UIFont(name: "HelveticaNeue", size: 25)
-        
-        return textView
-    }()
+    // MARK: - Custom UIViews
+    lazy var goalNameLabel = BlueLabel(frame: .zero)
+    lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
+    lazy var createButton = BigBlueButton(frame: .zero)
+    lazy var goalNameTextField = GoalNameTextField(frame: .zero)
+    lazy var goalDescriptionTextView = GoalDescriptionTextView(frame: .zero, textContainer: nil)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        _configView()
+        self.backgroundColor =  .foregroundWhite
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+// MARK: - Setup UI functions
+extension CreateGoalView {
     
-    private func _configView() {
+    private func setupViews() {
         addSubview(goalNameLabel)
         addSubview(goalNameTextField)
         addSubview(goalDescriptionLabel)
         addSubview(goalDescriptionTextView)
         addSubview(createButton)
-        _setupGoalNameLabel()
+        setupGoalNameLabel()
         goalNameTextFieldConstraints()
-        _setupDescriptionLabel()
+        setupDescriptionLabel()
         goalDescriptionTextViewConstraints()
-        _setupBlueButton()
+        setupBlueButton()
     }
-}
-
-// MARK: setup UI functions
-extension CreateGoalView {
     
-    private func _setupGoalNameLabel() {
+    private func setupGoalNameLabel() {
         goalNameLabel.text = "Goal Name"
         NSLayoutConstraint.activate([
             goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
@@ -71,8 +55,14 @@ extension CreateGoalView {
             ])
     }
     
-    func goalNameTextFieldConstraints() {
-        goalNameTextField.translatesAutoresizingMaskIntoConstraints = false
+    private func goalNameTextFieldConstraints() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonTapped)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        ]
+        goalNameTextField.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
             goalNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalNameTextField.heightAnchor.constraint(equalToConstant: 50),
@@ -81,7 +71,7 @@ extension CreateGoalView {
             ])
     }
     
-    private func _setupDescriptionLabel() {
+    private func setupDescriptionLabel() {
         goalDescriptionLabel.text = "Goal Description"
         NSLayoutConstraint.activate([
             goalDescriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
@@ -92,8 +82,15 @@ extension CreateGoalView {
             ])
     }
     
-    func goalDescriptionTextViewConstraints() {
-        goalDescriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+    private func goalDescriptionTextViewConstraints() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(prevButtonTapped)),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+        ]
+        goalDescriptionTextView.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
             goalDescriptionTextView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalDescriptionTextView.heightAnchor.constraint(equalTo: goalNameTextField.heightAnchor, multiplier: 3),
@@ -102,7 +99,7 @@ extension CreateGoalView {
             ])
     }
     
-    private func _setupBlueButton() {
+    private func setupBlueButton() {
         createButton.setTitle("Create", for: .normal)
         NSLayoutConstraint.activate([
             createButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
@@ -111,5 +108,17 @@ extension CreateGoalView {
                                               multiplier: 15),
             createButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             ])
+    }
+    
+    @objc private func nextButtonTapped() {
+        goalDescriptionTextView.becomeFirstResponder()
+    }
+    
+    @objc private func prevButtonTapped() {
+        goalNameTextField.becomeFirstResponder()
+    }
+    
+    @objc private func doneTapped() {
+        goalDescriptionTextView.resignFirstResponder()
     }
 }

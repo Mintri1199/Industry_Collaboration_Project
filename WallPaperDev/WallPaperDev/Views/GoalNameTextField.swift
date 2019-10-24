@@ -2,32 +2,41 @@
 //  GoalNameTextField.swift
 //  WallPaperDev
 //
-//  Created by Jackson Ho on 9/16/19.
+//  Created by Jackson Ho on 10/8/19.
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class GoalNameTextField: UITextField {
+    
+    private let padding = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 1
+        autocorrectionType = .no
+        returnKeyType = .next
         font = UIFont(name: "HelveticaNeue", size: 25)
         placeholder = "Climbing Mount Everest"
+        translatesAutoresizingMaskIntoConstraints = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Provide padding to the text
-    override func drawText(in rect: CGRect) {
-        let insets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        super.drawText(in: rect.inset(by: insets))
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
     }
     
-    override var intrinsicContentSize: CGSize {
-        return CGSize(width: 300, height: 300)
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: padding)
     }
 }
