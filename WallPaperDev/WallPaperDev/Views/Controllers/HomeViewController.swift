@@ -28,6 +28,8 @@ class HomeViewController: UIViewController {
         setupTableView()
         initButton()
         setupWallpaperButton()
+        coordinator?.navigationController.navigationBar.barTintColor = .navBarBlue
+        coordinator?.navigationController.navigationBar.tintColor = .white
     }
     
     override func viewDidLayoutSubviews() {
@@ -39,8 +41,7 @@ class HomeViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationItem.hidesBackButton = true
         navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationController?.navigationBar.barTintColor = .white
-//        navigationController?.navigationBar.tintColor = .navBarBlue
+        
         homeViewModel.update {
             DispatchQueue.main.async {
                 self.homeTableView.reloadData()
@@ -154,5 +155,12 @@ extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
+    }
+}
+
+// MARK: - UINavigationControllerDelegate
+extension HomeViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        
     }
 }

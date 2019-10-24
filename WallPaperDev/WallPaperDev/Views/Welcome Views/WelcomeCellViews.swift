@@ -170,7 +170,6 @@ class ShowCaseView: UIView {
         addSubview(subHeaderLabel)
         
         container.frame = CGRect(origin: bounds.origin, size: CGSize(width: bounds.width, height: bounds.height - headerLabel.frame.height - subHeaderLabel.frame.height))
-        
     }
     
     private func setupLayers() {
