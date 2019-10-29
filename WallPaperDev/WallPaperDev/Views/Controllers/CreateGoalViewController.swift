@@ -106,5 +106,6 @@ extension CreateGoalViewController: UITextViewDelegate {
 extension CreateGoalViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         createGoalView.goalDescriptionTextView.becomeFirstResponder()
+        return true 
     }
 }
