@@ -1,5 +1,5 @@
 //
-//  Keys.swift
+//  Key.swift
 //  WallPaperDev
 //
 //  Created by Jamar Gibbs on 10/30/19.
@@ -7,5 +7,3 @@
 //
 
 import Foundation
-
-

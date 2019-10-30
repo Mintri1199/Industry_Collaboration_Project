@@ -55,8 +55,7 @@
 		5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B462B234D4933005BBBF6 /* DetailGoalViewController.swift */; };
 		5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB52923388B2A00187B33 /* EmptyStateView.swift */; };
 		5D7B27FF236A28060014A4D3 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B27FE236A28060014A4D3 /* NetworkingService.swift */; };
-		5D7B2802236A29100014A4D3 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2801236A29100014A4D3 /* Keys.swift */; };
-		5D7B2804236A2DF40014A4D3 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2803236A2DF40014A4D3 /* Key.swift */; };
+		5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2807236A31EB0014A4D3 /* Keys.swift */; };
 		5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D40233D3FD500137E3C /* WallPaperDev.xcdatamodeld */; };
 		5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
 		5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
@@ -148,8 +147,7 @@
 		5D0B462B234D4933005BBBF6 /* DetailGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoalViewController.swift; sourceTree = "<group>"; };
 		5D4CB52923388B2A00187B33 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		5D7B27FE236A28060014A4D3 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		5D7B2801236A29100014A4D3 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
-		5D7B2803236A2DF40014A4D3 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		5D7B2807236A31EB0014A4D3 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		5DD33D41233D3FD500137E3C /* WallPaperDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallPaperDev.xcdatamodel; sourceTree = "<group>"; };
 		5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -342,7 +340,7 @@
 		5D03ED082328161E006068CB /* WallPaperDev */ = {
 			isa = PBXGroup;
 			children = (
-				5D7B2803236A2DF40014A4D3 /* Key.swift */,
+				5D7B2806236A31870014A4D3 /* SupportingFiles */,
 				443F7E462356827500102331 /* Coordinator */,
 				44671678232DC5D9005C910E /* Models */,
 				44671679232DC5E5005C910E /* View Models */,
@@ -379,7 +377,6 @@
 		5D4A1B3223396E5100CB79D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5D7B2801236A29100014A4D3 /* Keys.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -390,6 +387,14 @@
 				5D7B27FE236A28060014A4D3 /* NetworkingService.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		5D7B2806236A31870014A4D3 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5D7B2807236A31EB0014A4D3 /* Keys.swift */,
+			);
+			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
@@ -666,7 +671,7 @@
 				44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */,
 				44C0B53C2331CF870015110B /* MockData.swift in Sources */,
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
-				5D7B2802236A29100014A4D3 /* Keys.swift in Sources */,
+				5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
 				5D7B27FF236A28060014A4D3 /* NetworkingService.swift in Sources */,
@@ -682,7 +687,6 @@
 				44C0B53A2331C5460015110B /* GraphicExtensions.swift in Sources */,
 				44F40869235928F500EE0409 /* WelcomeCollectionViewCell.swift in Sources */,
 				443F7E522356BFFE00102331 /* WelcomeCVLayout.swift in Sources */,
-				5D7B2804236A2DF40014A4D3 /* Key.swift in Sources */,
 				44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */,
 				44C0B5282330341A0015110B /* ImageSelectionLayout.swift in Sources */,
 				44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */,
