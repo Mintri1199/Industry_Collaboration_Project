@@ -342,6 +342,7 @@
 		5D03ED082328161E006068CB /* WallPaperDev */ = {
 			isa = PBXGroup;
 			children = (
+				5D7B2803236A2DF40014A4D3 /* Key.swift */,
 				443F7E462356827500102331 /* Coordinator */,
 				44671678232DC5D9005C910E /* Models */,
 				44671679232DC5E5005C910E /* View Models */,
@@ -379,7 +380,6 @@
 			isa = PBXGroup;
 			children = (
 				5D7B2801236A29100014A4D3 /* Keys.swift */,
-				5D7B2803236A2DF40014A4D3 /* Key.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
