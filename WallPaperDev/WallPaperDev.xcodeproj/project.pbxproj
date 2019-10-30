@@ -54,6 +54,8 @@
 		5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D051785232C025200B94C4B /* HomeBackgroundView.swift */; };
 		5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0B462B234D4933005BBBF6 /* DetailGoalViewController.swift */; };
 		5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D4CB52923388B2A00187B33 /* EmptyStateView.swift */; };
+		5D7B27FF236A28060014A4D3 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B27FE236A28060014A4D3 /* NetworkingService.swift */; };
+		5D7B2802236A29100014A4D3 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2801236A29100014A4D3 /* Keys.swift */; };
 		5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D40233D3FD500137E3C /* WallPaperDev.xcdatamodeld */; };
 		5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
 		5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
@@ -144,6 +146,8 @@
 		5D051785232C025200B94C4B /* HomeBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBackgroundView.swift; sourceTree = "<group>"; };
 		5D0B462B234D4933005BBBF6 /* DetailGoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGoalViewController.swift; sourceTree = "<group>"; };
 		5D4CB52923388B2A00187B33 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		5D7B27FE236A28060014A4D3 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		5D7B2801236A29100014A4D3 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		5DD33D41233D3FD500137E3C /* WallPaperDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallPaperDev.xcdatamodel; sourceTree = "<group>"; };
 		5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -341,6 +345,7 @@
 				44671679232DC5E5005C910E /* View Models */,
 				5D9C52A2232B14E700608D6D /* Views */,
 				5D03ED092328161E006068CB /* AppDelegate.swift */,
+				5D7B27FD236A275B0014A4D3 /* Services */,
 				44E0BA672339B7D4007AA20D /* Extensions */,
 				44C0B53B2331CF870015110B /* MockData.swift */,
 				5D03ED1523281620006068CB /* Info.plist */,
@@ -371,8 +376,17 @@
 		5D4A1B3223396E5100CB79D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5D7B2801236A29100014A4D3 /* Keys.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5D7B27FD236A275B0014A4D3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5D7B27FE236A28060014A4D3 /* NetworkingService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
@@ -649,8 +663,10 @@
 				44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */,
 				44C0B53C2331CF870015110B /* MockData.swift in Sources */,
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
+				5D7B2802236A29100014A4D3 /* Keys.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
+				5D7B27FF236A28060014A4D3 /* NetworkingService.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
