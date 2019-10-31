@@ -15,7 +15,7 @@ class NetworkingService {
 
     func getUnsplashPhotos(parameters: [String : String], completion: @escaping (Data) -> () ) -> () {
 
-        let baseURL = ""
+        let baseURL = "https://api.unsplash.com/search/photos"
         var newURL = URLComponents(string: baseURL)
         newURL?.queryItems = []
         
