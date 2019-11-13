@@ -35,6 +35,7 @@ class WelcomeCollectionView: UICollectionView {
         register(WelcomeCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
 }
+
 extension WelcomeCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? WelcomeCollectionViewCell else {

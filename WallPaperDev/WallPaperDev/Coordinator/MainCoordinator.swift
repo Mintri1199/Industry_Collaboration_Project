@@ -84,6 +84,7 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    
     func showImagePreview(_ image: UIImage, _ selectedGoals: [Goal]) {
         let vc = ImagePreviewViewController()
         vc.viewModel.unprocessImage = image
@@ -108,4 +109,5 @@ class MainCoordinator: Coordinator {
             }
         }
     }
+    
 }

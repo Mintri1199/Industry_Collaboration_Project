@@ -137,6 +137,12 @@ extension CreateImageViewController {
         navigationItem.title = "Create Wallpaper"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
     }
+    
+    private func goToSearchImagesCV() {
+        let cv = SearchImageViewController()
+        navigationController?.pushViewController(cv, animated: true)
+    }
+    
 }
 
 // MARK: - CAAnimationDelegate
@@ -188,7 +194,7 @@ extension CreateImageViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         // Commented until integrating Image API
-//        indexPath.row == viewModel.imageArray.count ?   cell.setupShowMoreViews() :
+//         indexPath.row == viewModel.imageArray.count ?   cell.setupShowMoreViews() :
 //            cell.getImage(viewModel.imageArray[indexPath.row])
         cell.getImage(viewModel.imageArray[indexPath.row])
         return cell
@@ -207,9 +213,10 @@ extension CreateImageViewController: UICollectionViewDataSource {
 extension CreateImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // Commented until integrating Image API
-//        if indexPath.row == viewModel.imageArray.count {
-//            return
-//        }
+    
+        if indexPath.row == viewModel.imageArray.count - 1 {
+            goToSearchImagesCV()
+        }
         
         imageSelectionCV.indexPathsForVisibleItems.forEach { (index) in
             if index != indexPath {

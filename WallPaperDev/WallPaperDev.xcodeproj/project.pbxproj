@@ -57,6 +57,11 @@
 		5D7B27FF236A28060014A4D3 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B27FE236A28060014A4D3 /* NetworkingService.swift */; };
 		5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2807236A31EB0014A4D3 /* Keys.swift */; };
 		5D7B280A236A39040014A4D3 /* NetworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2809236A39040014A4D3 /* NetworkServiceTest.swift */; };
+		5D7B285D2372359C0014A4D3 /* SearchImagesCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B285C2372359C0014A4D3 /* SearchImagesCV.swift */; };
+		5D7B285F237236560014A4D3 /* SearchImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B285E237236560014A4D3 /* SearchImagesCell.swift */; };
+		5D7B286123723DDC0014A4D3 /* SearchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */; };
+		5D7B2863237382300014A4D3 /* SearchImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */; };
+		5D7B28652374DC4C0014A4D3 /* SearchImagesCVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */; };
 		5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D40233D3FD500137E3C /* WallPaperDev.xcdatamodeld */; };
 		5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
 		5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
@@ -150,6 +155,11 @@
 		5D7B27FE236A28060014A4D3 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		5D7B2807236A31EB0014A4D3 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		5D7B2809236A39040014A4D3 /* NetworkServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceTest.swift; sourceTree = "<group>"; };
+		5D7B285C2372359C0014A4D3 /* SearchImagesCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesCV.swift; sourceTree = "<group>"; };
+		5D7B285E237236560014A4D3 /* SearchImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesCell.swift; sourceTree = "<group>"; };
+		5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageViewController.swift; sourceTree = "<group>"; };
+		5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesViewModel.swift; sourceTree = "<group>"; };
+		5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesCVLayout.swift; sourceTree = "<group>"; };
 		5DD33D41233D3FD500137E3C /* WallPaperDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallPaperDev.xcdatamodel; sourceTree = "<group>"; };
 		5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -244,6 +254,7 @@
 				44E0BA72233CCB59007AA20D /* ImagePreviewViewModel.swift */,
 				442D2E37234ECD6A00EE9991 /* GoalDetailViewModel.swift */,
 				5DFF6B95233D64760077F712 /* HomeViewModel.swift */,
+				5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -400,12 +411,23 @@
 			name = SupportingFiles;
 			sourceTree = "<group>";
 		};
+		5D7B2857237233E10014A4D3 /* SearchImages Views */ = {
+			isa = PBXGroup;
+			children = (
+				5D7B285C2372359C0014A4D3 /* SearchImagesCV.swift */,
+				5D7B285E237236560014A4D3 /* SearchImagesCell.swift */,
+				5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */,
+			);
+			path = "SearchImages Views";
+			sourceTree = "<group>";
+		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				5D051783232C020000B94C4B /* HomeViewController.swift */,
 				5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */,
 				44C0B51D23302A570015110B /* CreateImageViewController.swift */,
+				5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */,
 				44C0B51F23302A680015110B /* ImagePreviewViewController.swift */,
 				44E0BA642339B549007AA20D /* GoalsSelectionViewController.swift */,
 				5D0B462B234D4933005BBBF6 /* DetailGoalViewController.swift */,
@@ -424,6 +446,7 @@
 				44C0B53F233311FF0015110B /* ImagePreview Views */,
 				44C0B52B23303F9B0015110B /* CreateGoal Views */,
 				44C0B52123302A730015110B /* CreateImage Views */,
+				5D7B2857237233E10014A4D3 /* SearchImages Views */,
 				5D03ED1223281620006068CB /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -657,6 +680,7 @@
 				44B5660E234D386D00DEBB86 /* ColorExtension.swift in Sources */,
 				44F4086523570EF000EE0409 /* WelcomeLabel.swift in Sources */,
 				44E0BA692339B7F0007AA20D /* TableViewExtensions.swift in Sources */,
+				5D7B28652374DC4C0014A4D3 /* SearchImagesCVLayout.swift in Sources */,
 				44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */,
 				44E0BA77233D723E007AA20D /* LivePreviewViewController.swift in Sources */,
 				44B56606234D165400DEBB86 /* BigBlueButton.swift in Sources */,
@@ -665,6 +689,7 @@
 				443F7E48235683F700102331 /* MainCoordinator.swift in Sources */,
 				5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
+				5D7B286123723DDC0014A4D3 /* SearchImageViewController.swift in Sources */,
 				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
@@ -680,8 +705,10 @@
 				5D7B27FF236A28060014A4D3 /* NetworkingService.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
+				5D7B2863237382300014A4D3 /* SearchImagesViewModel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
 				44F408672359261800EE0409 /* UIView.swift in Sources */,
+				5D7B285F237236560014A4D3 /* SearchImagesCell.swift in Sources */,
 				44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
 				443F7E542356DAE600102331 /* PageIndicator.swift in Sources */,
@@ -697,6 +724,7 @@
 				44B5660C234D177400DEBB86 /* GoalNameTextField.swift in Sources */,
 				44C0B5382331AFE50015110B /* SelectionVIewModel.swift in Sources */,
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
+				5D7B285D2372359C0014A4D3 /* SearchImagesCV.swift in Sources */,
 				44E0BA652339B549007AA20D /* GoalsSelectionViewController.swift in Sources */,
 				5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */,
 			);
@@ -874,7 +902,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -894,7 +922,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1058,7 +1086,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XYLZ368J9Q;
+				DEVELOPMENT_TEAM = E46Z2WMWDA;
 				INFOPLIST_FILE = WallPaperDev/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
