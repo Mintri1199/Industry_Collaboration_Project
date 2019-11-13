@@ -32,6 +32,7 @@ class SearchImageViewController: UIViewController {
         self.view.backgroundColor = .white
         setupViews()
     }
+    
     private func setupViews() {
         setupNavBar()
         setupChooseImageLabel()
@@ -58,7 +59,7 @@ class SearchImageViewController: UIViewController {
     }
     
     private func setupNavBar() {
-        
+        searchController.searchBar.delegate = self
 //        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
 //        self.navigationItem.leftBarButtonItem = leftNavBarButton
         // add search to navigation bar
@@ -145,6 +146,16 @@ extension SearchImageViewController : UICollectionViewDataSource {
 
         return cell
     }
-    
-    
 }
+
+extension SearchImageViewController : UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let keywords = searchBar.text
+        let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+")
+        print("Yellow lol \(keywords)")
+    }
+}
+    
+    
+
