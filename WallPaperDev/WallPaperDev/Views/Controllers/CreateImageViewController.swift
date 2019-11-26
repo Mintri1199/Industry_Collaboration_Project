@@ -141,7 +141,6 @@ extension CreateImageViewController {
 
 // MARK: - CAAnimationDelegate
 extension CreateImageViewController: CAAnimationDelegate {
-    // TODO: Figure out to implement animation in MVVM
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if let button = anim.value(forKey: "button") as? BigBlueButton {
             if let value = anim.value(forKey: "name") as? String {
