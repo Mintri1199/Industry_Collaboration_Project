@@ -13,7 +13,7 @@ class NetworkingService {
     static let shared = NetworkingService()
     private init() {}
 
-    func getUnsplashPhotos(parameters: [String : String], completion: @escaping (Data) -> () ) -> () {
+    func getData(parameters: [String : String], completion: @escaping (Data) -> () ) -> () {
 
         let baseURL = "https://api.unsplash.com/search/photos"
         var newURL = URLComponents(string: baseURL)
@@ -53,17 +53,34 @@ class NetworkingService {
             }.resume()
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    func getPhoto(from urlPath: String, completion: @escaping (Data) -> () ) {
+        //        let url = URL(fileURLWithPath: urlPath)
+        let url = URL(string: urlPath)!
+        
+        var request = URLRequest(url: url)
+        //        request.addValue("Bearer \(APIKey.key)", forHTTPHeaderField: "Authorization")
+        request.httpMethod = "GET"
+        
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
+        
+        session.dataTask(with: request) { (data, response, error) in
+            
+            guard let response = response as? HTTPURLResponse else {return}
+            
+            print(response.statusCode)
+            
+            guard error == nil else {
+                print(error)
+                return
+            }
+            guard let responseData = data else {
+                print("missing data")
+                return
+            }
+            print(data)
+            completion(responseData)
+            }.resume()
+    }
     
 }

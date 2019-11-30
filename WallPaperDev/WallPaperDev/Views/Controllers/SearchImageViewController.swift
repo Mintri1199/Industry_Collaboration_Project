@@ -19,7 +19,9 @@ class SearchImageViewController: UIViewController {
     private lazy var emptyView = SelectedGoalsEmptyView()
     private let goalsVC = GoalsSelectionViewController()
     private let viewModel = SearchImagesViewModel()
+    private let selectImageViewModel = SelectionViewModel()
     private lazy var searchController = UISearchController(searchResultsController: nil)
+    private lazy var photoURLs = [String]()
 
     weak var coordinator: MainCoordinator?
     
@@ -60,33 +62,20 @@ class SearchImageViewController: UIViewController {
     
     private func setupNavBar() {
         searchController.searchBar.delegate = self
-//        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
-//        self.navigationItem.leftBarButtonItem = leftNavBarButton
-        // add search to navigation bar
         searchController.searchBar.placeholder = "Search for images"
         searchController.searchBar.autocorrectionType = .default
         searchController.searchBar.sizeToFit()
-//        searchController.searchBar.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 20)
-//        searchBar.placeholder = "Search for images"
-//        searchBar.autocorrectionType = .default
-//        searchBar.sizeToFit()
         
         navigationItem.title = "Search for a new image"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Search Images")
-//        searchBar.translatesAutoresizingMaskIntoConstraints = false
-       
-//        navigationController?.view.addSubview(searchBar)
-//        NSLayoutConstraint.activate([searchBar.bottomAnchor.constraint])
-//        navigationItem.titleView = searchController.searchBar
-//        navigationItem.searchController = searchController
+
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
     }
     
     private func setupBlueButton() {
         self.view.addSubview(createImageButton)
-//        self.view.bringSubviewToFront(createImageButton)
-//        createImageButton.isHidden = true
+
         createImageButton.setTitle("Create", for: .normal)
         createImageButton.addTarget(self, action: #selector(backToChooseImageVC), for: .touchUpInside)
         NSLayoutConstraint.activate([
@@ -108,8 +97,31 @@ class SearchImageViewController: UIViewController {
             ])
     }
     
+    private func getImageURLs(from keyword: String) {
+            
+            let jsonDecoder = JSONDecoder()
+            jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+            // needs client id for unsplash api to work
+            NetworkingService.shared.getData(parameters: ["client_id": "", "query": "\(keyword)","per_page": "10",  ],completion: { data in
+                let utf8Text = String(data: data, encoding: .utf8)
+               
+                do {
+                    let photos = try JSONDecoder().decode(NewPhotos.self, from: data)
+                    
+                        for user in photos.results {
+                            self.photoURLs.append(user.urls.regular)
+                        }
+                        DispatchQueue.main.async {
+                            self.searchImagesCV.reloadData()
+                        }
+                } catch {
+                    print(error)
+                }
+            })
+    }
+    
     @objc private func backToChooseImageVC() {
-        
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -124,7 +136,9 @@ extension SearchImageViewController : UICollectionViewDelegate {
             } else {
                 if let selectedCell = searchImagesCV.cellForItem(at: index) as? SearchImagesCell {
                     selectedCell.borderLayer.lineWidth = 5
-//                    viewModel.selectedImage = selectedCell.cellImage
+                    viewModel.selectedImage = selectedCell.cellImage
+//                    selectImageViewModel.selectedImage = selectedCell.cellImage
+//                    selectImageViewModel.imageArray.append(selectedCell.cellImage)
                 }
             }
         }
@@ -134,7 +148,8 @@ extension SearchImageViewController : UICollectionViewDelegate {
 
 extension SearchImageViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.imageArray.count
+//        return viewModel.imageArray.count
+        return photoURLs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -142,8 +157,15 @@ extension SearchImageViewController : UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.setupLabel()
-        cell.getImage(viewModel.imageArray[indexPath.row])
-
+//        cell.getImage(viewModel.imageArray[indexPath.row])
+        let photoData = photoURLs[indexPath.row]
+        
+        NetworkingService.shared.getPhoto(from: photoData) { (data) in
+            let newImage = UIImage(data: data)
+            DispatchQueue.main.async {
+                cell.getImage(newImage)
+            }
+        }
         return cell
     }
 }
@@ -151,9 +173,14 @@ extension SearchImageViewController : UICollectionViewDataSource {
 extension SearchImageViewController : UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        photoURLs = []
         let keywords = searchBar.text
-        let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+")
-        print("Yellow lol \(keywords)")
+        guard let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+") else {return}
+        getImageURLs(from: finalKeyword)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        dismiss(animated: true, completion: nil)
     }
 }
     

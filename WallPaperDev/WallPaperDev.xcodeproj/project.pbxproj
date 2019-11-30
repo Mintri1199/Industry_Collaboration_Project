@@ -62,6 +62,7 @@
 		5D7B286123723DDC0014A4D3 /* SearchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */; };
 		5D7B2863237382300014A4D3 /* SearchImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */; };
 		5D7B28652374DC4C0014A4D3 /* SearchImagesCVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */; };
+		5D7B2869237CC0610014A4D3 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2868237CC0610014A4D3 /* Photos.swift */; };
 		5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D40233D3FD500137E3C /* WallPaperDev.xcdatamodeld */; };
 		5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
 		5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
@@ -160,6 +161,7 @@
 		5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageViewController.swift; sourceTree = "<group>"; };
 		5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesViewModel.swift; sourceTree = "<group>"; };
 		5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesCVLayout.swift; sourceTree = "<group>"; };
+		5D7B2868237CC0610014A4D3 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
 		5DD33D41233D3FD500137E3C /* WallPaperDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallPaperDev.xcdatamodel; sourceTree = "<group>"; };
 		5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -238,6 +240,7 @@
 		44671678232DC5D9005C910E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5D7B2868237CC0610014A4D3 /* Photos.swift */,
 				5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */,
 				5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */,
 				5DD33D47233D43A800137E3C /* CoreDataStack.swift */,
@@ -692,6 +695,7 @@
 				5D7B286123723DDC0014A4D3 /* SearchImageViewController.swift in Sources */,
 				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
+				5D7B2869237CC0610014A4D3 /* Photos.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 				5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */,
 				5DD33D48233D43A800137E3C /* CoreDataStack.swift in Sources */,

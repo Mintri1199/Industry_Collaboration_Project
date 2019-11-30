@@ -63,19 +63,5 @@ class SearchImagesCell : UICollectionViewCell {
             cellImage = image
         }
     }
-    
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
