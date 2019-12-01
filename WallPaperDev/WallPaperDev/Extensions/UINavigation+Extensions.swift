@@ -16,6 +16,21 @@ extension UINavigationBar {
                                     [NSAttributedString.Key.foregroundColor: UIColor.white,
                                      NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 40) as Any]
     }
+    
+    func configGenericNavBar(text: String) {
+        let attributes = text.count > 12 ? [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                            NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 30) as Any] :
+                                           [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                            NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 40) as Any]
+        if #available(iOS 13, *) {
+            backgroundColor = .navBarBlue
+            largeTitleTextAttributes = attributes
+        } else {
+            barTintColor = .navBarBlue
+            tintColor = .white
+            largeTitleTextAttributes = attributes
+        }
+    }
 }
 
 // MARK: - Changing the status when using a navigation controller

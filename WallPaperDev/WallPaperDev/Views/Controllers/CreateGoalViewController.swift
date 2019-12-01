@@ -20,7 +20,6 @@ class CreateGoalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNeedsStatusBarAppearanceUpdate()
         createGoalView.goalNameTextField.becomeFirstResponder()
         setupUIs()
         setupNavBar()
@@ -28,14 +27,13 @@ class CreateGoalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        
+        coordinator?.navigationController.navigationBar.isHidden = false
     }
     
     func setupNavBar() {
         navigationItem.title = "Create Goal"
-        navigationController?.navigationBar.barTintColor = .navBarBlue
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Goal")
+        coordinator?.navigationController.navigationBar.configGenericNavBar(text: "Create Goal")
     }
 }
 
