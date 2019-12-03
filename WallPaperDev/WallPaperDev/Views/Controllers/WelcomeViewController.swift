@@ -57,8 +57,6 @@ extension WelcomeViewController {
         navigationController?.navigationBar.tintColor = .navBarBlue
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationController?.navigationBar.shadowImage = UIImage()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SKIP", style: .plain, target: self, action: #selector(skipTapped))
     }
     
