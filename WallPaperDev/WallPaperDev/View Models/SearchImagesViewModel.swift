@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SearchImagesViewModel {
-    let imageArray: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"),UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3")]
+    var imageArray: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"),UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3")]
     var selectedImage: UIImage?
 }
 

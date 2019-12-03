@@ -7,7 +7,8 @@ target 'WallPaperDev' do
 
   # Pods for WallPaperDev
   pod 'SwiftLint'
-  
+  pod 'CropViewController'
+
   target 'WallPaperDevTests' do
     inherit! :search_paths
     # Pods for testing

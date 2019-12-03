@@ -47,6 +47,7 @@ class SearchImagesCell : UICollectionViewCell {
     func getImage(_ image: UIImage?) {
         photoLayer.backgroundColor = UIColor.red.cgColor
         photoLayer.frame = bounds
+        photoLayer.contentsGravity = .resizeAspect
         maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
         
         borderLayer.frame = bounds
@@ -64,4 +65,3 @@ class SearchImagesCell : UICollectionViewCell {
         }
     }
 }
-

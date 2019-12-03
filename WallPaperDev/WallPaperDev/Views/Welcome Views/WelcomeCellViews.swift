@@ -68,7 +68,6 @@ class DemoView: UIView {
     }
     
     func resetAnimation() {
-        pauseAnimation()
         prepAnimation()
     }
     
@@ -150,7 +149,6 @@ class ShowCaseView: UIView {
     }
     
     func resetAnimation() {
-        pauseAnimation()
         prepAnimation()
     }
     

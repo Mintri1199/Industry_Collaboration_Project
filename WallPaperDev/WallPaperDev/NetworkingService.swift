@@ -38,8 +38,10 @@ class NetworkingService {
             
             guard let response = response as? HTTPURLResponse else {return}
             
+            #if DEBUG
             print(response.statusCode)
             print(url)
+            #endif
             
             guard error == nil else {
                 print(error)
