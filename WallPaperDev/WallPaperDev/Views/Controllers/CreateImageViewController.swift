@@ -137,12 +137,6 @@ extension CreateImageViewController {
         navigationItem.title = "Create Wallpaper"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
     }
-    
-    private func goToSearchImagesCV() {
-        let cv = SearchImageViewController()
-        navigationController?.pushViewController(cv, animated: true)
-    }
-    
 }
 
 // MARK: - CAAnimationDelegate
@@ -214,7 +208,7 @@ extension CreateImageViewController: UICollectionViewDelegate {
         // Commented until integrating Image API
     
         if indexPath.row == viewModel.imageArray.count - 1 {
-            goToSearchImagesCV()
+            coordinator?.showSearchImages()
         }
         
         imageSelectionCV.indexPathsForVisibleItems.forEach { (index) in
