@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectedImageDelegate {
+    func passImageSelected(image: UIImage)
+}
+
 class SearchImageViewController: UIViewController {
     // MARK: - Custom UIs
     private lazy var createImageButton = BigBlueButton(frame: .zero)
@@ -21,8 +25,8 @@ class SearchImageViewController: UIViewController {
     private let viewModel = SearchImagesViewModel()
     private let selectImageViewModel = SelectionViewModel()
     private lazy var searchController = UISearchController(searchResultsController: nil)
-    private lazy var photoURLs = [String]()
-
+    
+    private var selectedImageDelegate : SelectedImageDelegate?
     weak var coordinator: MainCoordinator?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -75,7 +79,6 @@ class SearchImageViewController: UIViewController {
     
     private func setupBlueButton() {
         self.view.addSubview(createImageButton)
-
         createImageButton.setTitle("Create", for: .normal)
         createImageButton.addTarget(self, action: #selector(backToChooseImageVC), for: .touchUpInside)
         NSLayoutConstraint.activate([
@@ -102,8 +105,7 @@ class SearchImageViewController: UIViewController {
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         
-        NetworkingService.shared.getData(parameters: ["client_id": Keys.clientID, "query": "\(keyword)","per_page": "10",  ],completion: { data in
-    
+        NetworkingService.shared.getData(parameters: ["client_id": Keys.clientID ,"query": "\(keyword)" ,"per_page": "10"],completion: { data in
                 do {
                     let photos = try JSONDecoder().decode(NewPhotos.self, from: data)
                     
@@ -120,6 +122,9 @@ class SearchImageViewController: UIViewController {
     }
     
     @objc private func backToChooseImageVC() {
+        if let image = viewModel.selectedImage {
+            selectedImageDelegate?.passImageSelected(image: image)
+        }
         navigationController?.popViewController(animated: true)
     }
 }
@@ -172,7 +177,6 @@ extension SearchImageViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // set urls to empty for new search
         viewModel.imageURLS = []
-        
         let keywords = searchBar.text
         guard let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+") else {return}
         getImageURLs(from: finalKeyword)

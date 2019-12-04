@@ -101,6 +101,12 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(vc, animated: true)
     }
     
+    func showSearchImages() {
+        let vc = SearchImageViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
     func popToHome() {
         for vc in navigationController.viewControllers {
             if let vc = vc as? HomeViewController {

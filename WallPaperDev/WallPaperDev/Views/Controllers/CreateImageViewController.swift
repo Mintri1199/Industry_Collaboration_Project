@@ -253,3 +253,11 @@ extension CreateImageViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension CreateImageViewController : SelectedImageDelegate {
+    func passImageSelected(image: UIImage) {
+        viewModel.imageArray.append(image)
+    }
+    
+    
+}
