@@ -22,7 +22,7 @@ class CreateImageViewController: UIViewController {
     private let goalsVC = GoalsSelectionViewController()
     private let viewModel = SelectionViewModel()
     weak var coordinator: MainCoordinator?
-    
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -36,7 +36,6 @@ class CreateImageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
-        print(viewModel.imageArray)
     }
 }
 

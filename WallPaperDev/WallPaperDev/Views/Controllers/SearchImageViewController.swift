@@ -101,14 +101,14 @@ class SearchImageViewController: UIViewController {
 
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-            // needs client id for unsplash api to work
+        
         NetworkingService.shared.getData(parameters: ["client_id": Keys.clientID, "query": "\(keyword)","per_page": "10",  ],completion: { data in
     
                 do {
                     let photos = try JSONDecoder().decode(NewPhotos.self, from: data)
                     
                         for user in photos.results {
-                            self.photoURLs.append(user.urls.regular)
+                            self.viewModel.imageURLS.append(user.urls.regular)
                         }
                         DispatchQueue.main.async {
                             self.searchImagesCV.reloadData()
@@ -136,8 +136,6 @@ extension SearchImageViewController : UICollectionViewDelegate {
                 if let selectedCell = searchImagesCV.cellForItem(at: index) as? SearchImagesCell {
                     selectedCell.borderLayer.lineWidth = 5
                     viewModel.selectedImage = selectedCell.cellImage
-//                    selectImageViewModel.selectedImage = selectedCell.cellImage
-//                    selectImageViewModel.imageArray.append(selectedCell.cellImage)
                 }
             }
         }
@@ -147,17 +145,17 @@ extension SearchImageViewController : UICollectionViewDelegate {
 
 extension SearchImageViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return viewModel.imageArray.count
-        return photoURLs.count
+        return viewModel.imageURLS.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = searchImagesCV.dequeueReusableCell(withReuseIdentifier: searchImagesCV.cellID, for: indexPath) as? SearchImagesCell else {
             return UICollectionViewCell()
         }
-//        cell.setupLabel()
-//        cell.getImage(viewModel.imageArray[indexPath.row])
-        let photoData = photoURLs[indexPath.row]
+        
+        guard let photoData = viewModel.imageURLS[indexPath.row] else {
+            return cell
+        }
         
         NetworkingService.shared.getPhoto(from: photoData) { (data) in
             let newImage = UIImage(data: data)
@@ -172,7 +170,9 @@ extension SearchImageViewController : UICollectionViewDataSource {
 extension SearchImageViewController : UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        photoURLs = []
+        // set urls to empty for new search
+        viewModel.imageURLS = []
+        
         let keywords = searchBar.text
         guard let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+") else {return}
         getImageURLs(from: finalKeyword)
