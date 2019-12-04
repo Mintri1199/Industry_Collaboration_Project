@@ -98,13 +98,12 @@ class SearchImageViewController: UIViewController {
     }
     
     private func getImageURLs(from keyword: String) {
-            
+
             let jsonDecoder = JSONDecoder()
             jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
             // needs client id for unsplash api to work
-            NetworkingService.shared.getData(parameters: ["client_id": "", "query": "\(keyword)","per_page": "10",  ],completion: { data in
-                let utf8Text = String(data: data, encoding: .utf8)
-               
+        NetworkingService.shared.getData(parameters: ["client_id": Keys.clientID, "query": "\(keyword)","per_page": "10",  ],completion: { data in
+    
                 do {
                     let photos = try JSONDecoder().decode(NewPhotos.self, from: data)
                     
@@ -156,7 +155,7 @@ extension SearchImageViewController : UICollectionViewDataSource {
         guard let cell = searchImagesCV.dequeueReusableCell(withReuseIdentifier: searchImagesCV.cellID, for: indexPath) as? SearchImagesCell else {
             return UICollectionViewCell()
         }
-        cell.setupLabel()
+//        cell.setupLabel()
 //        cell.getImage(viewModel.imageArray[indexPath.row])
         let photoData = photoURLs[indexPath.row]
         

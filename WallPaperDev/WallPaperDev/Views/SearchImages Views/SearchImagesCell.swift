@@ -12,27 +12,6 @@ import UIKit
 class SearchImagesCell : UICollectionViewCell {
     let identifier = "searchCell"
    
-    lazy var showMoreLabel: UILabel = {
-        var label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Show more"
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.adjustsFontSizeToFitWidth = true
-        label.textAlignment = .center
-        label.textColor = UIColor.darkGray
-        return label
-    }()
-    
-    func setupLabel() {
-        addSubview(showMoreLabel)
-        NSLayoutConstraint.activate([
-            showMoreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            showMoreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            showMoreLabel.widthAnchor.constraint(equalTo: widthAnchor),
-            showMoreLabel.heightAnchor.constraint(equalToConstant: bounds.size.height / 6)
-            ])
-    }
-    
     // Using layers to hold uninteractable images
     lazy var photoLayer = CALayer()
     lazy var maskLayer = CAShapeLayer()

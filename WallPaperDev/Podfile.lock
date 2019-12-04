@@ -1,6 +1,6 @@
 PODS:
   - CropViewController (2.5.2)
-  - SwiftLint (0.37.0)
+  - SwiftLint (0.38.0)
 
 DEPENDENCIES:
   - CropViewController
@@ -13,8 +13,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
-  SwiftLint: c078a14d7d7ade75e5507795d185e3da41d844d2
+  SwiftLint: 4105f061f9812b214568b736dab580ab2c73a582
 
 PODFILE CHECKSUM: 4efd6d3578ae3ea2bfdaefb8995a5fb95166a0c8
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.8.0

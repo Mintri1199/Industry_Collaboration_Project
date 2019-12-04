@@ -40,17 +40,17 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = .navBarBlue
-            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-            appearance.shadowColor = nil
-            self.navigationController?.navigationBar.tintColor = .white
-            self.navigationController?.navigationBar.standardAppearance = appearance
-            self.navigationController?.navigationBar.compactAppearance = appearance
-            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
+//        if #available(iOS 13.0, *) {
+////            let appearance = UINavigationBarAppearance()
+////            appearance.backgroundColor = .navBarBlue
+////            appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+////            appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+////            appearance.shadowColor = nil
+//            self.navigationController?.navigationBar.tintColor = .white
+//            self.navigationController?.navigationBar.standardAppearance = appearance
+//            self.navigationController?.navigationBar.compactAppearance = appearance
+//            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+//        }
         
         homeViewModel.update {
             DispatchQueue.main.async {
