@@ -36,6 +36,7 @@ class CreateImageViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        imageSelectionCV.reloadData()
     }
 }
 
@@ -137,6 +138,12 @@ extension CreateImageViewController {
         navigationItem.title = "Create Wallpaper"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
     }
+    
+    private func showSearchImages() {
+        let vc = SearchImageViewController()
+        vc.selectedImageDelegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - CAAnimationDelegate
@@ -208,7 +215,8 @@ extension CreateImageViewController: UICollectionViewDelegate {
         // Commented until integrating Image API
     
         if indexPath.row == viewModel.imageArray.count - 1 {
-            coordinator?.showSearchImages()
+//            coordinator?.showSearchImages()
+            showSearchImages()
         }
         
         imageSelectionCV.indexPathsForVisibleItems.forEach { (index) in

@@ -26,7 +26,8 @@ class SearchImageViewController: UIViewController {
     private let selectImageViewModel = SelectionViewModel()
     private lazy var searchController = UISearchController(searchResultsController: nil)
     
-    private var selectedImageDelegate : SelectedImageDelegate?
+    var selectedImageDelegate : SelectedImageDelegate?
+   
     weak var coordinator: MainCoordinator?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
