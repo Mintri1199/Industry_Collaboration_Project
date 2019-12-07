@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CropViewController
 
 class ImagePreviewViewController: UIViewController {
     
@@ -14,12 +15,16 @@ class ImagePreviewViewController: UIViewController {
     private lazy var imageView = CompleteImageVIew(frame: .zero)
     private lazy var saveButton = BigBlueButton(frame: .zero)
     private lazy var previewButton = BigBlueButton(frame: .zero)
+    private lazy var recropButton = BigBlueButton(frame: .zero)
+    private lazy var buttonStackView = UIStackView(frame: .zero)
     let viewModel = ImagePreviewViewModel()
     weak var coordinator: MainCoordinator?
     
     private var image: UIImage? {
         didSet {
-            imageView.image = image
+            DispatchQueue.main.async {
+                self.imageView.image = self.image
+            }
         }
     }
     
@@ -30,9 +35,12 @@ class ImagePreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        
         setupViews()
-        let nameArray = viewModel.selectedGoals.compactMap { $0.name }
-        image = viewModel.processImage(nameArray)
+        
+        viewModel.initialGenerate { initialImage in
+            self.image = initialImage
+        }
     }
 }
 
@@ -41,43 +49,49 @@ extension ImagePreviewViewController {
     
     private func setupViews() {
         setupNavBar()
-        setupBlueButton()
+        setupButtonStackView()
         setupImageView()
-        setupPreviewButton()
     }
     
     private func setupImageView() {
         view.addSubview(imageView)
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            imageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            imageView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            imageView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-            imageView.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -20)
-            ])
-    }
-    private func setupPreviewButton() {
-        view.addSubview(previewButton)
-        previewButton.setTitle("Live", for: .normal)
-        previewButton.addTarget(self, action: #selector(presentPreview), for: .touchUpInside)
-        NSLayoutConstraint.activate([
-            previewButton.widthAnchor.constraint(equalToConstant: 75),
-            previewButton.heightAnchor.constraint(equalToConstant: 50),
-            previewButton.bottomAnchor.constraint(equalTo: saveButton.bottomAnchor),
-            previewButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10)
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            imageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+            imageView.bottomAnchor.constraint(equalTo: buttonStackView.topAnchor, constant: -20)
         ])
     }
     
-    private func setupBlueButton() {
-        view.addSubview(saveButton)
+    private func setupButtonStackView() {
+        buttonStackView.addArrangedSubview(recropButton)
+        buttonStackView.addArrangedSubview(saveButton)
+        buttonStackView.addArrangedSubview(previewButton)
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.axis = .horizontal
+        
+        buttonStackView.spacing = 20
+        buttonStackView.distribution = .fillProportionally
+        
+        recropButton.setTitle("Crop", for: .normal)
+        recropButton.addTarget(self, action: #selector(recropButtonTapped), for: .touchUpInside)
+        
         saveButton.setTitle("Save Image", for: .normal)
         saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
+        
+        previewButton.setTitle("Live", for: .normal)
+        previewButton.addTarget(self, action: #selector(presentPreview), for: .touchUpInside)
+        
+        view.addSubview(buttonStackView)
+        
         NSLayoutConstraint.activate([
-            saveButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.4),
-            saveButton.heightAnchor.constraint(equalToConstant: 50),
-            saveButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            saveButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-            ])
+            buttonStackView.heightAnchor.constraint(equalToConstant: 50),
+            buttonStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            recropButton.widthAnchor.constraint(equalTo: previewButton.widthAnchor, multiplier: 1)
+        ])
     }
     
     private func setupNavBar() {
@@ -94,13 +108,25 @@ extension ImagePreviewViewController {
         coordinator?.popToHome()
     }
     
-    @objc private func presentPreview() {
-        let previewVC = LivePreviewViewController()
-        previewVC.livePreview.image = image
-        if #available(iOS 13.0, *) {
-            previewVC.modalPresentationStyle = .fullScreen
+    @objc private func recropButtonTapped() {
+        guard let cropVC = viewModel.configureCropVC() else {
+            return
         }
-        present(previewVC, animated: true, completion: nil)
+        cropVC.delegate = self
+        present(cropVC, animated: true, completion: nil)
+    }
+    
+    @objc private func presentPreview() {
+        let vc = EditTextLabelViewController()
+        
+        if #available(iOS 13.0, *) {
+            vc.modalPresentationStyle = .fullScreen
+        }
+        vc.livePreview.image = viewModel.croppedImage
+        vc.viewModel.delegate = self
+        vc.viewModel.labelText = viewModel.labelText
+        vc.viewModel.labelFrame = viewModel.textLayerRect
+        present(vc, animated: true, completion: nil)
     }
     
     @objc private func saveTapped() {
@@ -109,7 +135,7 @@ extension ImagePreviewViewController {
         }
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingImageHandler(_:didFinishSavingWithError:contextInfo:)), nil)
     }
-
+    
     @objc func savingImageHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
@@ -117,8 +143,50 @@ extension ImagePreviewViewController {
             present(ac, animated: true)
         } else {
             let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            let add = UIAlertAction(title: "OK", style: .default) { _ in
+                self.coordinator?.popToHome()
+            }
+            ac.addAction(add)
             present(ac, animated: true)
         }
+    }
+}
+
+// MARK: - Save text label changes
+extension ImagePreviewViewController: SaveChange {
+    func applyChanges(_ textFrame: CGRect, _ layerRotation: CGFloat) {
+        viewModel.textLayerRect = textFrame
+        viewModel.textLayerRotation = layerRotation
+        viewModel.updateImage { result in
+            switch result {
+            case .success(let image):
+                self.image = image
+            case .failure(let error):
+                #if DEBUG
+                print(error)
+                #endif
+            }
+        }
+    }
+}
+
+// MARK: - CropViewController Delegate
+extension ImagePreviewViewController: CropViewControllerDelegate {
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        viewModel.croppedImage = image
+        viewModel.currentCropRect = cropRect
+        viewModel.rotate = angle
+        viewModel.updateImage { (result) in
+            switch result {
+            case .success(let processedImage):
+                self.image = processedImage
+            case .failure(let error):
+                #if DEBUG
+                print(error)
+                #endif
+            }
+        }
+        cropViewController.dismiss(animated: true, completion: nil)
     }
 }
