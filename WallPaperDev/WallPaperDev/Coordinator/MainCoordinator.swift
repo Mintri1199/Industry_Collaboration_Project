@@ -86,7 +86,7 @@ class MainCoordinator: Coordinator {
     
     func showImagePreview(_ image: UIImage, _ selectedGoals: [Goal]) {
         let vc = ImagePreviewViewController()
-        vc.viewModel.unprocessImage = image
+        vc.viewModel.originalImage = image
         vc.viewModel.selectedGoals = selectedGoals
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
