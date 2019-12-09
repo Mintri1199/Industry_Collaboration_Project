@@ -14,8 +14,13 @@ class CreateGoalView: UIView {
     // MARK: - Custom UIViews
     lazy var goalNameLabel = BlueLabel(frame: .zero)
     lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
+    lazy var milestoneNameLabel = BlueLabel(frame: .zero)
+    lazy var milestoneCurNumberLabel = BlueLabel(frame: .zero)
+    lazy var milestoneTargetNumberLabel = BlueLabel(frame: .zero)
     lazy var createButton = BigBlueButton(frame: .zero)
     lazy var goalNameTextField = GoalNameTextField(frame: .zero)
+    lazy var milestoneCurNumberField = MilestoneNumberField(frame: .zero)
+    lazy var milestoneTargetNumberField = MilestoneNumberField(frame: .zero)
     lazy var goalDescriptionTextView = GoalDescriptionTextView(frame: .zero, textContainer: nil)
     
     override init(frame: CGRect) {
@@ -49,7 +54,7 @@ extension CreateGoalView {
         goalNameLabel.text = "Goal Name"
         NSLayoutConstraint.activate([
             goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
-            goalNameLabel.heightAnchor.constraint(equalToConstant: 50),
+            goalNameLabel.heightAnchor.constraint(equalToConstant: 30),
             goalNameLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 2),
             goalNameLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 20)
             ])
@@ -75,7 +80,7 @@ extension CreateGoalView {
         goalDescriptionLabel.text = "Goal Description"
         NSLayoutConstraint.activate([
             goalDescriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
-            goalDescriptionLabel.heightAnchor.constraint(equalToConstant: 50),
+            goalDescriptionLabel.heightAnchor.constraint(equalToConstant: 30),
             goalDescriptionLabel.topAnchor.constraint(equalToSystemSpacingBelow: goalNameTextField.bottomAnchor,
                                                       multiplier: 3),
             goalDescriptionLabel.leftAnchor.constraint(equalTo: goalNameTextField.leftAnchor)
@@ -104,8 +109,7 @@ extension CreateGoalView {
         NSLayoutConstraint.activate([
             createButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
             createButton.heightAnchor.constraint(equalToConstant: 50),
-            createButton.topAnchor.constraint(equalToSystemSpacingBelow: goalDescriptionTextView.bottomAnchor,
-                                              multiplier: 15),
+            createButton.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 100),
             createButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             ])
     }
