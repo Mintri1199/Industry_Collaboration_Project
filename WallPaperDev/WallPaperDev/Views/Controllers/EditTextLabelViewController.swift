@@ -8,10 +8,9 @@
 
 import UIKit
 
-
 class EditTextLabelViewController: UIViewController {
+//    private var bottomToolBar: UIToolbar
     private var labelInteraction: Bool = false
-    private lazy var circleLayer = CAShapeLayer()
     private lazy var flashlightLayer = CALayer()
     private lazy var cameraLayer = CALayer()
     private lazy var textBorderLayer = CAShapeLayer()
@@ -39,6 +38,7 @@ class EditTextLabelViewController: UIViewController {
         viewModel.delegate = self
         setupLivePreview()
         setupDraggablelabel()
+        setupIconsLayers()
     }
 }
 
@@ -100,6 +100,42 @@ extension EditTextLabelViewController {
         lineDashAnimation.repeatCount = Float.greatestFiniteMagnitude
         
         textBorderLayer.add(lineDashAnimation, forKey: nil)
+    }
+    
+    private func setupIconsLayers() {
+        let layerSize: CGSize = CGSize(width: view.bounds.width / 8, height: view.bounds.width / 8)
+        
+        let cameraCircleLayer = CAShapeLayer()
+        let flashlightCircleLayer = CAShapeLayer()
+        
+        flashlightLayer.frame = CGRect(origin: CGPoint(x: view.bounds.width / 8.3, y: view.bounds.height * 0.88), size: layerSize)
+        cameraLayer.frame = CGRect(origin: CGPoint(x: view.bounds.width - ((view.bounds.width / 8.3) + layerSize.width), y: view.bounds.height * 0.88), size: layerSize)
+        
+        cameraCircleLayer.path = UIBezierPath(ovalIn: cameraLayer.bounds).cgPath
+        flashlightCircleLayer.path = UIBezierPath(ovalIn: flashlightLayer.bounds).cgPath
+        
+        cameraLayer.backgroundColor = UIColor(white: 0, alpha: 0.2).cgColor
+        flashlightLayer.backgroundColor = UIColor(white: 0, alpha: 0.2).cgColor
+        
+        cameraLayer.mask = cameraCircleLayer
+        flashlightLayer.mask = flashlightCircleLayer
+        
+        let cameraImageLayer = CALayer()
+        cameraImageLayer.contentsGravity = .resizeAspect
+        cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
+        cameraImageLayer.contents = UIImage(named: "camera")?.cgImage
+        cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
+
+        let flashflightImageLayer = CALayer()
+        flashflightImageLayer.contentsGravity = .resizeAspect
+        flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
+        flashflightImageLayer.position = CGPoint(x: flashlightLayer.bounds.midX, y: flashlightLayer.bounds.midY)
+        flashflightImageLayer.contents = UIImage(named: "flashlight")?.cgImage
+        
+        cameraLayer.addSublayer(cameraImageLayer)
+        flashlightLayer.addSublayer(flashflightImageLayer)
+        livePreview.layer.addSublayer(cameraLayer)
+        livePreview.layer.addSublayer(flashlightLayer)
     }
 }
 
