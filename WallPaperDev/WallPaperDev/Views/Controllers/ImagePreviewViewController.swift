@@ -64,6 +64,8 @@ extension ImagePreviewViewController {
     }
     
     private func setupButtonStackView() {
+        let blankButton = UIButton()
+        blankButton.translatesAutoresizingMaskIntoConstraints = false
         buttonStackView.addArrangedSubview(recropButton)
         buttonStackView.addArrangedSubview(saveButton)
         buttonStackView.addArrangedSubview(previewButton)
@@ -79,7 +81,7 @@ extension ImagePreviewViewController {
         saveButton.setTitle("Save Image", for: .normal)
         saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         
-        previewButton.setTitle("Live", for: .normal)
+        previewButton.setTitle("Edit", for: .normal)
         previewButton.addTarget(self, action: #selector(presentPreview), for: .touchUpInside)
         
         view.addSubview(buttonStackView)
@@ -90,8 +92,14 @@ extension ImagePreviewViewController {
             buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+//            blankButton.widthAnchor.constraint(equalTo: previewButton.widthAnchor, multiplier: 1)
             recropButton.widthAnchor.constraint(equalTo: previewButton.widthAnchor, multiplier: 1)
         ])
+        
+        // Comment the following lines when debugging
+        recropButton.isEnabled = false                          //
+        recropButton.backgroundColor = .clear                   //
+        recropButton.titleLabel?.textColor = UIColor.clear      //
     }
     
     private func setupNavBar() {
@@ -125,6 +133,7 @@ extension ImagePreviewViewController {
         vc.livePreview.image = viewModel.croppedImage
         vc.viewModel.delegate = self
         vc.viewModel.labelText = viewModel.labelText
+        vc.viewModel.labelRotation = viewModel.textLayerRotation ?? 0
         vc.viewModel.labelFrame = viewModel.textLayerRect
         present(vc, animated: true, completion: nil)
     }

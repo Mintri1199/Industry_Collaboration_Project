@@ -9,7 +9,7 @@
 import UIKit
 
 class EditTextLabelViewController: UIViewController {
-//    private var bottomToolBar: UIToolbar
+    //    private var bottomToolBar: UIToolbar
     private var labelInteraction: Bool = false
     private lazy var flashlightLayer = CALayer()
     private lazy var cameraLayer = CALayer()
@@ -17,7 +17,10 @@ class EditTextLabelViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
+    private lazy var toolBar = UIToolbar(frame: .zero)
+//    TODO: Figure out how to make the tool bar shrink down when the user interact with the label
+//    private lazy var heightContraint: NSLayoutConstraint? = nil
+//    private lazy var toolBarBottomContraint: NSLayoutConstraint? = nil
     var viewModel = EditTextViewModel()
     
     private lazy var textLabel: UILabel = {
@@ -34,11 +37,21 @@ class EditTextLabelViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewModel.delegate = self
         setupLivePreview()
         setupDraggablelabel()
         setupIconsLayers()
+        setupToolBar()
+    }
+    
+    private func toggleIcons(_ isHidden: Bool) {
+        flashlightLayer.isHidden = isHidden
+        cameraLayer.isHidden = isHidden
+    }
+    
+    private func showToolBar(_ isHidden: Bool) {
+        UIView.animate(withDuration: 0.5) {
+            self.toolBar.isHidden = isHidden
+        }
     }
 }
 
@@ -49,7 +62,9 @@ extension EditTextLabelViewController {
         livePreview.backgroundColor = .white
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissPreview))
         swipeDown.direction = .down
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(unhideToolBar))
         view.addGestureRecognizer(swipeDown)
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func setupDraggablelabel() {
@@ -66,7 +81,6 @@ extension EditTextLabelViewController {
             NSAttributedString.Key.paragraphStyle: paragraphStyle
         ]
         textLabel.attributedText = NSAttributedString(string: viewModel.labelText!, attributes: textAttributes)
-        
         view.addSubview(textLabel)
         
         textLabel.isUserInteractionEnabled = true
@@ -78,8 +92,8 @@ extension EditTextLabelViewController {
         rotateGesture.delegate = self
         
         textLabel.addGestureRecognizer(moveView)
-        textLabel.addGestureRecognizer(scaleGesture)
-        textLabel.addGestureRecognizer(rotateGesture)
+//        textLabel.addGestureRecognizer(scaleGesture)
+//        textLabel.addGestureRecognizer(rotateGesture)
         
         textBorderLayer.frame = textLabel.bounds
         textBorderLayer.strokeColor = UIColor.white.cgColor
@@ -125,7 +139,7 @@ extension EditTextLabelViewController {
         cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
         cameraImageLayer.contents = UIImage(named: "camera")?.cgImage
         cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
-
+        
         let flashflightImageLayer = CALayer()
         flashflightImageLayer.contentsGravity = .resizeAspect
         flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
@@ -134,8 +148,31 @@ extension EditTextLabelViewController {
         
         cameraLayer.addSublayer(cameraImageLayer)
         flashlightLayer.addSublayer(flashflightImageLayer)
-        livePreview.layer.addSublayer(cameraLayer)
-        livePreview.layer.addSublayer(flashlightLayer)
+        cameraLayer.isHidden = true
+        flashlightLayer.isHidden = true
+        view.layer.insertSublayer(cameraLayer, above: textLabel.layer)
+        view.layer.insertSublayer(flashlightLayer, above: textLabel.layer)
+    }
+    
+    private func setupToolBar() {
+        toolBar.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(toolBar)
+        NSLayoutConstraint.activate([
+            toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            toolBar.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+        ])
+
+        let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissPreview))
+        let hideToolBar = UIBarButtonItem(title: "View", style: .plain, target: self, action: #selector(hideToolbar))
+        let items: [UIBarButtonItem] = [ cancelButton,
+                                         UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                                         saveButton,
+                                         UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                                         hideToolBar ]
+        
+        toolBar.setItems(items, animated: true)
     }
 }
 
@@ -145,12 +182,28 @@ extension EditTextLabelViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //  Text label pan gesture
+    @objc private func unhideToolBar() {
+        showToolBar(false)
+        toggleIcons(true)
+    }
+    
+    @objc private func saveTapped() {
+        viewModel.updateText(newFrame: textLabel.frame, newRotation: viewModel.newRotation ?? 0)
+        dismissPreview()
+    }
+    
+    @objc private func hideToolbar() {
+        showToolBar(true)
+        toggleIcons(false)
+    }
+    
     @objc private func movingLabel(_ sender: UIPanGestureRecognizer) {
         if sender.state == .began || sender.state == .changed {
             if !labelInteraction {
                 textBorderLayer.isHidden = false
                 animateLabelEditing()
+                toggleIcons(false)
+                showToolBar(true)
                 labelInteraction.toggle()
             }
             
@@ -160,6 +213,8 @@ extension EditTextLabelViewController {
         } else if sender.state == .ended {
             labelInteraction = false
             textBorderLayer.isHidden = true
+            toggleIcons(true)
+            showToolBar(false)
             textBorderLayer.removeAllAnimations()
         }
     }
@@ -170,12 +225,16 @@ extension EditTextLabelViewController {
             if !labelInteraction {
                 textBorderLayer.isHidden = false
                 animateLabelEditing()
+                toggleIcons(false)
+                showToolBar(true)
                 labelInteraction.toggle()
             }
             sender.scale = 1
         } else if sender.state == .ended {
             labelInteraction = false
             textBorderLayer.isHidden = true
+            toggleIcons(true)
+            showToolBar(false)
             textBorderLayer.removeAllAnimations()
         }
     }
@@ -186,17 +245,22 @@ extension EditTextLabelViewController {
         }
         
         if sender.state == .began || sender.state == .changed {
+            viewModel.newRotation = sender.rotation
             sender.view?.transform = sender.view!.transform.rotated(by: sender.rotation)
             
             if !labelInteraction {
                 textBorderLayer.isHidden = false
                 animateLabelEditing()
+                toggleIcons(false)
+                showToolBar(true)
                 labelInteraction.toggle()
             }
             sender.rotation = 0
         } else if sender.state == .ended {
             labelInteraction = false
             textBorderLayer.isHidden = true
+            toggleIcons(true)
+            showToolBar(false)
             textBorderLayer.removeAllAnimations()
         }
     }
@@ -214,11 +278,5 @@ extension EditTextLabelViewController: UIGestureRecognizerDelegate {
         }
         
         return true
-    }
-}
-
-// MARK: - Protocols
-extension EditTextLabelViewController: SaveChange {
-    func applyChanges(_ textFrame: CGRect, _ layerRotation: CGFloat) {
     }
 }

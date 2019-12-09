@@ -17,6 +17,7 @@ class EditTextViewModel {
     var labelFrame: CGRect?
     var labelRotation: CGFloat?
     weak var delegate: SaveChange?
+    var newRotation: CGFloat?
     var labelText: String?
     
     func updateText(newFrame: CGRect, newRotation: CGFloat) {
@@ -24,7 +25,6 @@ class EditTextViewModel {
             return
         }
         
-        // check if there is any changes at all 
         if prevFrame != newFrame || prevRotation != newRotation {
             delegate?.applyChanges(newFrame, newRotation)
         }

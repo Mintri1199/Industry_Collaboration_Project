@@ -84,8 +84,6 @@ class ImagePreviewViewModel {
         let initialCropImage = UIImage(cgImage: cropImage)
         croppedImage = initialCropImage
         
-        // Step 2: Then generate a text layer with the correct size text
-        // Map the goal array to a String
         let goalsText: String = selectedGoals.compactMap { $0.name }.joined(separator: "\n")
         labelText = goalsText
         // Configure the attributes and font for the string
@@ -93,7 +91,7 @@ class ImagePreviewViewModel {
         paragraphStyle.alignment = .center
         
         let bestFont = UIFont.bestFittingFont(for: goalsText,
-                                              in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width / 2, height: cropRect.size.height / 6)),
+                                              in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width * 0.65, height: cropRect.size.height / 6)),
                                               fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
         
         let textAttr: [NSAttributedString.Key: Any] = [ NSAttributedString.Key.font: bestFont,
@@ -126,17 +124,20 @@ class ImagePreviewViewModel {
         generateTextLayer { (result) in
             switch result {
             case .success(let textLayer):
-                #if DEBUG
-                print("create textlayer")
-                #endif
-                
                 UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
-                image.draw(in: cropRect)
                 let context = UIGraphicsGetCurrentContext()!
+                image.draw(in: cropRect)
+                context.translateBy(x: textLayer.frame.origin.x, y: textLayer.frame.origin.y)
+                // TODO: Figure out how to draw rotate textlayer while keeping it original shape
+                //                if let rotation = self.textLayerRotation {
+//                    print(rotation)
+//                    context.rotate(by: rotation)
+//                }
                 textLayer.draw(in: context)
+                
                 let newImage = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
-                
+
                 if let newImage = newImage {
                     completion(.success(newImage))
                 } else {
@@ -157,6 +158,7 @@ class ImagePreviewViewModel {
             completion(.failure(.unableToCreateTextLayer))
             return
         }
+        // TODO: Figure out how to configure this more
         let text = selectedGoals.compactMap { $0.name }.joined(separator: "\n")
         labelText = text
         let bestFont = UIFont.bestFittingFont(for: text, in: textRect, fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
@@ -164,12 +166,12 @@ class ImagePreviewViewModel {
         paragraphStyle.alignment = .center
         
         let textLayer = CATextLayer()
+        textLayer.frame = textRect //CGRect(x: (textRect.origin.x * image.scale), y: (textRect.origin.y * image.scale), width: (textRect.width * image.scale), height: (textRect.height * image.scale))
+        textLayer.alignmentMode = .center
         textLayer.string = NSAttributedString(string: text, attributes: [ NSAttributedString.Key.font: bestFont,
                                                                           NSAttributedString.Key.paragraphStyle: paragraphStyle,
                                                                           NSAttributedString.Key.foregroundColor: UIColor.white])
-        if let rotation = textLayerRotation {
-            textLayer.transform = CATransform3DMakeRotation(rotation, 0, 0, 1)
-        }
+        
         completion(.success(textLayer))
     }
 }
