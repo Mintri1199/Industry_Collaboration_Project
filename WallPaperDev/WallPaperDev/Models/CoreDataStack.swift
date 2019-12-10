@@ -93,16 +93,44 @@ final class CoreDataStack {
         return goal
     }
     
-    func createMilestone(_ goal: Goal, _ name: String, _ progress: Double, _ target: Double) -> Milestone? {
+    func createMilestone(_ goal: Goal, _ name: String, _ progress: String, _ target: String) {
         let entity = NSEntityDescription.entity(forEntityName: "Milestone", in: context)
-        guard let unwrappedEntity = entity else { return nil }
+        guard let unwrappedEntity = entity,
+            let progress = Double(progress),
+            let target = Double(target) else {
+            return
+        }
         let milestone = Milestone(entity: unwrappedEntity, insertInto: context)
         milestone.name = name
         milestone.currentNumber = progress
         milestone.totalNumber = target
         goal.addToMilestones(milestone)
         saveContext()
-        return milestone
+    }
+    
+    func fetchMilestones() -> [Milestone] {
+        var milestoneArr: [Milestone] = []
+        let fetchRequest = NSFetchRequest<Milestone>(entityName: "Milestone")
+        do {
+            milestoneArr = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            #if DEBUG
+                print("Could not fetch. \(error), \(error.userInfo)")
+            #endif
+        }
+        return milestoneArr
+    }
+    
+    func updateMilestone(_ goal: Goal, _ name: String, _ progress: String, _ target: String) {
+        guard let progress = Double(progress), let target = Double(target) else { return }
+        let milestonesArr = fetchMilestones()
+        let milestone = milestonesArr[0]
+        goal.removeFromMilestones(milestonesArr[0])
+        milestone.name = name
+        milestone.currentNumber = progress
+        milestone.totalNumber = target
+        goal.addToMilestones(milestone)
+        saveContext()
     }
     
     func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {

@@ -75,9 +75,8 @@ extension CreateGoalViewController {
         }
         
         let goal = coreDataStack.createGoal(userGoalName, userGoalSummary)
-        if let unwrappedGoal = goal, let progress = Double(milestoneProgress), let target = Double(milestoneTarget) {
-            let milestone = coreDataStack.createMilestone(unwrappedGoal, milestoneName, progress, target)
-            print(milestone)
+        if let unwrappedGoal = goal {
+            coreDataStack.createMilestone(unwrappedGoal, milestoneName, milestoneProgress, milestoneTarget)
         }
         
         navigationController?.popViewController(animated: true)

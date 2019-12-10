@@ -61,9 +61,11 @@ class DetailGoalViewController: CreateGoalViewController {
             presentError()
             return
         }
-
-        viewModel.updateGoal(userGoalName, userGoalSummary)
         
+        if let name = createGoalView.milestoneNameTextField.text, let progress = createGoalView.milestoneCurNumberField.text, let target = createGoalView.milestoneTargetNumberField.text, let goal = viewModel.goal {
+            coreDataStack.updateMilestone(goal, name, progress, target)
+        }
+        viewModel.updateGoal(userGoalName, userGoalSummary)
         navigationController?.popViewController(animated: true)
     }
     
