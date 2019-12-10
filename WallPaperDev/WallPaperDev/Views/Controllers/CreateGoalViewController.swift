@@ -50,6 +50,8 @@ extension CreateGoalViewController {
         createGoalView.goalDescriptionTextView.delegate = self
         createGoalView.goalNameTextField.delegate = self
         createGoalView.milestoneNameTextField.delegate = self
+        createGoalView.milestoneCurNumberField.delegate = self
+        createGoalView.milestoneTargetNumberField.delegate = self
         self.view.addSubview(createGoalView)
     }
     

@@ -201,7 +201,9 @@ extension CreateGoalView {
     
     func shiftKeyboard(textField: UITextField) {
 
-        if textField == milestoneNameTextField {
+        if textField == milestoneNameTextField ||
+            textField == milestoneCurNumberField ||
+            textField == milestoneTargetNumberField {
             if self.frame.origin.y == 0 {
                 UIView.animate(withDuration: 0.25, animations: {
                     self.frame.origin.y -= self.keyboardHeight / 4
