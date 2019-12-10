@@ -31,6 +31,15 @@ class DetailGoalViewController: CreateGoalViewController {
     private func configTextFields(goal: Goal) {
         guard let unwrappedName = goal.name,
               let unwrappedDescription = goal.summary else { return }
+        let arr = goal.milestones?.allObjects
+        if let milestones = arr as? [Milestone] {
+            if !milestones.isEmpty {
+                createGoalView.milestoneNameTextField.text = milestones[0].name
+                createGoalView.milestoneCurNumberField.text = String(milestones[0].currentNumber)
+                createGoalView.milestoneTargetNumberField.text = String(milestones[0].totalNumber)
+            }
+        }
+        
         createGoalView.goalNameTextField.text = unwrappedName
         createGoalView.goalDescriptionTextView.text = unwrappedDescription
         createGoalView.goalDescriptionTextView.textColor = .black

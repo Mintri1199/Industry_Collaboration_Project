@@ -65,12 +65,21 @@ extension CreateGoalViewController {
               let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
                 return
         }
+        let milestoneName = createGoalView.milestoneNameTextField.text ?? ""
+        let milestoneProgress = createGoalView.milestoneCurNumberField.text ?? "0"
+        let milestoneTarget = createGoalView.milestoneTargetNumberField.text ?? "0"
         
         if userGoalName.isEmpty || userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
             presentError()
             return
         }
-        coreDataStack.createGoal(userGoalName, userGoalSummary)
+        
+        let goal = coreDataStack.createGoal(userGoalName, userGoalSummary)
+        if let unwrappedGoal = goal, let progress = Double(milestoneProgress), let target = Double(milestoneTarget) {
+            let milestone = coreDataStack.createMilestone(unwrappedGoal, milestoneName, progress, target)
+            print(milestone)
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     

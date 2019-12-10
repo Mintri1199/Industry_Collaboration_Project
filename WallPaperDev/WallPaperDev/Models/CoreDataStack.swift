@@ -81,19 +81,28 @@ final class CoreDataStack {
         saveContext()
     }
     
-    func createGoal(_ name: String, _ summary: String) {
+    func createGoal(_ name: String, _ summary: String) -> Goal? {
         let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
         guard let unwrappedEntity = entity else {
-            return
+            return nil
         }
-        
-//        let goal = NSManagedObject(entity: unwrappedEntity, insertInto: context)
-//        goal.setValue(name, forKey: "name")
-//        goal.setValue(summary, forKey: "summary")
         let goal = Goal(entity: unwrappedEntity, insertInto: context)
         goal.name = name
         goal.summary = summary
         saveContext()
+        return goal
+    }
+    
+    func createMilestone(_ goal: Goal, _ name: String, _ progress: Double, _ target: Double) -> Milestone? {
+        let entity = NSEntityDescription.entity(forEntityName: "Milestone", in: context)
+        guard let unwrappedEntity = entity else { return nil }
+        let milestone = Milestone(entity: unwrappedEntity, insertInto: context)
+        milestone.name = name
+        milestone.currentNumber = progress
+        milestone.totalNumber = target
+        goal.addToMilestones(milestone)
+        saveContext()
+        return milestone
     }
     
     func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {

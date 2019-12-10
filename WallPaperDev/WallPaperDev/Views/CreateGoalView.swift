@@ -75,7 +75,7 @@ extension CreateGoalView {
     }
     
     private func setupGoalNameLabel() {
-        goalNameLabel.text = "Goal Name"
+        goalNameLabel.text = "*Goal Name"
         NSLayoutConstraint.activate([
             goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             goalNameLabel.heightAnchor.constraint(equalToConstant: 30),
@@ -101,7 +101,7 @@ extension CreateGoalView {
     }
     
     private func setupDescriptionLabel() {
-        goalDescriptionLabel.text = "Goal Description"
+        goalDescriptionLabel.text = "*Goal Description"
         NSLayoutConstraint.activate([
             goalDescriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalDescriptionLabel.heightAnchor.constraint(equalToConstant: 30),
@@ -139,13 +139,6 @@ extension CreateGoalView {
     }
     
     private func milestoneNameTextFieldConstraints() {
-//        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
-//        toolbar.barStyle = .default
-//        toolbar.items = [
-//            UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(prevButtonTapped)),
-//            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-//            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
-//        ]
         milestoneNameTextField.placeholder = "3 training days"
         NSLayoutConstraint.activate([
             milestoneNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
