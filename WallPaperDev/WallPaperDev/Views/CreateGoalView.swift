@@ -11,6 +11,8 @@ import UIKit
 
 class CreateGoalView: UIView {
     
+    lazy var keyboardHeight: CGFloat = 0
+    
     // MARK: - Custom UIViews
     lazy var goalNameLabel = BlueLabel(frame: .zero)
     lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
@@ -28,6 +30,7 @@ class CreateGoalView: UIView {
         super.init(frame: frame)
         self.backgroundColor =  .foregroundWhite
         setupViews()
+        setupKeyboardNotifications()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,8 +38,16 @@ class CreateGoalView: UIView {
     }
 }
 
-// MARK: - Setup UI functions
 extension CreateGoalView {
+    
+    private func setupKeyboardNotifications() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.addGestureRecognizer(tap)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    // MARK: - Setup UI functions
     
     private func setupViews() {
         addSubview(goalNameLabel)
@@ -191,6 +202,39 @@ extension CreateGoalView {
             createButton.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 100),
             createButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+    }
+    
+    // MARK: Keyboard Functionality
+    
+    func shiftKeyboard(textField: UITextField) {
+
+        if textField == milestoneNameTextField {
+            if self.frame.origin.y == 0 {
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.frame.origin.y -= self.keyboardHeight / 4
+                })
+            }
+        } else {
+           UIView.animate(withDuration: 0.25, animations: {
+                self.frame.origin.y = 0
+            })
+        }
+    }
+    
+    @objc func dismissKeyboard() {
+           self.endEditing(true)
+    }
+    
+    @objc func keyboardWillChange(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            keyboardHeight = keyboardSize.height
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.frame.origin.y != 0 {
+            self.frame.origin.y = 0
+        }
     }
     
     @objc private func nextButtonTapped() {

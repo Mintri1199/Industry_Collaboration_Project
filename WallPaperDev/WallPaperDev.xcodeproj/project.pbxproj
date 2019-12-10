@@ -68,7 +68,7 @@
 		5DFE381F239EF0D9005BAA51 /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE381B239EF0D9005BAA51 /* Goal+CoreDataProperties.swift */; };
 		5DFE3820239EF0D9005BAA51 /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE381C239EF0D9005BAA51 /* Milestone+CoreDataClass.swift */; };
 		5DFE3821239EF0D9005BAA51 /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE381D239EF0D9005BAA51 /* Milestone+CoreDataProperties.swift */; };
-		5DFE3823239EF899005BAA51 /* MilestoneTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE3822239EF899005BAA51 /* MilestoneTextField.swift */; };
+		5DFE3823239EF899005BAA51 /* MilestoneNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFE3822239EF899005BAA51 /* MilestoneNumberField.swift */; };
 		5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B95233D64760077F712 /* HomeViewModel.swift */; };
 		5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
 		A08D33C462BFF6682E9EB0DB /* Pods_WallPaperDevTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */; };
@@ -156,7 +156,7 @@
 		5DFE381B239EF0D9005BAA51 /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5DFE381C239EF0D9005BAA51 /* Milestone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataClass.swift"; sourceTree = "<group>"; };
 		5DFE381D239EF0D9005BAA51 /* Milestone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		5DFE3822239EF899005BAA51 /* MilestoneTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneTextField.swift; sourceTree = "<group>"; };
+		5DFE3822239EF899005BAA51 /* MilestoneNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneNumberField.swift; sourceTree = "<group>"; };
 		5DFF6B95233D64760077F712 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5DFF6B97233D7C460077F712 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDevTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,7 +275,7 @@
 				44B5660B234D177400DEBB86 /* GoalNameTextField.swift */,
 				44B56607234D168C00DEBB86 /* CreateGoalView.swift */,
 				44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */,
-				5DFE3822239EF899005BAA51 /* MilestoneTextField.swift */,
+				5DFE3822239EF899005BAA51 /* MilestoneNumberField.swift */,
 			);
 			path = "CreateGoal Views";
 			sourceTree = "<group>";
@@ -685,7 +685,7 @@
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
 				5DFE381E239EF0D9005BAA51 /* Goal+CoreDataClass.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
-				5DFE3823239EF899005BAA51 /* MilestoneTextField.swift in Sources */,
+				5DFE3823239EF899005BAA51 /* MilestoneNumberField.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,

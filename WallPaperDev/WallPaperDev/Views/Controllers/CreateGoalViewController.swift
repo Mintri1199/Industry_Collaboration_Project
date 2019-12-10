@@ -48,7 +48,8 @@ extension CreateGoalViewController {
     private func setupCreateGoalView() {
         createGoalView.frame = self.view.frame
         createGoalView.goalDescriptionTextView.delegate = self
-        createGoalView.goalNameTextField.delegate = self 
+        createGoalView.goalNameTextField.delegate = self
+        createGoalView.milestoneNameTextField.delegate = self
         self.view.addSubview(createGoalView)
     }
     
@@ -105,5 +106,9 @@ extension CreateGoalViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         createGoalView.goalDescriptionTextView.becomeFirstResponder()
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        createGoalView.shiftKeyboard(textField: textField)
     }
 }
