@@ -19,6 +19,7 @@ class CreateGoalView: UIView {
     lazy var milestoneTargetNumberLabel = BlueLabel(frame: .zero)
     lazy var createButton = BigBlueButton(frame: .zero)
     lazy var goalNameTextField = GoalNameTextField(frame: .zero)
+    lazy var milestoneNameTextField = GoalNameTextField(frame: .zero)
     lazy var milestoneCurNumberField = MilestoneNumberField(frame: .zero)
     lazy var milestoneTargetNumberField = MilestoneNumberField(frame: .zero)
     lazy var goalDescriptionTextView = GoalDescriptionTextView(frame: .zero, textContainer: nil)
@@ -42,11 +43,23 @@ extension CreateGoalView {
         addSubview(goalNameTextField)
         addSubview(goalDescriptionLabel)
         addSubview(goalDescriptionTextView)
+        addSubview(milestoneNameLabel)
+        addSubview(milestoneNameTextField)
+        addSubview(milestoneCurNumberLabel)
+        addSubview(milestoneCurNumberField)
+        addSubview(milestoneTargetNumberLabel)
+        addSubview(milestoneTargetNumberField)
         addSubview(createButton)
         setupGoalNameLabel()
         goalNameTextFieldConstraints()
         setupDescriptionLabel()
         goalDescriptionTextViewConstraints()
+        setupMilestoneNameLabel()
+        milestoneNameTextFieldConstraints()
+        setupMilestoneCurNumberLabel()
+        curNumberTextFieldConstraints()
+        setupMilestoneTargetNumberLabel()
+        targetNumberTextFieldConstraints()
         setupBlueButton()
     }
     
@@ -82,7 +95,7 @@ extension CreateGoalView {
             goalDescriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalDescriptionLabel.heightAnchor.constraint(equalToConstant: 30),
             goalDescriptionLabel.topAnchor.constraint(equalToSystemSpacingBelow: goalNameTextField.bottomAnchor,
-                                                      multiplier: 3),
+                                                      multiplier: 2),
             goalDescriptionLabel.leftAnchor.constraint(equalTo: goalNameTextField.leftAnchor)
             ])
     }
@@ -98,10 +111,76 @@ extension CreateGoalView {
         goalDescriptionTextView.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
             goalDescriptionTextView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
-            goalDescriptionTextView.heightAnchor.constraint(equalTo: goalNameTextField.heightAnchor, multiplier: 3),
+            goalDescriptionTextView.heightAnchor.constraint(equalTo: goalNameTextField.heightAnchor, multiplier: 2),
             goalDescriptionTextView.topAnchor.constraint(equalToSystemSpacingBelow: goalDescriptionLabel.topAnchor, multiplier: 6),
             goalDescriptionTextView.leftAnchor.constraint(equalTo: goalDescriptionLabel.leftAnchor)
             ])
+    }
+    
+    private func setupMilestoneNameLabel() {
+        milestoneNameLabel.text = "Milestone Name"
+        NSLayoutConstraint.activate([
+            milestoneNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            milestoneNameLabel.heightAnchor.constraint(equalToConstant: 30),
+            milestoneNameLabel.leftAnchor.constraint(equalTo: goalDescriptionLabel.leftAnchor),
+            milestoneNameLabel.topAnchor.constraint(equalToSystemSpacingBelow: goalDescriptionTextView.bottomAnchor, multiplier: 2)
+        ])
+    }
+    
+    private func milestoneNameTextFieldConstraints() {
+//        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+//        toolbar.barStyle = .default
+//        toolbar.items = [
+//            UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(prevButtonTapped)),
+//            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+//            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+//        ]
+        milestoneNameTextField.placeholder = "3 training days"
+        NSLayoutConstraint.activate([
+            milestoneNameTextField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
+            milestoneNameTextField.heightAnchor.constraint(equalToConstant: 50),
+            milestoneNameTextField.leftAnchor.constraint(equalTo: milestoneNameLabel.leftAnchor),
+            milestoneNameTextField.topAnchor.constraint(equalToSystemSpacingBelow: milestoneNameLabel.topAnchor, multiplier: 6)
+        ])
+    }
+    
+    private func setupMilestoneCurNumberLabel() {
+        milestoneCurNumberLabel.text = "Milestone Progress"
+        NSLayoutConstraint.activate([
+            milestoneCurNumberLabel.topAnchor.constraint(equalToSystemSpacingBelow: milestoneNameTextField.bottomAnchor, multiplier: 2),
+            milestoneCurNumberLabel.leftAnchor.constraint(equalTo: milestoneNameLabel.leftAnchor),
+            milestoneCurNumberLabel.heightAnchor.constraint(equalToConstant: 30),
+            milestoneCurNumberLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
+        ])
+    }
+    
+    private func curNumberTextFieldConstraints() {
+        milestoneCurNumberField.placeholder = "0"
+        NSLayoutConstraint.activate([
+            milestoneCurNumberField.heightAnchor.constraint(equalToConstant: 30),
+            milestoneCurNumberField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2),
+            milestoneCurNumberField.topAnchor.constraint(equalTo: milestoneCurNumberLabel.topAnchor),
+            milestoneCurNumberField.leftAnchor.constraint(equalTo: milestoneCurNumberLabel.rightAnchor)
+        ])
+    }
+    
+    private func setupMilestoneTargetNumberLabel() {
+        milestoneTargetNumberLabel.text = "Milestone Target"
+        NSLayoutConstraint.activate([
+            milestoneTargetNumberLabel.topAnchor.constraint(equalToSystemSpacingBelow: milestoneCurNumberField.bottomAnchor, multiplier: 2),
+            milestoneTargetNumberLabel.leftAnchor.constraint(equalTo: milestoneNameLabel.leftAnchor),
+            milestoneTargetNumberLabel.heightAnchor.constraint(equalToConstant: 30),
+            milestoneTargetNumberLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6)
+        ])
+    }
+    
+    private func targetNumberTextFieldConstraints() {
+        NSLayoutConstraint.activate([
+            milestoneTargetNumberField.heightAnchor.constraint(equalToConstant: 30),
+            milestoneTargetNumberField.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.2),
+            milestoneTargetNumberField.topAnchor.constraint(equalTo: milestoneTargetNumberLabel.topAnchor),
+            milestoneTargetNumberField.leftAnchor.constraint(equalTo: milestoneTargetNumberLabel.rightAnchor)
+        ])
     }
     
     private func setupBlueButton() {
@@ -111,7 +190,7 @@ extension CreateGoalView {
             createButton.heightAnchor.constraint(equalToConstant: 50),
             createButton.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 100),
             createButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-            ])
+        ])
     }
     
     @objc private func nextButtonTapped() {
