@@ -1,0 +1,867 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0959BA6D598D9AA9D805906E8135D9BF /* Pods-WallPaperDevTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE76F976E1B965E3DDCBEEBD511CC032 /* Pods-WallPaperDevTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14E1557C20B3ECDDE6B05CAA077C6A65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		39C1672A0508513EAC095CE24CA86868 /* Pods-WallPaperDev-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA077F0A9B6F9869485F54043AA5A40A /* Pods-WallPaperDev-dummy.m */; };
+		3AB3B17C3F049EAF678DE4C53BD7E5E4 /* Pods-WallPaperDevTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C00E3F0C3DA6BC06E7CC220087542 /* Pods-WallPaperDevTests-dummy.m */; };
+		4F146BF2312CEB7E84068A54A7C53D47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		701ED8E979A9C89FA387445D7FCAADF7 /* Pods-WallPaperDev-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B67F0A52C31FA194D3FE89CEA084CA9D /* Pods-WallPaperDev-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9E3A6C71556C826F0F4664B2F09C0CA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		A8B32ECFC8CFF3FC2D3AC37B842A502D /* Pods-WallPaperDevUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BF42D29428E5371C9CFDDFAA4A9C123C /* Pods-WallPaperDevUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F67334AB1CFE04598B76FE3E9FA60F4E /* Pods-WallPaperDevUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4BDEC9009A8E29C1FE10A95D757C8 /* Pods-WallPaperDevUITests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52BB45F57ACFD08405D98E0355AA255F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD95E178619E25A4E5662AC24FB1032;
+			remoteInfo = "Pods-WallPaperDev";
+		};
+		5D3B642AE58FAA0A9B13621D6B8FAA9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD95E178619E25A4E5662AC24FB1032;
+			remoteInfo = "Pods-WallPaperDev";
+		};
+		B3419F277CA594264AD9C12B2DF9298E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2FC6559D66CB019166891CD26B75845A /* Pods-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3045BCEF68E494C7D05F8DB167208943 /* Pods-WallPaperDevTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevTests-Info.plist"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		397F6140767FFBCA9555D19714734D25 /* Pods-WallPaperDevUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		3BF0A27BA853AD3503F8BE26CAF75941 /* Pods-WallPaperDevUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4290923638D7494C719FFCF5BEB61085 /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
+		61F95470F2EEC4B8DC83E5DE6C312CE8 /* Pods-WallPaperDevTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDevTests.modulemap"; sourceTree = "<group>"; };
+		6520D0D7E04D6C90724BF7F4837D417A /* Pods-WallPaperDev.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDev.modulemap"; sourceTree = "<group>"; };
+		6CD04C71B2CCE253D6C2A47BCBA71BA1 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
+		7F784D83519914839E915518DE527BCE /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
+		855C64AC6A300AB20473CD6062A8FF10 /* Pods-WallPaperDevUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDevUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		85ACEE927DF8650CBA30B3E72D4098AF /* Pods-WallPaperDevTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
+		8DC4BDEC9009A8E29C1FE10A95D757C8 /* Pods-WallPaperDevUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDevUITests-dummy.m"; sourceTree = "<group>"; };
+		961C00E3F0C3DA6BC06E7CC220087542 /* Pods-WallPaperDevTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDevTests-dummy.m"; sourceTree = "<group>"; };
+		996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallPaperDev.framework; path = "Pods-WallPaperDev.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B43AF595A694E557CEAD1C2DA4371E8 /* Pods-WallPaperDevUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevUITests-Info.plist"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DC03FCE61A358608D7DB81C03416D1C /* Pods-WallPaperDev-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDev-acknowledgements.markdown"; sourceTree = "<group>"; };
+		A41B3C4F0B1235A434EFB11700C3C804 /* Pods_WallPaperDevUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallPaperDevUITests.framework; path = "Pods-WallPaperDevUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A95D57113A8E72ABF3E9EEC2B4FA7D9E /* Pods_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallPaperDevTests.framework; path = "Pods-WallPaperDevTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B28C61A0215C6F534318062DE9F86E91 /* Pods-WallPaperDevUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDevUITests.modulemap"; sourceTree = "<group>"; };
+		B67F0A52C31FA194D3FE89CEA084CA9D /* Pods-WallPaperDev-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDev-umbrella.h"; sourceTree = "<group>"; };
+		BA077F0A9B6F9869485F54043AA5A40A /* Pods-WallPaperDev-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDev-dummy.m"; sourceTree = "<group>"; };
+		BF42D29428E5371C9CFDDFAA4A9C123C /* Pods-WallPaperDevUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDevUITests-umbrella.h"; sourceTree = "<group>"; };
+		C15F994836B67F8C385D86346A66EBD4 /* Pods-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C84C62A75FBDEE74388C90E21072F33C /* Pods-WallPaperDev-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDev-Info.plist"; sourceTree = "<group>"; };
+		ECBC39B41363B3C5C14EA0A0113B3030 /* Pods-WallPaperDevTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDevTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F335FD2D87EF7BEEBA5B9CAE16280B1E /* Pods-WallPaperDev-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDev-acknowledgements.plist"; sourceTree = "<group>"; };
+		FE76F976E1B965E3DDCBEEBD511CC032 /* Pods-WallPaperDevTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDevTests-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1645D39E3527B0A7BCD558AC375FBF54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E3A6C71556C826F0F4664B2F09C0CA6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5408449DA39F0DBF57051F6AB409B591 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14E1557C20B3ECDDE6B05CAA077C6A65 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95054C7CFBAA558B7580B7C960D6887B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F146BF2312CEB7E84068A54A7C53D47 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E9D37D685A1CF88F53BCFEDEDE92FC8 /* Pods-WallPaperDev */ = {
+			isa = PBXGroup;
+			children = (
+				6520D0D7E04D6C90724BF7F4837D417A /* Pods-WallPaperDev.modulemap */,
+				9DC03FCE61A358608D7DB81C03416D1C /* Pods-WallPaperDev-acknowledgements.markdown */,
+				F335FD2D87EF7BEEBA5B9CAE16280B1E /* Pods-WallPaperDev-acknowledgements.plist */,
+				BA077F0A9B6F9869485F54043AA5A40A /* Pods-WallPaperDev-dummy.m */,
+				C84C62A75FBDEE74388C90E21072F33C /* Pods-WallPaperDev-Info.plist */,
+				B67F0A52C31FA194D3FE89CEA084CA9D /* Pods-WallPaperDev-umbrella.h */,
+				4290923638D7494C719FFCF5BEB61085 /* Pods-WallPaperDev.debug.xcconfig */,
+				7F784D83519914839E915518DE527BCE /* Pods-WallPaperDev.release.xcconfig */,
+			);
+			name = "Pods-WallPaperDev";
+			path = "Target Support Files/Pods-WallPaperDev";
+			sourceTree = "<group>";
+		};
+		43ACCE35FA95BB5F75405733B0F7D771 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */,
+				A95D57113A8E72ABF3E9EEC2B4FA7D9E /* Pods_WallPaperDevTests.framework */,
+				A41B3C4F0B1235A434EFB11700C3C804 /* Pods_WallPaperDevUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E22EF0549456EBDB6A1AD7906ED8A99 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E9D37D685A1CF88F53BCFEDEDE92FC8 /* Pods-WallPaperDev */,
+				E44C2557B684D3F0EB2F291FB6AE3EEA /* Pods-WallPaperDevTests */,
+				EF7E094498F4F1C428CE27B0342ED861 /* Pods-WallPaperDevUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				965877409E01FB3D85D85E90E6B30185 /* Pods */,
+				43ACCE35FA95BB5F75405733B0F7D771 /* Products */,
+				6E22EF0549456EBDB6A1AD7906ED8A99 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E44C2557B684D3F0EB2F291FB6AE3EEA /* Pods-WallPaperDevTests */ = {
+			isa = PBXGroup;
+			children = (
+				61F95470F2EEC4B8DC83E5DE6C312CE8 /* Pods-WallPaperDevTests.modulemap */,
+				ECBC39B41363B3C5C14EA0A0113B3030 /* Pods-WallPaperDevTests-acknowledgements.markdown */,
+				85ACEE927DF8650CBA30B3E72D4098AF /* Pods-WallPaperDevTests-acknowledgements.plist */,
+				961C00E3F0C3DA6BC06E7CC220087542 /* Pods-WallPaperDevTests-dummy.m */,
+				3045BCEF68E494C7D05F8DB167208943 /* Pods-WallPaperDevTests-Info.plist */,
+				FE76F976E1B965E3DDCBEEBD511CC032 /* Pods-WallPaperDevTests-umbrella.h */,
+				C15F994836B67F8C385D86346A66EBD4 /* Pods-WallPaperDevTests.debug.xcconfig */,
+				6CD04C71B2CCE253D6C2A47BCBA71BA1 /* Pods-WallPaperDevTests.release.xcconfig */,
+			);
+			name = "Pods-WallPaperDevTests";
+			path = "Target Support Files/Pods-WallPaperDevTests";
+			sourceTree = "<group>";
+		};
+		EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
+		EF7E094498F4F1C428CE27B0342ED861 /* Pods-WallPaperDevUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B28C61A0215C6F534318062DE9F86E91 /* Pods-WallPaperDevUITests.modulemap */,
+				855C64AC6A300AB20473CD6062A8FF10 /* Pods-WallPaperDevUITests-acknowledgements.markdown */,
+				397F6140767FFBCA9555D19714734D25 /* Pods-WallPaperDevUITests-acknowledgements.plist */,
+				8DC4BDEC9009A8E29C1FE10A95D757C8 /* Pods-WallPaperDevUITests-dummy.m */,
+				9B43AF595A694E557CEAD1C2DA4371E8 /* Pods-WallPaperDevUITests-Info.plist */,
+				BF42D29428E5371C9CFDDFAA4A9C123C /* Pods-WallPaperDevUITests-umbrella.h */,
+				3BF0A27BA853AD3503F8BE26CAF75941 /* Pods-WallPaperDevUITests.debug.xcconfig */,
+				2FC6559D66CB019166891CD26B75845A /* Pods-WallPaperDevUITests.release.xcconfig */,
+			);
+			name = "Pods-WallPaperDevUITests";
+			path = "Target Support Files/Pods-WallPaperDevUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5E9BFCDFA10DDD31B514A498C39F3B19 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0959BA6D598D9AA9D805906E8135D9BF /* Pods-WallPaperDevTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5429B9D95082EA6F495EAD55B7DFD2C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				701ED8E979A9C89FA387445D7FCAADF7 /* Pods-WallPaperDev-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B868E66C883231C683ADC22AAA50B59C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8B32ECFC8CFF3FC2D3AC37B842A502D /* Pods-WallPaperDevUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		41278748D541570A3BE0D172376AF16E /* Pods-WallPaperDevUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BD8A612301A97BA2596D85D8224FDE9 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevUITests" */;
+			buildPhases = (
+				B868E66C883231C683ADC22AAA50B59C /* Headers */,
+				B234EC4F7EE24A7C3704C3AD7829E8FB /* Sources */,
+				5408449DA39F0DBF57051F6AB409B591 /* Frameworks */,
+				DB05D4949A8E3695ECAE169667623320 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7169BE7C63FEC74CDAE361091EA0A0B7 /* PBXTargetDependency */,
+			);
+			name = "Pods-WallPaperDevUITests";
+			productName = "Pods-WallPaperDevUITests";
+			productReference = A41B3C4F0B1235A434EFB11700C3C804 /* Pods_WallPaperDevUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 38F96111AD9632BB633035E4DF0F0E3C /* Build configuration list for PBXNativeTarget "Pods-WallPaperDev" */;
+			buildPhases = (
+				B5429B9D95082EA6F495EAD55B7DFD2C /* Headers */,
+				008D1BD4F518DA982F31D3ECEB110430 /* Sources */,
+				1645D39E3527B0A7BCD558AC375FBF54 /* Frameworks */,
+				240A742969FEF1D9CBCCB64969AE6602 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F27EE4FF675968F3CEFE4D57CADA3831 /* PBXTargetDependency */,
+			);
+			name = "Pods-WallPaperDev";
+			productName = "Pods-WallPaperDev";
+			productReference = 996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E9E2893696FFEAA06990A1D169957DBF /* Pods-WallPaperDevTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC3A0D1F528C75AA54E66441181E21A4 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevTests" */;
+			buildPhases = (
+				5E9BFCDFA10DDD31B514A498C39F3B19 /* Headers */,
+				F170E2652CB000A8E5CED0D0ED217DD4 /* Sources */,
+				95054C7CFBAA558B7580B7C960D6887B /* Frameworks */,
+				291301D3E32D885B919D6AC862742A98 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D003CF39921219E7D16A694FBF627A37 /* PBXTargetDependency */,
+			);
+			name = "Pods-WallPaperDevTests";
+			productName = "Pods-WallPaperDevTests";
+			productReference = A95D57113A8E72ABF3E9EEC2B4FA7D9E /* Pods_WallPaperDevTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 43ACCE35FA95BB5F75405733B0F7D771 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */,
+				E9E2893696FFEAA06990A1D169957DBF /* Pods-WallPaperDevTests */,
+				41278748D541570A3BE0D172376AF16E /* Pods-WallPaperDevUITests */,
+				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		240A742969FEF1D9CBCCB64969AE6602 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		291301D3E32D885B919D6AC862742A98 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB05D4949A8E3695ECAE169667623320 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		008D1BD4F518DA982F31D3ECEB110430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39C1672A0508513EAC095CE24CA86868 /* Pods-WallPaperDev-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B234EC4F7EE24A7C3704C3AD7829E8FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F67334AB1CFE04598B76FE3E9FA60F4E /* Pods-WallPaperDevUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F170E2652CB000A8E5CED0D0ED217DD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AB3B17C3F049EAF678DE4C53BD7E5E4 /* Pods-WallPaperDevTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7169BE7C63FEC74CDAE361091EA0A0B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-WallPaperDev";
+			target = 8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */;
+			targetProxy = 52BB45F57ACFD08405D98E0355AA255F /* PBXContainerItemProxy */;
+		};
+		D003CF39921219E7D16A694FBF627A37 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-WallPaperDev";
+			target = 8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */;
+			targetProxy = 5D3B642AE58FAA0A9B13621D6B8FAA9E /* PBXContainerItemProxy */;
+		};
+		F27EE4FF675968F3CEFE4D57CADA3831 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = B3419F277CA594264AD9C12B2DF9298E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		14BA0FAA5C967C8C93CCDF1E32584C6B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F784D83519914839E915518DE527BCE /* Pods-WallPaperDev.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		204B8AEA4AE90A551A1768B355C2F9F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		3CCC6195EDBEE5DA2A49DF962113BE16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		3FCC13D0B9B55FCC07D5C59D8EC3D02B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BF0A27BA853AD3503F8BE26CAF75941 /* Pods-WallPaperDevUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		84D7C4574E8F0F3095623F0E06F5B402 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8763EC6DEBA101601D88D6918E43B00C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CD04C71B2CCE253D6C2A47BCBA71BA1 /* Pods-WallPaperDevTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		91BC3602873615C4C01CCB4F7CD362C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C15F994836B67F8C385D86346A66EBD4 /* Pods-WallPaperDevTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B5DCEADD10DE76230EAE605D060EB32F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4290923638D7494C719FFCF5BEB61085 /* Pods-WallPaperDev.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DEED47E09AF743F48544C1C4FEADEF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E44E5006DB22A427A997ECFB48C82B07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FC6559D66CB019166891CD26B75845A /* Pods-WallPaperDevUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		38F96111AD9632BB633035E4DF0F0E3C /* Build configuration list for PBXNativeTarget "Pods-WallPaperDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5DCEADD10DE76230EAE605D060EB32F /* Debug */,
+				14BA0FAA5C967C8C93CCDF1E32584C6B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BD8A612301A97BA2596D85D8224FDE9 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FCC13D0B9B55FCC07D5C59D8EC3D02B /* Debug */,
+				E44E5006DB22A427A997ECFB48C82B07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				204B8AEA4AE90A551A1768B355C2F9F0 /* Debug */,
+				3CCC6195EDBEE5DA2A49DF962113BE16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DEED47E09AF743F48544C1C4FEADEF47 /* Debug */,
+				84D7C4574E8F0F3095623F0E06F5B402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC3A0D1F528C75AA54E66441181E21A4 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91BC3602873615C4C01CCB4F7CD362C8 /* Debug */,
+				8763EC6DEBA101601D88D6918E43B00C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
