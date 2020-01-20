@@ -12,16 +12,16 @@ import UIKit
 extension UINavigationBar {
     func configLargeText(length: String) -> [NSAttributedString.Key: Any] {
         return length.count > 12 ?  [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                     NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 30) as Any] :
+                                     NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black32 as Any] :
                                     [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                     NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 40) as Any]
+                                     NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black40 as Any]
     }
     
     func configGenericNavBar(text: String) {
         let attributes = text.count > 12 ? [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                            NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 30) as Any] :
+                                            NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black32 as Any] :
                                            [NSAttributedString.Key.foregroundColor: UIColor.white,
-                                            NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 40) as Any]
+                                            NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black40 as Any]
         if #available(iOS 13, *) {
             backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
             largeTitleTextAttributes = attributes

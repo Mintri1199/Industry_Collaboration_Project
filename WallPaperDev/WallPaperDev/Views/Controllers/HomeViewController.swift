@@ -158,7 +158,7 @@ extension HomeViewController: UITableViewDataSource {
         let label = PaddingLabel(frame: view.frame)
         label.frame = view.frame
         label.text = "Goals"
-        label.font = UIFont(name: "Avenir-Heavy", size: 25)
+      label.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy24
         label.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
         return label
     }

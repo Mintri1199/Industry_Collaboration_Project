@@ -14,7 +14,7 @@ class HomeBackgroundView: UIView {
         let label = UILabel()
         label.text = "Good Morning"
         label.textColor = .white
-        label.font = UIFont(name: "Avenir-Black", size: 40)
+        label.font = ApplicationDependency.manager.currentTheme.fontSchema.black40
         label.textAlignment = .left
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
         label.numberOfLines = 0
@@ -24,7 +24,7 @@ class HomeBackgroundView: UIView {
     private let currentDateLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = UIFont(name: "Avenir-Medium", size: 25)
+        label.font = ApplicationDependency.manager.currentTheme.fontSchema.medium24
         label.textAlignment = .left
         return label
     }()

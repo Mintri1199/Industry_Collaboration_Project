@@ -24,7 +24,7 @@ final class AddButton: UIButton {
     // TODO: (alex) Flagging color usage
     self.setTitleColor(.white, for: .normal)
     self.setTitleColor(.darkGray, for: .highlighted)
-    self.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 20)
+    self.titleLabel?.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy20
 
     self.layer.cornerRadius = self.bounds.width / 2
   }

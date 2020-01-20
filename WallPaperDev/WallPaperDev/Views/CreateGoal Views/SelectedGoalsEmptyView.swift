@@ -25,6 +25,7 @@ class SelectedGoalsEmptyView: UIView {
     
     private func setupLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+      // TODO: Flagging font
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.text = "You didn't select a goal"

@@ -17,6 +17,8 @@ class ImageSelectionCell: UICollectionViewCell {
         var label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Show more"
+
+      // TODO: Flagging font
         label.font = UIFont.systemFont(ofSize: 18)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center

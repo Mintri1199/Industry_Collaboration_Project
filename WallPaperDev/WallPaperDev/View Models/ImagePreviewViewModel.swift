@@ -89,7 +89,8 @@ class ImagePreviewViewModel {
         // Configure the attributes and font for the string
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        
+
+      // TODO: Flagging font
         let bestFont = UIFont.bestFittingFont(for: goalsText,
                                               in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width * 0.65, height: cropRect.size.height / 6)),
                                               fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
