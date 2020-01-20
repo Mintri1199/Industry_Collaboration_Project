@@ -1,5 +1,6 @@
-# Project Title
-
+# Kabegami (insert image icon here) 
+![alt text][img]
+[img]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/readmeicon.png
 One Paragraph of project description goes here
 
 ## Getting Started
@@ -32,56 +33,40 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
 
-Explain how to run the automated tests for this system
+### Screenshots
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
+
+##### Dependencies
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Contributors
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Jackson Ho** - [Github](https://github.com/Mintri1199)
+* **Stephen Ouyang** - [Github](https://github.com/Xisouyang)
+* **Jamar Gibbs** - [Github](https://github.com/j-n4m4573)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [license.txt][license] file for details
 
-## Acknowledgments
+[license]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/license.txt
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+## Current Features
+
+
+## Future features
+
+- [ ] Hat tip to anyone whose code was used
+
+- [ ] Hat tip to anyone whose code was used
+
+- [ ] Hat tip to anyone whose code was used
