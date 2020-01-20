@@ -10,7 +10,7 @@ import UIKit
 
 class WelcomeCollectionView: UICollectionView {
     private let cellId = "WelcomeCell"
-    private let imageName = ["welcome", "todo"]
+    private let imageName = ["tutorial_welcome_banner", "tutorial_todo_banner"]
     private let headerText = ["Welcome to Kamigami", "Write it Down"]
     private let subheaderText = ["We help you keep organize and keep track of your goals",
                                  "Start your goal by writing them down. Update your progress anytime"]

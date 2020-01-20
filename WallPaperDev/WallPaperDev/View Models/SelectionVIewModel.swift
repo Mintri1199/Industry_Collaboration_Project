@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 
 class SelectionViewModel {
-    let imageArray: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3")]
+    let imageArray: [UIImage?] = [UIImage(named: "background_1"),
+                                  UIImage(named: "background_2"),
+                                  UIImage(named: "background_1")]
     
     var selectedGoals: [Goal] = []
     

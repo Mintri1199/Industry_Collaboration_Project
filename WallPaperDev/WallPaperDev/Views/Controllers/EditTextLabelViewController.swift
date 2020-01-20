@@ -137,14 +137,14 @@ extension EditTextLabelViewController {
         let cameraImageLayer = CALayer()
         cameraImageLayer.contentsGravity = .resizeAspect
         cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
-        cameraImageLayer.contents = UIImage(named: "camera")?.cgImage
+        cameraImageLayer.contents = UIImage(named: "background_preview_camera")?.cgImage
         cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
         
         let flashflightImageLayer = CALayer()
         flashflightImageLayer.contentsGravity = .resizeAspect
         flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
         flashflightImageLayer.position = CGPoint(x: flashlightLayer.bounds.midX, y: flashlightLayer.bounds.midY)
-        flashflightImageLayer.contents = UIImage(named: "flashlight")?.cgImage
+        flashflightImageLayer.contents = UIImage(named: "background_preview_flashlight")?.cgImage
         
         cameraLayer.addSublayer(cameraImageLayer)
         flashlightLayer.addSublayer(flashflightImageLayer)
