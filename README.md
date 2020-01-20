@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/readmeicon.png)
 
-An iOS application that let's the user generate a picture with their personal goals on it for their lock screen background.
+An iOS application that lets the user generate a picture with their personal goals on it for their lock screen background.
 
 [TEST FLIGHT](https://testflight.apple.com/join/zNGYLyia)
 
