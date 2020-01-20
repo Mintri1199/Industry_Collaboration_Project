@@ -1,5 +1,6 @@
 # Kabegami (insert image icon here) 
 ![alt text][img]
+
 [img]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/readmeicon.png
 One Paragraph of project description goes here
 
