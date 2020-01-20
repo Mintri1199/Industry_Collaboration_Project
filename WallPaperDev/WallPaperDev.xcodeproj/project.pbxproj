@@ -73,6 +73,10 @@
 		A08D33C462BFF6682E9EB0DB /* Pods_WallPaperDevTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */; };
 		FA1CCF6123D6439900B47ED4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA1CCF6323D6439900B47ED4 /* Localizable.strings */; };
 		FA1CCF6723D6444600B47ED4 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF6623D6444600B47ED4 /* Localized.swift */; };
+		FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
+		FA1CCF4B23D6281E00B47ED4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
+		FA1CCF4D23D6282700B47ED4 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */; };
+		FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +172,10 @@
 		FA1CCF6223D6439900B47ED4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA1CCF6423D6439C00B47ED4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		FA1CCF6623D6444600B47ED4 /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		FA1CCF4823D6268B00B47ED4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchema.swift; sourceTree = "<group>"; };
+		FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSchema.swift; sourceTree = "<group>"; };
 		FE4DDD5BE3762882F307AD8A /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -434,6 +442,10 @@
 			isa = PBXGroup;
 			children = (
 				FA1CCF6623D6444600B47ED4 /* Localized.swift */,
+				FA1CCF4823D6268B00B47ED4 /* Theme.swift */,
+				FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */,
+				FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */,
+				FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -714,10 +726,13 @@
 				44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */,
 				44C0B52423302C920015110B /* UINavigation+Extensions.swift in Sources */,
 				443F7E48235683F700102331 /* MainCoordinator.swift in Sources */,
+				FA1CCF4B23D6281E00B47ED4 /* ColorSchema.swift in Sources */,
 				5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */,
+				FA1CCF4D23D6282700B47ED4 /* ImageAsset.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
 				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
+				FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 				5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */,
 				5DD33D48233D43A800137E3C /* CoreDataStack.swift in Sources */,
@@ -726,6 +741,7 @@
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
+				FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
