@@ -346,6 +346,7 @@
 		5D03ED082328161E006068CB /* WallPaperDev */ = {
 			isa = PBXGroup;
 			children = (
+				FA1CCF4723D60F8500B47ED4 /* Helpers */,
 				443F7E462356827500102331 /* Coordinator */,
 				44671678232DC5D9005C910E /* Models */,
 				44671679232DC5E5005C910E /* View Models */,
@@ -411,6 +412,13 @@
 				5D03ED1223281620006068CB /* LaunchScreen.storyboard */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		FA1CCF4723D60F8500B47ED4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
