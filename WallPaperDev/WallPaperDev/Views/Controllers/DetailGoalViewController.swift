@@ -33,7 +33,7 @@ class DetailGoalViewController: CreateGoalViewController {
               let unwrappedDescription = goal.summary else { return }
         createGoalView.goalNameTextField.text = unwrappedName
         createGoalView.goalDescriptionTextView.text = unwrappedDescription
-        createGoalView.goalDescriptionTextView.textColor = .black
+        createGoalView.goalDescriptionTextView.textColor = ApplicationDependency.manager.currentTheme.colors.black
     }
     
     private func configButton() {

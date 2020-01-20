@@ -31,7 +31,7 @@ class HomeBackgroundView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor =  .navBarBlue
+        backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
         addSubview(morningTitleLabel)
         addSubview(currentDateLabel)
         setDateLabel()

@@ -15,7 +15,7 @@ class GoalDescriptionTextView: UITextView {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.borderWidth = 1
         text = placeHolder
-        textColor = .placeholderGray
+        textColor = ApplicationDependency.manager.currentTheme.colors.placeholderGray
         autocorrectionType = .no
         font = UIFont(name: "HelveticaNeue", size: 25)
         translatesAutoresizingMaskIntoConstraints = false

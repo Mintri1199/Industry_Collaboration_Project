@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
         } else {
             UINavigationBar.appearance().tintColor = .white
-            UINavigationBar.appearance().barTintColor = .navBarBlue
+            UINavigationBar.appearance().barTintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
         }
     }
 

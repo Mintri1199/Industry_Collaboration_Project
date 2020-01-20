@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundOffWhite
+      view.backgroundColor = ApplicationDependency.manager.currentTheme.colors.backgroundOffWhite
         initTitleView()
         setupTableView()
         initButton()
@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = .navBarBlue
+          appearance.backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
             appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
             appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
             appearance.shadowColor = nil
@@ -70,7 +70,7 @@ extension HomeViewController {
         
         wallpaperButton.frame = wallpaperButtonFrame
         view.addSubview(wallpaperButton)
-        wallpaperButton.backgroundColor = .wallpaperBlue
+      wallpaperButton.backgroundColor = ApplicationDependency.manager.currentTheme.colors.wallpaperBlue
         wallpaperButton.titleLabel?.adjustsFontSizeToFitWidth = true
         wallpaperButton.setTitle("Wallpaper", for: .normal)
         wallpaperButton.addTarget(self, action: #selector(wallpaperButtonTapped), for: .touchUpInside)
@@ -89,7 +89,7 @@ extension HomeViewController {
         homeTableView.layer.cornerRadius = 25
         homeTableView.separatorStyle = .none
         homeTableView.center.x = view.center.x
-        homeTableView.backgroundColor = .foregroundWhite
+      homeTableView.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
         homeTableView.bounces = false
         homeTableView.tableFooterView = UIView()
         view.addSubview(homeTableView)
@@ -159,7 +159,7 @@ extension HomeViewController: UITableViewDataSource {
         label.frame = view.frame
         label.text = "Goals"
         label.font = UIFont(name: "Avenir-Heavy", size: 25)
-        label.backgroundColor = .foregroundWhite
+        label.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
         return label
     }
     

@@ -83,9 +83,9 @@ extension CreateGoalViewController {
 
 extension CreateGoalViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.placeholderGray {
+      if textView.textColor == ApplicationDependency.manager.currentTheme.colors.placeholderGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = ApplicationDependency.manager.currentTheme.colors.black
         }
     }
     
@@ -96,7 +96,7 @@ extension CreateGoalViewController: UITextViewDelegate {
         
         if view.text.isEmpty {
             view.text = view.placeHolder
-            view.textColor = .placeholderGray
+            view.textColor = ApplicationDependency.manager.currentTheme.colors.placeholderGray
         }
     }
 }

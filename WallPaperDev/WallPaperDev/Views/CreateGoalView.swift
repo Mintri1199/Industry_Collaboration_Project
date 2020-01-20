@@ -20,7 +20,7 @@ class CreateGoalView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor =  .foregroundWhite
+        self.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
         setupViews()
     }
     
