@@ -75,6 +75,7 @@
 		FA1CCF4B23D6281E00B47ED4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
 		FA1CCF4D23D6282700B47ED4 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */; };
 		FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */; };
+		FA1CCF5123D632C400B47ED4 /* ApplicationDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchema.swift; sourceTree = "<group>"; };
 		FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSchema.swift; sourceTree = "<group>"; };
+		FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDependency.swift; sourceTree = "<group>"; };
 		FE4DDD5BE3762882F307AD8A /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -429,6 +431,7 @@
 				FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */,
 				FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */,
 				FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */,
+				FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				44F408672359261800EE0409 /* UIView+Extension.swift in Sources */,
 				44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
+				FA1CCF5123D632C400B47ED4 /* ApplicationDependency.swift in Sources */,
 				443F7E542356DAE600102331 /* PageIndicator.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
 				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,

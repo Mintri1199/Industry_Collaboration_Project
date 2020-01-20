@@ -21,3 +21,4 @@ struct Theme {
     self.fontSchema = fontSchema
   }
 }
+
