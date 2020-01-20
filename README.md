@@ -9,6 +9,7 @@ An iOS application that let's the user generate a picture with their personal go
 ### Prerequisites
 
 This project does use some pods so make sure to have CocoaPods installed.
+
 How to check
 ```
 pod --version
