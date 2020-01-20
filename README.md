@@ -1,7 +1,8 @@
-# Kabegami ![alt text][img]
+# Kabegami  
 
-[img]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/readmeicon.png
-One Paragraph of project description goes here
+![alt text](https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/readmeicon.png)
+
+
 
 ## Getting Started
 
@@ -52,7 +53,7 @@ End with an example of getting some data out of the system or using it for a lit
 * **Stephen Ouyang** - [Github](https://github.com/Xisouyang)
 * **Jamar Gibbs** - [Github](https://github.com/j-n4m4573)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/Mintri1199/Industry_Collaboration_Project/graphs/contributors) who participated in this project.
 
 ## License
 
