@@ -65,7 +65,7 @@ extension CreateImageViewController {
     }
     
     private func setupChooseImageLabel() {
-        chooseImageLabel.text = "Choose Image"
+      chooseImageLabel.text = Localized.string("choose_image_title")
         self.view.addSubview(chooseImageLabel)
         NSLayoutConstraint.activate([
             chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
@@ -76,7 +76,7 @@ extension CreateImageViewController {
     }
     
     private func setupChooseGoalLabel() {
-        chooseGoalLabel.text = "Choose Goal"
+      chooseGoalLabel.text = Localized.string("choose_goal_action")
         self.view.addSubview(chooseGoalLabel)
         NSLayoutConstraint.activate([
             chooseGoalLabel.widthAnchor.constraint(equalTo: chooseImageLabel.widthAnchor),
@@ -89,7 +89,7 @@ extension CreateImageViewController {
     private func setupBlueButton() {
         self.view.addSubview(createImageButton)
         createImageButton.isHidden = true
-        createImageButton.setTitle("Create", for: .normal)
+      createImageButton.setTitle(Localized.string("create_action"), for: .normal)
         createImageButton.addTarget(self, action: #selector(pushToPreview), for: .touchUpInside)
         NSLayoutConstraint.activate([
             createImageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6),
@@ -102,7 +102,7 @@ extension CreateImageViewController {
     private func setupChangeGoalsButtonButton() {
         self.view.addSubview(changeGoalsButton)
         changeGoalsButton.isHidden = true
-        changeGoalsButton.label.text = "Change goals"
+      changeGoalsButton.label.text = Localized.string("change_goals_action")
         changeGoalsButton.label.textAlignment = .right
         changeGoalsButton.addTarget(self, action: #selector(changeGoalTapped), for: .touchUpInside)
         NSLayoutConstraint.activate([
@@ -134,8 +134,8 @@ extension CreateImageViewController {
     }
     
     private func setupNavBar() {
-        navigationItem.title = "Create Wallpaper"
-        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
+      navigationItem.title = Localized.string("create_wallpaper_title")
+      navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("create_wallpaper_title"))
     }
 }
 

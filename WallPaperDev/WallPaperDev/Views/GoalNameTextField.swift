@@ -20,7 +20,7 @@ class GoalNameTextField: UITextField {
         autocorrectionType = .no
         returnKeyType = .next
         font = UIFont(name: "HelveticaNeue", size: 25)
-        placeholder = "Climbing Mount Everest"
+      placeholder = Localized.string("goal_title_placeholder")
         translatesAutoresizingMaskIntoConstraints = false
     }
     

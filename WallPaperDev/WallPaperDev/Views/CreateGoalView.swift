@@ -46,7 +46,7 @@ extension CreateGoalView {
     }
     
     private func setupGoalNameLabel() {
-        goalNameLabel.text = "Goal Name"
+      goalNameLabel.text = Localized.string("goal_name_title")
         NSLayoutConstraint.activate([
             goalNameLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5),
             goalNameLabel.heightAnchor.constraint(equalToConstant: 50),
@@ -59,7 +59,7 @@ extension CreateGoalView {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
         toolbar.barStyle = .default
         toolbar.items = [
-            UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextButtonTapped)),
+          UIBarButtonItem(title: Localized.string("next_action"), style: .plain, target: self, action: #selector(nextButtonTapped)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         ]
         goalNameTextField.inputAccessoryView = toolbar
@@ -72,7 +72,7 @@ extension CreateGoalView {
     }
     
     private func setupDescriptionLabel() {
-        goalDescriptionLabel.text = "Goal Description"
+      goalDescriptionLabel.text = Localized.string("goal_description_title")
         NSLayoutConstraint.activate([
             goalDescriptionLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.9),
             goalDescriptionLabel.heightAnchor.constraint(equalToConstant: 50),
@@ -86,9 +86,9 @@ extension CreateGoalView {
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
         toolbar.barStyle = .default
         toolbar.items = [
-            UIBarButtonItem(title: "Previous", style: .plain, target: self, action: #selector(prevButtonTapped)),
+          UIBarButtonItem(title: Localized.string("previous_action"), style: .plain, target: self, action: #selector(prevButtonTapped)),
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+            UIBarButtonItem(title: Localized.string("done_action"), style: .done, target: self, action: #selector(doneTapped))
         ]
         goalDescriptionTextView.inputAccessoryView = toolbar
         NSLayoutConstraint.activate([
@@ -100,7 +100,7 @@ extension CreateGoalView {
     }
     
     private func setupBlueButton() {
-        createButton.setTitle("Create", for: .normal)
+      createButton.setTitle(Localized.string("create_action"), for: .normal)
         NSLayoutConstraint.activate([
             createButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
             createButton.heightAnchor.constraint(equalToConstant: 50),

@@ -75,13 +75,13 @@ extension ImagePreviewViewController {
         buttonStackView.spacing = 20
         buttonStackView.distribution = .fillProportionally
         
-        recropButton.setTitle("Crop", for: .normal)
+      recropButton.setTitle(Localized.string("crop_action"), for: .normal)
         recropButton.addTarget(self, action: #selector(recropButtonTapped), for: .touchUpInside)
         
-        saveButton.setTitle("Save Image", for: .normal)
+      saveButton.setTitle(Localized.string("save_image_action"), for: .normal)
         saveButton.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         
-        previewButton.setTitle("Edit", for: .normal)
+      previewButton.setTitle(Localized.string("edit_action"), for: .normal)
         previewButton.addTarget(self, action: #selector(presentPreview), for: .touchUpInside)
         
         view.addSubview(buttonStackView)
@@ -103,9 +103,12 @@ extension ImagePreviewViewController {
     }
     
     private func setupNavBar() {
-        navigationItem.title = "Preview"
-        navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Preview")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(popToHomeScreen))
+      navigationItem.title = Localized.string("preview_title")
+      navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("preview_title"))
+      navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localized.string("done_action"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(popToHomeScreen))
     }
 }
 
@@ -147,18 +150,24 @@ extension ImagePreviewViewController {
     
     @objc func savingImageHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
-            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
+          let ac = UIAlertController(title: Localized.string("save_wallpaper_error_title"),
+                                     message: error.localizedDescription,
+                                     preferredStyle: .alert)
+          ac.addAction(UIAlertAction(title: Localized.string("ok_action"),
+                                     style: .default))
             present(ac, animated: true)
         } else {
-            let ac = UIAlertController(title: "Saved!", message: "Your altered image has been saved to your photos.", preferredStyle: .alert)
+          let ac = UIAlertController(title: Localized.string("save_wallpaper_success_title"),
+                                                             message: Localized.string("save_wallpaper_success_message"),
+                                                             preferredStyle: .alert)
             
-            let add = UIAlertAction(title: "OK", style: .default) { _ in
-                self.coordinator?.popToHome()
-            }
-            ac.addAction(add)
-            present(ac, animated: true)
-        }
+            let add = UIAlertAction(title: Localized.string("ok_action"),
+                                    style: .default) { _ in
+                                      self.coordinator?.popToHome()
+          }
+          ac.addAction(add)
+          present(ac, animated: true)
+      }
     }
 }
 

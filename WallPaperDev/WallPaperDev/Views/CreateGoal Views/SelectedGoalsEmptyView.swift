@@ -27,7 +27,7 @@ class SelectedGoalsEmptyView: UIView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
         titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.text = "You didn't select a goal"
+      titleLabel.text = Localized.string("selected_goal_empty_view_title")
         titleLabel.textColor = .darkGray
         addSubview(titleLabel)
         titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -70).isActive = true
@@ -35,7 +35,7 @@ class SelectedGoalsEmptyView: UIView {
     }
     
     private func setupButton() {
-        chooseGoalButton.label.text = "Tap here to choose goals"
+      chooseGoalButton.label.text = Localized.string("selected_goal_empty_view_button_cta")
         chooseGoalButton.label.textAlignment = .center
         addSubview(chooseGoalButton)
         chooseGoalButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true

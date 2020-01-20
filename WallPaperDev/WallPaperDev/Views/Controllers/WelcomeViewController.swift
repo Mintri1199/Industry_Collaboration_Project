@@ -16,7 +16,7 @@ class WelcomeViewController: UIViewController {
     private let backButton: UIButton = {
         var button = UIButton(type: UIButton.ButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("BACK", for: .normal)
+      button.setTitle(Localized.string("back_action").uppercased(), for: .normal)
         button.isHidden = true
         button.isEnabled = false
         button.setTitleColor(.navBarBlue, for: .normal)
@@ -28,7 +28,7 @@ class WelcomeViewController: UIViewController {
     private let nextButton: UIButton = {
         var button = UIButton(type: UIButton.ButtonType.system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("NEXT", for: .normal)
+      button.setTitle(Localized.string("next_action").uppercased(), for: .normal)
         button.setTitleColor(.navBarBlue, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
@@ -57,7 +57,10 @@ extension WelcomeViewController {
         navigationController?.navigationBar.tintColor = .navBarBlue
         navigationController?.navigationBar.isTranslucent = true
         navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SKIP", style: .plain, target: self, action: #selector(skipTapped))
+      navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localized.string("skip_action").uppercased(),
+                                                          style: .plain,
+                                                          target: self,
+                                                          action: #selector(skipTapped))
     }
     
     private func setupUI() {
@@ -120,7 +123,7 @@ extension WelcomeViewController {
     private func setupStartButton() {
         view.addSubview(startButton)
         startButton.isEnabled = false
-        startButton.setTitle("START", for: .normal)
+      startButton.setTitle(Localized.string("start_action").uppercased(), for: .normal)
         startButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         startButtonTrailingConstraint = startButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 100)
         startButtonTrailingConstraint?.isActive = true

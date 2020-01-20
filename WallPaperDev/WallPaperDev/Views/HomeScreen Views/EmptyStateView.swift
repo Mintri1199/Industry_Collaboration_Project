@@ -12,7 +12,7 @@ class EmptyStateView: UIView {
     
     private let noGoalsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Set a goal today!"
+      label.text = Localized.string("set_goal_today_prompt")
         label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.font = UIFont(name: "Avenir-Medium", size: 20)
         label.textAlignment = .center

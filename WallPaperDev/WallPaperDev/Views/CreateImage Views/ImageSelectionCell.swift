@@ -16,7 +16,7 @@ class ImageSelectionCell: UICollectionViewCell {
     lazy var showMoreLabel: UILabel = {
         var label = UILabel(frame: .zero)
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Show more"
+      label.text = Localized.string("show_more_title")
         label.font = UIFont.systemFont(ofSize: 18)
         label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center

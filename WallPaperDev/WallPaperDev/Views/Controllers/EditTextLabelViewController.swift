@@ -165,7 +165,10 @@ extension EditTextLabelViewController {
 
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissPreview))
-        let hideToolBar = UIBarButtonItem(title: "View", style: .plain, target: self, action: #selector(hideToolbar))
+      let hideToolBar = UIBarButtonItem(title: Localized.string("view_action"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(hideToolbar))
         let items: [UIBarButtonItem] = [ cancelButton,
                                          UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
                                          saveButton,

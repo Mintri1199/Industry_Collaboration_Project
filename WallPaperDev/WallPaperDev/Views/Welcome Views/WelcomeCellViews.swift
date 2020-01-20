@@ -47,8 +47,8 @@ class FirstTwoCellView: UIView {
 }
 
 class DemoView: UIView {
-    private let headerText = "Be Creative"
-    private let subHeaderText = "Create a beautiful wallpaper with your goals in it"
+  private let headerText = Localized.string("tutorial_demo_message")
+  private let subHeaderText = Localized.string("tutorial_demo_message")
     private let container = CALayer()
     private let fingerLayer = CALayer()
     private let textLayer = CALayer()
@@ -130,8 +130,8 @@ class DemoView: UIView {
 }
 
 class ShowCaseView: UIView {
-    private let headerText = "Remind Yourself"
-    private let subHeaderText = "See your goals in the lock screen with the picture you’ve created"
+  private let headerText = Localized.string("tutorial_showcase_title")
+    private let subHeaderText = Localized.string("tutorial_showcase_message")
     private let container = CALayer()
     private let phoneLayer = CALayer()
     private let headerLabel = WelcomeLabel(frame: .zero)

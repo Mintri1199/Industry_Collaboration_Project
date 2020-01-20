@@ -32,8 +32,8 @@ class CreateGoalViewController: UIViewController {
     }
     
     func setupNavBar() {
-        navigationItem.title = "Create Goal"
-        coordinator?.navigationController.navigationBar.configGenericNavBar(text: "Create Goal")
+      navigationItem.title = Localized.string("create_goal_title")
+      coordinator?.navigationController.navigationBar.configGenericNavBar(text: Localized.string("create_goal_title"))
     }
 }
 
@@ -74,8 +74,12 @@ extension CreateGoalViewController {
     }
     
     func presentError() {
-        let alertView = UIAlertController(title: "Invalid", message: "You can't create a goal without a name and description", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+      let alertView = UIAlertController(title: Localized.string("invalid"),
+                                        message: Localized.string("create_goal_error_message"),
+                                        preferredStyle: .alert)
+      let action = UIAlertAction(title: Localized.string("ok_action"),
+                                 style: .cancel,
+                                 handler: nil)
         alertView.addAction(action)
         self.present(alertView, animated: true, completion: nil)
     }
