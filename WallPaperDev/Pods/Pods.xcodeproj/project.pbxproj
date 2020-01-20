@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
 		52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildConfigurationList = 0C9863A6212D57889A0D584585717915 /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
 			buildPhases = (
 			);
 			dependencies = (
@@ -19,153 +19,408 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0959BA6D598D9AA9D805906E8135D9BF /* Pods-WallPaperDevTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FE76F976E1B965E3DDCBEEBD511CC032 /* Pods-WallPaperDevTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		14E1557C20B3ECDDE6B05CAA077C6A65 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		39C1672A0508513EAC095CE24CA86868 /* Pods-WallPaperDev-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA077F0A9B6F9869485F54043AA5A40A /* Pods-WallPaperDev-dummy.m */; };
-		3AB3B17C3F049EAF678DE4C53BD7E5E4 /* Pods-WallPaperDevTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 961C00E3F0C3DA6BC06E7CC220087542 /* Pods-WallPaperDevTests-dummy.m */; };
-		4F146BF2312CEB7E84068A54A7C53D47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		701ED8E979A9C89FA387445D7FCAADF7 /* Pods-WallPaperDev-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B67F0A52C31FA194D3FE89CEA084CA9D /* Pods-WallPaperDev-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E3A6C71556C826F0F4664B2F09C0CA6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		A8B32ECFC8CFF3FC2D3AC37B842A502D /* Pods-WallPaperDevUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BF42D29428E5371C9CFDDFAA4A9C123C /* Pods-WallPaperDevUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F67334AB1CFE04598B76FE3E9FA60F4E /* Pods-WallPaperDevUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DC4BDEC9009A8E29C1FE10A95D757C8 /* Pods-WallPaperDevUITests-dummy.m */; };
+		02D3BE8EE20E88A307E476C8F97DD45B /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = B0933B7B58C0BB7DCF42937670F9B83D /* zh-Hans.lproj */; };
+		04FB1ACA919B2E42988FC1DC0FE014D8 /* da-DK.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 24AC105735FE050F7D236B00075F4D70 /* da-DK.lproj */; };
+		1165E76FB050540C1E63ADD1BF3AA5C1 /* fi.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 29867C9A737749A9DA5C70A4AC16D3C7 /* fi.lproj */; };
+		16E5811DF4F0BCCEDBEB9795ECE11DCB /* pt-BR.lproj in Resources */ = {isa = PBXBuildFile; fileRef = E2D50F974EA4587EBFCABC27AD0F6C25 /* pt-BR.lproj */; };
+		1DAD3E7F7E7497C7FC2498598E29226B /* TOCroppedImageAttributes.h in Headers */ = {isa = PBXBuildFile; fileRef = 16AB26BB2F7775BFC98D43276A746560 /* TOCroppedImageAttributes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		236B7C461C85600EAF82BE285A7620DC /* CropViewController-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C424710568AE170333315D5526139BF /* CropViewController-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		23E976E0D0F228102C59F5B67471E592 /* ko.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C6ED20CAC93949C65AA10231ADE850AE /* ko.lproj */; };
+		2A67766AB366836B13A655C3ACBA5489 /* TOCropToolbar.h in Headers */ = {isa = PBXBuildFile; fileRef = 60411A3C71B00D6C462493DE72FFD135 /* TOCropToolbar.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B694BC5601CDDDDAC26EE694BD5E8BF /* Pods-WallPaperDev-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DF4926ABB896FE116E595D5499EF878C /* Pods-WallPaperDev-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D2DE0C2C04B2C4CD61AF4F7C0D39C37 /* TOCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 104F149FF685C7660DB6849C367D3B9C /* TOCropOverlayView.m */; };
+		2E4496A90A1C3C5E0523FC81E8C73F60 /* es.lproj in Resources */ = {isa = PBXBuildFile; fileRef = CB4DE76BA1AFA99B733D72BFF6AF57B3 /* es.lproj */; };
+		30011581AE1A68B0E7B6F483A1AD356D /* CropViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 73F3487CDF56FA4A8777F89A7C7C38BD /* CropViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3012870846146E962E5A7E604B14E9C3 /* ar.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 801D79657DDB05311F7F2D46703E4F86 /* ar.lproj */; };
+		35D1704445601A7864EF3F9132AE07FA /* pt.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A6A15BA4C879C475D11223750728BFC9 /* pt.lproj */; };
+		3B0338D6FC397609ECA6286B4F0BC3F6 /* CropViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 492FB55D3F89B107633FF577F643BBC1 /* CropViewController.swift */; };
+		46DF34E946020423329DA39ADB87EC02 /* TOCropViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 5EBE1C97C4ED893766D9E7740DB19B92 /* TOCropViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4B7554E61312E8A4CBFE43A60C6BCBB0 /* Pods-WallPaperDevUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 86C19067A39F2B67559BEAA86CEDEC65 /* Pods-WallPaperDevUITests-dummy.m */; };
+		5328D6050BB1CFC90AE0E99866E0123E /* nl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 9E6A310494A4670296276F396F0BE5BD /* nl.lproj */; };
+		54124D25248BFCB78CB26407D79A566E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		683467EE5567B176FD052761A7BD3A7E /* ms.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 74AE8B1F33A31DA96806CDDB7FA5CDC2 /* ms.lproj */; };
+		6D484A78487BDA162079C6D0929F6339 /* ru.lproj in Resources */ = {isa = PBXBuildFile; fileRef = DC4F43252E6ECA73F2225BA09FF9DED6 /* ru.lproj */; };
+		703B57EDB5E5E24B43781637418C97C5 /* UIImage+CropRotate.h in Headers */ = {isa = PBXBuildFile; fileRef = D1110B940851967C8B1D55A43AD6D05E /* UIImage+CropRotate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		712C99C29D2A38C9018FB10EDC870C19 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 6710DD9C94B864338F75258812099313 /* Base.lproj */; };
+		717056492AC3F2480AE6BFA3660F0FE3 /* TOCropToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C83F74120CA9F04012EFA3AC46D88 /* TOCropToolbar.m */; };
+		71EE301BE26BC51AC8D7C8BB54A208C2 /* TOCropScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AA18D0AC1874A4076FBE5B9CF5FF769 /* TOCropScrollView.m */; };
+		7314BD2E45C30E8C686695B62582110C /* id.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 890C3AFF55D0793044894129C708F7E1 /* id.lproj */; };
+		75911C2C5DF1A2F5F0333379CDA4D2BA /* Pods-WallPaperDevTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B9F0A7E924B0957B2027E5E5C74F01 /* Pods-WallPaperDevTests-dummy.m */; };
+		778470967EA6B4065B2819B5B245B3EA /* ro.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 775A1A088E7846CFCC7B42D8F2433FFE /* ro.lproj */; };
+		78050976415FB81D8E42875476A3C3DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		78737D49B96CA814F6BD357C709AA69D /* TOCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 396AFC3D5BD3E6BAA7CB20660B29EE0C /* TOCropViewController.m */; };
+		80F517F02FF16291D4828127FACB8F48 /* CropViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7774F61C83591517125C792656C4F40C /* CropViewController-dummy.m */; };
+		8228B0F07481CE8BEB1D33C8E087EE3D /* fa-IR.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 25AD28C7A692D7BFFB42EB7C725C46F3 /* fa-IR.lproj */; };
+		823D3CFA5DE4F40C40F2E30C1D473CFE /* UIImage+CropRotate.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1EF68BEF3CE740CE33370088A54FB2 /* UIImage+CropRotate.m */; };
+		8580A07A147DCC2CEAE772AA00BA7D49 /* fa.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2CF600406AC76221D785584D25F1F5C3 /* fa.lproj */; };
+		87BEB55AA9B14B594C0B500B1A3093A8 /* Pods-WallPaperDev-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF4500B5710801F7D4FFE010FAB20DC /* Pods-WallPaperDev-dummy.m */; };
+		899817DD212FC7CF27D36C7506F67E90 /* de.lproj in Resources */ = {isa = PBXBuildFile; fileRef = D3617B1F3816E789E5F0526EA3380FCE /* de.lproj */; };
+		8B0FA1408D56D20932F9D71470D82C2F /* hu.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 875D49307B33A6AF63B1E757D09F15A7 /* hu.lproj */; };
+		8B55CB768660AAA9012F874F0C5DA8A8 /* TOCropView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1384C5976494AE48221339FAAF71F46F /* TOCropView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8EB3BBF4B0BEB5FE55C41C129F0C734A /* TOCropViewControllerTransitioning.h in Headers */ = {isa = PBXBuildFile; fileRef = 425CD642ACAE4454B190803DB7BD0E36 /* TOCropViewControllerTransitioning.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F5CBB25D41A2DD40A2D8B2635FD7561 /* TOCroppedImageAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 444E23DD019BF03AE6332A30407A3820 /* TOCroppedImageAttributes.m */; };
+		91B908220240AE717A6DB143E6C5C8EF /* TOCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB11793902BB3F6C24943C3DAD04F4 /* TOCropView.m */; };
+		9736D5A6BFB7C71AD79329817A9A4777 /* TOCropViewControllerTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B3F18C98BE40728907D1E9E21DDFFA /* TOCropViewControllerTransitioning.m */; };
+		9C1D7F5F417816373BB5BB8F5EC18182 /* vi.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 85BABA39C4BB3B07B2849A6E0379928B /* vi.lproj */; };
+		A9F4C3050C6AB105BC1D573D3A2BD1B9 /* it.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 351382BF4530678D4308C325880C6FF8 /* it.lproj */; };
+		AC224A95018012CB74B5ECBD32369008 /* Pods-WallPaperDevUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 60F20E05095994EE9382BCDE2AFDAF54 /* Pods-WallPaperDevUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AD867CEFD8FFB645A4E9EC98A43F2782 /* fr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 545121B9142683AFB105C16684E094FA /* fr.lproj */; };
+		AFE0ADD5926C365F7EABA0AB0DBE6F0D /* ja.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 7B6E6B649A7643B479ACB6BF407A0A7E /* ja.lproj */; };
+		B3E75D409E6235220A5E77626C5809F6 /* TOCropOverlayView.h in Headers */ = {isa = PBXBuildFile; fileRef = E030DC5F30550D6D12778EC1BE7D5594 /* TOCropOverlayView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5914EFBDFA5D44D1144DA7785DEA151 /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2A1DCC300D0909E2D5BBFD509D2A1C8B /* en.lproj */; };
+		BA139712A0F621E86603CBCCB045B490 /* TOActivityCroppedImageProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 86CDEC8A00DBE2B915D55C755772C70A /* TOActivityCroppedImageProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF1565214D068E8AA5819CF14A24E01E /* TOCropViewControllerBundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 97A93DCEF2B1499B1F84D43333829DC7 /* TOCropViewControllerBundle.bundle */; };
+		BFA835F4CB552568F1B54BCC4577145E /* Pods-WallPaperDevTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D4D3494A074C2895A92B26AC0B8001B9 /* Pods-WallPaperDevTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4CB28F2C174F930CC649F7A7EF19EB2 /* TOCropViewConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = EBD2C8337682908A42615CF1B98C4FA2 /* TOCropViewConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D15C2E9A522CE4633DC5ED7610730E6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		D3995ADADF56F2D86B099380DE29EB86 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		DBE18070415921C78A9C983D8958338E /* TOActivityCroppedImageProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEF8B46ED1B206CB12DF49A7CF9BAB /* TOActivityCroppedImageProvider.m */; };
+		DDF6200595EB75EF714A9F9E003F271A /* pl.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 2AC5A5FA7CDBF2870FBE2E2E8DC98F78 /* pl.lproj */; };
+		DFBDF29389545D55438A7C280E8D61FC /* tr.lproj in Resources */ = {isa = PBXBuildFile; fileRef = A1BB437851D86AB0F00481488EFE801A /* tr.lproj */; };
+		E6C1FB3C146B9DEE968F4C42838F79F3 /* zh-Hant.lproj in Resources */ = {isa = PBXBuildFile; fileRef = BDA10D11B2DD4B149531A7A826835104 /* zh-Hant.lproj */; };
+		F8BAE70217E7F54594E85981C437DFF6 /* TOCropScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = 86C878E843B472975934AE186CA5E92A /* TOCropScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		52BB45F57ACFD08405D98E0355AA255F /* PBXContainerItemProxy */ = {
+		065AFF2F7E6988123EEDA627835688BF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8CD95E178619E25A4E5662AC24FB1032;
-			remoteInfo = "Pods-WallPaperDev";
+			remoteGlobalIDString = BB4EEF23ECB2BAF774CE8EFA5AF90C40;
+			remoteInfo = "CropViewController-TOCropViewControllerBundle";
 		};
-		5D3B642AE58FAA0A9B13621D6B8FAA9E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8CD95E178619E25A4E5662AC24FB1032;
-			remoteInfo = "Pods-WallPaperDev";
-		};
-		B3419F277CA594264AD9C12B2DF9298E /* PBXContainerItemProxy */ = {
+		0B219E9EC6283942467801C725341958 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
 			remoteInfo = SwiftLint;
 		};
+		6853BF2550E080AB25E821408685C8D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD95E178619E25A4E5662AC24FB1032;
+			remoteInfo = "Pods-WallPaperDev";
+		};
+		B032A24FCFEC9F161C8B4F12A5CFC78D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CD95E178619E25A4E5662AC24FB1032;
+			remoteInfo = "Pods-WallPaperDev";
+		};
+		C452584BAE2142E81189E10C24F4D279 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CC81A5995F9CEB2971CBA61ACA13FCA3;
+			remoteInfo = CropViewController;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2FC6559D66CB019166891CD26B75845A /* Pods-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
-		3045BCEF68E494C7D05F8DB167208943 /* Pods-WallPaperDevTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevTests-Info.plist"; sourceTree = "<group>"; };
+		104F149FF685C7660DB6849C367D3B9C /* TOCropOverlayView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropOverlayView.m; path = "Objective-C/TOCropViewController/Views/TOCropOverlayView.m"; sourceTree = "<group>"; };
+		118C83F74120CA9F04012EFA3AC46D88 /* TOCropToolbar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropToolbar.m; path = "Objective-C/TOCropViewController/Views/TOCropToolbar.m"; sourceTree = "<group>"; };
+		1384C5976494AE48221339FAAF71F46F /* TOCropView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropView.h; path = "Objective-C/TOCropViewController/Views/TOCropView.h"; sourceTree = "<group>"; };
+		16AB26BB2F7775BFC98D43276A746560 /* TOCroppedImageAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCroppedImageAttributes.h; path = "Objective-C/TOCropViewController/Models/TOCroppedImageAttributes.h"; sourceTree = "<group>"; };
+		16DA55F345438161A1BBDB72D3524E78 /* Pods-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
+		19672639458D5EF5EC76A48F6BF5A2B3 /* CropViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CropViewController.framework; path = CropViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A2762D56CB0765F0728E388CAA14DB2 /* Pods-WallPaperDevUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		24AC105735FE050F7D236B00075F4D70 /* da-DK.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "da-DK.lproj"; path = "Objective-C/TOCropViewController/Resources/da-DK.lproj"; sourceTree = "<group>"; };
+		25AD28C7A692D7BFFB42EB7C725C46F3 /* fa-IR.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "fa-IR.lproj"; path = "Objective-C/TOCropViewController/Resources/fa-IR.lproj"; sourceTree = "<group>"; };
+		29867C9A737749A9DA5C70A4AC16D3C7 /* fi.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fi.lproj; path = "Objective-C/TOCropViewController/Resources/fi.lproj"; sourceTree = "<group>"; };
+		2A1DCC300D0909E2D5BBFD509D2A1C8B /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = en.lproj; path = "Objective-C/TOCropViewController/Resources/en.lproj"; sourceTree = "<group>"; };
+		2AA18D0AC1874A4076FBE5B9CF5FF769 /* TOCropScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropScrollView.m; path = "Objective-C/TOCropViewController/Views/TOCropScrollView.m"; sourceTree = "<group>"; };
+		2AC5A5FA7CDBF2870FBE2E2E8DC98F78 /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pl.lproj; path = "Objective-C/TOCropViewController/Resources/pl.lproj"; sourceTree = "<group>"; };
+		2CF600406AC76221D785584D25F1F5C3 /* fa.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fa.lproj; path = "Objective-C/TOCropViewController/Resources/fa.lproj"; sourceTree = "<group>"; };
+		2DEB11793902BB3F6C24943C3DAD04F4 /* TOCropView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropView.m; path = "Objective-C/TOCropViewController/Views/TOCropView.m"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		397F6140767FFBCA9555D19714734D25 /* Pods-WallPaperDevUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		3BF0A27BA853AD3503F8BE26CAF75941 /* Pods-WallPaperDevUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		4290923638D7494C719FFCF5BEB61085 /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
-		61F95470F2EEC4B8DC83E5DE6C312CE8 /* Pods-WallPaperDevTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDevTests.modulemap"; sourceTree = "<group>"; };
-		6520D0D7E04D6C90724BF7F4837D417A /* Pods-WallPaperDev.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDev.modulemap"; sourceTree = "<group>"; };
-		6CD04C71B2CCE253D6C2A47BCBA71BA1 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
-		7F784D83519914839E915518DE527BCE /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
-		855C64AC6A300AB20473CD6062A8FF10 /* Pods-WallPaperDevUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDevUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		85ACEE927DF8650CBA30B3E72D4098AF /* Pods-WallPaperDevTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
-		8DC4BDEC9009A8E29C1FE10A95D757C8 /* Pods-WallPaperDevUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDevUITests-dummy.m"; sourceTree = "<group>"; };
-		961C00E3F0C3DA6BC06E7CC220087542 /* Pods-WallPaperDevTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDevTests-dummy.m"; sourceTree = "<group>"; };
+		351382BF4530678D4308C325880C6FF8 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = it.lproj; path = "Objective-C/TOCropViewController/Resources/it.lproj"; sourceTree = "<group>"; };
+		396AFC3D5BD3E6BAA7CB20660B29EE0C /* TOCropViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropViewController.m; path = "Objective-C/TOCropViewController/TOCropViewController.m"; sourceTree = "<group>"; };
+		3C424710568AE170333315D5526139BF /* CropViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CropViewController-umbrella.h"; sourceTree = "<group>"; };
+		425CD642ACAE4454B190803DB7BD0E36 /* TOCropViewControllerTransitioning.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropViewControllerTransitioning.h; path = "Objective-C/TOCropViewController/Models/TOCropViewControllerTransitioning.h"; sourceTree = "<group>"; };
+		444E23DD019BF03AE6332A30407A3820 /* TOCroppedImageAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCroppedImageAttributes.m; path = "Objective-C/TOCropViewController/Models/TOCroppedImageAttributes.m"; sourceTree = "<group>"; };
+		451A073E824281029F06617C1B2F94E6 /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
+		47D3920627A374D50B4A5A0B74793122 /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
+		492FB55D3F89B107633FF577F643BBC1 /* CropViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CropViewController.swift; path = Swift/CropViewController/CropViewController.swift; sourceTree = "<group>"; };
+		4B9A16E2AE71F9EF19EF572D58C92E49 /* Pods-WallPaperDevTests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.xctest.xcconfig"; sourceTree = "<group>"; };
+		545121B9142683AFB105C16684E094FA /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = fr.lproj; path = "Objective-C/TOCropViewController/Resources/fr.lproj"; sourceTree = "<group>"; };
+		58FFA5C8E14ED843C9064E7588F220FF /* ResourceBundle-TOCropViewControllerBundle-CropViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-TOCropViewControllerBundle-CropViewController-Info.plist"; sourceTree = "<group>"; };
+		5A71B23C9181579A839E922AB8E28293 /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
+		5EBE1C97C4ED893766D9E7740DB19B92 /* TOCropViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropViewController.h; path = "Objective-C/TOCropViewController/TOCropViewController.h"; sourceTree = "<group>"; };
+		60411A3C71B00D6C462493DE72FFD135 /* TOCropToolbar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropToolbar.h; path = "Objective-C/TOCropViewController/Views/TOCropToolbar.h"; sourceTree = "<group>"; };
+		60DF59D1333DE95C5637C89557F0EE29 /* Pods-WallPaperDev-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WallPaperDev-frameworks.sh"; sourceTree = "<group>"; };
+		60F20E05095994EE9382BCDE2AFDAF54 /* Pods-WallPaperDevUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDevUITests-umbrella.h"; sourceTree = "<group>"; };
+		6710DD9C94B864338F75258812099313 /* Base.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = Base.lproj; path = "Objective-C/TOCropViewController/Resources/Base.lproj"; sourceTree = "<group>"; };
+		73F3487CDF56FA4A8777F89A7C7C38BD /* CropViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CropViewController.h; path = Swift/CropViewController/CropViewController.h; sourceTree = "<group>"; };
+		74AE8B1F33A31DA96806CDDB7FA5CDC2 /* ms.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ms.lproj; path = "Objective-C/TOCropViewController/Resources/ms.lproj"; sourceTree = "<group>"; };
+		771B98D56B83E9D64257D169A957CF14 /* Pods-WallPaperDevUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevUITests-Info.plist"; sourceTree = "<group>"; };
+		775A1A088E7846CFCC7B42D8F2433FFE /* ro.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ro.lproj; path = "Objective-C/TOCropViewController/Resources/ro.lproj"; sourceTree = "<group>"; };
+		7774F61C83591517125C792656C4F40C /* CropViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CropViewController-dummy.m"; sourceTree = "<group>"; };
+		78B3F18C98BE40728907D1E9E21DDFFA /* TOCropViewControllerTransitioning.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOCropViewControllerTransitioning.m; path = "Objective-C/TOCropViewController/Models/TOCropViewControllerTransitioning.m"; sourceTree = "<group>"; };
+		7B6E6B649A7643B479ACB6BF407A0A7E /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ja.lproj; path = "Objective-C/TOCropViewController/Resources/ja.lproj"; sourceTree = "<group>"; };
+		7F4427AF934D362317DF6C4E5ADFDA4A /* Pods-WallPaperDevUITests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.xctest.xcconfig"; sourceTree = "<group>"; };
+		801D79657DDB05311F7F2D46703E4F86 /* ar.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ar.lproj; path = "Objective-C/TOCropViewController/Resources/ar.lproj"; sourceTree = "<group>"; };
+		80333A58D2288366417695C381787A82 /* Pods-WallPaperDevUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		85BABA39C4BB3B07B2849A6E0379928B /* vi.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = vi.lproj; path = "Objective-C/TOCropViewController/Resources/vi.lproj"; sourceTree = "<group>"; };
+		86C19067A39F2B67559BEAA86CEDEC65 /* Pods-WallPaperDevUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDevUITests-dummy.m"; sourceTree = "<group>"; };
+		86C878E843B472975934AE186CA5E92A /* TOCropScrollView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropScrollView.h; path = "Objective-C/TOCropViewController/Views/TOCropScrollView.h"; sourceTree = "<group>"; };
+		86CDEC8A00DBE2B915D55C755772C70A /* TOActivityCroppedImageProvider.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOActivityCroppedImageProvider.h; path = "Objective-C/TOCropViewController/Models/TOActivityCroppedImageProvider.h"; sourceTree = "<group>"; };
+		875D49307B33A6AF63B1E757D09F15A7 /* hu.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = hu.lproj; path = "Objective-C/TOCropViewController/Resources/hu.lproj"; sourceTree = "<group>"; };
+		890C3AFF55D0793044894129C708F7E1 /* id.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = id.lproj; path = "Objective-C/TOCropViewController/Resources/id.lproj"; sourceTree = "<group>"; };
+		8A20B5D99AF45F58363CD65906C54746 /* Pods-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
+		8BF4500B5710801F7D4FFE010FAB20DC /* Pods-WallPaperDev-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDev-dummy.m"; sourceTree = "<group>"; };
+		96E07ADDB9B6F44C8D25F4EEF940D9FE /* Pods-WallPaperDevTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		97A93DCEF2B1499B1F84D43333829DC7 /* TOCropViewControllerBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = TOCropViewControllerBundle.bundle; path = "CropViewController-TOCropViewControllerBundle.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
 		996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallPaperDev.framework; path = "Pods-WallPaperDev.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B43AF595A694E557CEAD1C2DA4371E8 /* Pods-WallPaperDevUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevUITests-Info.plist"; sourceTree = "<group>"; };
+		9CEEF8B46ED1B206CB12DF49A7CF9BAB /* TOActivityCroppedImageProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOActivityCroppedImageProvider.m; path = "Objective-C/TOCropViewController/Models/TOActivityCroppedImageProvider.m"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9DC03FCE61A358608D7DB81C03416D1C /* Pods-WallPaperDev-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDev-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9E6A310494A4670296276F396F0BE5BD /* nl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = nl.lproj; path = "Objective-C/TOCropViewController/Resources/nl.lproj"; sourceTree = "<group>"; };
+		9F70ED1F6D87451279324F339530BCF5 /* CropViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CropViewController-prefix.pch"; sourceTree = "<group>"; };
+		A11C4AA93DF23B3502E466C2EC6CE493 /* Pods-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A1BB437851D86AB0F00481488EFE801A /* tr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = tr.lproj; path = "Objective-C/TOCropViewController/Resources/tr.lproj"; sourceTree = "<group>"; };
 		A41B3C4F0B1235A434EFB11700C3C804 /* Pods_WallPaperDevUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallPaperDevUITests.framework; path = "Pods-WallPaperDevUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6A15BA4C879C475D11223750728BFC9 /* pt.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = pt.lproj; path = "Objective-C/TOCropViewController/Resources/pt.lproj"; sourceTree = "<group>"; };
+		A7FBB85C6D395C838DEE0B99127A8622 /* Pods-WallPaperDev-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDev-acknowledgements.plist"; sourceTree = "<group>"; };
 		A95D57113A8E72ABF3E9EEC2B4FA7D9E /* Pods_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WallPaperDevTests.framework; path = "Pods-WallPaperDevTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B28C61A0215C6F534318062DE9F86E91 /* Pods-WallPaperDevUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDevUITests.modulemap"; sourceTree = "<group>"; };
-		B67F0A52C31FA194D3FE89CEA084CA9D /* Pods-WallPaperDev-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDev-umbrella.h"; sourceTree = "<group>"; };
-		BA077F0A9B6F9869485F54043AA5A40A /* Pods-WallPaperDev-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDev-dummy.m"; sourceTree = "<group>"; };
-		BF42D29428E5371C9CFDDFAA4A9C123C /* Pods-WallPaperDevUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDevUITests-umbrella.h"; sourceTree = "<group>"; };
-		C15F994836B67F8C385D86346A66EBD4 /* Pods-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
-		C84C62A75FBDEE74388C90E21072F33C /* Pods-WallPaperDev-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDev-Info.plist"; sourceTree = "<group>"; };
-		ECBC39B41363B3C5C14EA0A0113B3030 /* Pods-WallPaperDevTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDevTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F335FD2D87EF7BEEBA5B9CAE16280B1E /* Pods-WallPaperDev-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDev-acknowledgements.plist"; sourceTree = "<group>"; };
-		FE76F976E1B965E3DDCBEEBD511CC032 /* Pods-WallPaperDevTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDevTests-umbrella.h"; sourceTree = "<group>"; };
+		B0933B7B58C0BB7DCF42937670F9B83D /* zh-Hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hans.lproj"; path = "Objective-C/TOCropViewController/Resources/zh-Hans.lproj"; sourceTree = "<group>"; };
+		B0B9F0A7E924B0957B2027E5E5C74F01 /* Pods-WallPaperDevTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WallPaperDevTests-dummy.m"; sourceTree = "<group>"; };
+		B15A10B9BF3EA8D563FD8F74240E21B1 /* CropViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = CropViewController.modulemap; sourceTree = "<group>"; };
+		B59EA953DE062CC4A8BB95F1C6F090A2 /* Pods-WallPaperDevTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDevTests.modulemap"; sourceTree = "<group>"; };
+		BC04A0CBFDAB6B67594244D9738385B1 /* Pods-WallPaperDev-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDev-Info.plist"; sourceTree = "<group>"; };
+		BDA10D11B2DD4B149531A7A826835104 /* zh-Hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "zh-Hant.lproj"; path = "Objective-C/TOCropViewController/Resources/zh-Hant.lproj"; sourceTree = "<group>"; };
+		C1F68343B907F594A305C017AC116057 /* Pods-WallPaperDev.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDev.modulemap"; sourceTree = "<group>"; };
+		C3012D1E484930BF17BB2C40C7C06B71 /* Pods-WallPaperDevUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WallPaperDevUITests.modulemap"; sourceTree = "<group>"; };
+		C5529A3AC03EEA1A1289D5487882956E /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
+		C6ED20CAC93949C65AA10231ADE850AE /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ko.lproj; path = "Objective-C/TOCropViewController/Resources/ko.lproj"; sourceTree = "<group>"; };
+		CB4DE76BA1AFA99B733D72BFF6AF57B3 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = es.lproj; path = "Objective-C/TOCropViewController/Resources/es.lproj"; sourceTree = "<group>"; };
+		CBEA8891078572A7C80B77B035D47DA6 /* Pods-WallPaperDev-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDev-acknowledgements.markdown"; sourceTree = "<group>"; };
+		CEE073BC007BABFE43B21E58A45C774E /* Pods-WallPaperDevTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDevTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D04B67765A9C365E11A8E47EB33EDE52 /* CropViewController-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "CropViewController-Info.plist"; sourceTree = "<group>"; };
+		D1110B940851967C8B1D55A43AD6D05E /* UIImage+CropRotate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+CropRotate.h"; path = "Objective-C/TOCropViewController/Categories/UIImage+CropRotate.h"; sourceTree = "<group>"; };
+		D3617B1F3816E789E5F0526EA3380FCE /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = de.lproj; path = "Objective-C/TOCropViewController/Resources/de.lproj"; sourceTree = "<group>"; };
+		D4D3494A074C2895A92B26AC0B8001B9 /* Pods-WallPaperDevTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDevTests-umbrella.h"; sourceTree = "<group>"; };
+		DC4F43252E6ECA73F2225BA09FF9DED6 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = ru.lproj; path = "Objective-C/TOCropViewController/Resources/ru.lproj"; sourceTree = "<group>"; };
+		DF4926ABB896FE116E595D5499EF878C /* Pods-WallPaperDev-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WallPaperDev-umbrella.h"; sourceTree = "<group>"; };
+		E030DC5F30550D6D12778EC1BE7D5594 /* TOCropOverlayView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropOverlayView.h; path = "Objective-C/TOCropViewController/Views/TOCropOverlayView.h"; sourceTree = "<group>"; };
+		E2D50F974EA4587EBFCABC27AD0F6C25 /* pt-BR.lproj */ = {isa = PBXFileReference; includeInIndex = 1; name = "pt-BR.lproj"; path = "Objective-C/TOCropViewController/Resources/pt-BR.lproj"; sourceTree = "<group>"; };
+		EBD2C8337682908A42615CF1B98C4FA2 /* TOCropViewConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOCropViewConstants.h; path = "Objective-C/TOCropViewController/Constants/TOCropViewConstants.h"; sourceTree = "<group>"; };
+		EF1EF68BEF3CE740CE33370088A54FB2 /* UIImage+CropRotate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+CropRotate.m"; path = "Objective-C/TOCropViewController/Categories/UIImage+CropRotate.m"; sourceTree = "<group>"; };
+		F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CropViewController.xcconfig; sourceTree = "<group>"; };
+		F7977FF7FAEE3EBF415F8D70B7C86C46 /* Pods-WallPaperDevUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WallPaperDevUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		FA91C0A5C444BBDE7EBE2E1741F73334 /* Pods-WallPaperDevTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WallPaperDevTests-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1645D39E3527B0A7BCD558AC375FBF54 /* Frameworks */ = {
+		0E3095D2553BD781C45D8353D804FDD6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E3A6C71556C826F0F4664B2F09C0CA6 /* Foundation.framework in Frameworks */,
+				D3995ADADF56F2D86B099380DE29EB86 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5408449DA39F0DBF57051F6AB409B591 /* Frameworks */ = {
+		66634DBE70ACCEA13C32C9FABA412E2A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14E1557C20B3ECDDE6B05CAA077C6A65 /* Foundation.framework in Frameworks */,
+				78050976415FB81D8E42875476A3C3DD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95054C7CFBAA558B7580B7C960D6887B /* Frameworks */ = {
+		89B349FFDE7DA4CAD0E6E2F130C2491F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F146BF2312CEB7E84068A54A7C53D47 /* Foundation.framework in Frameworks */,
+				54124D25248BFCB78CB26407D79A566E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B98DB3645AA302261A0DDECD252B5257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D15C2E9A522CE4633DC5ED7610730E6A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF2C0F8592AAA14A1151B05058789CDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E9D37D685A1CF88F53BCFEDEDE92FC8 /* Pods-WallPaperDev */ = {
+		0466ABF41BDF05E6631B88C1750E04B2 /* SwiftLint */ = {
 			isa = PBXGroup;
 			children = (
-				6520D0D7E04D6C90724BF7F4837D417A /* Pods-WallPaperDev.modulemap */,
-				9DC03FCE61A358608D7DB81C03416D1C /* Pods-WallPaperDev-acknowledgements.markdown */,
-				F335FD2D87EF7BEEBA5B9CAE16280B1E /* Pods-WallPaperDev-acknowledgements.plist */,
-				BA077F0A9B6F9869485F54043AA5A40A /* Pods-WallPaperDev-dummy.m */,
-				C84C62A75FBDEE74388C90E21072F33C /* Pods-WallPaperDev-Info.plist */,
-				B67F0A52C31FA194D3FE89CEA084CA9D /* Pods-WallPaperDev-umbrella.h */,
-				4290923638D7494C719FFCF5BEB61085 /* Pods-WallPaperDev.debug.xcconfig */,
-				7F784D83519914839E915518DE527BCE /* Pods-WallPaperDev.release.xcconfig */,
+				A63C6DBE119F5380D17D913A4A21BBB0 /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+		0C9E2C696E638D080E66ABC98B70844D /* Pods-WallPaperDev */ = {
+			isa = PBXGroup;
+			children = (
+				C1F68343B907F594A305C017AC116057 /* Pods-WallPaperDev.modulemap */,
+				CBEA8891078572A7C80B77B035D47DA6 /* Pods-WallPaperDev-acknowledgements.markdown */,
+				A7FBB85C6D395C838DEE0B99127A8622 /* Pods-WallPaperDev-acknowledgements.plist */,
+				8BF4500B5710801F7D4FFE010FAB20DC /* Pods-WallPaperDev-dummy.m */,
+				60DF59D1333DE95C5637C89557F0EE29 /* Pods-WallPaperDev-frameworks.sh */,
+				BC04A0CBFDAB6B67594244D9738385B1 /* Pods-WallPaperDev-Info.plist */,
+				DF4926ABB896FE116E595D5499EF878C /* Pods-WallPaperDev-umbrella.h */,
+				5A71B23C9181579A839E922AB8E28293 /* Pods-WallPaperDev.debug.xcconfig */,
+				451A073E824281029F06617C1B2F94E6 /* Pods-WallPaperDev.release.xcconfig */,
+				47D3920627A374D50B4A5A0B74793122 /* Pods-WallPaperDev.xctest.xcconfig */,
 			);
 			name = "Pods-WallPaperDev";
 			path = "Target Support Files/Pods-WallPaperDev";
 			sourceTree = "<group>";
 		};
-		43ACCE35FA95BB5F75405733B0F7D771 /* Products */ = {
+		302F2D47DA4C0A2A227C7A55433B387F /* Pods-WallPaperDevTests */ = {
 			isa = PBXGroup;
 			children = (
-				996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */,
-				A95D57113A8E72ABF3E9EEC2B4FA7D9E /* Pods_WallPaperDevTests.framework */,
-				A41B3C4F0B1235A434EFB11700C3C804 /* Pods_WallPaperDevUITests.framework */,
+				B59EA953DE062CC4A8BB95F1C6F090A2 /* Pods-WallPaperDevTests.modulemap */,
+				CEE073BC007BABFE43B21E58A45C774E /* Pods-WallPaperDevTests-acknowledgements.markdown */,
+				96E07ADDB9B6F44C8D25F4EEF940D9FE /* Pods-WallPaperDevTests-acknowledgements.plist */,
+				B0B9F0A7E924B0957B2027E5E5C74F01 /* Pods-WallPaperDevTests-dummy.m */,
+				FA91C0A5C444BBDE7EBE2E1741F73334 /* Pods-WallPaperDevTests-Info.plist */,
+				D4D3494A074C2895A92B26AC0B8001B9 /* Pods-WallPaperDevTests-umbrella.h */,
+				16DA55F345438161A1BBDB72D3524E78 /* Pods-WallPaperDevTests.debug.xcconfig */,
+				8A20B5D99AF45F58363CD65906C54746 /* Pods-WallPaperDevTests.release.xcconfig */,
+				4B9A16E2AE71F9EF19EF572D58C92E49 /* Pods-WallPaperDevTests.xctest.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-WallPaperDevTests";
+			path = "Target Support Files/Pods-WallPaperDevTests";
 			sourceTree = "<group>";
 		};
-		6E22EF0549456EBDB6A1AD7906ED8A99 /* Targets Support Files */ = {
+		5C590CDD1D680193B8A25DB78384E6E4 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0E9D37D685A1CF88F53BCFEDEDE92FC8 /* Pods-WallPaperDev */,
-				E44C2557B684D3F0EB2F291FB6AE3EEA /* Pods-WallPaperDevTests */,
-				EF7E094498F4F1C428CE27B0342ED861 /* Pods-WallPaperDevUITests */,
+				B15A10B9BF3EA8D563FD8F74240E21B1 /* CropViewController.modulemap */,
+				F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */,
+				7774F61C83591517125C792656C4F40C /* CropViewController-dummy.m */,
+				D04B67765A9C365E11A8E47EB33EDE52 /* CropViewController-Info.plist */,
+				9F70ED1F6D87451279324F339530BCF5 /* CropViewController-prefix.pch */,
+				3C424710568AE170333315D5526139BF /* CropViewController-umbrella.h */,
+				58FFA5C8E14ED843C9064E7588F220FF /* ResourceBundle-TOCropViewControllerBundle-CropViewController-Info.plist */,
 			);
-			name = "Targets Support Files";
+			name = "Support Files";
+			path = "../Target Support Files/CropViewController";
 			sourceTree = "<group>";
 		};
-		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+		84DE47541631F9FBE81CEFE03D50694F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */,
+				87AD90C8CCF6B9132FFF23DE32508959 /* CropViewController */,
+				0466ABF41BDF05E6631B88C1750E04B2 /* SwiftLint */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */ = {
+		87AD90C8CCF6B9132FFF23DE32508959 /* CropViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */,
+				73F3487CDF56FA4A8777F89A7C7C38BD /* CropViewController.h */,
+				492FB55D3F89B107633FF577F643BBC1 /* CropViewController.swift */,
+				86CDEC8A00DBE2B915D55C755772C70A /* TOActivityCroppedImageProvider.h */,
+				9CEEF8B46ED1B206CB12DF49A7CF9BAB /* TOActivityCroppedImageProvider.m */,
+				E030DC5F30550D6D12778EC1BE7D5594 /* TOCropOverlayView.h */,
+				104F149FF685C7660DB6849C367D3B9C /* TOCropOverlayView.m */,
+				16AB26BB2F7775BFC98D43276A746560 /* TOCroppedImageAttributes.h */,
+				444E23DD019BF03AE6332A30407A3820 /* TOCroppedImageAttributes.m */,
+				86C878E843B472975934AE186CA5E92A /* TOCropScrollView.h */,
+				2AA18D0AC1874A4076FBE5B9CF5FF769 /* TOCropScrollView.m */,
+				60411A3C71B00D6C462493DE72FFD135 /* TOCropToolbar.h */,
+				118C83F74120CA9F04012EFA3AC46D88 /* TOCropToolbar.m */,
+				1384C5976494AE48221339FAAF71F46F /* TOCropView.h */,
+				2DEB11793902BB3F6C24943C3DAD04F4 /* TOCropView.m */,
+				EBD2C8337682908A42615CF1B98C4FA2 /* TOCropViewConstants.h */,
+				5EBE1C97C4ED893766D9E7740DB19B92 /* TOCropViewController.h */,
+				396AFC3D5BD3E6BAA7CB20660B29EE0C /* TOCropViewController.m */,
+				425CD642ACAE4454B190803DB7BD0E36 /* TOCropViewControllerTransitioning.h */,
+				78B3F18C98BE40728907D1E9E21DDFFA /* TOCropViewControllerTransitioning.m */,
+				D1110B940851967C8B1D55A43AD6D05E /* UIImage+CropRotate.h */,
+				EF1EF68BEF3CE740CE33370088A54FB2 /* UIImage+CropRotate.m */,
+				8C002A21A70A102CF023E8F0248D2E66 /* Resources */,
+				5C590CDD1D680193B8A25DB78384E6E4 /* Support Files */,
 			);
-			name = SwiftLint;
-			path = SwiftLint;
+			name = CropViewController;
+			path = CropViewController;
+			sourceTree = "<group>";
+		};
+		8969FDD851AD63CF634F38167C09AB0E /* Pods-WallPaperDevUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3012D1E484930BF17BB2C40C7C06B71 /* Pods-WallPaperDevUITests.modulemap */,
+				F7977FF7FAEE3EBF415F8D70B7C86C46 /* Pods-WallPaperDevUITests-acknowledgements.markdown */,
+				1A2762D56CB0765F0728E388CAA14DB2 /* Pods-WallPaperDevUITests-acknowledgements.plist */,
+				86C19067A39F2B67559BEAA86CEDEC65 /* Pods-WallPaperDevUITests-dummy.m */,
+				771B98D56B83E9D64257D169A957CF14 /* Pods-WallPaperDevUITests-Info.plist */,
+				60F20E05095994EE9382BCDE2AFDAF54 /* Pods-WallPaperDevUITests-umbrella.h */,
+				80333A58D2288366417695C381787A82 /* Pods-WallPaperDevUITests.debug.xcconfig */,
+				A11C4AA93DF23B3502E466C2EC6CE493 /* Pods-WallPaperDevUITests.release.xcconfig */,
+				7F4427AF934D362317DF6C4E5ADFDA4A /* Pods-WallPaperDevUITests.xctest.xcconfig */,
+			);
+			name = "Pods-WallPaperDevUITests";
+			path = "Target Support Files/Pods-WallPaperDevUITests";
+			sourceTree = "<group>";
+		};
+		8C002A21A70A102CF023E8F0248D2E66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				801D79657DDB05311F7F2D46703E4F86 /* ar.lproj */,
+				6710DD9C94B864338F75258812099313 /* Base.lproj */,
+				24AC105735FE050F7D236B00075F4D70 /* da-DK.lproj */,
+				D3617B1F3816E789E5F0526EA3380FCE /* de.lproj */,
+				2A1DCC300D0909E2D5BBFD509D2A1C8B /* en.lproj */,
+				CB4DE76BA1AFA99B733D72BFF6AF57B3 /* es.lproj */,
+				2CF600406AC76221D785584D25F1F5C3 /* fa.lproj */,
+				25AD28C7A692D7BFFB42EB7C725C46F3 /* fa-IR.lproj */,
+				29867C9A737749A9DA5C70A4AC16D3C7 /* fi.lproj */,
+				545121B9142683AFB105C16684E094FA /* fr.lproj */,
+				875D49307B33A6AF63B1E757D09F15A7 /* hu.lproj */,
+				890C3AFF55D0793044894129C708F7E1 /* id.lproj */,
+				351382BF4530678D4308C325880C6FF8 /* it.lproj */,
+				7B6E6B649A7643B479ACB6BF407A0A7E /* ja.lproj */,
+				C6ED20CAC93949C65AA10231ADE850AE /* ko.lproj */,
+				74AE8B1F33A31DA96806CDDB7FA5CDC2 /* ms.lproj */,
+				9E6A310494A4670296276F396F0BE5BD /* nl.lproj */,
+				2AC5A5FA7CDBF2870FBE2E2E8DC98F78 /* pl.lproj */,
+				A6A15BA4C879C475D11223750728BFC9 /* pt.lproj */,
+				E2D50F974EA4587EBFCABC27AD0F6C25 /* pt-BR.lproj */,
+				775A1A088E7846CFCC7B42D8F2433FFE /* ro.lproj */,
+				DC4F43252E6ECA73F2225BA09FF9DED6 /* ru.lproj */,
+				A1BB437851D86AB0F00481488EFE801A /* tr.lproj */,
+				85BABA39C4BB3B07B2849A6E0379928B /* vi.lproj */,
+				B0933B7B58C0BB7DCF42937670F9B83D /* zh-Hans.lproj */,
+				BDA10D11B2DD4B149531A7A826835104 /* zh-Hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		A1CD58E1D54397ED75CB20602D25438D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0C9E2C696E638D080E66ABC98B70844D /* Pods-WallPaperDev */,
+				302F2D47DA4C0A2A227C7A55433B387F /* Pods-WallPaperDevTests */,
+				8969FDD851AD63CF634F38167C09AB0E /* Pods-WallPaperDevUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		A63C6DBE119F5380D17D913A4A21BBB0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C5529A3AC03EEA1A1289D5487882956E /* SwiftLint.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -181,10 +436,22 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				43ACCE35FA95BB5F75405733B0F7D771 /* Products */,
-				6E22EF0549456EBDB6A1AD7906ED8A99 /* Targets Support Files */,
+				84DE47541631F9FBE81CEFE03D50694F /* Pods */,
+				D1A7FA34BF6E1FB01A1E19E86D1525DF /* Products */,
+				A1CD58E1D54397ED75CB20602D25438D /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D1A7FA34BF6E1FB01A1E19E86D1525DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19672639458D5EF5EC76A48F6BF5A2B3 /* CropViewController.framework */,
+				996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */,
+				A95D57113A8E72ABF3E9EEC2B4FA7D9E /* Pods_WallPaperDevTests.framework */,
+				A41B3C4F0B1235A434EFB11700C3C804 /* Pods_WallPaperDevUITests.framework */,
+				97A93DCEF2B1499B1F84D43333829DC7 /* TOCropViewControllerBundle.bundle */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -195,71 +462,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E44C2557B684D3F0EB2F291FB6AE3EEA /* Pods-WallPaperDevTests */ = {
-			isa = PBXGroup;
-			children = (
-				61F95470F2EEC4B8DC83E5DE6C312CE8 /* Pods-WallPaperDevTests.modulemap */,
-				ECBC39B41363B3C5C14EA0A0113B3030 /* Pods-WallPaperDevTests-acknowledgements.markdown */,
-				85ACEE927DF8650CBA30B3E72D4098AF /* Pods-WallPaperDevTests-acknowledgements.plist */,
-				961C00E3F0C3DA6BC06E7CC220087542 /* Pods-WallPaperDevTests-dummy.m */,
-				3045BCEF68E494C7D05F8DB167208943 /* Pods-WallPaperDevTests-Info.plist */,
-				FE76F976E1B965E3DDCBEEBD511CC032 /* Pods-WallPaperDevTests-umbrella.h */,
-				C15F994836B67F8C385D86346A66EBD4 /* Pods-WallPaperDevTests.debug.xcconfig */,
-				6CD04C71B2CCE253D6C2A47BCBA71BA1 /* Pods-WallPaperDevTests.release.xcconfig */,
-			);
-			name = "Pods-WallPaperDevTests";
-			path = "Target Support Files/Pods-WallPaperDevTests";
-			sourceTree = "<group>";
-		};
-		EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
-			sourceTree = "<group>";
-		};
-		EF7E094498F4F1C428CE27B0342ED861 /* Pods-WallPaperDevUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B28C61A0215C6F534318062DE9F86E91 /* Pods-WallPaperDevUITests.modulemap */,
-				855C64AC6A300AB20473CD6062A8FF10 /* Pods-WallPaperDevUITests-acknowledgements.markdown */,
-				397F6140767FFBCA9555D19714734D25 /* Pods-WallPaperDevUITests-acknowledgements.plist */,
-				8DC4BDEC9009A8E29C1FE10A95D757C8 /* Pods-WallPaperDevUITests-dummy.m */,
-				9B43AF595A694E557CEAD1C2DA4371E8 /* Pods-WallPaperDevUITests-Info.plist */,
-				BF42D29428E5371C9CFDDFAA4A9C123C /* Pods-WallPaperDevUITests-umbrella.h */,
-				3BF0A27BA853AD3503F8BE26CAF75941 /* Pods-WallPaperDevUITests.debug.xcconfig */,
-				2FC6559D66CB019166891CD26B75845A /* Pods-WallPaperDevUITests.release.xcconfig */,
-			);
-			name = "Pods-WallPaperDevUITests";
-			path = "Target Support Files/Pods-WallPaperDevUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		5E9BFCDFA10DDD31B514A498C39F3B19 /* Headers */ = {
+		06540DFF24EE2467B1998B77E3D4E670 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0959BA6D598D9AA9D805906E8135D9BF /* Pods-WallPaperDevTests-umbrella.h in Headers */,
+				BFA835F4CB552568F1B54BCC4577145E /* Pods-WallPaperDevTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B5429B9D95082EA6F495EAD55B7DFD2C /* Headers */ = {
+		4025F2412E67A76C38486393C384FA0F /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				701ED8E979A9C89FA387445D7FCAADF7 /* Pods-WallPaperDev-umbrella.h in Headers */,
+				236B7C461C85600EAF82BE285A7620DC /* CropViewController-umbrella.h in Headers */,
+				30011581AE1A68B0E7B6F483A1AD356D /* CropViewController.h in Headers */,
+				BA139712A0F621E86603CBCCB045B490 /* TOActivityCroppedImageProvider.h in Headers */,
+				B3E75D409E6235220A5E77626C5809F6 /* TOCropOverlayView.h in Headers */,
+				1DAD3E7F7E7497C7FC2498598E29226B /* TOCroppedImageAttributes.h in Headers */,
+				F8BAE70217E7F54594E85981C437DFF6 /* TOCropScrollView.h in Headers */,
+				2A67766AB366836B13A655C3ACBA5489 /* TOCropToolbar.h in Headers */,
+				8B55CB768660AAA9012F874F0C5DA8A8 /* TOCropView.h in Headers */,
+				C4CB28F2C174F930CC649F7A7EF19EB2 /* TOCropViewConstants.h in Headers */,
+				46DF34E946020423329DA39ADB87EC02 /* TOCropViewController.h in Headers */,
+				8EB3BBF4B0BEB5FE55C41C129F0C734A /* TOCropViewControllerTransitioning.h in Headers */,
+				703B57EDB5E5E24B43781637418C97C5 /* UIImage+CropRotate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B868E66C883231C683ADC22AAA50B59C /* Headers */ = {
+		A4E9A539DA5245348D7B26EFBFD2C08A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8B32ECFC8CFF3FC2D3AC37B842A502D /* Pods-WallPaperDevUITests-umbrella.h in Headers */,
+				AC224A95018012CB74B5ECBD32369008 /* Pods-WallPaperDevUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B041B1120174690DE756C60158DB462C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B694BC5601CDDDDAC26EE694BD5E8BF /* Pods-WallPaperDev-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,17 +513,17 @@
 /* Begin PBXNativeTarget section */
 		41278748D541570A3BE0D172376AF16E /* Pods-WallPaperDevUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3BD8A612301A97BA2596D85D8224FDE9 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevUITests" */;
+			buildConfigurationList = 96D3CAA7BB101CB8C8120EDDC848CF64 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevUITests" */;
 			buildPhases = (
-				B868E66C883231C683ADC22AAA50B59C /* Headers */,
-				B234EC4F7EE24A7C3704C3AD7829E8FB /* Sources */,
-				5408449DA39F0DBF57051F6AB409B591 /* Frameworks */,
-				DB05D4949A8E3695ECAE169667623320 /* Resources */,
+				A4E9A539DA5245348D7B26EFBFD2C08A /* Headers */,
+				F7AE124B4DBF3436712FEC7992E51176 /* Sources */,
+				89B349FFDE7DA4CAD0E6E2F130C2491F /* Frameworks */,
+				76D12D721656D25A8AB3028FD8DC9903 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7169BE7C63FEC74CDAE361091EA0A0B7 /* PBXTargetDependency */,
+				0C2543B692ACF4FF505D33D169B562C3 /* PBXTargetDependency */,
 			);
 			name = "Pods-WallPaperDevUITests";
 			productName = "Pods-WallPaperDevUITests";
@@ -287,36 +532,73 @@
 		};
 		8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 38F96111AD9632BB633035E4DF0F0E3C /* Build configuration list for PBXNativeTarget "Pods-WallPaperDev" */;
+			buildConfigurationList = 94D106EF64F27D6877A03EACFA8EBFF2 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDev" */;
 			buildPhases = (
-				B5429B9D95082EA6F495EAD55B7DFD2C /* Headers */,
-				008D1BD4F518DA982F31D3ECEB110430 /* Sources */,
-				1645D39E3527B0A7BCD558AC375FBF54 /* Frameworks */,
-				240A742969FEF1D9CBCCB64969AE6602 /* Resources */,
+				B041B1120174690DE756C60158DB462C /* Headers */,
+				9BCF49CE9E692119F95E541CDD4904E5 /* Sources */,
+				B98DB3645AA302261A0DDECD252B5257 /* Frameworks */,
+				E25ADD57DE637E926D6FC6A490F62438 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F27EE4FF675968F3CEFE4D57CADA3831 /* PBXTargetDependency */,
+				91F923EB46AE487E6AE998F05A91C454 /* PBXTargetDependency */,
+				733612098800577F3B682863CCE4701F /* PBXTargetDependency */,
 			);
 			name = "Pods-WallPaperDev";
 			productName = "Pods-WallPaperDev";
 			productReference = 996A192ECC3E0071E55BD61C296D5475 /* Pods_WallPaperDev.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E9E2893696FFEAA06990A1D169957DBF /* Pods-WallPaperDevTests */ = {
+		BB4EEF23ECB2BAF774CE8EFA5AF90C40 /* CropViewController-TOCropViewControllerBundle */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EC3A0D1F528C75AA54E66441181E21A4 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevTests" */;
+			buildConfigurationList = 42B9FFB3575A0FB18D5ABA3725DEEAD7 /* Build configuration list for PBXNativeTarget "CropViewController-TOCropViewControllerBundle" */;
 			buildPhases = (
-				5E9BFCDFA10DDD31B514A498C39F3B19 /* Headers */,
-				F170E2652CB000A8E5CED0D0ED217DD4 /* Sources */,
-				95054C7CFBAA558B7580B7C960D6887B /* Frameworks */,
-				291301D3E32D885B919D6AC862742A98 /* Resources */,
+				26BBE1EF6D5B0FBA8CC8B9FFEAA37D6F /* Sources */,
+				EF2C0F8592AAA14A1151B05058789CDA /* Frameworks */,
+				0346F282F03485A4AE90A6F744C1E865 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D003CF39921219E7D16A694FBF627A37 /* PBXTargetDependency */,
+			);
+			name = "CropViewController-TOCropViewControllerBundle";
+			productName = "CropViewController-TOCropViewControllerBundle";
+			productReference = 97A93DCEF2B1499B1F84D43333829DC7 /* TOCropViewControllerBundle.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		CC81A5995F9CEB2971CBA61ACA13FCA3 /* CropViewController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8F4A20CA9C74082B94E164CE09EBF9AE /* Build configuration list for PBXNativeTarget "CropViewController" */;
+			buildPhases = (
+				4025F2412E67A76C38486393C384FA0F /* Headers */,
+				9C3F9561EA190888B8DF2A21DD5F9A63 /* Sources */,
+				66634DBE70ACCEA13C32C9FABA412E2A /* Frameworks */,
+				7FD060875EA6499F8B4C043DDBE1418F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC49E00DAB37FF66944D0CD1E89D99E3 /* PBXTargetDependency */,
+			);
+			name = CropViewController;
+			productName = CropViewController;
+			productReference = 19672639458D5EF5EC76A48F6BF5A2B3 /* CropViewController.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E9E2893696FFEAA06990A1D169957DBF /* Pods-WallPaperDevTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 883CCFDFE99521F43AFD4AF1A422D6A1 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevTests" */;
+			buildPhases = (
+				06540DFF24EE2467B1998B77E3D4E670 /* Headers */,
+				406B5705E2FEB6AC426028D60867F532 /* Sources */,
+				0E3095D2553BD781C45D8353D804FDD6 /* Frameworks */,
+				D643FE45200EA94E1290E314394C8301 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				18EF710B47AC265C7539CAD26CD068C6 /* PBXTargetDependency */,
 			);
 			name = "Pods-WallPaperDevTests";
 			productName = "Pods-WallPaperDevTests";
@@ -333,17 +615,20 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 43ACCE35FA95BB5F75405733B0F7D771 /* Products */;
+			productRefGroup = D1A7FA34BF6E1FB01A1E19E86D1525DF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				CC81A5995F9CEB2971CBA61ACA13FCA3 /* CropViewController */,
+				BB4EEF23ECB2BAF774CE8EFA5AF90C40 /* CropViewController-TOCropViewControllerBundle */,
 				8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */,
 				E9E2893696FFEAA06990A1D169957DBF /* Pods-WallPaperDevTests */,
 				41278748D541570A3BE0D172376AF16E /* Pods-WallPaperDevUITests */,
@@ -353,21 +638,62 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		240A742969FEF1D9CBCCB64969AE6602 /* Resources */ = {
+		0346F282F03485A4AE90A6F744C1E865 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3012870846146E962E5A7E604B14E9C3 /* ar.lproj in Resources */,
+				712C99C29D2A38C9018FB10EDC870C19 /* Base.lproj in Resources */,
+				04FB1ACA919B2E42988FC1DC0FE014D8 /* da-DK.lproj in Resources */,
+				899817DD212FC7CF27D36C7506F67E90 /* de.lproj in Resources */,
+				B5914EFBDFA5D44D1144DA7785DEA151 /* en.lproj in Resources */,
+				2E4496A90A1C3C5E0523FC81E8C73F60 /* es.lproj in Resources */,
+				8228B0F07481CE8BEB1D33C8E087EE3D /* fa-IR.lproj in Resources */,
+				8580A07A147DCC2CEAE772AA00BA7D49 /* fa.lproj in Resources */,
+				1165E76FB050540C1E63ADD1BF3AA5C1 /* fi.lproj in Resources */,
+				AD867CEFD8FFB645A4E9EC98A43F2782 /* fr.lproj in Resources */,
+				8B0FA1408D56D20932F9D71470D82C2F /* hu.lproj in Resources */,
+				7314BD2E45C30E8C686695B62582110C /* id.lproj in Resources */,
+				A9F4C3050C6AB105BC1D573D3A2BD1B9 /* it.lproj in Resources */,
+				AFE0ADD5926C365F7EABA0AB0DBE6F0D /* ja.lproj in Resources */,
+				23E976E0D0F228102C59F5B67471E592 /* ko.lproj in Resources */,
+				683467EE5567B176FD052761A7BD3A7E /* ms.lproj in Resources */,
+				5328D6050BB1CFC90AE0E99866E0123E /* nl.lproj in Resources */,
+				DDF6200595EB75EF714A9F9E003F271A /* pl.lproj in Resources */,
+				16E5811DF4F0BCCEDBEB9795ECE11DCB /* pt-BR.lproj in Resources */,
+				35D1704445601A7864EF3F9132AE07FA /* pt.lproj in Resources */,
+				778470967EA6B4065B2819B5B245B3EA /* ro.lproj in Resources */,
+				6D484A78487BDA162079C6D0929F6339 /* ru.lproj in Resources */,
+				DFBDF29389545D55438A7C280E8D61FC /* tr.lproj in Resources */,
+				9C1D7F5F417816373BB5BB8F5EC18182 /* vi.lproj in Resources */,
+				02D3BE8EE20E88A307E476C8F97DD45B /* zh-Hans.lproj in Resources */,
+				E6C1FB3C146B9DEE968F4C42838F79F3 /* zh-Hant.lproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76D12D721656D25A8AB3028FD8DC9903 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		291301D3E32D885B919D6AC862742A98 /* Resources */ = {
+		7FD060875EA6499F8B4C043DDBE1418F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BF1565214D068E8AA5819CF14A24E01E /* TOCropViewControllerBundle.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D643FE45200EA94E1290E314394C8301 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB05D4949A8E3695ECAE169667623320 /* Resources */ = {
+		E25ADD57DE637E926D6FC6A490F62438 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -377,92 +703,140 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		008D1BD4F518DA982F31D3ECEB110430 /* Sources */ = {
+		26BBE1EF6D5B0FBA8CC8B9FFEAA37D6F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39C1672A0508513EAC095CE24CA86868 /* Pods-WallPaperDev-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B234EC4F7EE24A7C3704C3AD7829E8FB /* Sources */ = {
+		406B5705E2FEB6AC426028D60867F532 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F67334AB1CFE04598B76FE3E9FA60F4E /* Pods-WallPaperDevUITests-dummy.m in Sources */,
+				75911C2C5DF1A2F5F0333379CDA4D2BA /* Pods-WallPaperDevTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F170E2652CB000A8E5CED0D0ED217DD4 /* Sources */ = {
+		9BCF49CE9E692119F95E541CDD4904E5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AB3B17C3F049EAF678DE4C53BD7E5E4 /* Pods-WallPaperDevTests-dummy.m in Sources */,
+				87BEB55AA9B14B594C0B500B1A3093A8 /* Pods-WallPaperDev-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C3F9561EA190888B8DF2A21DD5F9A63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80F517F02FF16291D4828127FACB8F48 /* CropViewController-dummy.m in Sources */,
+				3B0338D6FC397609ECA6286B4F0BC3F6 /* CropViewController.swift in Sources */,
+				DBE18070415921C78A9C983D8958338E /* TOActivityCroppedImageProvider.m in Sources */,
+				2D2DE0C2C04B2C4CD61AF4F7C0D39C37 /* TOCropOverlayView.m in Sources */,
+				8F5CBB25D41A2DD40A2D8B2635FD7561 /* TOCroppedImageAttributes.m in Sources */,
+				71EE301BE26BC51AC8D7C8BB54A208C2 /* TOCropScrollView.m in Sources */,
+				717056492AC3F2480AE6BFA3660F0FE3 /* TOCropToolbar.m in Sources */,
+				91B908220240AE717A6DB143E6C5C8EF /* TOCropView.m in Sources */,
+				78737D49B96CA814F6BD357C709AA69D /* TOCropViewController.m in Sources */,
+				9736D5A6BFB7C71AD79329817A9A4777 /* TOCropViewControllerTransitioning.m in Sources */,
+				823D3CFA5DE4F40C40F2E30C1D473CFE /* UIImage+CropRotate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7AE124B4DBF3436712FEC7992E51176 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B7554E61312E8A4CBFE43A60C6BCBB0 /* Pods-WallPaperDevUITests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7169BE7C63FEC74CDAE361091EA0A0B7 /* PBXTargetDependency */ = {
+		0C2543B692ACF4FF505D33D169B562C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-WallPaperDev";
 			target = 8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */;
-			targetProxy = 52BB45F57ACFD08405D98E0355AA255F /* PBXContainerItemProxy */;
+			targetProxy = 6853BF2550E080AB25E821408685C8D1 /* PBXContainerItemProxy */;
 		};
-		D003CF39921219E7D16A694FBF627A37 /* PBXTargetDependency */ = {
+		18EF710B47AC265C7539CAD26CD068C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-WallPaperDev";
 			target = 8CD95E178619E25A4E5662AC24FB1032 /* Pods-WallPaperDev */;
-			targetProxy = 5D3B642AE58FAA0A9B13621D6B8FAA9E /* PBXContainerItemProxy */;
+			targetProxy = B032A24FCFEC9F161C8B4F12A5CFC78D /* PBXContainerItemProxy */;
 		};
-		F27EE4FF675968F3CEFE4D57CADA3831 /* PBXTargetDependency */ = {
+		733612098800577F3B682863CCE4701F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = B3419F277CA594264AD9C12B2DF9298E /* PBXContainerItemProxy */;
+			targetProxy = 0B219E9EC6283942467801C725341958 /* PBXContainerItemProxy */;
+		};
+		91F923EB46AE487E6AE998F05A91C454 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CropViewController;
+			target = CC81A5995F9CEB2971CBA61ACA13FCA3 /* CropViewController */;
+			targetProxy = C452584BAE2142E81189E10C24F4D279 /* PBXContainerItemProxy */;
+		};
+		AC49E00DAB37FF66944D0CD1E89D99E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "CropViewController-TOCropViewControllerBundle";
+			target = BB4EEF23ECB2BAF774CE8EFA5AF90C40 /* CropViewController-TOCropViewControllerBundle */;
+			targetProxy = 065AFF2F7E6988123EEDA627835688BF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		14BA0FAA5C967C8C93CCDF1E32584C6B /* Release */ = {
+		0A3C082D9824DD77C64D124DF3D37200 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F784D83519914839E915518DE527BCE /* Pods-WallPaperDev.release.xcconfig */;
+			baseConfigurationReference = F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CropViewController";
+				IBSC_MODULE = CropViewController;
+				INFOPLIST_FILE = "Target Support Files/CropViewController/ResourceBundle-TOCropViewControllerBundle-CropViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = TOCropViewControllerBundle;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				WRAPPER_EXTENSION = bundle;
 			};
 			name = Release;
+		};
+		11EC479CE08691C35EB7233E2AB4D533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5529A3AC03EEA1A1289D5487882956E /* SwiftLint.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		185B8CC9475A2C75E475A4EDA3172D8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CropViewController";
+				IBSC_MODULE = CropViewController;
+				INFOPLIST_FILE = "Target Support Files/CropViewController/ResourceBundle-TOCropViewControllerBundle-CropViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = TOCropViewControllerBundle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
 		};
 		204B8AEA4AE90A551A1768B355C2F9F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -528,6 +902,82 @@
 			};
 			name = Debug;
 		};
+		29AEF53B4548949DA0FF2FAA4C7515B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80333A58D2288366417695C381787A82 /* Pods-WallPaperDevUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3879AAA437AD865C0561FC42CCCA7B80 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16DA55F345438161A1BBDB72D3524E78 /* Pods-WallPaperDevTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		3CCC6195EDBEE5DA2A49DF962113BE16 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -588,9 +1038,9 @@
 			};
 			name = Release;
 		};
-		3FCC13D0B9B55FCC07D5C59D8EC3D02B /* Debug */ = {
+		44E5A671EE83E10F5A4019D5373A9FCB /* XCTest */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3BF0A27BA853AD3503F8BE26CAF75941 /* Pods-WallPaperDevUITests.debug.xcconfig */;
+			baseConfigurationReference = 4B9A16E2AE71F9EF19EF572D58C92E49 /* Pods-WallPaperDevTests.xctest.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -603,7 +1053,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -612,7 +1062,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -621,31 +1071,15 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = XCTest;
 		};
-		84D7C4574E8F0F3095623F0E06F5B402 /* Release */ = {
+		57A06CD0654DC764DE342EB2B9FDDB39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		8763EC6DEBA101601D88D6918E43B00C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6CD04C71B2CCE253D6C2A47BCBA71BA1 /* Pods-WallPaperDevTests.release.xcconfig */;
+			baseConfigurationReference = 8A20B5D99AF45F58363CD65906C54746 /* Pods-WallPaperDevTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -682,47 +1116,69 @@
 			};
 			name = Release;
 		};
-		91BC3602873615C4C01CCB4F7CD362C8 /* Debug */ = {
+		5AC95081F2F81D11F96B6C0C5E1041CB /* XCTest */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C15F994836B67F8C385D86346A66EBD4 /* Pods-WallPaperDevTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
-				LD_RUNPATH_SEARCH_PATHS = (
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_XC_TEST=1",
 					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
 			};
-			name = Debug;
+			name = XCTest;
 		};
-		B5DCEADD10DE76230EAE605D060EB32F /* Debug */ = {
+		65AB935C7F88311C3F3040C1300ED19E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4290923638D7494C719FFCF5BEB61085 /* Pods-WallPaperDev.debug.xcconfig */;
+			baseConfigurationReference = 5A71B23C9181579A839E922AB8E28293 /* Pods-WallPaperDev.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -758,25 +1214,194 @@
 			};
 			name = Debug;
 		};
-		DEED47E09AF743F48544C1C4FEADEF47 /* Debug */ = {
+		6B6616AC844E3CBCA61F61F003ADB107 /* XCTest */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
+			baseConfigurationReference = 7F4427AF934D362317DF6C4E5ADFDA4A /* Pods-WallPaperDevUITests.xctest.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = XCTest;
+		};
+		80333BE8813EEFE9402A940A24C9C927 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CropViewController/CropViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CropViewController/CropViewController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
+				MODULEMAP_FILE = "Target Support Files/CropViewController/CropViewController.modulemap";
+				PRODUCT_MODULE_NAME = CropViewController;
+				PRODUCT_NAME = CropViewController;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		E44E5006DB22A427A997ECFB48C82B07 /* Release */ = {
+		8492817773E6D207CE82C7A35A426815 /* XCTest */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2FC6559D66CB019166891CD26B75845A /* Pods-WallPaperDevUITests.release.xcconfig */;
+			baseConfigurationReference = 47D3920627A374D50B4A5A0B74793122 /* Pods-WallPaperDev.xctest.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = XCTest;
+		};
+		8E771A059A7594D5C8D9F62361032F08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CropViewController/CropViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CropViewController/CropViewController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CropViewController/CropViewController.modulemap";
+				PRODUCT_MODULE_NAME = CropViewController;
+				PRODUCT_NAME = CropViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9FC3656CCD2612D77E6D223239CB9EFD /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/CropViewController/CropViewController-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/CropViewController/CropViewController-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/CropViewController/CropViewController.modulemap";
+				PRODUCT_MODULE_NAME = CropViewController;
+				PRODUCT_NAME = CropViewController;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = XCTest;
+		};
+		BC7ABF37610CAFE66CF94220893894AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A11C4AA93DF23B3502E466C2EC6CE493 /* Pods-WallPaperDevUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -813,23 +1438,117 @@
 			};
 			name = Release;
 		};
+		C345A1DCEC18F858EF71E6FD344BFD61 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 451A073E824281029F06617C1B2F94E6 /* Pods-WallPaperDev.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C3AC44FE48C18566C981DD53E9B2986A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5529A3AC03EEA1A1289D5487882956E /* SwiftLint.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF3C471972D39352EEC1527410236449 /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3529E3F1863D2191354FBEE9DC0EB69 /* CropViewController.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/CropViewController";
+				IBSC_MODULE = CropViewController;
+				INFOPLIST_FILE = "Target Support Files/CropViewController/ResourceBundle-TOCropViewControllerBundle-CropViewController-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = TOCropViewControllerBundle;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = XCTest;
+		};
+		FA79EA3287FA79F50E823138C3E39CE6 /* XCTest */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5529A3AC03EEA1A1289D5487882956E /* SwiftLint.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = XCTest;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		38F96111AD9632BB633035E4DF0F0E3C /* Build configuration list for PBXNativeTarget "Pods-WallPaperDev" */ = {
+		0C9863A6212D57889A0D584585717915 /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B5DCEADD10DE76230EAE605D060EB32F /* Debug */,
-				14BA0FAA5C967C8C93CCDF1E32584C6B /* Release */,
+				11EC479CE08691C35EB7233E2AB4D533 /* Debug */,
+				C3AC44FE48C18566C981DD53E9B2986A /* Release */,
+				FA79EA3287FA79F50E823138C3E39CE6 /* XCTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3BD8A612301A97BA2596D85D8224FDE9 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevUITests" */ = {
+		42B9FFB3575A0FB18D5ABA3725DEEAD7 /* Build configuration list for PBXNativeTarget "CropViewController-TOCropViewControllerBundle" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3FCC13D0B9B55FCC07D5C59D8EC3D02B /* Debug */,
-				E44E5006DB22A427A997ECFB48C82B07 /* Release */,
+				185B8CC9475A2C75E475A4EDA3172D8A /* Debug */,
+				0A3C082D9824DD77C64D124DF3D37200 /* Release */,
+				EF3C471972D39352EEC1527410236449 /* XCTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -839,24 +1558,47 @@
 			buildConfigurations = (
 				204B8AEA4AE90A551A1768B355C2F9F0 /* Debug */,
 				3CCC6195EDBEE5DA2A49DF962113BE16 /* Release */,
+				5AC95081F2F81D11F96B6C0C5E1041CB /* XCTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
+		883CCFDFE99521F43AFD4AF1A422D6A1 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DEED47E09AF743F48544C1C4FEADEF47 /* Debug */,
-				84D7C4574E8F0F3095623F0E06F5B402 /* Release */,
+				3879AAA437AD865C0561FC42CCCA7B80 /* Debug */,
+				57A06CD0654DC764DE342EB2B9FDDB39 /* Release */,
+				44E5A671EE83E10F5A4019D5373A9FCB /* XCTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EC3A0D1F528C75AA54E66441181E21A4 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevTests" */ = {
+		8F4A20CA9C74082B94E164CE09EBF9AE /* Build configuration list for PBXNativeTarget "CropViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				91BC3602873615C4C01CCB4F7CD362C8 /* Debug */,
-				8763EC6DEBA101601D88D6918E43B00C /* Release */,
+				80333BE8813EEFE9402A940A24C9C927 /* Debug */,
+				8E771A059A7594D5C8D9F62361032F08 /* Release */,
+				9FC3656CCD2612D77E6D223239CB9EFD /* XCTest */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94D106EF64F27D6877A03EACFA8EBFF2 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				65AB935C7F88311C3F3040C1300ED19E /* Debug */,
+				C345A1DCEC18F858EF71E6FD344BFD61 /* Release */,
+				8492817773E6D207CE82C7A35A426815 /* XCTest */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96D3CAA7BB101CB8C8120EDDC848CF64 /* Build configuration list for PBXNativeTarget "Pods-WallPaperDevUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				29AEF53B4548949DA0FF2FAA4C7515B9 /* Debug */,
+				BC7ABF37610CAFE66CF94220893894AC /* Release */,
+				6B6616AC844E3CBCA61F61F003ADB107 /* XCTest */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
