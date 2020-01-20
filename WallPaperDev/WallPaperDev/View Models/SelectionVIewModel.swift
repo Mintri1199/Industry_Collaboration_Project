@@ -6,17 +6,19 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class SelectionViewModel {
-    let imageArray: [UIImage?] = [UIImage(named: "background_1"),
-                                  UIImage(named: "background_2"),
-                                  UIImage(named: "background_1")]
-    
+final class SelectionViewModel {
+    let imageArray: [UIImage]
     var selectedGoals: [Goal] = []
-    
     var selectedImage: UIImage?
+
+  init() {
+    let currentTheme = ApplicationDependency.manager.currentTheme
+    imageArray = [currentTheme.imageAssets.background1,
+                  currentTheme.imageAssets.background2,
+                  currentTheme.imageAssets.background3]
+  }
     
     func validation(button: UIButton) {
         if selectedGoals.isEmpty || selectedImage == nil {

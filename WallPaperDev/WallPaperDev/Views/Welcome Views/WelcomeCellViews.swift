@@ -94,19 +94,19 @@ class DemoView: UIView {
         let phoneSize = CGSize(width: container.bounds.width * 0.6, height: container.bounds.height)
         let phoneXOffset = bounds.width / 5
         phoneLayer.frame = CGRect(origin: CGPoint(x: phoneXOffset, y: 0), size: phoneSize)
-        phoneLayer.contents = UIImage(named: "tutorial_example_1")?.cgImage
+      phoneLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialExample1.cgImage
         phoneLayer.contentsGravity = .resizeAspect
         container.addSublayer(phoneLayer)
         
         let textSize = CGSize(width: phoneLayer.bounds.width * 0.8, height: phoneLayer.bounds.height * 0.2)
         textLayer.frame = CGRect(origin: CGPoint(x: phoneLayer.bounds.width / 10, y: phoneLayer.bounds.maxY - textSize.height - 30), size: textSize)
-        textLayer.contents = UIImage(named: "tutorial_goal_text_example")?.cgImage
+      textLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialGoalTextExample.cgImage
         textLayer.contentsGravity = .resizeAspect
         phoneLayer.addSublayer(textLayer)
         
         let fingerSize = CGSize(width: container.bounds.width / 2, height: container.bounds.width / 2)
         fingerLayer.frame = CGRect(origin: CGPoint(x: container.bounds.midX, y: container.bounds.midY), size: fingerSize)
-        fingerLayer.contents = UIImage(named: "tutorial_finger")?.cgImage
+      fingerLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialFinger.cgImage
         fingerLayer.contentsGravity = .resizeAspect
         container.addSublayer(fingerLayer)
     }
@@ -177,7 +177,7 @@ class ShowCaseView: UIView {
         let phoneSize = CGSize(width: container.bounds.width * 0.6, height: container.bounds.height)
         let phoneXOffset = bounds.width / 5
         phoneLayer.frame = CGRect(origin: CGPoint(x: phoneXOffset, y: 0), size: phoneSize)
-        phoneLayer.contents = UIImage(named: "tutorial_phone")?.cgImage
+      phoneLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialPhone.cgImage
         phoneLayer.contentsGravity = .resizeAspect
         container.addSublayer(phoneLayer)
     }
