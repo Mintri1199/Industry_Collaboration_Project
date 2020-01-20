@@ -9,6 +9,7 @@
 import UIKit
 
 final class DetailGoalViewController: CreateGoalViewController {
+
   let viewModel = GoalDetailViewModel()
 
   override func viewDidLoad() {
@@ -21,18 +22,18 @@ final class DetailGoalViewController: CreateGoalViewController {
     }
   }
 
-  override func setupNavBar() {
-    navigationItem.title = Localized.string("goal_details")
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details"))
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
-  }
-
   private func configTextFields(goal: Goal) {
     guard let unwrappedName = goal.name,
       let unwrappedDescription = goal.summary else { return }
     createGoalView.goalNameTextField.text = unwrappedName
     createGoalView.goalDescriptionTextView.text = unwrappedDescription
-    createGoalView.goalDescriptionTextView.textColor = .black
+    createGoalView.goalDescriptionTextView.textColor = ApplicationDependency.manager.currentTheme.colors.black
+  }
+
+  override func setupNavBar() {
+    navigationItem.title = Localized.string("goal_details")
+    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details"))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
   }
 
   private func configButton() {

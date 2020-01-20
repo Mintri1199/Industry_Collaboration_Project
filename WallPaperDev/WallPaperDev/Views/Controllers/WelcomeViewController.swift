@@ -19,7 +19,9 @@ class WelcomeViewController: UIViewController {
     button.setTitle(Localized.string("back_action").uppercased(), for: .normal)
     button.isHidden = true
     button.isEnabled = false
-    button.setTitleColor(.navBarBlue, for: .normal)
+    button.setTitleColor(ApplicationDependency.manager.currentTheme.colors.navBarBlue,
+                         for: .normal)
+    // TODO: (alex) Flagging color usage
     button.setTitleColor(.lightGray, for: .highlighted)
     button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
     button.backgroundColor = .white
@@ -30,7 +32,8 @@ class WelcomeViewController: UIViewController {
     var button = UIButton(type: UIButton.ButtonType.system)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.setTitle(Localized.string("next_action").uppercased(), for: .normal)
-    button.setTitleColor(.navBarBlue, for: .normal)
+    button.setTitleColor(ApplicationDependency.manager.currentTheme.colors.navBarBlue,
+                         for: .normal)
     button.setTitleColor(.lightGray, for: .highlighted)
     button.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
     button.backgroundColor = .white
@@ -57,13 +60,10 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController {
   private func configNavBar() {
     navigationController?.navigationBar.barTintColor = .white
-    navigationController?.navigationBar.tintColor = .navBarBlue
+    navigationController?.navigationBar.tintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localized.string("skip_action").uppercased(),
-                                                        style: .plain,
-                                                        target: self,
-                                                        action: #selector(skipTapped))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localized.string("skip_action").uppercased(), style: .plain, target: self, action: #selector(skipTapped))
   }
 
   private func setupUI() {

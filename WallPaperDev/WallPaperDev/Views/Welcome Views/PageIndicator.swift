@@ -37,7 +37,7 @@ class PageIndicators: UIStackView {
   private var pageOne: PageIndicator = {
     let view = PageIndicator()
     view.circleLayer.lineWidth = 0
-    view.circleLayer.fillColor = UIColor.navBarBlue.cgColor
+    view.circleLayer.fillColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue.cgColor
     return view
   }()
 
@@ -54,7 +54,7 @@ class PageIndicators: UIStackView {
     config()
   }
 
-  required init(coder _: NSCoder) {
+  required init(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -74,7 +74,7 @@ class PageIndicators: UIStackView {
       selectedView.circleLayer.lineWidth = 0
     }, completion: { _ in
       UIView.animate(withDuration: 0.1, animations: {
-        selectedView.circleLayer.fillColor = UIColor.navBarBlue.cgColor
+        selectedView.circleLayer.fillColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue.cgColor
             })
         })
 

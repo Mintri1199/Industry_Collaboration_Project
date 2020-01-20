@@ -20,7 +20,6 @@
 		44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56607234D168C00DEBB86 /* CreateGoalView.swift */; };
 		44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56609234D16C100DEBB86 /* BlueLabel.swift */; };
 		44B5660C234D177400DEBB86 /* GoalNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5660B234D177400DEBB86 /* GoalNameTextField.swift */; };
-		44B5660E234D386D00DEBB86 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5660D234D386D00DEBB86 /* UIColor+Extension.swift */; };
 		44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */; };
 		44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51D23302A570015110B /* CreateImageViewController.swift */; };
 		44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51F23302A680015110B /* ImagePreviewViewController.swift */; };
@@ -114,7 +113,6 @@
 		44B56607234D168C00DEBB86 /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateGoalView.swift; path = ../CreateGoalView.swift; sourceTree = "<group>"; };
 		44B56609234D16C100DEBB86 /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlueLabel.swift; path = ../BlueLabel.swift; sourceTree = "<group>"; };
 		44B5660B234D177400DEBB86 /* GoalNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoalNameTextField.swift; path = ../GoalNameTextField.swift; sourceTree = "<group>"; };
-		44B5660D234D386D00DEBB86 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDescriptionTextView.swift; sourceTree = "<group>"; };
 		44C0B51D23302A570015110B /* CreateImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateImageViewController.swift; sourceTree = "<group>"; };
 		44C0B51F23302A680015110B /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 				44C0B52323302C920015110B /* UINavigation+Extensions.swift */,
 				44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */,
 				44C0B5392331C5460015110B /* Graphic+Extensions.swift */,
-				44B5660D234D386D00DEBB86 /* UIColor+Extension.swift */,
 				44F408662359261800EE0409 /* UIView+Extension.swift */,
 				444955C023952DCB009A1618 /* UIFont+Extension.swift */,
 			);
@@ -719,7 +716,6 @@
 				44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */,
 				FA1CCF6723D6444600B47ED4 /* Localized.swift in Sources */,
 				444955C123952DCB009A1618 /* UIFont+Extension.swift in Sources */,
-				44B5660E234D386D00DEBB86 /* UIColor+Extension.swift in Sources */,
 				44F4086523570EF000EE0409 /* WelcomeLabel.swift in Sources */,
 				44E0BA692339B7F0007AA20D /* TableView+Extensions.swift in Sources */,
 				444955C523995FD9009A1618 /* EditTextViewModel.swift in Sources */,

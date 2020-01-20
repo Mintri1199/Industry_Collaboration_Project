@@ -9,17 +9,18 @@
 import Foundation
 import UIKit
 
-class BlueLabel: UILabel {
+final class BlueLabel: UILabel {
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     translatesAutoresizingMaskIntoConstraints = false
     textAlignment = .left
-    textColor = .sectionBlue
+    textColor = ApplicationDependency.manager.currentTheme.colors.sectionBlue
     font = UIFont(name: "HelveticaNeue-Bold", size: 30)
     adjustsFontSizeToFitWidth = true
   }
 
-  required init?(coder _: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 }

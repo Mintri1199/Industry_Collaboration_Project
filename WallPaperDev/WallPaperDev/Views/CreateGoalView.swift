@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 class CreateGoalView: UIView {
-  // MARK: - Custom UIViews
   
+  // MARK: - Custom UIViews
   lazy var goalNameLabel = BlueLabel(frame: .zero)
   lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
   lazy var createButton = BigBlueButton(frame: .zero)
@@ -20,11 +20,11 @@ class CreateGoalView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = .foregroundWhite
+    self.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
     setupViews()
   }
   
-  required init?(coder _: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 }
