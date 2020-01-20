@@ -2,50 +2,73 @@
 
 ![alt text](https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/readmeicon.png)
 
+An iOS application that let's the user generate a picture with their personal goals on it for their lock screen background.
 
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+[TEST FLIGHT](https://testflight.apple.com/join/zNGYLyia)
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+This project does use some pods so make sure to have CocoaPods installed.
+How to check
+```
+pod --version
+```
+if command not found it mean you didn't installed
 
+How to install CocoaPods
 ```
-Give examples
+sudo gem install cocoapods
 ```
+CocoaPods [reference](https://cocoapods.org/)
 
 ### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Clone the project
 
 ```
-Give the example
+git clone https://github.com/Mintri1199/Industry_Collaboration_Project.git
 ```
 
-And repeat
+Install project pods
 
 ```
-until finished
+pod install
 ```
-
-End with an example of getting some data out of the system or using it for a little demo
-
 
 ### Screenshots
+| Onboarding            | Home Screen             | Create Goal             |
+| :-------------------: |:-----------------------:| :----------------------:|
+| ![alt text][onboard]  | ![alt text][homeScreen] | ![alt text][createGoal] |
 
+| Home Screen with goals      | View Goal               | Wallpaper Screen        |
+| :-------------------------: |:-----------------------:| :----------------------:|
+| ![alt text][newHomeScreen]  | ![alt text][viewGoal]   | ![alt text][imgConfig]  |
 
-## Built With
+| Configured Wallpaper Screen | Image Preview Screen    | Editing Image           |
+| :-------------------------: |:-----------------------:| :----------------------:|
+| ![alt text][imgConfigured]  | ![alt text][imgPreview] | ![alt text][imgEdit]    |
+
+[onboard]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/onboarding.png
+[homeScreen]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/homeScreen.png
+[createGoal]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/createGoal.png
+[newHomeScreen]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/updateHomeScreen.png
+[viewGoal]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/updateGoal.png
+[imgConfig]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/imageConfiguration.png
+[imgConfigured]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/imageSelectino.png
+[imgPreview]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/preview.png
+[imgEdit]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/img/editImage.png
 
 ##### Dependencies
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [SwiftLint][linter] - The linter used to enforce code quality
+  * YAML file from [Lickability][yml]
+* [ToCropViewController][cropVC] - A picture cropping view controller library
 
+
+[cropVC]: https://github.com/TimOliver/TOCropViewController
+
+[linter]: https://github.com/realm/SwiftLint
+
+[yml]: https://github.com/Lickability/swift-best-practices/blob/master/.swiftlint.yml
 
 ## Contributors
 
@@ -57,17 +80,30 @@ See also the list of [contributors](https://github.com/Mintri1199/Industry_Colla
 
 ## License
 
-This project is licensed under the MIT License - see the [license.txt][license] file for details
+This project is licensed under the GNU GPLv3 License - see the [license.txt][license] file for details
 
 [license]: https://github.com/Mintri1199/Industry_Collaboration_Project/blob/master/license.txt
 
 ## Current Features
 
+- [x] User can Create/Read/Update/Delete goals
+
+- [x] Implemented Core Data
+
+- [x] User can move goals when editing picture
+
+- [x] User can generate a picture with up to 4 goals
+
+- [x] User can save generated picture to their photo library
+
+- [x] User can preview their generated picture before saving it
 
 ## Future features
 
-- [ ] Hat tip to anyone whose code was used
+- [ ] UnSplash API integration (WIP)
 
-- [ ] Hat tip to anyone whose code was used
+- [ ] More representation of goals ie. progress bars
 
-- [ ] Hat tip to anyone whose code was used
+- [ ] Enable milestones for goals (WIP)
+
+- [ ] Picture cropping feature (WIP)
