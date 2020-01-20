@@ -121,7 +121,7 @@ extension GoalsSelectionViewController: UITableViewDelegate {
   }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if viewModel.selectedGoals.count == 4 {
+      if viewModel.selectedGoals.count == viewModel.slectedGoalMaxCount {
             return nil
         }
         return indexPath
