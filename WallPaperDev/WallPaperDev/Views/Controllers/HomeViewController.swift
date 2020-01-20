@@ -159,14 +159,10 @@ extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let label = PaddingLabel(frame: view.frame)
     label.frame = view.frame
-    label.text = Localized.string("goals")
-    label.font = UIFont(name: "Avenir-Heavy", size: 25)
+    label.text = "Goals"
+    label.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy24
     label.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
     return label
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 50
   }
 }
 

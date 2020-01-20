@@ -11,16 +11,16 @@ import UIKit
 
 extension UITableView {
   func setEmptyView(title: String, message: String) {
-    let emptyView = UIView(frame: CGRect(x: center.x,
-                                         y: center.y,
-                                         width: bounds.size.width,
-                                         height: bounds.size.height))
+    let emptyView = UIView(frame: CGRect(x: self.center.x,
+                                         y: self.center.y,
+                                         width: self.bounds.size.width,
+                                         height: self.bounds.size.height))
     let titleLabel = UILabel()
     let messageLabel = UILabel()
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     messageLabel.translatesAutoresizingMaskIntoConstraints = false
-    titleLabel.font = UIFont(name: "Avenir-Medium", size: 20)
-    messageLabel.font = UIFont(name: "Avenir-Medium", size: 17)
+    titleLabel.font = ApplicationDependency.manager.currentTheme.fontSchema.medium20
+    messageLabel.font = ApplicationDependency.manager.currentTheme.fontSchema.medium16
     emptyView.addSubview(titleLabel)
     emptyView.addSubview(messageLabel)
     titleLabel.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
@@ -32,14 +32,14 @@ extension UITableView {
     messageLabel.text = message
     messageLabel.numberOfLines = 0
     messageLabel.textAlignment = .center
-    backgroundView = emptyView
-    separatorStyle = .none
+    self.backgroundView = emptyView
+    self.separatorStyle = .none
     titleLabel.textColor = .darkGray
     messageLabel.textColor = .lightGray
   }
 
   func restore() {
-    backgroundView = nil
-    separatorStyle = .singleLine
+    self.backgroundView = nil
+    self.separatorStyle = .singleLine
   }
 }

@@ -127,7 +127,7 @@ extension WelcomeViewController {
     view.addSubview(startButton)
     startButton.isEnabled = false
     startButton.setTitle(Localized.string("start_action").uppercased(), for: .normal)
-    startButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+    startButton.titleLabel?.font = ApplicationDependency.manager.currentTheme.fontSchema.medium16
     startButtonTrailingConstraint = startButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 100)
     startButtonTrailingConstraint?.isActive = true
     startButton.addTarget(self, action: #selector(startTapped), for: .touchUpInside)

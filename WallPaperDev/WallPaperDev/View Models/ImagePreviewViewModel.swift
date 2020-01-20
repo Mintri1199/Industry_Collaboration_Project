@@ -37,7 +37,6 @@ class ImagePreviewViewModel {
     if #available(iOS 13, *) {
       cropVC.modalPresentationStyle = .fullScreen
     }
-
     if let rect = currentCropRect {
       cropVC.imageCropFrame = rect
     }
@@ -89,17 +88,18 @@ class ImagePreviewViewModel {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
 
+    // TODO: Flagging font
     let bestFont = UIFont.bestFittingFont(for: goalsText,
                                           in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width * 0.65, height: cropRect.size.height / 6)),
                                           fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
 
-    let textAttr: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: bestFont,
-                                                   NSAttributedString.Key.foregroundColor: UIColor.white,
-                                                   NSAttributedString.Key.paragraphStyle: paragraphStyle]
+    let textAttr: [NSAttributedString.Key: Any] = [ NSAttributedString.Key.font: bestFont,
+                                                    NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                    NSAttributedString.Key.paragraphStyle: paragraphStyle ]
     // Get the size to fit the text
     let textSize = goalsText.size(withAttributes: textAttr)
     // Configure the CGRect with the text size and position it at the bottom of the screen
-    let drawTextRect = CGRect(origin: CGPoint(x: (initialCropImage.size.width - textSize.width) / 2, y: initialCropImage.size.height - (textSize.height * 1.5)),
+    let drawTextRect = CGRect(origin: CGPoint(x: (initialCropImage.size.width - textSize.width) / 2, y: initialCropImage.size.height - (textSize.height * 1.5 )),
                               size: textSize)
     textLayerRect = drawTextRect
     // Draw the image with the text on it
