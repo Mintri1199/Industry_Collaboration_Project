@@ -6,10 +6,10 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
-import UIKit
 import CoreGraphics
 import CropViewController
+import Foundation
+import UIKit
 
 enum ImageProcessError: String, Error {
     case unableToProcessImage
@@ -19,7 +19,6 @@ enum ImageProcessError: String, Error {
 }
 
 class ImagePreviewViewModel {
-    
     var originalImage: UIImage?
     var croppedImage: UIImage?
     var selectedGoals: [Goal] = []
@@ -28,7 +27,7 @@ class ImagePreviewViewModel {
     var textLayerRotation: CGFloat?
     var labelText: String?
     var rotate: Int?
-    
+
     func configureCropVC() -> CropViewController? {
         // Build an instance of CropViewController for the VC to present
         guard let image = originalImage else {
@@ -38,14 +37,14 @@ class ImagePreviewViewModel {
         if #available(iOS 13, *) {
             cropVC.modalPresentationStyle = .fullScreen
         }
-        
+
         if let rect = currentCropRect {
             cropVC.imageCropFrame = rect
         }
         if let angle = rotate {
             cropVC.angle = angle
         }
-        
+
         cropVC.aspectRatioPreset = .presetCustom
         cropVC.customAspectRatio = UIScreen.main.bounds.size
         cropVC.aspectRatioLockEnabled = true
@@ -54,7 +53,7 @@ class ImagePreviewViewModel {
         cropVC.toolbarPosition = .bottom
         return cropVC
     }
-    
+
     func initialGenerate(completion: @escaping (UIImage) -> Void) {
         // This function will generate a wallpaper initially when the user preview the picture
         guard let image = originalImage else {
@@ -64,7 +63,7 @@ class ImagePreviewViewModel {
         // Calculate the Width and Height ratios
         let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
         let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
-        
+
         var cropHeight: CGFloat = image.size.height
         var cropWidth: CGFloat = image.size.width
         // Configure the cropping size to the screen ratio
@@ -83,24 +82,24 @@ class ImagePreviewViewModel {
         }
         let initialCropImage = UIImage(cgImage: cropImage)
         croppedImage = initialCropImage
-        
+
         let goalsText: String = selectedGoals.compactMap { $0.name }.joined(separator: "\n")
         labelText = goalsText
         // Configure the attributes and font for the string
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        
+
         let bestFont = UIFont.bestFittingFont(for: goalsText,
                                               in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width * 0.65, height: cropRect.size.height / 6)),
                                               fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
-        
-        let textAttr: [NSAttributedString.Key: Any] = [ NSAttributedString.Key.font: bestFont,
-                                                        NSAttributedString.Key.foregroundColor: UIColor.white,
-                                                        NSAttributedString.Key.paragraphStyle: paragraphStyle ]
+
+        let textAttr: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: bestFont,
+                                                       NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                       NSAttributedString.Key.paragraphStyle: paragraphStyle]
         // Get the size to fit the text
         let textSize = goalsText.size(withAttributes: textAttr)
         // Configure the CGRect with the text size and position it at the bottom of the screen
-        let drawTextRect = CGRect(origin: CGPoint(x: (initialCropImage.size.width - textSize.width) / 2, y: initialCropImage.size.height - (textSize.height * 1.5 )),
+        let drawTextRect = CGRect(origin: CGPoint(x: (initialCropImage.size.width - textSize.width) / 2, y: initialCropImage.size.height - (textSize.height * 1.5)),
                                   size: textSize)
         textLayerRect = drawTextRect
         // Draw the image with the text on it
@@ -109,21 +108,21 @@ class ImagePreviewViewModel {
         goalsText.draw(in: drawTextRect, withAttributes: textAttr)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        
+
         if let newImage = newImage {
             completion(newImage)
         }
     }
-    
+
     func updateImage(completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
         guard let image = croppedImage, let cropRect = currentCropRect else {
             completion(.failure(.noImage))
             return
         }
-        
-        generateTextLayer { (result) in
+
+        generateTextLayer { result in
             switch result {
-            case .success(let textLayer):
+            case let .success(textLayer):
                 UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
                 let context = UIGraphicsGetCurrentContext()!
                 image.draw(in: cropRect)
@@ -134,7 +133,7 @@ class ImagePreviewViewModel {
 //                    context.rotate(by: rotation)
 //                }
                 textLayer.draw(in: context)
-                
+
                 let newImage = UIGraphicsGetImageFromCurrentImageContext()
                 UIGraphicsEndImageContext()
 
@@ -143,16 +142,16 @@ class ImagePreviewViewModel {
                 } else {
                     completion(.failure(.unableToProcessImage))
                 }
-                
-            case .failure(let error):
+
+            case let .failure(error):
                 #if DEBUG
-                print(error.rawValue)
+                    print(error.rawValue)
                 #endif
                 completion(.failure(.noText))
             }
         }
     }
-    
+
     private func generateTextLayer(completion: @escaping (Result<CATextLayer, ImageProcessError>) -> Void) {
         guard let textRect = textLayerRect else {
             completion(.failure(.unableToCreateTextLayer))
@@ -164,14 +163,14 @@ class ImagePreviewViewModel {
         let bestFont = UIFont.bestFittingFont(for: text, in: textRect, fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        
+
         let textLayer = CATextLayer()
-        textLayer.frame = textRect //CGRect(x: (textRect.origin.x * image.scale), y: (textRect.origin.y * image.scale), width: (textRect.width * image.scale), height: (textRect.height * image.scale))
+        textLayer.frame = textRect // CGRect(x: (textRect.origin.x * image.scale), y: (textRect.origin.y * image.scale), width: (textRect.width * image.scale), height: (textRect.height * image.scale))
         textLayer.alignmentMode = .center
-        textLayer.string = NSAttributedString(string: text, attributes: [ NSAttributedString.Key.font: bestFont,
-                                                                          NSAttributedString.Key.paragraphStyle: paragraphStyle,
-                                                                          NSAttributedString.Key.foregroundColor: UIColor.white])
-        
+        textLayer.string = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: bestFont,
+                                                                         NSAttributedString.Key.paragraphStyle: paragraphStyle,
+                                                                         NSAttributedString.Key.foregroundColor: UIColor.white])
+
         completion(.success(textLayer))
     }
 }

@@ -9,9 +9,8 @@
 import UIKit
 
 class DetailGoalViewController: CreateGoalViewController {
-    
     let viewModel = GoalDetailViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
@@ -21,43 +20,43 @@ class DetailGoalViewController: CreateGoalViewController {
             configTextFields(goal: goal)
         }
     }
-    
+
     override func setupNavBar() {
         navigationItem.title = "Goal Details"
         navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Goal Details")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
     }
-    
+
     private func configTextFields(goal: Goal) {
         guard let unwrappedName = goal.name,
-              let unwrappedDescription = goal.summary else { return }
+            let unwrappedDescription = goal.summary else { return }
         createGoalView.goalNameTextField.text = unwrappedName
         createGoalView.goalDescriptionTextView.text = unwrappedDescription
         createGoalView.goalDescriptionTextView.textColor = .black
     }
-    
+
     private func configButton() {
         createGoalView.createButton.setTitle("Update", for: .normal)
         createGoalView.createButton.removeTarget(nil, action: nil, for: .allEvents)
         createGoalView.createButton.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
     }
-    
+
     @objc private func updateTapped() {
         guard let userGoalName = createGoalView.goalNameTextField.text,
-              let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
-                return
+            let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
+            return
         }
-        
+
         if userGoalName.isEmpty || userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
             presentError()
             return
         }
 
         viewModel.updateGoal(userGoalName, userGoalSummary)
-        
+
         navigationController?.popViewController(animated: true)
     }
-    
+
     @objc private func deleteTapped() {
         viewModel.delete()
         navigationController?.popViewController(animated: true)

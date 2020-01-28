@@ -11,10 +11,10 @@ import UIKit
 
 extension UITableView {
     func setEmptyView(title: String, message: String) {
-        let emptyView = UIView(frame: CGRect(x: self.center.x,
-                                             y: self.center.y,
-                                             width: self.bounds.size.width,
-                                             height: self.bounds.size.height))
+        let emptyView = UIView(frame: CGRect(x: center.x,
+                                             y: center.y,
+                                             width: bounds.size.width,
+                                             height: bounds.size.height))
         let titleLabel = UILabel()
         let messageLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -32,14 +32,14 @@ extension UITableView {
         messageLabel.text = message
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
-        self.backgroundView = emptyView
-        self.separatorStyle = .none
+        backgroundView = emptyView
+        separatorStyle = .none
         titleLabel.textColor = .darkGray
         messageLabel.textColor = .lightGray
     }
-    
+
     func restore() {
-        self.backgroundView = nil
-        self.separatorStyle = .singleLine
+        backgroundView = nil
+        separatorStyle = .singleLine
     }
 }

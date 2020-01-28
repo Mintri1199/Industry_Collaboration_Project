@@ -11,7 +11,7 @@ import UIKit
 class WelcomeCollectionViewCell: UICollectionViewCell {
     var containerView: UIView? {
         didSet {
-            addSubview(self.containerView ?? UIView())
+            addSubview(containerView ?? UIView())
         }
     }
 }

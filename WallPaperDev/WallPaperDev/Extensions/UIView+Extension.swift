@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
     func pauseAnimation() {
         let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
         layer.speed = 0

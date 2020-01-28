@@ -12,7 +12,7 @@ class ImageSelectionLayout: UICollectionViewFlowLayout {
     override func prepare() {
         super.prepare()
         guard let cv = collectionView else {
-            return            
+            return
         }
         scrollDirection = .horizontal
         let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width

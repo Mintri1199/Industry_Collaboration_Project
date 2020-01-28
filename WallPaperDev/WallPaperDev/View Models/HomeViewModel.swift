@@ -6,14 +6,13 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class HomeViewModel {
-    
     var goalsArr: [Goal] = []
     private let coreDataStack: CoreDataStack = CoreDataStack.shared
-    
+
     func update(completion: @escaping () -> Void) {
         goalsArr = coreDataStack.fetchGoals()
         completion()

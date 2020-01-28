@@ -6,13 +6,12 @@
 //  Copyright © 2019 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 final class CoreDataStack {
-    
     static let shared = CoreDataStack()
-    
+
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -21,7 +20,7 @@ final class CoreDataStack {
          error conditions that could cause the creation of the store to fail.
          */
         let container = NSPersistentContainer(name: "GoalPersistence")
-        container.loadPersistentStores(completionHandler: { ( _, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -38,13 +37,14 @@ final class CoreDataStack {
         })
         return container
     }()
-    
+
     lazy var context = persistentContainer.viewContext
-    
+
     // MARK: - Core Data Saving support
+
     private init() {}
-    
-    func saveContext () {
+
+    func saveContext() {
         let context = persistentContainer.viewContext
         print(context)
         if context.hasChanges {
@@ -59,14 +59,13 @@ final class CoreDataStack {
             }
         }
     }
-    
+
     // MARK: - Core Data fetch support
-    
+
     func fetch<T: NSManagedObject>(_ objectType: T.Type, _ filter: String? = nil) -> [T] {
-        
         let entityName = String(describing: objectType)
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        
+
         if let filter = filter {
             let filterPredicate = NSPredicate(format: "name =[c] %@", filter)
             fetchRequest.predicate = filterPredicate
@@ -79,9 +78,8 @@ final class CoreDataStack {
             return [T]()
         }
     }
-    
+
     func delete(_ object: NSManagedObject) {
-        
         context.delete(object)
         //        saveContext()
     }

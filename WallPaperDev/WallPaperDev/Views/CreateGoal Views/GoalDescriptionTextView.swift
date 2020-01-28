@@ -20,8 +20,8 @@ class GoalDescriptionTextView: UITextView {
         font = UIFont(name: "HelveticaNeue", size: 25)
         translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    required init?(coder aDecoder: NSCoder) {
+
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
