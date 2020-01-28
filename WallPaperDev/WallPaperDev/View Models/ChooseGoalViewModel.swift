@@ -9,17 +9,16 @@
 import Foundation
 
 class ChooseGoalViewModel {
-        
-    var selectedGoals: [Goal] = []
-    var goals: [Goal] = []
-    
-    private let coreDataStack: CoreDataStack = CoreDataStack.shared
-    
-    func populateDataSource() {
-        goals = coreDataStack.fetchGoals()
-    }
-    
-    func preselectGoals(_ array: [Goal]) {
-        selectedGoals = array
-    }
+  var selectedGoals: [Goal] = []
+  var goals: [Goal] = []
+
+  private let coreDataStack: CoreDataStack = CoreDataStack.shared
+
+  func populateDataSource() {
+    goals = coreDataStack.fetchGoals()
+  }
+
+  func preselectGoals(_ array: [Goal]) {
+    selectedGoals = array
+  }
 }

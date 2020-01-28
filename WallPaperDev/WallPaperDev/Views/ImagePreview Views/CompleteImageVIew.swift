@@ -9,14 +9,13 @@
 import UIKit
 
 class CompleteImageVIew: UIImageView {
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    translatesAutoresizingMaskIntoConstraints = false
+    contentMode = .scaleAspectFit
+  }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
-        contentMode = .scaleAspectFit
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }

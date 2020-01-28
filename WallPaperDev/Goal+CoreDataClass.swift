@@ -7,8 +7,7 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
-public class Goal: NSManagedObject {
-}
+public class Goal: NSManagedObject {}
