@@ -10,11 +10,11 @@ import CoreData
 import Foundation
 
 class HomeViewModel {
-    var goalsArr: [Goal] = []
-    private let coreDataStack: CoreDataStack = CoreDataStack.shared
+  var goalsArr: [Goal] = []
+  private let coreDataStack: CoreDataStack = CoreDataStack.shared
 
-    func update(completion: @escaping () -> Void) {
-        goalsArr = coreDataStack.fetchGoals()
-        completion()
-    }
+  func update(completion: @escaping () -> Void) {
+    goalsArr = coreDataStack.fetchGoals()
+    completion()
+  }
 }

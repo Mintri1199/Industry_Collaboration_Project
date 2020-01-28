@@ -9,26 +9,26 @@
 import Foundation
 
 class GoalDetailViewModel {
-    var goal: Goal?
-    private let coreDataStack = CoreDataStack.shared
+  var goal: Goal?
+  private let coreDataStack = CoreDataStack.shared
 
-    private func updateValidation(_ name: String, _ description: String) -> Bool {
-        guard let goalName = goal?.name, let goalDescription = goal?.summary else {
-            return false
-        }
-        return name != goalName || description != goalDescription
+  private func updateValidation(_ name: String, _ description: String) -> Bool {
+    guard let goalName = goal?.name, let goalDescription = goal?.summary else {
+      return false
     }
+    return name != goalName || description != goalDescription
+  }
 
-    func updateGoal(_ name: String, _ description: String) {
-        if let goal = goal, updateValidation(name, description) {
-            coreDataStack.updateGoal(goal, name, description)
-        }
+  func updateGoal(_ name: String, _ description: String) {
+    if let goal = goal, updateValidation(name, description) {
+      coreDataStack.updateGoal(goal, name, description)
     }
+  }
 
-    func delete() {
-        guard let goal = goal else {
-            return
-        }
-        coreDataStack.delete(goal.objectID)
+  func delete() {
+    guard let goal = goal else {
+      return
     }
+    coreDataStack.delete(goal.objectID)
+  }
 }

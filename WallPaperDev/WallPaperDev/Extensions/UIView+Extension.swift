@@ -10,18 +10,18 @@ import Foundation
 import UIKit
 
 extension UIView {
-    func pauseAnimation() {
-        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
-        layer.speed = 0
-        layer.timeOffset = pausedTime
-    }
+  func pauseAnimation() {
+    let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+    layer.speed = 0
+    layer.timeOffset = pausedTime
+  }
 
-    func resumeAnimation() {
-        let pausedTime = layer.timeOffset
-        layer.speed = 1
-        layer.timeOffset = 0
-        layer.beginTime = 0
-        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-        layer.beginTime = timeSincePause
-    }
+  func resumeAnimation() {
+    let pausedTime = layer.timeOffset
+    layer.speed = 1
+    layer.timeOffset = 0
+    layer.beginTime = 0
+    let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+    layer.beginTime = timeSincePause
+  }
 }

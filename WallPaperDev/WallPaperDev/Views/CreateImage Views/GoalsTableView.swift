@@ -9,15 +9,15 @@
 import UIKit
 
 class GoalsTableView: UITableView {
-    static let cellId = "selectedGoal"
-    override init(frame: CGRect, style: UITableView.Style) {
-        super.init(frame: frame, style: style)
-        translatesAutoresizingMaskIntoConstraints = false
-        bounces = false
-        register(UITableViewCell.self, forCellReuseIdentifier: GoalsTableView.cellId)
-    }
+  static let cellId = "selectedGoal"
+  override init(frame: CGRect, style: UITableView.Style) {
+    super.init(frame: frame, style: style)
+    translatesAutoresizingMaskIntoConstraints = false
+    bounces = false
+    register(UITableViewCell.self, forCellReuseIdentifier: GoalsTableView.cellId)
+  }
 
-    required init?(coder _: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }
