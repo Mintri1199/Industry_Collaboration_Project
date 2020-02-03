@@ -60,56 +60,56 @@ extension CreateImageViewController {
       imageSelectionCV.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       imageSelectionCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
       imageSelectionCV.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-      imageSelectionCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5),
+      imageSelectionCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5)
         ])
   }
 
   private func setupChooseImageLabel() {
-    chooseImageLabel.text = "Choose Image"
-    view.addSubview(chooseImageLabel)
+    chooseImageLabel.text = Localized.string("choose_image_title")
+    self.view.addSubview(chooseImageLabel)
     NSLayoutConstraint.activate([
-      chooseImageLabel.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
-      chooseImageLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-      chooseImageLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-      chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 1),
+      chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
+      chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
+      chooseImageLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+      chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
         ])
   }
 
   private func setupChooseGoalLabel() {
-    chooseGoalLabel.text = "Choose Goal"
-    view.addSubview(chooseGoalLabel)
+    chooseGoalLabel.text = Localized.string("choose_goal_action")
+    self.view.addSubview(chooseGoalLabel)
     NSLayoutConstraint.activate([
       chooseGoalLabel.widthAnchor.constraint(equalTo: chooseImageLabel.widthAnchor),
       chooseGoalLabel.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
       chooseGoalLabel.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
-      chooseGoalLabel.topAnchor.constraint(equalTo: imageSelectionCV.bottomAnchor),
+      chooseGoalLabel.topAnchor.constraint(equalTo: imageSelectionCV.bottomAnchor)
         ])
   }
 
   private func setupBlueButton() {
-    view.addSubview(createImageButton)
+    self.view.addSubview(createImageButton)
     createImageButton.isHidden = true
-    createImageButton.setTitle("Create", for: .normal)
+    createImageButton.setTitle(Localized.string("create_action"), for: .normal)
     createImageButton.addTarget(self, action: #selector(pushToPreview), for: .touchUpInside)
     NSLayoutConstraint.activate([
-      createImageButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+      createImageButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6),
       createImageButton.heightAnchor.constraint(equalToConstant: 50),
-      createImageButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      createImageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      createImageButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+      createImageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
   }
 
   private func setupChangeGoalsButtonButton() {
-    view.addSubview(changeGoalsButton)
+    self.view.addSubview(changeGoalsButton)
     changeGoalsButton.isHidden = true
-    changeGoalsButton.label.text = "Change goals"
+    changeGoalsButton.label.text = Localized.string("change_goals_action")
     changeGoalsButton.label.textAlignment = .right
     changeGoalsButton.addTarget(self, action: #selector(changeGoalTapped), for: .touchUpInside)
     NSLayoutConstraint.activate([
-      changeGoalsButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+      changeGoalsButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
       changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
       changeGoalsButton.topAnchor.constraint(equalTo: chooseGoalLabel.topAnchor),
-      changeGoalsButton.leadingAnchor.constraint(equalTo: chooseGoalLabel.trailingAnchor, constant: 50),
+      changeGoalsButton.leadingAnchor.constraint(equalTo: chooseGoalLabel.trailingAnchor, constant: 50)
         ])
   }
 
@@ -122,7 +122,7 @@ extension CreateImageViewController {
       goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
       goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
       goalsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-      goalsTableView.bottomAnchor.constraint(equalTo: createImageButton.topAnchor, constant: -10),
+      goalsTableView.bottomAnchor.constraint(equalTo: createImageButton.topAnchor, constant: -10)
         ])
   }
 
@@ -134,8 +134,8 @@ extension CreateImageViewController {
   }
 
   private func setupNavBar() {
-    navigationItem.title = "Create Wallpaper"
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
+    navigationItem.title = Localized.string("create_wallpaper_title")
+    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("create_wallpaper_title"))
   }
 }
 

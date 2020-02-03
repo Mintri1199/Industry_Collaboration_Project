@@ -28,7 +28,7 @@ class GrayTextButton: UIButton {
       label.leadingAnchor.constraint(equalTo: leadingAnchor),
       label.trailingAnchor.constraint(equalTo: trailingAnchor),
       label.topAnchor.constraint(equalTo: topAnchor),
-      label.bottomAnchor.constraint(equalTo: bottomAnchor),
+      label.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
   }
 }

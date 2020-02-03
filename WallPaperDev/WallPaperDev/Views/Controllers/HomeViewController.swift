@@ -134,9 +134,9 @@ extension HomeViewController: UITableViewDelegate {
 // MARK: - TableViewDataSource
 
 extension HomeViewController: UITableViewDataSource {
-  func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if homeViewModel.goalsArr.isEmpty {
-      homeTableView.setEmptyView(title: "Set a goal today!", message: "")
+      homeTableView.setEmptyView(title: Localized.string("set_goal_today_prompt"), message: "")
       if !wallpaperButton.isHidden {
         wallpaperButton.isHidden.toggle()
       }
@@ -156,17 +156,17 @@ extension HomeViewController: UITableViewDataSource {
     return cell
   }
 
-  func tableView(_: UITableView, viewForHeaderInSection _: Int) -> UIView? {
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let label = PaddingLabel(frame: view.frame)
     label.frame = view.frame
-    label.text = "Goals"
+    label.text = Localized.string("goals")
     label.font = UIFont(name: "Avenir-Heavy", size: 25)
     label.backgroundColor = .foregroundWhite
     return label
   }
 
-  func tableView(_: UITableView, heightForHeaderInSection _: Int) -> CGFloat {
-    50
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 50
   }
 }
 

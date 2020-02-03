@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailGoalViewController: CreateGoalViewController {
+final class DetailGoalViewController: CreateGoalViewController {
   let viewModel = GoalDetailViewModel()
 
   override func viewDidLoad() {
@@ -22,8 +22,8 @@ class DetailGoalViewController: CreateGoalViewController {
   }
 
   override func setupNavBar() {
-    navigationItem.title = "Goal Details"
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Goal Details")
+    navigationItem.title = Localized.string("goal_details")
+    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details"))
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
   }
 
@@ -36,7 +36,7 @@ class DetailGoalViewController: CreateGoalViewController {
   }
 
   private func configButton() {
-    createGoalView.createButton.setTitle("Update", for: .normal)
+    createGoalView.createButton.setTitle(Localized.string("update_action"), for: .normal)
     createGoalView.createButton.removeTarget(nil, action: nil, for: .allEvents)
     createGoalView.createButton.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
   }

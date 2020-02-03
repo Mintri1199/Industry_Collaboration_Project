@@ -9,12 +9,13 @@
 import UIKit
 
 class CreateGoalViewController: UIViewController {
+
   let createGoalView = CreateGoalView()
   let coreDataStack = CoreDataStack.shared
   weak var coordinator: MainCoordinator?
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    .lightContent
+    return .lightContent
   }
 
   override func viewDidLoad() {
@@ -31,8 +32,8 @@ class CreateGoalViewController: UIViewController {
   }
 
   func setupNavBar() {
-    navigationItem.title = "Create Goal"
-    coordinator?.navigationController.navigationBar.configGenericNavBar(text: "Create Goal")
+    navigationItem.title = Localized.string("create_goal_title")
+    coordinator?.navigationController.navigationBar.configGenericNavBar(text: Localized.string("create_goal_title"))
   }
 }
 
@@ -65,9 +66,15 @@ extension CreateGoalViewController {
       return
     }
 
-    if userGoalName.isEmpty || userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
-      presentError()
-      return
+    func presentError() {
+      let alertView = UIAlertController(title: Localized.string("invalid"),
+                                        message: Localized.string("create_goal_error_message"),
+                                        preferredStyle: .alert)
+      let action = UIAlertAction(title: Localized.string("ok_action"),
+                                 style: .cancel,
+                                 handler: nil)
+      alertView.addAction(action)
+      self.present(alertView, animated: true, completion: nil)
     }
     coreDataStack.createGoal(userGoalName, userGoalSummary)
     navigationController?.popViewController(animated: true)

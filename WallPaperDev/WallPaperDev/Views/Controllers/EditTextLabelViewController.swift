@@ -59,6 +59,7 @@ class EditTextLabelViewController: UIViewController {
 // MARK: - UIs functions
 
 extension EditTextLabelViewController {
+
   private func setupLivePreview() {
     view.addSubview(livePreview)
     livePreview.backgroundColor = .white
@@ -80,7 +81,7 @@ extension EditTextLabelViewController {
     let textAttributes: [NSAttributedString.Key: Any] = [
       NSAttributedString.Key.foregroundColor: UIColor.white,
       NSAttributedString.Key.font: bestFont,
-      NSAttributedString.Key.paragraphStyle: paragraphStyle,
+      NSAttributedString.Key.paragraphStyle: paragraphStyle
     ]
     textLabel.attributedText = NSAttributedString(string: viewModel.labelText!, attributes: textAttributes)
     view.addSubview(textLabel)
@@ -162,17 +163,20 @@ extension EditTextLabelViewController {
     NSLayoutConstraint.activate([
       toolBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       toolBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      toolBar.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
+      toolBar.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
         ])
 
     let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveTapped))
     let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissPreview))
-    let hideToolBar = UIBarButtonItem(title: "View", style: .plain, target: self, action: #selector(hideToolbar))
-    let items: [UIBarButtonItem] = [cancelButton,
-                                    UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                                    saveButton,
-                                    UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-                                    hideToolBar]
+    let hideToolBar = UIBarButtonItem(title: Localized.string("view_action"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(hideToolbar))
+    let items: [UIBarButtonItem] = [ cancelButton,
+                                     UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                                     saveButton,
+                                     UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
+                                     hideToolBar ]
 
     toolBar.setItems(items, animated: true)
   }

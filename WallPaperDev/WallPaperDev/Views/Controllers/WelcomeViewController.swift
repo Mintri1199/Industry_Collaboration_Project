@@ -16,7 +16,7 @@ class WelcomeViewController: UIViewController {
   private let backButton: UIButton = {
     var button = UIButton(type: UIButton.ButtonType.system)
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("BACK", for: .normal)
+    button.setTitle(Localized.string("back_action").uppercased(), for: .normal)
     button.isHidden = true
     button.isEnabled = false
     button.setTitleColor(.navBarBlue, for: .normal)
@@ -29,7 +29,7 @@ class WelcomeViewController: UIViewController {
   private let nextButton: UIButton = {
     var button = UIButton(type: UIButton.ButtonType.system)
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.setTitle("NEXT", for: .normal)
+    button.setTitle(Localized.string("next_action").uppercased(), for: .normal)
     button.setTitleColor(.navBarBlue, for: .normal)
     button.setTitleColor(.lightGray, for: .highlighted)
     button.addTarget(self, action: #selector(nextTapped), for: .touchUpInside)
@@ -41,7 +41,7 @@ class WelcomeViewController: UIViewController {
   private var startButtonTrailingConstraint: NSLayoutConstraint?
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    .default
+    return .default
   }
 
   override func viewDidLoad() {
@@ -60,7 +60,10 @@ extension WelcomeViewController {
     navigationController?.navigationBar.tintColor = .navBarBlue
     navigationController?.navigationBar.isTranslucent = true
     navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SKIP", style: .plain, target: self, action: #selector(skipTapped))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: Localized.string("skip_action").uppercased(),
+                                                        style: .plain,
+                                                        target: self,
+                                                        action: #selector(skipTapped))
   }
 
   private func setupUI() {
@@ -86,7 +89,7 @@ extension WelcomeViewController {
       collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
       collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height / 1.5),
+      collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height / 1.5)
         ])
   }
 
@@ -96,7 +99,7 @@ extension WelcomeViewController {
       pageIndicators.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       pageIndicators.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
       pageIndicators.widthAnchor.constraint(equalToConstant: 75),
-      pageIndicators.heightAnchor.constraint(equalToConstant: 15),
+      pageIndicators.heightAnchor.constraint(equalToConstant: 15)
         ])
   }
 
@@ -106,7 +109,7 @@ extension WelcomeViewController {
       nextButton.centerYAnchor.constraint(equalTo: pageIndicators.centerYAnchor),
       nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
       nextButton.heightAnchor.constraint(equalToConstant: 15),
-      nextButton.widthAnchor.constraint(equalToConstant: 50),
+      nextButton.widthAnchor.constraint(equalToConstant: 50)
         ])
   }
 
@@ -116,14 +119,14 @@ extension WelcomeViewController {
       backButton.centerYAnchor.constraint(equalTo: pageIndicators.centerYAnchor),
       backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
       backButton.heightAnchor.constraint(equalToConstant: 15),
-      backButton.widthAnchor.constraint(equalToConstant: 50),
+      backButton.widthAnchor.constraint(equalToConstant: 50)
         ])
   }
 
   private func setupStartButton() {
     view.addSubview(startButton)
     startButton.isEnabled = false
-    startButton.setTitle("START", for: .normal)
+    startButton.setTitle(Localized.string("start_action").uppercased(), for: .normal)
     startButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
     startButtonTrailingConstraint = startButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 100)
     startButtonTrailingConstraint?.isActive = true
@@ -132,7 +135,7 @@ extension WelcomeViewController {
     NSLayoutConstraint.activate([
       startButton.centerYAnchor.constraint(equalTo: pageIndicators.centerYAnchor),
       startButton.heightAnchor.constraint(equalToConstant: 40),
-      startButton.widthAnchor.constraint(equalToConstant: 75),
+      startButton.widthAnchor.constraint(equalToConstant: 75)
         ])
   }
 }

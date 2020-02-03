@@ -40,12 +40,19 @@ extension GoalsSelectionViewController {
   }
 
   private func setupNavBar() {
-    navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
+    let navigationTitle = String(format: Localized.string("choose_goal_title"),
+                                 String(viewModel.selectedGoals.count),
+                                 String(viewModel.slectedGoalMaxCount))
+    navigationItem.title = navigationTitle
     navigationItem.hidesBackButton = true
 
-    let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(newBackButtonTapped))
+    let newBackButton = UIBarButtonItem(title: Localized.string("back_action"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(newBackButtonTapped))
     navigationItem.leftBarButtonItem = newBackButton
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Choose Goal \(viewModel.selectedGoals.count) / 4")
+
+    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: navigationTitle)
   }
 
   private func setupTableView() {
@@ -97,28 +104,37 @@ extension GoalsSelectionViewController: UITableViewDataSource {
 // MARK: - TableViewDelegate
 
 extension GoalsSelectionViewController: UITableViewDelegate {
-  func tableView(_: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-    let description = viewModel.goals[indexPath.row].summary == nil ? "There is no description for this goal" : viewModel.goals[indexPath.row].summary!
-    let alertView = UIAlertController(title: viewModel.goals[indexPath.row].name!, message: description, preferredStyle: .alert)
-    let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+
+  func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+    let description = viewModel.goals[indexPath.row].summary == nil ? Localized.string("message_for_goal_with_no_description") : viewModel.goals[indexPath.row].summary!
+    let alertView = UIAlertController(title: viewModel.goals[indexPath.row].name!,
+                                      message: description,
+                                      preferredStyle: .alert)
+    let okAction = UIAlertAction(title: Localized.string("ok_action"),
+                                 style: .cancel,
+                                 handler: nil)
     alertView.addAction(okAction)
     present(alertView, animated: true)
   }
 
-  func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     viewModel.selectedGoals.append(viewModel.goals[indexPath.row])
-    navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
+    navigationItem.title = String(format: Localized.string("choose_goal_title"),
+                                  String(viewModel.selectedGoals.count),
+                                  String(viewModel.slectedGoalMaxCount))
   }
 
-  func tableView(_: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    if viewModel.selectedGoals.count == 4 {
+  func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    if viewModel.selectedGoals.count == viewModel.slectedGoalMaxCount {
       return nil
     }
     return indexPath
   }
 
-  func tableView(_: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    viewModel.selectedGoals = viewModel.selectedGoals.filter { $0 != viewModel.goals[indexPath.row] }
-    navigationItem.title = "Choose Goal \(viewModel.selectedGoals.count) / 4"
+  func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    viewModel.selectedGoals = viewModel.selectedGoals.filter({ $0 != viewModel.goals[indexPath.row] })
+    navigationItem.title = String(format: Localized.string("choose_goal_title"),
+                                  String(viewModel.selectedGoals.count),
+                                  String(viewModel.slectedGoalMaxCount))
   }
 }

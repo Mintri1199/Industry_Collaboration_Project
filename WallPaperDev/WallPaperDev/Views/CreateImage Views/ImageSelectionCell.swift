@@ -9,15 +9,19 @@
 import UIKit
 
 class ImageSelectionCell: UICollectionViewCell {
+  // Using layers to hold uninteractable images
+  lazy var photoLayer = CALayer()
+  lazy var maskLayer = CAShapeLayer()
+  lazy var borderLayer = CAShapeLayer()
+
   let identifier = "cellID"
   var lastCell: Bool = false
 
   // MARK: - UIs
-
   lazy var showMoreLabel: UILabel = {
     var label = UILabel(frame: .zero)
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = "Show more"
+    label.text = Localized.string("show_more_title")
     label.font = UIFont.systemFont(ofSize: 18)
     label.adjustsFontSizeToFitWidth = true
     label.textAlignment = .center
@@ -36,11 +40,6 @@ class ImageSelectionCell: UICollectionViewCell {
       photoLayer.contents = cellImage?.cgImage
     }
   }
-
-  // Using layers to hold uninteractable images
-  lazy var photoLayer = CALayer()
-  lazy var maskLayer = CAShapeLayer()
-  lazy var borderLayer = CAShapeLayer()
 }
 
 // MARK: - Setup UI functions
@@ -78,8 +77,8 @@ extension ImageSelectionCell {
       showMoreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
       showMoreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
       showMoreLabel.widthAnchor.constraint(equalTo: widthAnchor),
-      showMoreLabel.heightAnchor.constraint(equalToConstant: bounds.size.height / 6),
-        ])
+      showMoreLabel.heightAnchor.constraint(equalToConstant: bounds.size.height / 6)
+    ])
   }
 
   private func setupButton() {
@@ -91,8 +90,8 @@ extension ImageSelectionCell {
       showMoreButton.heightAnchor.constraint(equalToConstant: sizeContant),
       showMoreButton.widthAnchor.constraint(equalToConstant: sizeContant),
       showMoreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-      showMoreButton.topAnchor.constraint(equalTo: showMoreLabel.bottomAnchor),
-        ])
+      showMoreButton.topAnchor.constraint(equalTo: showMoreLabel.bottomAnchor)
+    ])
 
     showMoreButton.backgroundColor = .lightGray
     showMoreButton.layer.cornerRadius = sizeContant / 2
