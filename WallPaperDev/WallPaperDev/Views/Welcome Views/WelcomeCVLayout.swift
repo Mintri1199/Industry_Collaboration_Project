@@ -9,13 +9,13 @@
 import UIKit
 
 class WelcomeCVLayout: UICollectionViewFlowLayout {
-    override func prepare() {
-        super.prepare()
-        guard let cv = collectionView else {
-            return
-        }
-        scrollDirection = .horizontal
-        itemSize = cv.bounds.size
-        minimumLineSpacing = 0
+  override func prepare() {
+    super.prepare()
+    guard let cv = collectionView else {
+      return
     }
+    scrollDirection = .horizontal
+    itemSize = cv.bounds.size
+    minimumLineSpacing = 0
+  }
 }

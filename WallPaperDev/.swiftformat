@@ -1,0 +1,31 @@
+# exclude Pods/ from SwiftFormat
+--exclude Pods
+
+# explicitly define rules to follow
+--rules blankLinesAtEndOfScope
+--rules blankLinesBetweenScopes
+--rules braces
+--rules consecutiveBlankLines
+--rules consecutiveSpaces
+--rules duplicateImports
+--rules elseOnSameLine
+--rules emptyBraces
+--rules indent
+--rules leadingDelimiters
+--rules linebreakAtEndOfFile
+--rules redundantBreak
+--rules redundantExtensionACL
+--rules redundantFileprivate
+--rules redundantGet
+--rules redundantInit
+--rules redundantLet
+--rules redundantLetError
+--rules redundantNilInit
+--rules redundantObjc
+--rules redundantParens
+--rules redundantPattern
+--rules redundantRawValues
+--rules redundantVoidReturnType
+
+# set spacing to 2
+--indent 2

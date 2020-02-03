@@ -14,4 +14,3 @@ final class Localized {
     return NSLocalizedString(key, comment: comment)
   }
 }
-

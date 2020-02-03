@@ -7,16 +7,15 @@
 //
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 extension Goal {
+  @NSManaged public var name: String?
+  @NSManaged public var summary: String?
 
-    @NSManaged public var name: String?
-    @NSManaged public var summary: String?
-    
-    @nonobjc
-    public class func fetchRequest() -> NSFetchRequest<Goal> {
-        return NSFetchRequest<Goal>(entityName: "Goal")
-    }
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Goal> {
+    NSFetchRequest<Goal>(entityName: "Goal")
+  }
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 final class DetailGoalViewController: CreateGoalViewController {
-
   let viewModel = GoalDetailViewModel()
 
   override func viewDidLoad() {
@@ -45,7 +44,7 @@ final class DetailGoalViewController: CreateGoalViewController {
   @objc private func updateTapped() {
     guard let userGoalName = createGoalView.goalNameTextField.text,
       let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
-        return
+      return
     }
 
     if userGoalName.isEmpty || userGoalSummary == createGoalView.goalDescriptionTextView.placeHolder {
