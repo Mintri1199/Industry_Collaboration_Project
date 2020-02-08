@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CreateGoalView: UIView {
-  
   // MARK: - Custom UIViews
   lazy var goalNameLabel = BlueLabel(frame: .zero)
   lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
@@ -32,7 +31,6 @@ class CreateGoalView: UIView {
 // MARK: - Setup UI functions
 
 extension CreateGoalView {
-  
   private func setupViews() {
     addSubview(goalNameLabel)
     addSubview(goalNameTextField)
