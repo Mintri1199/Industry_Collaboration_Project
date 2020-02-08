@@ -20,7 +20,6 @@
 		44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56607234D168C00DEBB86 /* CreateGoalView.swift */; };
 		44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56609234D16C100DEBB86 /* BlueLabel.swift */; };
 		44B5660C234D177400DEBB86 /* GoalNameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5660B234D177400DEBB86 /* GoalNameTextField.swift */; };
-		44B5660E234D386D00DEBB86 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B5660D234D386D00DEBB86 /* UIColor+Extension.swift */; };
 		44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */; };
 		44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51D23302A570015110B /* CreateImageViewController.swift */; };
 		44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B51F23302A680015110B /* ImagePreviewViewController.swift */; };
@@ -71,6 +70,11 @@
 		5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B95233D64760077F712 /* HomeViewModel.swift */; };
 		5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
 		A08D33C462BFF6682E9EB0DB /* Pods_WallPaperDevTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 733D2F71AFBF80956D117DFD /* Pods_WallPaperDevTests.framework */; };
+		FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
+		FA1CCF4B23D6281E00B47ED4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
+		FA1CCF4D23D6282700B47ED4 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */; };
+		FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */; };
+		FA1CCF5123D632C400B47ED4 /* ApplicationDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */; };
 		FA1CCF6123D6439900B47ED4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA1CCF6323D6439900B47ED4 /* Localizable.strings */; };
 		FA1CCF6723D6444600B47ED4 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF6623D6444600B47ED4 /* Localized.swift */; };
 /* End PBXBuildFile section */
@@ -109,7 +113,6 @@
 		44B56607234D168C00DEBB86 /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateGoalView.swift; path = ../CreateGoalView.swift; sourceTree = "<group>"; };
 		44B56609234D16C100DEBB86 /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlueLabel.swift; path = ../BlueLabel.swift; sourceTree = "<group>"; };
 		44B5660B234D177400DEBB86 /* GoalNameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GoalNameTextField.swift; path = ../GoalNameTextField.swift; sourceTree = "<group>"; };
-		44B5660D234D386D00DEBB86 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		44C0B51B233023EF0015110B /* GoalDescriptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDescriptionTextView.swift; sourceTree = "<group>"; };
 		44C0B51D23302A570015110B /* CreateImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateImageViewController.swift; sourceTree = "<group>"; };
 		44C0B51F23302A680015110B /* ImagePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +166,11 @@
 		C25928146D38DF836F7363F4 /* Pods-WallPaperDevUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevUITests/Pods-WallPaperDevUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C47BB523AE4EF33A00ED5918 /* Pods_WallPaperDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D47A20A38EE819FA09A65904 /* Pods-WallPaperDevTests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDevTests.xctest.xcconfig"; path = "Pods/Target Support Files/Pods-WallPaperDevTests/Pods-WallPaperDevTests.xctest.xcconfig"; sourceTree = "<group>"; };
+		FA1CCF4823D6268B00B47ED4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSchema.swift; sourceTree = "<group>"; };
+		FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
+		FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontSchema.swift; sourceTree = "<group>"; };
+		FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDependency.swift; sourceTree = "<group>"; };
 		FA1CCF5823D6430500B47ED4 /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FA1CCF5A23D6431D00B47ED4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		FA1CCF6223D6439900B47ED4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -294,7 +302,6 @@
 				44C0B52323302C920015110B /* UINavigation+Extensions.swift */,
 				44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */,
 				44C0B5392331C5460015110B /* Graphic+Extensions.swift */,
-				44B5660D234D386D00DEBB86 /* UIColor+Extension.swift */,
 				44F408662359261800EE0409 /* UIView+Extension.swift */,
 				444955C023952DCB009A1618 /* UIFont+Extension.swift */,
 			);
@@ -331,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				5D03ED082328161E006068CB /* WallPaperDev */,
-				5D4A1B3223396E5100CB79D4 /* Resources */,
 				5D03ED1D23281620006068CB /* WallPaperDevTests */,
 				5D03ED2823281620006068CB /* WallPaperDevUITests */,
 				5D03ED072328161E006068CB /* Products */,
@@ -386,13 +392,6 @@
 			path = WallPaperDevUITests;
 			sourceTree = "<group>";
 		};
-		5D4A1B3223396E5100CB79D4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		5D9C52A1232B14D800608D6D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -434,6 +433,11 @@
 			isa = PBXGroup;
 			children = (
 				FA1CCF6623D6444600B47ED4 /* Localized.swift */,
+				FA1CCF4823D6268B00B47ED4 /* Theme.swift */,
+				FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */,
+				FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */,
+				FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */,
+				FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -704,7 +708,6 @@
 				44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */,
 				FA1CCF6723D6444600B47ED4 /* Localized.swift in Sources */,
 				444955C123952DCB009A1618 /* UIFont+Extension.swift in Sources */,
-				44B5660E234D386D00DEBB86 /* UIColor+Extension.swift in Sources */,
 				44F4086523570EF000EE0409 /* WelcomeLabel.swift in Sources */,
 				44E0BA692339B7F0007AA20D /* TableView+Extensions.swift in Sources */,
 				444955C523995FD9009A1618 /* EditTextViewModel.swift in Sources */,
@@ -714,10 +717,13 @@
 				44E0BA73233CCB59007AA20D /* ImagePreviewViewModel.swift in Sources */,
 				44C0B52423302C920015110B /* UINavigation+Extensions.swift in Sources */,
 				443F7E48235683F700102331 /* MainCoordinator.swift in Sources */,
+				FA1CCF4B23D6281E00B47ED4 /* ColorSchema.swift in Sources */,
 				5D4CB52A23388B2A00187B33 /* EmptyStateView.swift in Sources */,
+				FA1CCF4D23D6282700B47ED4 /* ImageAsset.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
 				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
+				FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 				5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */,
 				5DD33D48233D43A800137E3C /* CoreDataStack.swift in Sources */,
@@ -726,12 +732,14 @@
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
+				FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
 				44F408672359261800EE0409 /* UIView+Extension.swift in Sources */,
 				44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
+				FA1CCF5123D632C400B47ED4 /* ApplicationDependency.swift in Sources */,
 				443F7E542356DAE600102331 /* PageIndicator.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
 				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,

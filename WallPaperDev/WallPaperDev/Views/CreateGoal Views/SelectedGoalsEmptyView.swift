@@ -9,7 +9,6 @@
 import UIKit
 
 class SelectedGoalsEmptyView: UIView {
-  
   private let titleLabel = UILabel()
   let chooseGoalButton = GrayTextButton()
   
@@ -25,6 +24,7 @@ class SelectedGoalsEmptyView: UIView {
   
   private func setupLabel() {
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    // TODO: Flagging font
     titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
     titleLabel.adjustsFontSizeToFitWidth = true
     titleLabel.text = Localized.string("selected_goal_empty_view_title")
