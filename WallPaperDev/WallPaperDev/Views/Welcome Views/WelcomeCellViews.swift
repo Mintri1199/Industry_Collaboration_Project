@@ -8,7 +8,13 @@
 
 import UIKit
 
-// TODO: The First to cell has their pictures and texts not space correctly
+enum WelcomeStyle {
+  case first
+  case second
+  case demo
+  case showcase
+}
+
 class FirstTwoCellView: UIView {
   private let photoLayer = CALayer()
   private let headerLabel = WelcomeLabel(frame: .zero)
@@ -46,8 +52,89 @@ class FirstTwoCellView: UIView {
   }
 }
 
+// TODO: Fix text and animation bugs (The first one is wonky, and smooth out the second)
+
+class CustomView: UIView {
+  private let defaultImageSchema = DefaultImageAsset()
+  private let headerLabel = WelcomeLabel(frame: .zero)
+  private let subHeaderLabel = WelcomeLabel(frame: .zero)
+  
+  func setupUI(style: WelcomeStyle) {
+    switch style {
+    case .first:
+      setupMidLabel(for: .first)
+      setupWelcomePicture(for: .first)
+    case .second:
+      setupMidLabel(for: .second)
+      setupWelcomePicture(for: .second)
+    default:
+      return
+    }
+  }
+  
+  private func setupWelcomePicture(for imageStyle : WelcomeStyle) {
+    let photoLayer = CALayer()
+    var image: UIImage
+    switch imageStyle {
+    case .first:
+      image = defaultImageSchema.tutorialWelcomeBanner
+    case.second:
+      image = defaultImageSchema.tutorialTodoBanner
+    default:
+      image = defaultImageSchema.tutorialWelcomeBanner
+    }
+    
+    photoLayer.frame = CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.height * 0.666))
+    photoLayer.contents = image.cgImage
+    photoLayer.contentsGravity = .resizeAspect
+    photoLayer.preferredFrameSize()
+    layer.addSublayer(photoLayer)
+  }
+  
+  private func setupMidLabel(for textStyle: WelcomeStyle) {
+    var headerText: String
+    var subHeaderText: String
+    switch textStyle {
+    case .first:
+      headerText = Localized.string(Localized.string("tutorial_title_1"))
+      subHeaderText = Localized.string("tutorial_message_1")
+    case .second:
+      headerText = Localized.string(Localized.string("tutorial_title_2"))
+      subHeaderText = Localized.string("tutorial_message_2")
+    default:
+      headerText = Localized.string(Localized.string("tutorial_title_1"))
+      subHeaderText = Localized.string("tutorial_message_1")
+    }
+    
+    let stackView = UIStackView(frame: .zero)
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    stackView.distribution = .fillProportionally
+    stackView.alignment = .center
+    stackView.axis = .vertical
+    addSubview(stackView)
+    
+    NSLayoutConstraint.activate([
+      stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+      stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+    ])
+    
+    headerLabel.configHeaderLabel(text: headerText)
+    subHeaderLabel.configSubHeaderLabel(text: subHeaderText)
+    
+    stackView.addArrangedSubview(headerLabel)
+    stackView.addArrangedSubview(subHeaderLabel)
+    stackView.sizeToFit()
+    layoutIfNeeded()
+    stackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: stackView.frame.height).isActive = true
+  }
+  
+  private func setupShowCase() {}
+  
+  private func setupDemo() {}
+}
+
 class DemoView: UIView {
-  private let headerText = Localized.string("tutorial_demo_message")
+  private let headerText = Localized.string("tutorial_demo_title")
   private let subHeaderText = Localized.string("tutorial_demo_message")
   private let container = CALayer()
   private let fingerLayer = CALayer()
@@ -58,9 +145,9 @@ class DemoView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = .white
+    backgroundColor = .yellow
     setupUI()
-    setupLayers()
+//    setupLayers()
   }
   
   required init?(coder: NSCoder) {
@@ -72,13 +159,13 @@ class DemoView: UIView {
   }
   
   private func setupUI() {
-    subHeaderLabel.configSubHeaderLabel(text: subHeaderText)
     subHeaderLabel.frame.size.width = bounds.width * 0.7
+    subHeaderLabel.configSubHeaderLabel(text: subHeaderText)
     subHeaderLabel.sizeToFit()
     subHeaderLabel.center = CGPoint(x: center.x, y: bounds.maxY - subHeaderLabel.frame.height / 2)
     
-    headerLabel.configHeaderLabel(text: headerText)
     headerLabel.frame.size.width = bounds.width * 0.8
+    headerLabel.configHeaderLabel(text: headerText)
     headerLabel.sizeToFit()
     headerLabel.center = center
     headerLabel.center.y = subHeaderLabel.frame.minY - headerLabel.frame.height / 2
@@ -139,7 +226,7 @@ class ShowCaseView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    backgroundColor = .white
+    backgroundColor = .yellow
     setupUI()
     setupLayers()
   }
@@ -158,8 +245,8 @@ class ShowCaseView: UIView {
     subHeaderLabel.sizeToFit()
     subHeaderLabel.center = CGPoint(x: center.x, y: bounds.maxY - subHeaderLabel.frame.height / 2)
     
-    headerLabel.configHeaderLabel(text: headerText)
     headerLabel.frame.size.width = bounds.width * 0.8
+    headerLabel.configHeaderLabel(text: headerText)
     headerLabel.sizeToFit()
     headerLabel.center = center
     headerLabel.center.y = subHeaderLabel.frame.minY - headerLabel.frame.height / 2

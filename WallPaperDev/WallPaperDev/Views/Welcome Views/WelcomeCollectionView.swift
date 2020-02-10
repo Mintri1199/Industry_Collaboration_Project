@@ -11,15 +11,12 @@ import UIKit
 final class WelcomeCollectionView: UICollectionView {
   private let cellId = "WelcomeCell"
   private let image: [UIImage]
-  private let headerText: [String]
-  private let subheaderText: [String]
+  private let cellStyle: [WelcomeStyle]
 
   override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
     image = [ApplicationDependency.manager.currentTheme.imageAssets.tutorialWelcomeBanner,
              ApplicationDependency.manager.currentTheme.imageAssets.tutorialTodoBanner]
-    headerText = [Localized.string("tutorial_title_1"), Localized.string("tutorial_title_2")]
-    subheaderText = [Localized.string("tutorial_message_1"),
-                     Localized.string("tutorial_message_2")]
+    cellStyle = [.first, .second]
 
     super.init(frame: frame, collectionViewLayout: layout)
     configCollectionView()
@@ -47,21 +44,21 @@ extension WelcomeCollectionView: UICollectionViewDelegate {
       return
     }
 
-    if let demoView = cell.containerView as? DemoView {
-      DispatchQueue.main.async {
-        demoView.resetAnimation()
-      }
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        demoView.resumeAnimation()
-      }
-    } else if let showView = cell.containerView as? ShowCaseView {
-      DispatchQueue.main.async {
-        showView.resetAnimation()
-      }
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        showView.resumeAnimation()
-      }
-    }
+//    if let demoView = cell.containerView as? DemoView {
+//      DispatchQueue.main.async {
+//        demoView.resetAnimation()
+//      }
+//      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//        demoView.resumeAnimation()
+//      }
+//    } else if let showView = cell.containerView as? ShowCaseView {
+//      DispatchQueue.main.async {
+//        showView.resetAnimation()
+//      }
+//      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//        showView.resumeAnimation()
+//      }
+//    }
   }
 }
 
@@ -76,10 +73,11 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
     }
 
     if indexPath.row == 0 || indexPath.row == 1 {
-      let welcomeView = FirstTwoCellView(frame: cell.bounds)
-      welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
-      welcomeView.setupPhotoLayer(image[indexPath.row])
-      cell.containerView = welcomeView
+      let bannerView = CustomView(frame: cell.bounds)
+      bannerView.setupUI(style: cellStyle[indexPath.row])
+//      welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
+//      welcomeView.setupPhotoLayer(image[indexPath.row])
+      cell.containerView = bannerView
     } else if indexPath.row == 2 {
       let demoView = DemoView(frame: cell.bounds)
       cell.containerView = demoView
