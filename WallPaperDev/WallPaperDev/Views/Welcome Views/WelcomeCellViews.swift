@@ -52,37 +52,36 @@ class FirstTwoCellView: UIView {
   }
 }
 
-// TODO: Fix text and animation bugs (The first one is wonky, and smooth out the second)
+// TODO: Fix animation bugs (The first one is wonky, and smooth out the second)
 
 class CustomView: UIView {
   private let defaultImageSchema = DefaultImageAsset()
-  private let headerLabel = WelcomeLabel(frame: .zero)
-  private let subHeaderLabel = WelcomeLabel(frame: .zero)
+  private lazy var headerLabel = WelcomeLabel(frame: .zero)
+  private lazy var subHeaderLabel = WelcomeLabel(frame: .zero)
+  private lazy var labelStackView = UIStackView(frame: .zero)
   
   func setupUI(style: WelcomeStyle) {
     switch style {
     case .first:
-      setupMidLabel(for: .first)
+      setupLabels(for: .first)
       setupWelcomePicture(for: .first)
     case .second:
-      setupMidLabel(for: .second)
+      setupLabels(for: .second)
       setupWelcomePicture(for: .second)
-    default:
-      return
+    case .demo:
+      setupLabels(for: .demo)
+    case .showcase:
+      setupLabels(for: .showcase)
     }
   }
   
   private func setupWelcomePicture(for imageStyle : WelcomeStyle) {
-    let photoLayer = CALayer()
-    var image: UIImage
-    switch imageStyle {
-    case .first:
-      image = defaultImageSchema.tutorialWelcomeBanner
-    case.second:
-      image = defaultImageSchema.tutorialTodoBanner
-    default:
-      image = defaultImageSchema.tutorialWelcomeBanner
+    guard imageStyle != .demo, imageStyle != .showcase else {
+      return
     }
+    
+    let photoLayer = CALayer()
+    let image: UIImage = imageStyle == .first ? defaultImageSchema.tutorialWelcomeBanner : defaultImageSchema.tutorialTodoBanner
     
     photoLayer.frame = CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.height * 0.666))
     photoLayer.contents = image.cgImage
@@ -91,41 +90,49 @@ class CustomView: UIView {
     layer.addSublayer(photoLayer)
   }
   
-  private func setupMidLabel(for textStyle: WelcomeStyle) {
+  private func setupLabels(for style: WelcomeStyle) {
     var headerText: String
     var subHeaderText: String
-    switch textStyle {
+    switch style {
     case .first:
       headerText = Localized.string(Localized.string("tutorial_title_1"))
       subHeaderText = Localized.string("tutorial_message_1")
     case .second:
       headerText = Localized.string(Localized.string("tutorial_title_2"))
       subHeaderText = Localized.string("tutorial_message_2")
-    default:
-      headerText = Localized.string(Localized.string("tutorial_title_1"))
-      subHeaderText = Localized.string("tutorial_message_1")
+    case .demo:
+      headerText = Localized.string(Localized.string("tutorial_demo_title"))
+      subHeaderText = Localized.string("tutorial_demo_message")
+    case .showcase:
+      headerText = Localized.string(Localized.string("tutorial_showcase_title"))
+      subHeaderText = Localized.string("tutorial_showcase_message")
     }
     
-    let stackView = UIStackView(frame: .zero)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.distribution = .fillProportionally
-    stackView.alignment = .center
-    stackView.axis = .vertical
-    addSubview(stackView)
+    labelStackView.translatesAutoresizingMaskIntoConstraints = false
+    labelStackView.distribution = .fillProportionally
+    labelStackView.alignment = .center
+    labelStackView.axis = .vertical
+    addSubview(labelStackView)
     
     NSLayoutConstraint.activate([
-      stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
-      stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      labelStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
+      labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
     ])
+    
+    if style == .demo || style == .showcase {
+      labelStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    }
     
     headerLabel.configHeaderLabel(text: headerText)
     subHeaderLabel.configSubHeaderLabel(text: subHeaderText)
+    labelStackView.addArrangedSubview(headerLabel)
+    labelStackView.addArrangedSubview(subHeaderLabel)
+    labelStackView.sizeToFit()
+    labelStackView.layoutIfNeeded()
     
-    stackView.addArrangedSubview(headerLabel)
-    stackView.addArrangedSubview(subHeaderLabel)
-    stackView.sizeToFit()
-    layoutIfNeeded()
-    stackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: stackView.frame.height).isActive = true
+    if style == .first || style == .second {
+      labelStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: labelStackView.frame.height).isActive = true
+    }
   }
   
   private func setupShowCase() {}

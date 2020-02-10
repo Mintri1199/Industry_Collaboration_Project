@@ -10,13 +10,10 @@ import UIKit
 
 final class WelcomeCollectionView: UICollectionView {
   private let cellId = "WelcomeCell"
-  private let image: [UIImage]
   private let cellStyle: [WelcomeStyle]
 
   override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-    image = [ApplicationDependency.manager.currentTheme.imageAssets.tutorialWelcomeBanner,
-             ApplicationDependency.manager.currentTheme.imageAssets.tutorialTodoBanner]
-    cellStyle = [.first, .second]
+    cellStyle = [.first, .second, .demo, .showcase]
 
     super.init(frame: frame, collectionViewLayout: layout)
     configCollectionView()
@@ -33,7 +30,7 @@ final class WelcomeCollectionView: UICollectionView {
     isPagingEnabled = true
     isScrollEnabled = false
     dataSource = self
-    delegate = self
+//    delegate = self
     register(WelcomeCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
   }
 }
@@ -71,20 +68,22 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? WelcomeCollectionViewCell else {
       return UICollectionViewCell()
     }
-
-    if indexPath.row == 0 || indexPath.row == 1 {
-      let bannerView = CustomView(frame: cell.bounds)
-      bannerView.setupUI(style: cellStyle[indexPath.row])
-//      welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
-//      welcomeView.setupPhotoLayer(image[indexPath.row])
-      cell.containerView = bannerView
-    } else if indexPath.row == 2 {
-      let demoView = DemoView(frame: cell.bounds)
-      cell.containerView = demoView
-    } else {
-      let showCaseView = ShowCaseView(frame: cell.bounds)
-      cell.containerView = showCaseView
-    }
+    let bannerView = CustomView(frame: cell.bounds)
+    bannerView.setupUI(style: cellStyle[indexPath.row])
+    cell.containerView = bannerView
+//    if indexPath.row == 0 || indexPath.row == 1 {
+//      let bannerView = CustomView(frame: cell.bounds)
+//      bannerView.setupUI(style: cellStyle[indexPath.row])
+    ////      welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
+    ////      welcomeView.setupPhotoLayer(image[indexPath.row])
+//      cell.containerView = bannerView
+//    } else if indexPath.row == 2 {
+//      let demoView = DemoView(frame: cell.bounds)
+//      cell.containerView = demoView
+//    } else {
+//      let showCaseView = ShowCaseView(frame: cell.bounds)
+//      cell.containerView = showCaseView
+//    }
     return cell
   }
 }
