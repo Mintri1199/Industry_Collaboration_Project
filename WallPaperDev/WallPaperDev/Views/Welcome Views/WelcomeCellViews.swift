@@ -8,8 +8,9 @@
 
 import UIKit
 
+// TODO: The First to cell has their pictures and texts not space correctly
 class FirstTwoCellView: UIView {
-  private let photolayer = CALayer()
+  private let photoLayer = CALayer()
   private let headerLabel = WelcomeLabel(frame: .zero)
   private let subHeaderLabel = WelcomeLabel(frame: .zero)
   
@@ -38,10 +39,10 @@ class FirstTwoCellView: UIView {
   }
   
   func setupPhotoLayer(_ image: UIImage) {
-    photolayer.frame = CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.width))
-    photolayer.contents = image.cgImage
-    photolayer.contentsGravity = .resizeAspect
-    layer.addSublayer(photolayer)
+    photoLayer.frame = CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.height / 2))
+    photoLayer.contents = image.cgImage
+    photoLayer.contentsGravity = .resizeAspect
+    layer.addSublayer(photoLayer)
   }
 }
 

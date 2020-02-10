@@ -75,9 +75,6 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
 
-    // TODO: Flagging colors
-    let colors: [UIColor] = [.red, .green, .yellow, .blue]
-
     if indexPath.row == 0 || indexPath.row == 1 {
       let welcomeView = FirstTwoCellView(frame: cell.bounds)
       welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
@@ -90,7 +87,6 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
       let showCaseView = ShowCaseView(frame: cell.bounds)
       cell.containerView = showCaseView
     }
-    cell.backgroundColor = colors[indexPath.row]
     return cell
   }
 }
