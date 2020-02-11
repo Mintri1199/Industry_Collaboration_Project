@@ -56,11 +56,13 @@ class FirstTwoCellView: UIView {
 
 class CustomView: UIView {
   private let defaultImageSchema = DefaultImageAsset()
+  private lazy var phoneLayer = CALayer()
   private lazy var headerLabel = WelcomeLabel(frame: .zero)
   private lazy var subHeaderLabel = WelcomeLabel(frame: .zero)
   private lazy var labelStackView = UIStackView(frame: .zero)
   
   func setupUI(style: WelcomeStyle) {
+    backgroundColor = .white
     switch style {
     case .first:
       setupLabels(for: .first)
@@ -72,6 +74,7 @@ class CustomView: UIView {
       setupLabels(for: .demo)
     case .showcase:
       setupLabels(for: .showcase)
+      setupShowCase()
     }
   }
   
@@ -83,7 +86,8 @@ class CustomView: UIView {
     let photoLayer = CALayer()
     let image: UIImage = imageStyle == .first ? defaultImageSchema.tutorialWelcomeBanner : defaultImageSchema.tutorialTodoBanner
     
-    photoLayer.frame = CGRect(origin: .zero, size: CGSize(width: bounds.width, height: bounds.height * 0.666))
+    photoLayer.frame = CGRect(origin: .zero,
+                              size: CGSize(width: bounds.width, height: bounds.height * 0.666))
     photoLayer.contents = image.cgImage
     photoLayer.contentsGravity = .resizeAspect
     photoLayer.preferredFrameSize()
@@ -135,7 +139,34 @@ class CustomView: UIView {
     }
   }
   
-  private func setupShowCase() {}
+  private func setupShowCase() {
+    let phoneSize = CGSize(width: bounds.width * 0.6, height: bounds.height - labelStackView.frame.height)
+    let phoneXOffset: CGFloat = bounds.width / 5
+    phoneLayer.frame = CGRect(origin: CGPoint(x: phoneXOffset, y: 0), size: phoneSize)
+    phoneLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialPhone.cgImage
+    phoneLayer.contentsGravity = .resizeAspect
+    layer.addSublayer(phoneLayer)
+  }
+  
+  func animatePhone(for style: WelcomeStyle) {
+    switch style {
+    case .showcase:
+      animateShowcase()
+    case.demo:
+      return
+    default:
+      return
+    }
+  }
+  
+  private func animateShowcase() {
+    let panDown = CABasicAnimation(keyPath: "position.y")
+    panDown.fromValue = -phoneLayer.frame.height
+    panDown.toValue = phoneLayer.position.y
+    panDown.duration = 0.7
+    panDown.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+    phoneLayer.add(panDown, forKey: nil)
+  }
   
   private func setupDemo() {}
 }
@@ -281,6 +312,7 @@ class ShowCaseView: UIView {
     scrollUp.fromValue = -phoneLayer.frame.height + 100
     scrollUp.toValue = CGAffineTransform.identity
     scrollUp.duration = 0.5
+    
     scrollUp.timingFunction = CAMediaTimingFunction(name: .easeOut)
     phoneLayer.add(scrollUp, forKey: nil)
   }

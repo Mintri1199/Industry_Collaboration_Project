@@ -30,32 +30,22 @@ final class WelcomeCollectionView: UICollectionView {
     isPagingEnabled = true
     isScrollEnabled = false
     dataSource = self
-//    delegate = self
+    delegate = self
     register(WelcomeCollectionViewCell.self, forCellWithReuseIdentifier: cellId)
   }
 }
 
 extension WelcomeCollectionView: UICollectionViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {}
+
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    guard let cell = cell as? WelcomeCollectionViewCell else {
+
+    guard let cell = cell as? WelcomeCollectionViewCell, let cellView = cell.containerView as? CustomView else {
       return
     }
-
-//    if let demoView = cell.containerView as? DemoView {
-//      DispatchQueue.main.async {
-//        demoView.resetAnimation()
-//      }
-//      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//        demoView.resumeAnimation()
-//      }
-//    } else if let showView = cell.containerView as? ShowCaseView {
-//      DispatchQueue.main.async {
-//        showView.resetAnimation()
-//      }
-//      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//        showView.resumeAnimation()
-//      }
-//    }
+    DispatchQueue.main.async {
+      cellView.animatePhone(for: self.cellStyle[indexPath.row])
+    }
   }
 }
 
@@ -71,19 +61,6 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
     let bannerView = CustomView(frame: cell.bounds)
     bannerView.setupUI(style: cellStyle[indexPath.row])
     cell.containerView = bannerView
-//    if indexPath.row == 0 || indexPath.row == 1 {
-//      let bannerView = CustomView(frame: cell.bounds)
-//      bannerView.setupUI(style: cellStyle[indexPath.row])
-    ////      welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
-    ////      welcomeView.setupPhotoLayer(image[indexPath.row])
-//      cell.containerView = bannerView
-//    } else if indexPath.row == 2 {
-//      let demoView = DemoView(frame: cell.bounds)
-//      cell.containerView = demoView
-//    } else {
-//      let showCaseView = ShowCaseView(frame: cell.bounds)
-//      cell.containerView = showCaseView
-//    }
     return cell
   }
 }
