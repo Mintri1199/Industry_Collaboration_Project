@@ -36,7 +36,6 @@ final class WelcomeCollectionView: UICollectionView {
 }
 
 extension WelcomeCollectionView: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {}
 
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
 
