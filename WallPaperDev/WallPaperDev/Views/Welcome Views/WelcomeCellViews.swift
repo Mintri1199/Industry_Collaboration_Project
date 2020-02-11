@@ -39,7 +39,7 @@ class CustomView: UIView {
     }
   }
   
-  private func setupWelcomePicture(for imageStyle : WelcomeStyle) {
+  private func setupWelcomePicture(for imageStyle: WelcomeStyle) {
     guard imageStyle != .demo, imageStyle != .showcase else {
       return
     }
@@ -81,7 +81,7 @@ class CustomView: UIView {
     
     NSLayoutConstraint.activate([
       labelStackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.8),
-      labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      labelStackView.centerXAnchor.constraint(equalTo: centerXAnchor)
     ])
     
     if style == .demo || style == .showcase {
