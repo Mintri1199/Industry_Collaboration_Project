@@ -9,17 +9,17 @@
 import UIKit
 
 class ImageSelectionLayout: UICollectionViewFlowLayout {
-    override func prepare() {
-        super.prepare()
-        guard let cv = collectionView else {
-            return            
-        }
-        scrollDirection = .horizontal
-        let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
-        let cellWidth = Int(availableWidth / 2.5)
-        itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height) - 10)
-        sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 25)
-        sectionInsetReference = .fromSafeArea
-        minimumLineSpacing = 15
+  override func prepare() {
+    super.prepare()
+    guard let cv = collectionView else {
+      return
     }
+    scrollDirection = .horizontal
+    let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
+    let cellWidth = Int(availableWidth / 2.5)
+    itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height) - 10)
+    sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 25)
+    sectionInsetReference = .fromSafeArea
+    minimumLineSpacing = 15
+  }
 }

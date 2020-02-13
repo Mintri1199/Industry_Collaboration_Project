@@ -1,0 +1,66 @@
+/* 
+  Localizable.strings
+  WallPaperDev
+
+  Created by Alexander Dejeu on 1/20/20.
+  Copyright © 2020 Stephen Ouyang. All rights reserved.
+*/
+"goals" = "Goals";
+"goal_details_title" = "Goal Details";
+"good_morning_title" = "Good Morning";
+"current_date_time_title" = "It is %@";
+"set_goal_today_prompt" = "Set a goal today!";
+"create_goal_title" = "Create Goal";
+"invalid" = "Invalid";
+
+"create_goal_error_message" = "You can't create a goal without a name and description";
+"choose_image_title" = "Choose Image";
+
+"change_goals_action" = "Change Goals";
+"choose_goal_action" = "Choose Goal";
+"create_wallpaper_title" = "Create Wallpaper";
+"crop_action" = "Crop";
+"save_image_action" = "Save Image";
+
+"preview_title" = "Preview";
+
+"save_wallpaper_error_title" = "Save error";
+"save_wallpaper_success_title" = "Saved!";
+"save_wallpaper_success_message" = "Your altered image has been saved to your photos.";
+"create_action" = "Create";
+"update_action" = "Update";
+"ok_action" = "Ok";
+"edit_action" = "Edit";
+"done_action" = "Done";
+"back_action" = "Back";
+"next_action" = "Next";
+"skip_action" = "Skip";
+"start_action" = "Start";
+"add_action" = "Add";
+"previous_action" = "Previous";
+"show_more_title" = "Show more";
+
+// first fill in is total count out of max total
+"choose_goal_title" = "Choose Goal %@ / %@";
+"message_for_goal_with_no_description" = "There is no description for this goal";
+"view_action" = "View";
+
+"tutorial_title_1" = "Welcome to Kamigami";
+"tutorial_title_2" = "Write it Down";
+"tutorial_message_1" = "We help you keep organize and keep track of your goals\n";
+"tutorial_message_2" = "Start your goal by writing them down. Update your progress anytime";
+
+"tutorial_demo_title" = "Be Creative";
+"tutorial_demo_message" = "Create a beautiful wallpaper with your goals in it";
+
+"tutorial_showcase_title" = "Remind Yourself";
+"tutorial_showcase_message" = "See your goals in the lock screen with the picture you’ve created";
+
+"selected_goal_empty_view_title" = "You didn't select a goal";
+"selected_goal_empty_view_button_cta" = "Tap here to choose goals";
+
+"goal_title_placeholder" = "Climbing Mount Everest";
+"goal_description_placeholder" = "Train six days a week with one day completely dedicated to rest.";
+
+"goal_name_title" = "Goal Name";
+"goal_description_title" = "Goal Description";

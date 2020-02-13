@@ -6,8 +6,9 @@ target 'WallPaperDev' do
   use_frameworks!
 
   # Pods for WallPaperDev
-  pod 'SwiftLint'
   pod 'CropViewController'
+  pod 'SwiftFormat/CLI'
+  pod 'SwiftLint'
 
   target 'WallPaperDevTests' do
     inherit! :search_paths

@@ -9,29 +9,30 @@
 import UIKit
 
 class WelcomeLabel: UILabel {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        textAlignment = .center
-        backgroundColor = .white
-        adjustsFontSizeToFitWidth = true
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configHeaderLabel(text: String) {
-        self.text = text
-        numberOfLines = 1
-        font = UIFont(name: "Arial-BoldMT", size: 30)
-        textColor = .darkGray
-    }
-    
-    func configSubHeaderLabel(text: String) {
-        self.text = text
-        numberOfLines = 0
-        font = UIFont.systemFont(ofSize: 20, weight: .regular)
-        textColor = UIColor.gray
-    }
+  private let fontSchema = DefaultFontSchema()
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    textAlignment = .center
+    backgroundColor = .white
+    adjustsFontSizeToFitWidth = true
+  }
+
+  required init?(coder _: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  func configHeaderLabel(text: String) {
+    self.text = text
+    numberOfLines = 1
+    font = fontSchema.black32
+    textColor = .darkGray
+  }
+
+  func configSubHeaderLabel(text: String) {
+    self.text = text
+    numberOfLines = 0
+    font = fontSchema.medium20
+    textColor = UIColor.gray
+  }
 }
