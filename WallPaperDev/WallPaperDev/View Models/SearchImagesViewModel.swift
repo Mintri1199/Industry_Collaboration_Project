@@ -10,18 +10,6 @@ import Foundation
 import UIKit
 
 class SearchImagesViewModel {
-    var imageURLS: [String?] = []
-    var selectedImage: UIImage?
+  var imageURLS: [String?] = []
+  var selectedImage: UIImage?
 }
-    
-
-
-
-
-
-
-
-
-
-
-

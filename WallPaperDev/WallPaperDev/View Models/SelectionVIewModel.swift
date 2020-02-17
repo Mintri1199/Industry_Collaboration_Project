@@ -9,7 +9,7 @@
 import UIKit
 
 final class SelectionViewModel {
-  let imageArray: [UIImage]
+  var imageArray: [UIImage]
   var selectedGoals: [Goal] = []
   var selectedImage: UIImage?
 

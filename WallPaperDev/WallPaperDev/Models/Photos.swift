@@ -9,21 +9,21 @@
 import Foundation
 
 struct NewPhotos: Codable {
-    let total, totalPages: Int
-    let results: [NewResult]
-    
-    enum CodingKeys: String, CodingKey {
-        case total
-        case totalPages = "total_pages"
-        case results
-    }
+  let total, totalPages: Int
+  let results: [NewResult]
+
+  enum CodingKeys: String, CodingKey {
+    case total
+    case totalPages = "total_pages"
+    case results
+  }
 }
 
 struct NewResult: Codable {
-    let urls: Urls
+  let urls: Urls
 }
 
 struct Urls: Codable {
-    let raw, full, regular, small: String
-    let thumb: String
+  let raw, full, regular, small: String
+  let thumb: String
 }
