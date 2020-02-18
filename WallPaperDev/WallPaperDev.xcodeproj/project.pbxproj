@@ -86,6 +86,7 @@
 		5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF925502339BFF5004CE8AA /* AddButton.swift */; };
 		5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B95233D64760077F712 /* HomeViewModel.swift */; };
 		5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
+		6732F0529D22B7D9B945DC03 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732FE8E3BA48F4F8270A378 /* Reach.swift */; };
 		6732F58898C617D893FCEEF9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F5AEE428A6499B3B8780 /* NetworkingService.swift */; };
 		6732FE7955F323D850910559 /* NetworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F670F8AF70C09E89B3B7 /* NetworkServiceTest.swift */; };
 		E859C967654A0D12EDB6A09B /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */; };
@@ -199,6 +200,7 @@
 		5F4445512A1A8742A2E0E6D0 /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.release.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
 		6732F5AEE428A6499B3B8780 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		6732F670F8AF70C09E89B3B7 /* NetworkServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceTest.swift; sourceTree = "<group>"; };
+		6732FE8E3BA48F4F8270A378 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		6C51E43FA228A1B7D96B26A4 /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
 		7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFDC969613835FA62CA8F0C /* Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevTests/Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig"; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 				6732F5AEE428A6499B3B8780 /* NetworkingService.swift */,
 				6732F670F8AF70C09E89B3B7 /* NetworkServiceTest.swift */,
 				6732F16EA7C1A6F5DC667314 /* Encoding */,
+				6732FE8E3BA48F4F8270A378 /* Reach.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -922,6 +925,7 @@
 				44A93F4123FA22D00040B589 /* NetworkRouter.swift in Sources */,
 				6732F58898C617D893FCEEF9 /* NetworkingService.swift in Sources */,
 				6732FE7955F323D850910559 /* NetworkServiceTest.swift in Sources */,
+				6732F0529D22B7D9B945DC03 /* Reach.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

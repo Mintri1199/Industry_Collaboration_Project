@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum NetworkEnvironment {
   case qa, staging, production
@@ -14,7 +15,7 @@ enum NetworkEnvironment {
 
 struct NetworkManager {
 
-  enum NetworkReponse: String, Error {
+  enum NetworkResponse: String, Error {
     case authenticationError = "You need to be authenticated first."
     case badRequest = "Bad Request"
     case outdated = "The url you requested is outdated."
@@ -24,8 +25,11 @@ struct NetworkManager {
   }
 
   static let environment: NetworkEnvironment = .production
+  static let shared = NetworkManager()
+  private let unsplashEndpoint = Router<UnsplashAPI>()
+  private let connection = Reach().connectionStatus()
 
-  private func newHandleNetworkResponse(_ response: HTTPURLResponse) -> Result<String, NetworkReponse> {
+  private func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String, NetworkResponse> {
     switch response.statusCode {
     case 200...299: return Result.success("Success")
     case 401...500: return Result.failure(.authenticationError)
@@ -35,150 +39,59 @@ struct NetworkManager {
     }
   }
 
-//
-//    func newGetKeywords(completion: @escaping (Result<[Keyword], NetworkReponse>) -> Void) {
-//
-//        keywordRouter.request(.keywords) { (data, response, error) in
-//
-//            if error != nil {
-//                print("Check your network connection")
-//                return
-//            }
-//
-//            if let response = response as? HTTPURLResponse {
-//                let result = self.newHandleNetworkResponse(response)
-//                switch result {
-//                case .success:
-//                    guard let responseData = data  else { completion(.failure(.noData)); return }
-//
-//                    do {
-//                        let apiResponse = try JSONDecoder().decode([Keyword].self, from: responseData)
-//                        completion(.success(apiResponse))
-//                    } catch {
-//                        completion(.failure(.unableToDecode))
-//                    }
-//                case .failure(let networkFailureError):
-//                    completion(.failure(networkFailureError))
-//                }
-//            }
-//        }
-//    }
-//
-//    func refactoredGetAllSets(completion: @escaping (Result<ListObject, NetworkReponse>) -> Void) {
-//        scryfallRouter.request(.sets) { (data, response, error) in
-//            if error != nil {
-//                print("Check your network connection")
-//                return
-//            }
-//
-//            if let response = response as? HTTPURLResponse {
-//                let result = self.newHandleNetworkResponse(response)
-//                switch result {
-//                case .success:
-//                    guard let responseData = data  else { completion(.failure(.noData)); return }
-//
-//                    do {
-//                        let apiResponse = try JSONDecoder().decode(ListObject.self, from: responseData)
-//                        print(apiResponse)
-  ////                        completion(.success(apiResponse))
-//                    } catch {
-//                        completion(.failure(.unableToDecode))
-//                    }
-//                case .failure(let networkFailureError):
-//                    completion(.failure(networkFailureError))
-//                }
-//            }
-//        }
-//    }
+  func searchPhoto(query: String, completion: @escaping (Result<NewPhotos, NetworkResponse>) -> Void) {
+    unsplashEndpoint.request(.search(id: Keys.clientID, keyword: query)) { data, response, error in
+      if let response = response as? HTTPURLResponse {
+        switch self.handleNetworkResponse(response) {
+        case .success:
+          guard let responseData = data else {
+            completion(.failure(.noData))
+            return
+          }
 
-//    func refactoredAllCardsFromSet(searchURI: String, completion: @escaping (Result<CardListObject, NetworkReponse>) -> Void) {
-//        guard let url = URL(string: searchURI) else { print("Invalid search URI"); return }
-//        let session = URLSession.shared
-//        let request = URLRequest(url: url)
-//
-//        let task = session.dataTask(with: request) { (data, response, error) in
-//            if error != nil {
-//                print("Check your network connection")
-//                return
-//            }
-//            if let response = response as? HTTPURLResponse {
-//                let result = self.newHandleNetworkResponse(response)
-//                switch result {
-//                case .success:
-//                    guard let responseData = data  else { completion(.failure(.noData)); return }
-//
-//                    do {
-//                        let apiResponse = try JSONDecoder().decode(CardListObject.self, from: responseData)
-//                        completion(.success(apiResponse))
-//                    } catch {
-//                        completion(.failure(.unableToDecode))
-//                    }
-//                case .failure(let networkFailureError):
-//                    completion(.failure(networkFailureError))
-//                }
-//            }
-//        }
-//        task.resume()
-//    }
-//
-//    func refactoredGetPicture(searchURI: String, completion: @escaping(Result<UIImage, NetworkReponse>) -> Void) {
-//        guard let url = URL(string: searchURI) else { print("Invalid picture URI"); return }
-//        let session = URLSession.shared
-//        let request = URLRequest(url: url)
-//        let task = session.dataTask(with: request) { (data, response, error) in
-//            if error != nil {
-//                print("Check your network connection")
-//                return
-//            }
-//            if let response = response as? HTTPURLResponse {
-//                let result = self.newHandleNetworkResponse(response)
-//                switch result {
-//                case .success:
-//                    guard let responseData = data else { completion(.failure(.noData)); return }
-//                    let apiImage = UIImage(data: responseData)
-//                    if let image = apiImage{
-//                        completion(.success(image))
-//                    } else {
-//                        completion(.failure(.unableToDecode))
-//                    }
-//
-//                case .failure(let networkFailureError):
-//                    completion(.failure(networkFailureError))
-//                }
-//            }
-//        }
-//        task.resume()
-//
-//    }
-//
-//
-//    func getTokenFromSet(tokenName: String, setCode: String, completion: @escaping (Result<CardListObject, NetworkReponse>) -> Void) {
-//        scryfallRouter.request(.allRelatedCards(name: tokenName, set: setCode)) { (data, response, error) in
-//            if error != nil {
-//                print("Please check your network connection")
-//                return
-//            }
-//
-//            if let response = response as? HTTPURLResponse {
-//                let result = self.newHandleNetworkResponse(response)
-//                switch result {
-//                case .success:
-//                    guard let responseData = data else { completion(.failure(.noData)); return }
-//                    do {
-//                        let apiResponse = try JSONDecoder().decode(CardListObject.self, from: responseData)
-//
-//                        if apiResponse.data.isEmpty {
-//                            completion(.failure(.noData))
-//                        } else {
-//                            completion(.success(apiResponse))
-//                        }
-//                    } catch {
-//                        completion(.failure(.unableToDecode))
-//                    }
-//                case .failure(let networkFailureError):
-//                    completion(.failure(networkFailureError))
-//                }
-//            }
-//        }
-//    }
+          do {
+            let model = try JSONDecoder().decode(NewPhotos.self, from: responseData)
+            completion(.success(model))
+          } catch {
+            completion(.failure(.unableToDecode))
+          }
+
+        case let .failure(error):
+          completion(.failure(error))
+        }
+      }
+    }
+  }
+
+  func getPhotoData(from urlString: String, completion: @escaping (Result<UIImage, NetworkResponse>) -> Void) {
+    guard let url = URL(string: urlString) else {
+      completion(.failure(.badRequest))
+      return
+    }
+    var request = URLRequest(url: url)
+    request.httpMethod = "GET"
+    let config = URLSessionConfiguration.default
+    let session = URLSession(configuration: config)
+
+    session.dataTask(with: request) { data, response, error in
+
+      guard let response = response as? HTTPURLResponse else {return}
+
+      print(response.statusCode)
+
+      guard error == nil else {
+        completion(.failure(.failed))
+        return
+      }
+      guard let responseData = data else {
+        completion(.failure(.noData))
+        return
+      }
+      if let image = UIImage(data: responseData) {
+        completion(.success(image))
+      } else {
+        completion(.failure(.unableToDecode))
+      }
+    }.resume()
+  }
 }
