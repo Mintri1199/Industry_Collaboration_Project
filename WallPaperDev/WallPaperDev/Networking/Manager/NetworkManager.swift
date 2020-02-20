@@ -27,7 +27,6 @@ struct NetworkManager {
   static let environment: NetworkEnvironment = .production
   static let shared = NetworkManager()
   private let unsplashEndpoint = Router<UnsplashAPI>()
-  private let connection = Reach().connectionStatus()
 
   private func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String, NetworkResponse> {
     switch response.statusCode {

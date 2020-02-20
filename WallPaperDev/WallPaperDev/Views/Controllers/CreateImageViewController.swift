@@ -40,7 +40,6 @@ class CreateImageViewController: UIViewController {
 }
 
 // MARK: - Setup UI functions
-
 extension CreateImageViewController {
   private func setupViews() {
     setupNavBar()
@@ -134,8 +133,8 @@ extension CreateImageViewController {
   }
   
   private func setupNavBar() {
-    navigationItem.title = "Create Wallpaper"
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Create Wallpaper")
+    navigationItem.title = Localized.string("create_wallpaper_title")
+    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("create_wallpaper_title"))
   }
   
   private func showSearchImages() {
@@ -189,21 +188,18 @@ extension CreateImageViewController: PassSelectedGoals {
 }
 
 // MARK: - CollectionViewDatasource
-
 extension CreateImageViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
       return UICollectionViewCell()
     }
     // Commented until integrating Image API
-    //         indexPath.row == viewModel.imageArray.count ?   cell.setupShowMoreViews() :
-    //            cell.getImage(viewModel.imageArray[indexPath.row])
-    cell.getImage(viewModel.imageArray[indexPath.row])
+    indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
     return cell
   }
   
   func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-    viewModel.imageArray.count
+    viewModel.imageArray.count + 1
   }
   
   func numberOfSections(in _: UICollectionView) -> Int {
@@ -214,23 +210,25 @@ extension CreateImageViewController: UICollectionViewDataSource {
 // MARK: - CollectionViewDelegate
 extension CreateImageViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    // Commented until integrating Image API
-    
-    if indexPath.row == viewModel.imageArray.count - 1 {
-      //            coordinator?.showSearchImages()
-      showSearchImages()
+    guard let cell = collectionView.cellForItem(at: indexPath) as? ImageSelectionCell else {
+      return
     }
-    
-    imageSelectionCV.indexPathsForVisibleItems.forEach { index in
-      if index != indexPath {
-        if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-          otherCell.borderLayer.lineWidth = 0
-        }
-      } else {
-        if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-          selectedCell.borderLayer.lineWidth = 5
-          viewModel.selectedImage = selectedCell.cellImage
-          viewModel.validation(button: createImageButton)
+    // Commented until integrating Image API
+    if cell.lastCell {
+      print("not blocked")
+      showSearchImages()
+    } else {
+      imageSelectionCV.indexPathsForVisibleItems.forEach { index in
+        if index != indexPath {
+          if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
+            otherCell.borderLayer.lineWidth = 0
+          }
+        } else {
+          if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
+            selectedCell.borderLayer.lineWidth = 5
+            viewModel.selectedImage = selectedCell.cellImage
+            viewModel.validation(button: createImageButton)
+          }
         }
       }
     }
@@ -238,13 +236,11 @@ extension CreateImageViewController: UICollectionViewDelegate {
 }
 
 // MARK: - TableViewDelegate
-
 extension CreateImageViewController: UITableViewDelegate {
   // Currently serving no purpose at the moment but later can use drag to order
 }
 
 // MARK: - TableViewDataSource
-
 extension CreateImageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
     viewModel.selectedGoals.isEmpty ? setupCustomEmptyView() : tableView.restore()
@@ -260,6 +256,7 @@ extension CreateImageViewController: UITableViewDataSource {
   }
 }
 
+// MARK: - SelectedImageDelegate
 extension CreateImageViewController: SelectedImageDelegate {
   func passImageSelected(image: UIImage) {
     viewModel.imageArray.append(image)

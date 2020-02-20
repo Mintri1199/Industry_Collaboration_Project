@@ -9,34 +9,16 @@
 import UIKit
 
 class ImageSelectionCell: UICollectionViewCell {
-  // Using layers to hold uninteractable images
+  // Using layers to hold non interactive images
   lazy var photoLayer = CALayer()
   lazy var maskLayer = CAShapeLayer()
   lazy var borderLayer = CAShapeLayer()
-
+  lazy var showMoreTextLayer = CATextLayer()
+  lazy var showMoreLayer = CAShapeLayer()
   let identifier = "cellID"
   var lastCell: Bool = false
 
   // MARK: - UIs
-  lazy var showMoreLabel: UILabel = {
-    var label = UILabel(frame: .zero)
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.text = Localized.string("show_more_title")
-
-    // TODO: Flagging font
-    label.font = UIFont.systemFont(ofSize: 18)
-    label.adjustsFontSizeToFitWidth = true
-    label.textAlignment = .center
-    label.textColor = UIColor.darkGray
-    return label
-  }()
-
-  lazy var showMoreButton: UIButton = {
-    var button = UIButton(frame: .zero)
-    button.translatesAutoresizingMaskIntoConstraints = false
-    return button
-  }()
-
   var cellImage: UIImage? {
     didSet {
       photoLayer.contents = cellImage?.cgImage
@@ -45,10 +27,8 @@ class ImageSelectionCell: UICollectionViewCell {
 }
 
 // MARK: - Setup UI functions
-
 extension ImageSelectionCell {
   func getImage(_ image: UIImage?) {
-    photoLayer.backgroundColor = UIColor.red.cgColor
     photoLayer.frame = bounds
     maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
 
@@ -74,40 +54,34 @@ extension ImageSelectionCell {
   }
 
   private func setupLabel() {
-    addSubview(showMoreLabel)
-    NSLayoutConstraint.activate([
-      showMoreLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-      showMoreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-      showMoreLabel.widthAnchor.constraint(equalTo: widthAnchor),
-      showMoreLabel.heightAnchor.constraint(equalToConstant: bounds.size.height / 6)
-    ])
+    showMoreTextLayer.string = NSAttributedString(string: Localized.string("show_more_title"),
+                                                  attributes: [NSAttributedString.Key.font: DefaultFontSchema().medium16,
+                                                               NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+    showMoreTextLayer.frame = CGRect(origin: bounds.origin, size: CGSize(width: bounds.size.width, height: 20))
+    showMoreTextLayer.alignmentMode = .center
+    showMoreTextLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
+    layer.addSublayer(showMoreTextLayer)
   }
 
   private func setupButton() {
-    addSubview(showMoreButton)
+    let sizeConstant: CGFloat = bounds.width / 3
+    showMoreLayer.frame = CGRect(origin: bounds.origin, size: CGSize(width: sizeConstant, height: sizeConstant))
+    showMoreLayer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+    showMoreLayer.position = CGPoint(x: bounds.midX, y: bounds.midY + showMoreLayer.frame.height)
+    showMoreLayer.cornerRadius = sizeConstant / 2
+    showMoreLayer.backgroundColor = UIColor.lightGray.cgColor
 
-    let sizeContant: CGFloat = bounds.width / 3
+    let arrowPath = UIBezierPath.arrow(from: CGPoint(x: sizeConstant / 4, y: sizeConstant / 2),
+                                       to: CGPoint(x: sizeConstant * 0.75, y: sizeConstant / 2),
+                                       tailWidth: sizeConstant / 15, headWidth: sizeConstant / 4,
+                                       headLength: sizeConstant / 6)
 
-    NSLayoutConstraint.activate([
-      showMoreButton.heightAnchor.constraint(equalToConstant: sizeContant),
-      showMoreButton.widthAnchor.constraint(equalToConstant: sizeContant),
-      showMoreButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-      showMoreButton.topAnchor.constraint(equalTo: showMoreLabel.bottomAnchor)
-    ])
-
-    showMoreButton.backgroundColor = .lightGray
-    showMoreButton.layer.cornerRadius = sizeContant / 2
-
-    let arrowPath = UIBezierPath()
-    arrowPath.addArrow(start: CGPoint(x: sizeContant / 4, y: sizeContant / 2), end: CGPoint(x: sizeContant * 0.75, y: sizeContant / 2), pointerLineLength: sizeContant / 5, arrowAngle: CGFloat(Double.pi / 4))
-
-    let arrowLayer = CAShapeLayer()
-    arrowLayer.strokeColor = UIColor.white.cgColor
-    arrowLayer.lineWidth = 3
-    arrowLayer.path = arrowPath.cgPath
-    arrowLayer.fillColor = UIColor.clear.cgColor
-    arrowLayer.lineJoin = CAShapeLayerLineJoin.round
-    arrowLayer.lineCap = CAShapeLayerLineCap.round
-    showMoreButton.layer.addSublayer(arrowLayer)
+    showMoreLayer.strokeColor = UIColor.white.cgColor
+    showMoreLayer.lineWidth = 3
+    showMoreLayer.path = arrowPath.cgPath
+    showMoreLayer.fillColor = UIColor.white.cgColor
+    showMoreLayer.lineJoin = CAShapeLayerLineJoin.round
+    showMoreLayer.lineCap = CAShapeLayerLineCap.round
+    layer.addSublayer(showMoreLayer)
   }
 }

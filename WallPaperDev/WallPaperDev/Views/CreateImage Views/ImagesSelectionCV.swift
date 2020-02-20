@@ -15,6 +15,7 @@ class ImagesSelectionCV: UICollectionView {
     super.init(frame: frame, collectionViewLayout: layout)
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = .white
+    isUserInteractionEnabled = true
     showsHorizontalScrollIndicator = false
     allowsMultipleSelection = false
     register(ImageSelectionCell.self, forCellWithReuseIdentifier: cellID)
