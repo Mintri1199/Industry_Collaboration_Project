@@ -9,7 +9,7 @@
 import UIKit
 
 class WelcomeLabel: UILabel {
-  private let fontSchema = DefaultFontSchema()
+  private let fontSchema = ApplicationDependency.manager.currentTheme.fontSchema
 
   override init(frame: CGRect) {
     super.init(frame: frame)
