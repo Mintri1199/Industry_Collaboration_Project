@@ -10,16 +10,10 @@ import UIKit
 
 final class WelcomeCollectionView: UICollectionView {
   private let cellId = "WelcomeCell"
-  private let image: [UIImage]
-  private let headerText: [String]
-  private let subheaderText: [String]
+  private let cellStyle: [WelcomeStyle]
 
   override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-    image = [ApplicationDependency.manager.currentTheme.imageAssets.tutorialWelcomeBanner,
-             ApplicationDependency.manager.currentTheme.imageAssets.tutorialTodoBanner]
-    headerText = [Localized.string("tutorial_title_1"), Localized.string("tutorial_title_2")]
-    subheaderText = [Localized.string("tutorial_message_1"),
-                     Localized.string("tutorial_message_2")]
+    cellStyle = [.first, .second, .demo, .showcase]
 
     super.init(frame: frame, collectionViewLayout: layout)
     configCollectionView()
@@ -42,25 +36,14 @@ final class WelcomeCollectionView: UICollectionView {
 }
 
 extension WelcomeCollectionView: UICollectionViewDelegate {
+
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    guard let cell = cell as? WelcomeCollectionViewCell else {
+
+    guard let cell = cell as? WelcomeCollectionViewCell, let cellView = cell.containerView as? CustomView else {
       return
     }
-
-    if let demoView = cell.containerView as? DemoView {
-      DispatchQueue.main.async {
-        demoView.resetAnimation()
-      }
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        demoView.resumeAnimation()
-      }
-    } else if let showView = cell.containerView as? ShowCaseView {
-      DispatchQueue.main.async {
-        showView.resetAnimation()
-      }
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        showView.resumeAnimation()
-      }
+    DispatchQueue.main.async {
+      cellView.animatePhone(for: self.cellStyle[indexPath.row])
     }
   }
 }
@@ -74,23 +57,9 @@ extension WelcomeCollectionView: UICollectionViewDataSource {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? WelcomeCollectionViewCell else {
       return UICollectionViewCell()
     }
-
-    // TODO: Flagging colors
-    let colors: [UIColor] = [.red, .green, .yellow, .blue]
-
-    if indexPath.row == 0 || indexPath.row == 1 {
-      let welcomeView = FirstTwoCellView(frame: cell.bounds)
-      welcomeView.setupUI(headerText[indexPath.row], subheaderText[indexPath.row])
-      welcomeView.setupPhotoLayer(image[indexPath.row])
-      cell.containerView = welcomeView
-    } else if indexPath.row == 2 {
-      let demoView = DemoView(frame: cell.bounds)
-      cell.containerView = demoView
-    } else {
-      let showCaseView = ShowCaseView(frame: cell.bounds)
-      cell.containerView = showCaseView
-    }
-    cell.backgroundColor = colors[indexPath.row]
+    let bannerView = CustomView(frame: cell.bounds)
+    bannerView.setupUI(style: cellStyle[indexPath.row])
+    cell.containerView = bannerView
     return cell
   }
 }

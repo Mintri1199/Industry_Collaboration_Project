@@ -21,7 +21,6 @@ class WelcomeViewController: UIViewController {
     button.isEnabled = false
     button.setTitleColor(ApplicationDependency.manager.currentTheme.colors.navBarBlue,
                          for: .normal)
-    // TODO: (alex) Flagging color usage
     button.setTitleColor(.lightGray, for: .highlighted)
     button.addTarget(self, action: #selector(backTapped), for: .touchUpInside)
     button.backgroundColor = .white
@@ -89,7 +88,7 @@ extension WelcomeViewController {
       collectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
       collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      collectionView.heightAnchor.constraint(equalToConstant: view.bounds.height / 1.5)
+      collectionView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.75)
         ])
   }
 

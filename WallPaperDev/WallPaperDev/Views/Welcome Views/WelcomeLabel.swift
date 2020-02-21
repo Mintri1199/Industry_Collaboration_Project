@@ -9,6 +9,8 @@
 import UIKit
 
 class WelcomeLabel: UILabel {
+  private let fontSchema = ApplicationDependency.manager.currentTheme.fontSchema
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     textAlignment = .center
@@ -23,14 +25,14 @@ class WelcomeLabel: UILabel {
   func configHeaderLabel(text: String) {
     self.text = text
     numberOfLines = 1
-    font = UIFont(name: "Arial-BoldMT", size: 30)
+    font = fontSchema.black32
     textColor = .darkGray
   }
 
   func configSubHeaderLabel(text: String) {
     self.text = text
     numberOfLines = 0
-    font = UIFont.systemFont(ofSize: 20, weight: .regular)
+    font = fontSchema.medium20
     textColor = UIColor.gray
   }
 }
