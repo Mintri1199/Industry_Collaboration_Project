@@ -13,7 +13,8 @@ enum NetworkEnvironment {
   case qa, staging, production
 }
 
-struct NetworkManager {
+//MARK: - Base Network Manager Struct
+struct NetworkManager{
 
   enum NetworkResponse: String, Error {
     case authenticationError = "You need to be authenticated first."
@@ -37,22 +38,26 @@ struct NetworkManager {
     default: return Result.failure(.failed)
     }
   }
+}
 
-  func searchPhoto(query: String, completion: @escaping (Result<NewPhotos, NetworkResponse>) -> Void) {
+// MARK: Networking Methods
+extension NetworkManager: NetworkServiceProtocol {
+
+  func searchPhoto(query: String, completion: @escaping (Result<UnsplashObject, Error>) -> Void) {
     unsplashEndpoint.request(.search(id: Keys.clientID, keyword: query)) { data, response, error in
       if let response = response as? HTTPURLResponse {
         switch self.handleNetworkResponse(response) {
         case .success:
           guard let responseData = data else {
-            completion(.failure(.noData))
+            completion(.failure(NetworkResponse.noData))
             return
           }
 
           do {
-            let model = try JSONDecoder().decode(NewPhotos.self, from: responseData)
+            let model = try JSONDecoder().decode(UnsplashObject.self, from: responseData)
             completion(.success(model))
           } catch {
-            completion(.failure(.unableToDecode))
+            completion(.failure(NetworkResponse.unableToDecode))
           }
 
         case let .failure(error):
@@ -62,35 +67,25 @@ struct NetworkManager {
     }
   }
 
-  func getPhotoData(from urlString: String, completion: @escaping (Result<UIImage, NetworkResponse>) -> Void) {
-    guard let url = URL(string: urlString) else {
-      completion(.failure(.badRequest))
-      return
+  func getPhotoData(from url: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    unsplashEndpoint.request(.getPhotoData(urlString: url)) { data, response, error in
+      if let response = response as? HTTPURLResponse {
+        switch self.handleNetworkResponse(response) {
+        case .success:
+          guard let responseData = data else {
+            completion(.failure(NetworkResponse.noData))
+            return
+          }
+          if let image = UIImage(data: responseData) {
+            completion(.success(image))
+          } else {
+            completion(.failure(NetworkResponse.unableToDecode))
+          }
+
+        case let .failure(error):
+          completion(.failure(error))
+        }
+      }
     }
-    var request = URLRequest(url: url)
-    request.httpMethod = "GET"
-    let config = URLSessionConfiguration.default
-    let session = URLSession(configuration: config)
-
-    session.dataTask(with: request) { data, response, error in
-
-      guard let response = response as? HTTPURLResponse else {return}
-
-      print(response.statusCode)
-
-      guard error == nil else {
-        completion(.failure(.failed))
-        return
-      }
-      guard let responseData = data else {
-        completion(.failure(.noData))
-        return
-      }
-      if let image = UIImage(data: responseData) {
-        completion(.success(image))
-      } else {
-        completion(.failure(.unableToDecode))
-      }
-    }.resume()
   }
 }

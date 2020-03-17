@@ -193,17 +193,12 @@ extension CreateImageViewController: UICollectionViewDataSource {
     guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
       return UICollectionViewCell()
     }
-    // Commented until integrating Image API
     indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
     return cell
   }
   
   func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
     viewModel.imageArray.count + 1
-  }
-  
-  func numberOfSections(in _: UICollectionView) -> Int {
-    1
   }
 }
 
@@ -213,9 +208,8 @@ extension CreateImageViewController: UICollectionViewDelegate {
     guard let cell = collectionView.cellForItem(at: indexPath) as? ImageSelectionCell else {
       return
     }
-    // Commented until integrating Image API
+    
     if cell.lastCell {
-      print("not blocked")
       showSearchImages()
     } else {
       imageSelectionCV.indexPathsForVisibleItems.forEach { index in

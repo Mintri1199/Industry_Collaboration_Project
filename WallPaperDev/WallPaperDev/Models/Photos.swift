@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct NewPhotos: Codable {
-  let total, totalPages: Int
-  let results: [NewResult]
-
+struct UnsplashObject: Codable {
   enum CodingKeys: String, CodingKey {
     case total
     case totalPages = "total_pages"
     case results
   }
+
+  let total, totalPages: Int
+  let results: [PhotosUrls]
 }
 
-struct NewResult: Codable {
+struct PhotosUrls: Codable {
   let urls: Urls
 }
 

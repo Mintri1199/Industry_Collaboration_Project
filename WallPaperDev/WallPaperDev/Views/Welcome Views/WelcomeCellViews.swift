@@ -132,7 +132,7 @@ class CustomView: UIView {
   
   func animatePhone(for style: WelcomeStyle) {
     switch style {
-
+      
     case .showcase:
       animateShowcase()
     case.demo:

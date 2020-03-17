@@ -35,7 +35,6 @@ final class SelectionViewModel {
   }
 
   // MARK: Implement Animations
-
   private func animateButtonAppearance(_ button: BigBlueButton) {
     let moveUp = CABasicAnimation(keyPath: "position.y")
     moveUp.fromValue = 100

@@ -15,23 +15,18 @@ protocol SelectedImageDelegate {
 class SearchImageViewController: UIViewController {
   // MARK: - Custom UIs
   private lazy var createImageButton = BigBlueButton(frame: .zero)
-  private lazy var chooseImageLabel = BlueLabel(frame: .zero)
-  private lazy var chooseGoalLabel = BlueLabel(frame: .zero)
   private lazy var searchImagesCV = SearchImagesCV(frame: .zero, collectionViewLayout: SearchImagesCVLayout())
-  private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
-  private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
   private lazy var emptyView = SelectedGoalsEmptyView()
+  private lazy var searchController = UISearchController(searchResultsController: nil)
   private let goalsVC = GoalsSelectionViewController()
+  
   private let viewModel = SearchImagesViewModel()
   private let selectImageViewModel = SelectionViewModel()
-  private lazy var searchController = UISearchController(searchResultsController: nil)
-  
+  weak var coordinator: MainCoordinator?
   var selectedImageDelegate : SelectedImageDelegate?
   
-  weak var coordinator: MainCoordinator?
-  
   override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
+    .lightContent
   }
   
   override func viewDidLoad() {
@@ -42,7 +37,6 @@ class SearchImageViewController: UIViewController {
   
   private func setupViews() {
     setupNavBar()
-    setupChooseImageLabel()
     setupImageCollectionView()
     setupBlueButton()
   }
@@ -59,10 +53,9 @@ class SearchImageViewController: UIViewController {
     NSLayoutConstraint.activate([
       searchImagesCV.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
       searchImagesCV.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
-      // changed height anchor multiplier to 0.8, was 0.3
-      searchImagesCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5),
+      searchImagesCV.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
       searchImagesCV.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-            ])
+    ])
   }
   
   private func setupNavBar() {
@@ -87,39 +80,7 @@ class SearchImageViewController: UIViewController {
       createImageButton.heightAnchor.constraint(equalToConstant: 50),
       createImageButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
       createImageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
-            ])
-  }
-  
-  private func setupChooseImageLabel() {
-    chooseImageLabel.text = "Choose Image"
-    self.view.addSubview(chooseImageLabel)
-    NSLayoutConstraint.activate([
-      chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
-      chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-      chooseImageLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-      chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
-            ])
-  }
-  
-  private func getImageURLs(from keyword: String) {
-    
-    let jsonDecoder = JSONDecoder()
-    jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-    
-    NetworkingService.shared.getData(parameters: ["client_id": Keys.clientID ,"query": "\(keyword)" ,"per_page": "10"],completion: { data in
-      do {
-        let photos = try JSONDecoder().decode(NewPhotos.self, from: data)
-        
-        for user in photos.results {
-          self.viewModel.imageURLS.append(user.urls.regular)
-        }
-        DispatchQueue.main.async {
-          self.searchImagesCV.reloadData()
-        }
-      } catch {
-        print(error)
-      }
-            })
+    ])
   }
   
   @objc private func backToChooseImageVC() {
@@ -130,56 +91,54 @@ class SearchImageViewController: UIViewController {
   }
 }
 
+// MARK: - CollectionView Delegate
 extension SearchImageViewController : UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    
-    searchImagesCV.indexPathsForVisibleItems.forEach { index in
-      if index != indexPath {
-        if let otherCell = searchImagesCV.cellForItem(at: index) as? SearchImagesCell {
-          otherCell.borderLayer.lineWidth = 0
-        }
-      } else {
-        if let selectedCell = searchImagesCV.cellForItem(at: index) as? SearchImagesCell {
-          selectedCell.borderLayer.lineWidth = 5
-          viewModel.selectedImage = selectedCell.cellImage
-        }
-      }
+    guard let selectedCell = searchImagesCV.cellForItem(at: indexPath) as? SearchImagesCell else {
+      return
     }
+    viewModel.selectedImage = selectedCell.cellImage
   }
 }
 
+// MARK: - CollectionView DataSource
 extension SearchImageViewController : UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewModel.imageURLS.count
+    viewModel.imageURLS.count
   }
-  
+
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = searchImagesCV.dequeueReusableCell(withReuseIdentifier: searchImagesCV.cellID, for: indexPath) as? SearchImagesCell else {
       return UICollectionViewCell()
     }
-    
-    guard let photoData = viewModel.imageURLS[indexPath.row] else {
-      return cell
-    }
-    
-    NetworkingService.shared.getPhoto(from: photoData) { data in
-      let newImage = UIImage(data: data)
-      DispatchQueue.main.async {
-        cell.getImage(newImage)
+
+    let urlString = viewModel.imageURLS[indexPath.row].urls.regular
+
+    viewModel.networkManager.getPhotoData(from: urlString) { result in
+      switch result {
+      case let .success(image):
+        DispatchQueue.main.async {
+          cell.getImage(image)
+        }
+
+      case let .failure(error):
+        #if DEBUG
+          print("Unable to get photo data for url: \(urlString)")
+          print(error)
+        #endif
       }
     }
     return cell
   }
 }
-
+// MARK: - SearchBar Delegate
 extension SearchImageViewController : UISearchBarDelegate {
-  
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     // set urls to empty for new search
     viewModel.imageURLS = []
     let keywords = searchBar.text
-    guard let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+") else {return}
-    getImageURLs(from: finalKeyword)
+    guard let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+") else { return }
+    viewModel.loadSearchURLS(for: finalKeyword, cv: searchImagesCV)
   }
   
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {

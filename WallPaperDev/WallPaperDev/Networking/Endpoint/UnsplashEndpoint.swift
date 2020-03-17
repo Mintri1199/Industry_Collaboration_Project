@@ -10,10 +10,10 @@ import Foundation
 
 public enum UnsplashAPI {
   case search(id: String, keyword: String)
+  case getPhotoData(urlString: String)
 }
 
 extension UnsplashAPI: EndPointType {
-
   var environmentBaseURL: String {
     switch NetworkManager.environment {
     case .production: return "https://api.unsplash.com/search"
@@ -23,27 +23,41 @@ extension UnsplashAPI: EndPointType {
   }
 
   var baseURL: URL {
-    guard let url = URL(string: environmentBaseURL) else {
-      fatalError("baseURL could not be configure")
+    var url: String
+    switch self {
+    case .search:
+      url = environmentBaseURL
+
+    case let .getPhotoData(urlString):
+      url = urlString
     }
-    return url
+
+    guard let validUrl = URL(string: url) else {
+      fatalError("Invalid url: \(url)")
+    }
+    return validUrl
   }
 
   var path: String {
     switch self {
     case .search:
       return "/photos"
+    case .getPhotoData:
+      return ""
     }
   }
 
   var httpMethod: HTTPMethod {
-    return .get
+    .get
   }
 
   var task: HTTPTask {
     switch self {
     case let .search(id, keyword):
-      return .requestParameter(bodyParameters: nil, urlParameters: ["client_id": id, "query" : keyword])
+      return .requestParameter(bodyParameters: nil, urlParameters: ["client_id": id, "query" : keyword, "per_page": 2])
+
+    case .getPhotoData:
+      return .request
     }
   }
 
