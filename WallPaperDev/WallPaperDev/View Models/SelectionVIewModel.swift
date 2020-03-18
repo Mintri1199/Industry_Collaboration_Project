@@ -9,7 +9,7 @@
 import UIKit
 
 final class SelectionViewModel {
-  let imageArray: [UIImage]
+  var imageArray: [UIImage]
   var selectedGoals: [Goal] = []
   var selectedImage: UIImage?
 
@@ -35,7 +35,6 @@ final class SelectionViewModel {
   }
 
   // MARK: Implement Animations
-
   private func animateButtonAppearance(_ button: BigBlueButton) {
     let moveUp = CABasicAnimation(keyPath: "position.y")
     moveUp.fromValue = 100

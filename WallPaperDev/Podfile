@@ -11,12 +11,10 @@ target 'WallPaperDev' do
   pod 'SwiftLint'
 
   target 'WallPaperDevTests' do
-    inherit! :search_paths
     # Pods for testing
   end
 
   target 'WallPaperDevUITests' do
-    inherit! :search_paths
     # Pods for testing
   end
 
