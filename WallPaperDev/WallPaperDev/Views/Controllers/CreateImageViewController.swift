@@ -13,12 +13,29 @@ class CreateImageViewController: UIViewController {
   
   // MARK: - Custom UIs
   private lazy var createImageButton = BigBlueButton(frame: .zero)
+  private lazy var selectedImageView = UIImageView(frame: .zero)
   private lazy var chooseImageLabel = BlueLabel(frame: .zero)
   private lazy var chooseGoalLabel = BlueLabel(frame: .zero)
   private lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
+  private lazy var chooseImageStack = UIStackView()
+  private lazy var imagePickerButton: CircleButton = {
+    var button = CircleButton()
+    button.frame = CGRect(origin: .zero, size: CGSize(width: view.bounds.width * 0.15, height: view.bounds.width * 0.15))
+    button.setupIcon(for: .camera)
+    return button
+  }()
+  
+  private lazy var unsplashButton: CircleButton = {
+    var button = CircleButton()
+    button.frame = CGRect(origin: .zero, size: CGSize(width: view.bounds.width * 0.15, height: view.bounds.width * 0.15))
+    button.setupIcon(for: .unsplash)
+    return button
+  }()
+  
   private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
   private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
   private lazy var emptyView = SelectedGoalsEmptyView()
+  
   private let goalsVC = GoalsSelectionViewController()
   private let viewModel = SelectionViewModel()
   weak var coordinator: MainCoordinator?
@@ -45,10 +62,57 @@ extension CreateImageViewController {
     setupNavBar()
     setupBlueButton()
     setupChooseImageLabel()
-    setupImageCollectionView()
+    setupSelectedImageView()
+    setupChooseImageStackView()
     setupChooseGoalLabel()
     setupChangeGoalsButtonButton()
     setupTableView()
+  }
+  
+  private func setupChooseImageLabel() {
+    chooseImageLabel.text = Localized.string("choose_image_title")
+    self.view.addSubview(chooseImageLabel)
+    NSLayoutConstraint.activate([
+      chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
+      chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
+      chooseImageLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
+      chooseImageLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)
+    ])
+  }
+  
+  private func setupSelectedImageView() {
+    selectedImageView.translatesAutoresizingMaskIntoConstraints = false
+    selectedImageView.contentMode = .scaleAspectFill
+    selectedImageView.layer.borderColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
+    selectedImageView.layer.borderWidth = 5
+    // Placeholder color
+    selectedImageView.backgroundColor = .red
+    view.addSubview(selectedImageView)
+    NSLayoutConstraint.activate([
+      selectedImageView.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5),
+      selectedImageView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
+      selectedImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
+      selectedImageView.heightAnchor.constraint(equalToConstant: 0)
+    ])
+  }
+  
+  private func setupChooseImageStackView() {
+    chooseImageStack.axis = .horizontal
+    chooseImageStack.spacing = 10
+    chooseImageStack.distribution = .fillEqually
+    chooseImageStack.translatesAutoresizingMaskIntoConstraints = false
+    chooseImageStack.addArrangedSubview(imagePickerButton)
+    chooseImageStack.addArrangedSubview(unsplashButton)
+    chooseImageStack.backgroundColor = .red
+    imagePickerButton.setupBorder(view.bounds.width * 0.15)
+    unsplashButton.setupBorder(view.bounds.width * 0.15)
+    view.addSubview(chooseImageStack)
+    NSLayoutConstraint.activate([
+      chooseImageStack.topAnchor.constraint(equalTo: selectedImageView.bottomAnchor, constant: 10),
+      chooseImageStack.heightAnchor.constraint(equalToConstant: view.bounds.width * 0.15),
+      chooseImageStack.widthAnchor.constraint(equalToConstant: ((view.bounds.width * 0.15) * 2) + 10),
+      chooseImageStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+    ])
   }
   
   private func setupImageCollectionView() {
@@ -63,17 +127,6 @@ extension CreateImageViewController {
     ])
   }
   
-  private func setupChooseImageLabel() {
-    chooseImageLabel.text = Localized.string("choose_image_title")
-    self.view.addSubview(chooseImageLabel)
-    NSLayoutConstraint.activate([
-      chooseImageLabel.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor, multiplier: 0.5),
-      chooseImageLabel.heightAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.07),
-      chooseImageLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-      chooseImageLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1)
-    ])
-  }
-  
   private func setupChooseGoalLabel() {
     chooseGoalLabel.text = Localized.string("choose_goal_action")
     self.view.addSubview(chooseGoalLabel)
@@ -81,7 +134,7 @@ extension CreateImageViewController {
       chooseGoalLabel.widthAnchor.constraint(equalTo: chooseImageLabel.widthAnchor),
       chooseGoalLabel.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
       chooseGoalLabel.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
-      chooseGoalLabel.topAnchor.constraint(equalTo: imageSelectionCV.bottomAnchor)
+      chooseGoalLabel.topAnchor.constraint(equalTo: chooseImageStack.bottomAnchor)
     ])
   }
   
@@ -121,7 +174,7 @@ extension CreateImageViewController {
       goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
       goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
       goalsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-      goalsTableView.bottomAnchor.constraint(equalTo: createImageButton.topAnchor, constant: -10)
+      goalsTableView.bottomAnchor.constraint(greaterThanOrEqualTo: createImageButton.topAnchor, constant: -10)//(equalTo: createImageButton.topAnchor, constant: -10)
     ])
   }
   

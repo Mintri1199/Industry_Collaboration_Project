@@ -23,9 +23,14 @@ protocol ImageAsset {
   var tutorialPhone: UIImage { get }
   var tutorialTodoBanner: UIImage { get }
   var tutorialWelcomeBanner: UIImage { get }
+  var unsplashLogo: UIImage { get }
 }
 
 struct DefaultImageAsset: ImageAsset {
+  var unsplashLogo: UIImage {
+    return #imageLiteral(resourceName: "unsplash")
+  }
+
   var background1: UIImage {
     return #imageLiteral(resourceName: "background_1")
   }

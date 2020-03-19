@@ -21,6 +21,9 @@ protocol ColorSchema {
   var placeholderGray: UIColor { get }
   var layerBackgroundWhite: UIColor { get }
   var addButtonRed: UIColor { get }
+  var lightGray: UIColor { get }
+  var darkGray: UIColor { get }
+  var shadow: UIColor { get }
 }
 
 struct DefaultColors: ColorSchema {
@@ -74,5 +77,17 @@ struct DefaultColors: ColorSchema {
   ///rgba(255, 112, 112, 1)
   var addButtonRed: UIColor {
     return #colorLiteral(red: 1, green: 0.4392156863, blue: 0.44, alpha: 1)
+  }
+
+  var lightGray: UIColor {
+    .lightGray
+  }
+
+  var darkGray: UIColor {
+    .darkGray
+  }
+
+  var shadow: UIColor {
+    UIColor(red: 0, green: 0, blue: 0, alpha: 0.25)
   }
 }

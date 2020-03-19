@@ -24,8 +24,7 @@ class SelectedGoalsEmptyView: UIView {
   
   private func setupLabel() {
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    // TODO: Flagging font
-    titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 18)
+    titleLabel.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy20
     titleLabel.adjustsFontSizeToFitWidth = true
     titleLabel.text = Localized.string("selected_goal_empty_view_title")
     titleLabel.textColor = .darkGray

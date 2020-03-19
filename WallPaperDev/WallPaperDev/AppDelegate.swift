@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // navigation bar UI
   func setNavigation(navigationBar: UINavigationBar) {
-
     if #available(iOS 13.0, *) {
       let appearance = UINavigationBarAppearance()
       appearance.backgroundColor = .white

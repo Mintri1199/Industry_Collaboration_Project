@@ -1,10 +1,8 @@
-//
 // Created by Jackson Ho on 2/17/20.
 // Copyright (c) 2020 Stephen Ouyang. All rights reserved.
 //
 
 import Foundation
-
 import SystemConfiguration
 
 let ReachabilityStatusChangedNotification = "ReachabilityStatusChangedNotification"
@@ -50,7 +48,7 @@ public class Reach {
       return .unknown
     }
 
-    var flags : SCNetworkReachabilityFlags = []
+    var flags: SCNetworkReachabilityFlags = []
     if !SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) {
       return .unknown
     }
@@ -69,7 +67,6 @@ public class Reach {
       NotificationCenter.default.post(name: Notification.Name(rawValue: ReachabilityStatusChangedNotification),
                                       object: nil,
                                       userInfo: ["Status": status.description])
-
 		}, &context)
 
     SCNetworkReachabilityScheduleWithRunLoop(reachability, CFRunLoopGetMain(), RunLoop.Mode.common as CFString)

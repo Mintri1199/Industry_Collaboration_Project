@@ -54,7 +54,7 @@ extension UnsplashAPI: EndPointType {
   var task: HTTPTask {
     switch self {
     case let .search(id, keyword):
-      return .requestParameter(bodyParameters: nil, urlParameters: ["client_id": id, "query" : keyword, "per_page": 2])
+      return .requestParameter(bodyParameters: nil, urlParameters: ["client_id": id, "query": keyword, "per_page": 50])
 
     case .getPhotoData:
       return .request

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06AEDAB3E8E1DABCA4FC60E4 /* Pods_WallPaperDev_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AB7A3367DA59F51FB9DBB /* Pods_WallPaperDev_WallPaperDevUITests.framework */; };
 		1DA08F8EFF0D282DA90D9784 /* Pods_WallPaperDev_WallPaperDevTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48CBFAB173315E86A41A167A /* Pods_WallPaperDev_WallPaperDevTests.framework */; };
+		4402347F2421E87B001DFBA3 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4402347E2421E87B001DFBA3 /* CircleButton.swift */; };
 		442D2E38234ECD6A00EE9991 /* GoalDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442D2E37234ECD6A00EE9991 /* GoalDetailViewModel.swift */; };
 		443F7E48235683F700102331 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F7E47235683F700102331 /* MainCoordinator.swift */; };
 		443F7E4A23569AC700102331 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
@@ -89,8 +90,6 @@
 		5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
 		6732F0529D22B7D9B945DC03 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732FE8E3BA48F4F8270A378 /* Reach.swift */; };
 		6732F071BE764E444CE195A1 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */; };
-		6732F58898C617D893FCEEF9 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F5AEE428A6499B3B8780 /* NetworkingService.swift */; };
-		6732FE7955F323D850910559 /* NetworkServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F670F8AF70C09E89B3B7 /* NetworkServiceTest.swift */; };
 		6732FF33F9C52024DD00551F /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */; };
 		E859C967654A0D12EDB6A09B /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */; };
 		FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
@@ -130,6 +129,7 @@
 		086AB7A3367DA59F51FB9DBB /* Pods_WallPaperDev_WallPaperDevUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev_WallPaperDevUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EF51983C38FFEF57380D54B /* Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig"; sourceTree = "<group>"; };
 		3C08A7A8A1F9F99104A33261 /* Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
+		4402347E2421E87B001DFBA3 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		442D2E37234ECD6A00EE9991 /* GoalDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewModel.swift; sourceTree = "<group>"; };
 		443F7E47235683F700102331 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		443F7E4C23569B1100102331 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -211,9 +211,7 @@
 		5DFF6B95233D64760077F712 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5DFF6B97233D7C460077F712 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		5F4445512A1A8742A2E0E6D0 /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.release.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
-		6732F5AEE428A6499B3B8780 /* NetworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
-		6732F670F8AF70C09E89B3B7 /* NetworkServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceTest.swift; sourceTree = "<group>"; };
 		6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		6732FE8E3BA48F4F8270A378 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		6C51E43FA228A1B7D96B26A4 /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
@@ -342,6 +340,7 @@
 		44A93F3923FA22520040B589 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */,
 				44A93F4823FA236B0040B589 /* NetworkManager.swift */,
 			);
 			path = Manager;
@@ -362,6 +361,7 @@
 				44C0B52523302FE80015110B /* ImagesSelectionCV.swift */,
 				44C0B529233034580015110B /* ImageSelectionCell.swift */,
 				44C0B5272330341A0015110B /* ImageSelectionLayout.swift */,
+				4402347E2421E87B001DFBA3 /* CircleButton.swift */,
 				44C0B53D2331D0250015110B /* GoalsTableView.swift */,
 			);
 			path = "CreateImage Views";
@@ -546,12 +546,9 @@
 				44A93F3A23FA22580040B589 /* Endpoint */,
 				44A93F3923FA22520040B589 /* Manager */,
 				44A93F3823FA22450040B589 /* Service */,
-				6732F5AEE428A6499B3B8780 /* NetworkingService.swift */,
-				6732F670F8AF70C09E89B3B7 /* NetworkServiceTest.swift */,
 				6732F16EA7C1A6F5DC667314 /* Encoding */,
 				6732FE8E3BA48F4F8270A378 /* Reach.swift */,
 				6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */,
-				6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -953,6 +950,7 @@
 				FA1CCF4D23D6282700B47ED4 /* ImageAsset.swift in Sources */,
 				5D051784232C020000B94C4B /* HomeViewController.swift in Sources */,
 				5D7B286123723DDC0014A4D3 /* SearchImageViewController.swift in Sources */,
+				4402347F2421E87B001DFBA3 /* CircleButton.swift in Sources */,
 				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
 				FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */,
@@ -996,8 +994,6 @@
 				44E0BA652339B549007AA20D /* GoalsSelectionViewController.swift in Sources */,
 				5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */,
 				44A93F4123FA22D00040B589 /* NetworkRouter.swift in Sources */,
-				6732F58898C617D893FCEEF9 /* NetworkingService.swift in Sources */,
-				6732FE7955F323D850910559 /* NetworkServiceTest.swift in Sources */,
 				6732F0529D22B7D9B945DC03 /* Reach.swift in Sources */,
 				6732F071BE764E444CE195A1 /* MockNetworkService.swift in Sources */,
 				6732FF33F9C52024DD00551F /* NetworkServiceProtocol.swift in Sources */,

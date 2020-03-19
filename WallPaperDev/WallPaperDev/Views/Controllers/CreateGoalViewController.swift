@@ -32,6 +32,7 @@ class CreateGoalViewController: UIViewController {
   }
 
   func setupNavBar() {
+    navigationController?.hidesBarsWhenKeyboardAppears = true
     navigationItem.title = Localized.string("create_goal_title")
     coordinator?.navigationController.navigationBar.configGenericNavBar(text: Localized.string("create_goal_title"))
   }
@@ -100,7 +101,7 @@ extension CreateGoalViewController: UITextViewDelegate {
     guard let view = textView as? GoalDescriptionTextView else {
       return
     }
-
+    navigationController?.navigationBar.isHidden = false
     if view.text.isEmpty {
       view.text = view.placeHolder
       view.textColor = ApplicationDependency.manager.currentTheme.colors.placeholderGray
