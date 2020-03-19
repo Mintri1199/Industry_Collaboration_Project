@@ -1,4 +1,3 @@
-//
 // Created by Jackson Ho on 3/17/20.
 // Copyright (c) 2020 Stephen Ouyang. All rights reserved.
 //

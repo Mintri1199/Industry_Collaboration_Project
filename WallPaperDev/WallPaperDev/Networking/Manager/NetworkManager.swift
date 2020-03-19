@@ -13,8 +13,8 @@ enum NetworkEnvironment {
   case qa, staging, production
 }
 
-//MARK: - Base Network Manager Struct
-struct NetworkManager{
+// MARK: - Base Network Manager Struct
+struct NetworkManager {
 
   enum NetworkResponse: String, Error {
     case authenticationError = "You need to be authenticated first."

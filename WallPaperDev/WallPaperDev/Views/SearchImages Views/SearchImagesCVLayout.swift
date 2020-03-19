@@ -8,19 +8,19 @@
 
 import UIKit
 
-class SearchImagesCVLayout: UICollectionViewFlowLayout {
+final class SearchImagesCVLayout: UICollectionViewFlowLayout {
   override func prepare() {
     super.prepare()
     guard let cv = collectionView else {
-      return            
+      return
     }
     scrollDirection = .vertical
-    let availableWidth = cv.bounds.inset(by: cv.layoutMargins).size.width
-    let cellWidth = Int(availableWidth / 2.3)
-//        itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height) - 10)
-    itemSize = CGSize(width: cellWidth, height: Int(cv.bounds.height / 2))
-    sectionInset = UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 25)
+    let availableWidth = cv.bounds.size.width - 2
+    let cellWidth = (availableWidth / 3)
+    itemSize = CGSize(width: cellWidth, height: cellWidth)
+    sectionInset = UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 0)
     sectionInsetReference = .fromSafeArea
-    minimumLineSpacing = 15
+    minimumLineSpacing = 1
+    minimumInteritemSpacing = 1
   }
 }

@@ -61,7 +61,6 @@ class HomeViewController: UIViewController {
 }
 
 // MARK: - UIs functions
-
 extension HomeViewController {
   private func setupWallpaperButton() {
     let wallpaperButtonFrame = CGRect(x: addButton.frame.minX - addButton.frame.width - 20,

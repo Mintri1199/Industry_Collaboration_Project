@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SearchImagesCell : UICollectionViewCell {
+final class SearchImagesCell: UICollectionViewCell {
   let identifier = "searchCell"
   
   // Using layers to hold uninteractable images

@@ -8,44 +8,49 @@
 
 import UIKit
 
-protocol SelectedImageDelegate {
+protocol SelectedImageDelegate: class {
   func passImageSelected(image: UIImage)
 }
 
-class SearchImageViewController: UIViewController {
+final class SearchImageViewController: UIViewController {
   // MARK: - Custom UIs
   private lazy var createImageButton = BigBlueButton(frame: .zero)
   private lazy var searchImagesCV = SearchImagesCV(frame: .zero, collectionViewLayout: SearchImagesCVLayout())
   private lazy var emptyView = SelectedGoalsEmptyView()
   private lazy var searchController = UISearchController(searchResultsController: nil)
   private let goalsVC = GoalsSelectionViewController()
-  
+
   private let viewModel = SearchImagesViewModel()
   private let selectImageViewModel = SelectionViewModel()
   weak var coordinator: MainCoordinator?
-  var selectedImageDelegate : SelectedImageDelegate?
-  
+  weak var selectedImageDelegate: SelectedImageDelegate?
+
   override var preferredStatusBarStyle: UIStatusBarStyle {
     .lightContent
   }
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
     setupViews()
   }
-  
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    navigationController?.navigationBar.isHidden = false
+  }
+}
+
+// MARK: - UI setup methods
+// TODO: Implement Context menu for when the user hold on the cell
+extension SearchImageViewController {
+
   private func setupViews() {
     setupNavBar()
     setupImageCollectionView()
     setupBlueButton()
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = false
-  }
-  
+
   private func setupImageCollectionView() {
     self.view.addSubview(searchImagesCV)
     searchImagesCV.delegate = self
@@ -57,20 +62,17 @@ class SearchImageViewController: UIViewController {
       searchImagesCV.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
     ])
   }
-  
+
   private func setupNavBar() {
     searchController.searchBar.delegate = self
-    searchController.searchBar.placeholder = "Search for images"
+    searchController.searchBar.placeholder = Localized.string("unsplash_searchbar_placeholder")
     searchController.searchBar.autocorrectionType = .default
     searchController.searchBar.sizeToFit()
-    
-    navigationItem.title = "Search for a new image"
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: "Search Images")
-    
+
     navigationItem.hidesSearchBarWhenScrolling = false
     navigationItem.searchController = searchController
   }
-  
+
   private func setupBlueButton() {
     self.view.addSubview(createImageButton)
     createImageButton.setTitle("Create", for: .normal)
@@ -82,7 +84,10 @@ class SearchImageViewController: UIViewController {
       createImageButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
     ])
   }
-  
+}
+
+// MARK: objc methods
+extension SearchImageViewController {
   @objc private func backToChooseImageVC() {
     if let image = viewModel.selectedImage {
       selectedImageDelegate?.passImageSelected(image: image)
@@ -92,7 +97,7 @@ class SearchImageViewController: UIViewController {
 }
 
 // MARK: - CollectionView Delegate
-extension SearchImageViewController : UICollectionViewDelegate {
+extension SearchImageViewController: UICollectionViewDelegate {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     guard let selectedCell = searchImagesCV.cellForItem(at: indexPath) as? SearchImagesCell else {
       return
@@ -102,7 +107,7 @@ extension SearchImageViewController : UICollectionViewDelegate {
 }
 
 // MARK: - CollectionView DataSource
-extension SearchImageViewController : UICollectionViewDataSource {
+extension SearchImageViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     viewModel.imageURLS.count
   }
@@ -131,16 +136,13 @@ extension SearchImageViewController : UICollectionViewDataSource {
     return cell
   }
 }
+
 // MARK: - SearchBar Delegate
-extension SearchImageViewController : UISearchBarDelegate {
+extension SearchImageViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    // set urls to empty for new search
-    viewModel.imageURLS = []
-    let keywords = searchBar.text
-    guard let finalKeyword = keywords?.replacingOccurrences(of: " ", with: "+") else { return }
-    viewModel.loadSearchURLS(for: finalKeyword, cv: searchImagesCV)
+    viewModel.loadSearchURLS(for: searchBar.text, cv: searchImagesCV)
   }
-  
+
   func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
     dismiss(animated: true, completion: nil)
   }

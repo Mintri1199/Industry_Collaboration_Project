@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchImagesCV : UICollectionView {
+final class SearchImagesCV: UICollectionView {
   let cellID = "searchCell"
 
   override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {

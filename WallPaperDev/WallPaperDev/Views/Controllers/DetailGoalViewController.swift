@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DetailGoalViewController: CreateGoalViewController {
+class DetailGoalViewController: CreateGoalViewController {
 
   let viewModel = GoalDetailViewModel()
 

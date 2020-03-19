@@ -21,11 +21,9 @@ final class AddButton: UIButton {
   private func configButton() {
     self.setTitle(Localized.string("add_action"), for: .normal)
     self.backgroundColor = ApplicationDependency.manager.currentTheme.colors.addButtonRed
-    // TODO: (alex) Flagging color usage
-    self.setTitleColor(.white, for: .normal)
-    self.setTitleColor(.darkGray, for: .highlighted)
+    self.setTitleColor(ApplicationDependency.manager.currentTheme.colors.white, for: .normal)
+    self.setTitleColor(ApplicationDependency.manager.currentTheme.colors.darkGray, for: .highlighted)
     self.titleLabel?.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy20
-
     self.layer.cornerRadius = self.bounds.width / 2
   }
 
