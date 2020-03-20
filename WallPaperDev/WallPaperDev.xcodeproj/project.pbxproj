@@ -56,6 +56,8 @@
 		44F4086523570EF000EE0409 /* WelcomeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F4086423570EF000EE0409 /* WelcomeLabel.swift */; };
 		44F408672359261800EE0409 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F408662359261800EE0409 /* UIView+Extension.swift */; };
 		44F40869235928F500EE0409 /* WelcomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F40868235928F500EE0409 /* WelcomeCollectionViewCell.swift */; };
+		44F583A324247492008CF121 /* UnsplashCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583A224247492008CF121 /* UnsplashCellIdentifiable.swift */; };
+		44F583A524247AFC008CF121 /* UnsplashPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583A424247AFC008CF121 /* UnsplashPreviewVC.swift */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
 		5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */; };
 		5D03ED1123281620006068CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D03ED1023281620006068CB /* Assets.xcassets */; };
@@ -177,6 +179,8 @@
 		44F4086423570EF000EE0409 /* WelcomeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeLabel.swift; sourceTree = "<group>"; };
 		44F408662359261800EE0409 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		44F40868235928F500EE0409 /* WelcomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		44F583A224247492008CF121 /* UnsplashCellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashCellIdentifiable.swift; sourceTree = "<group>"; };
+		44F583A424247AFC008CF121 /* UnsplashPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPreviewVC.swift; sourceTree = "<group>"; };
 		48CBFAB173315E86A41A167A /* Pods_WallPaperDev_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev_WallPaperDevTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B3161CA966B5C240FD017E /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.debug.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* Kabegami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kabegami.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -405,6 +409,7 @@
 				44C0B52323302C920015110B /* UINavigation+Extensions.swift */,
 				44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */,
 				44C0B5392331C5460015110B /* Graphic+Extensions.swift */,
+				44F583A224247492008CF121 /* UnsplashCellIdentifiable.swift */,
 				44F408662359261800EE0409 /* UIView+Extension.swift */,
 				444955C023952DCB009A1618 /* UIFont+Extension.swift */,
 			);
@@ -495,6 +500,7 @@
 			children = (
 				5D7B285C2372359C0014A4D3 /* SearchImagesCV.swift */,
 				5D2285342397276D00B40B78 /* SearchImageCell.swift */,
+				44F583A424247AFC008CF121 /* UnsplashPreviewVC.swift */,
 				5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */,
 			);
 			path = "SearchImages Views";
@@ -928,6 +934,7 @@
 				443F7E502356A97C00102331 /* WelcomeCollectionView.swift in Sources */,
 				443F7E4D23569B1100102331 /* WelcomeViewController.swift in Sources */,
 				44E0BA6B233A87DE007AA20D /* GrayTextButton.swift in Sources */,
+				44F583A324247492008CF121 /* UnsplashCellIdentifiable.swift in Sources */,
 				44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */,
 				44A93F3123FA20FD0040B589 /* JSONParameterEncoder.swift in Sources */,
 				FA1CCF6723D6444600B47ED4 /* Localized.swift in Sources */,
@@ -965,6 +972,7 @@
 				5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
+				44F583A524247AFC008CF121 /* UnsplashPreviewVC.swift in Sources */,
 				FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */,
 				44A93F4723FA235B0040B589 /* UnsplashEndpoint.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,

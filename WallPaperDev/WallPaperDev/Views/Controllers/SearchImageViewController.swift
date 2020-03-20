@@ -83,6 +83,28 @@ extension SearchImageViewController: UICollectionViewDelegate {
     }
     
     delegate?.passImageSelected(image: selectedCell.cellImage)
+    navigationController?.popViewController(animated: true)
+  }
+  
+  @available(iOS 13.0, *)
+  func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    let config = UIContextMenuConfiguration(identifier: nil, previewProvider: {
+      guard let cell = collectionView.cellForItem(at: indexPath) as? SearchImagesCell else {
+        return nil
+      }
+      return UnsplashPreviewVC(photo: cell.cellImage)
+      
+    }, actionProvider: { _ in
+      
+      let chooseAction = UIAction(title: "Choose") { _ in
+        print("Choose")
+      }
+      
+      let menu = UIMenu(title: "", image: nil, options: [], children: [chooseAction])
+      
+      return menu
+    })
+    return config
   }
 }
 
@@ -97,7 +119,7 @@ extension SearchImageViewController: UICollectionViewDataSource {
       return UICollectionViewCell()
     }
     
-    let urlString = viewModel.imageURLS[indexPath.row].urls.regular
+    let urlString = viewModel.imageURLS[indexPath.row].urlString
     
     viewModel.networkManager.getPhotoData(from: urlString) { result in
       switch result {

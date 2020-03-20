@@ -13,9 +13,9 @@ final class SearchImagesCell: UICollectionViewCell {
 
   lazy var cellImage = UIImage()
 
-  private let loadingView = UIActivityIndicatorView()
+  fileprivate let loadingView = UIActivityIndicatorView()
 
-  private lazy var photoLayer: CALayer = {
+  fileprivate lazy var photoLayer: CALayer = {
     var picture = CALayer()
     picture.frame = bounds
     picture.contentsGravity = .resizeAspectFill
