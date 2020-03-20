@@ -11,7 +11,11 @@ import UIKit
 final class SearchImagesCell: UICollectionViewCell {
   let identifier = "searchCell"
 
-  lazy var photoLayer: CALayer = {
+  lazy var cellImage = UIImage()
+
+  private let loadingView = UIActivityIndicatorView()
+
+  private lazy var photoLayer: CALayer = {
     var picture = CALayer()
     picture.frame = bounds
     picture.contentsGravity = .resizeAspectFill
@@ -19,20 +23,28 @@ final class SearchImagesCell: UICollectionViewCell {
     return picture
   }()
 
-  var cellImage: UIImage? {
-    didSet {
-      photoLayer.contents = cellImage?.cgImage
-    }
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    loadingView.frame = bounds
+    loadingView.style = .gray
+    loadingView.hidesWhenStopped = true
+    loadingView.startAnimating()
+    contentView.addSubview(loadingView)
   }
 
-  func getImage(_ image: UIImage?) {
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  func getImage(_ image: UIImage) {
     if photoLayer.superlayer != nil {
       photoLayer.removeFromSuperlayer()
     }
     layer.addSublayer(photoLayer)
-
-    if let image = image {
-      cellImage = image
+    cellImage = image
+    photoLayer.contents = cellImage.cgImage
+    if loadingView.isAnimating {
+      loadingView.stopAnimating()
     }
   }
 }

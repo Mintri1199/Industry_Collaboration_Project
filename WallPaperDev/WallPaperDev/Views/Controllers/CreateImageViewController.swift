@@ -16,7 +16,6 @@ class CreateImageViewController: UIViewController {
   private lazy var selectedImageView = UIImageView(frame: .zero)
   private lazy var chooseImageLabel = BlueLabel(frame: .zero)
   private lazy var chooseGoalLabel = BlueLabel(frame: .zero)
-  private lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
   private lazy var chooseImageStack = UIStackView()
   private lazy var imagePickerButton: CircleButton = {
     var button = CircleButton()
@@ -53,6 +52,22 @@ class CreateImageViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.isHidden = false
+  }
+  
+  private func expandImageView() {
+    if viewModel.selectedImage == nil {
+      selectedImageView.constraints.forEach { constaint in
+        if constaint.firstAnchor == selectedImageView.heightAnchor && constaint.constant == 0 {
+          let newHeight = view.bounds.height * 0.27
+          constaint.constant = newHeight
+          selectedImageView.layer.cornerRadius = newHeight / 4
+          selectedImageView.addShadow(width: 0, height: 5, opacity: 0.75, radius: 3)
+          UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+          }
+        }
+      }
+    }
   }
 }
 
@@ -113,18 +128,8 @@ extension CreateImageViewController {
       chooseImageStack.widthAnchor.constraint(equalToConstant: ((view.bounds.width * 0.15) * 2) + 10),
       chooseImageStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
     ])
-  }
-  
-  private func setupImageCollectionView() {
-    view.addSubview(imageSelectionCV)
-    imageSelectionCV.delegate = self
-    imageSelectionCV.dataSource = self
-    NSLayoutConstraint.activate([
-      imageSelectionCV.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      imageSelectionCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      imageSelectionCV.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-      imageSelectionCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5)
-    ])
+    
+    unsplashButton.addTarget(self, action: #selector(pushToUnsplash), for: .touchUpInside)
   }
   
   private func setupChooseGoalLabel() {
@@ -189,12 +194,6 @@ extension CreateImageViewController {
     navigationItem.title = Localized.string("create_wallpaper_title")
     navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("create_wallpaper_title"))
   }
-  
-  private func showSearchImages() {
-    let vc = SearchImageViewController()
-    vc.selectedImageDelegate = self
-    navigationController?.pushViewController(vc, animated: true)
-  }
 }
 
 // MARK: - CAAnimationDelegate
@@ -229,6 +228,12 @@ extension CreateImageViewController {
     goalsVC.viewModel.preselectGoals(viewModel.selectedGoals)
     navigationController?.pushViewController(goalsVC, animated: true)
   }
+  
+  @objc private func pushToUnsplash() {
+    let vc = SearchImageViewController()
+    vc.delegate = self
+    navigationController?.pushViewController(vc, animated: true)
+  }
 }
 
 extension CreateImageViewController: PassSelectedGoals {
@@ -237,48 +242,6 @@ extension CreateImageViewController: PassSelectedGoals {
     changeGoalsButton.isHidden = array.isEmpty
     viewModel.validation(button: createImageButton)
     goalsTableView.reloadData()
-  }
-}
-
-// MARK: - CollectionViewDatasource
-extension CreateImageViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
-      return UICollectionViewCell()
-    }
-    indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
-    return cell
-  }
-  
-  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-    viewModel.imageArray.count + 1
-  }
-}
-
-// MARK: - CollectionViewDelegate
-extension CreateImageViewController: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let cell = collectionView.cellForItem(at: indexPath) as? ImageSelectionCell else {
-      return
-    }
-    
-    if cell.lastCell {
-      showSearchImages()
-    } else {
-      imageSelectionCV.indexPathsForVisibleItems.forEach { index in
-        if index != indexPath {
-          if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-            otherCell.borderLayer.lineWidth = 0
-          }
-        } else {
-          if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-            selectedCell.borderLayer.lineWidth = 5
-            viewModel.selectedImage = selectedCell.cellImage
-            viewModel.validation(button: createImageButton)
-          }
-        }
-      }
-    }
   }
 }
 

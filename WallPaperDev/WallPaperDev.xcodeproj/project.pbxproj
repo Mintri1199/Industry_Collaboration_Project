@@ -370,6 +370,7 @@
 		44C0B52B23303F9B0015110B /* CreateGoal Views */ = {
 			isa = PBXGroup;
 			children = (
+				44C0B53F233311FF0015110B /* ImagePreview Views */,
 				44B56609234D16C100DEBB86 /* BlueLabel.swift */,
 				44B56605234D165400DEBB86 /* BigBlueButton.swift */,
 				44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */,
@@ -521,7 +522,6 @@
 				5D9C52A1232B14D800608D6D /* Controllers */,
 				443F7E4E23569B3500102331 /* Welcome Views */,
 				443F7E4923569A4B00102331 /* HomeScreen Views */,
-				44C0B53F233311FF0015110B /* ImagePreview Views */,
 				44C0B52B23303F9B0015110B /* CreateGoal Views */,
 				44C0B52123302A730015110B /* CreateImage Views */,
 				5D7B2857237233E10014A4D3 /* SearchImages Views */,

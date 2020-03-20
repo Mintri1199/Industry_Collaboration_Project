@@ -32,7 +32,6 @@ class CreateGoalViewController: UIViewController {
   }
 
   func setupNavBar() {
-    navigationController?.hidesBarsWhenKeyboardAppears = true
     navigationItem.title = Localized.string("create_goal_title")
     coordinator?.navigationController.navigationBar.configGenericNavBar(text: Localized.string("create_goal_title"))
   }
@@ -59,7 +58,6 @@ extension CreateGoalViewController {
 }
 
 // MARK: - Objc functions
-
 extension CreateGoalViewController {
   @objc func createTapped() {
     guard let userGoalName = createGoalView.goalNameTextField.text,
