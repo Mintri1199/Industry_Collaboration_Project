@@ -17,7 +17,6 @@ final class SearchImageViewController: UIViewController {
   private lazy var searchImagesCV = SearchImagesCV(frame: .zero, collectionViewLayout: SearchImagesCVLayout())
   private lazy var emptyView = SelectedGoalsEmptyView()
   private lazy var searchController = UISearchController(searchResultsController: nil)
-  private let goalsVC = GoalsSelectionViewController()
   private let viewModel = SearchImagesViewModel()
   weak var coordinator: MainCoordinator?
   weak var delegate: SelectedImageDelegate?
@@ -88,16 +87,19 @@ extension SearchImageViewController: UICollectionViewDelegate {
   
   @available(iOS 13.0, *)
   func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    guard let cell = collectionView.cellForItem(at: indexPath) as? SearchImagesCell else {
+      return nil
+    }
+    
     let config = UIContextMenuConfiguration(identifier: nil, previewProvider: {
-      guard let cell = collectionView.cellForItem(at: indexPath) as? SearchImagesCell else {
-        return nil
-      }
       
       return UnsplashPreviewVC(photo: cell.cellImage)
     }, actionProvider: { _ in
       
-      let chooseAction = UIAction(title: "Choose") { _ in
-      }
+      let chooseAction = UIAction(title: "Select", handler: { _ in
+        self.viewModel.selectedImage = cell.cellImage
+        self.backToChooseImageVC()
+      })
       
       let menu = UIMenu(title: "", image: nil, options: [], children: [chooseAction])
       

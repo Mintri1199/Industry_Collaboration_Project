@@ -30,15 +30,15 @@ class HomeViewController: UIViewController {
     setupWallpaperButton()
   }
   
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-  }
+//  override func viewDidLayoutSubviews() {
+//    super.viewDidLayoutSubviews()
+//  }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.navigationController?.navigationBar.isHidden = true
-    self.navigationController?.navigationItem.hidesBackButton = true
-    self.navigationController?.navigationBar.prefersLargeTitles = true
+    self.coordinator?.navigationController.setNavigationBarHidden(true, animated: true)
+    self.coordinator?.navigationController.navigationItem.hidesBackButton = true
+    self.coordinator?.navigationController.navigationBar.prefersLargeTitles = true
     
     if #available(iOS 13.0, *) {
       let appearance = UINavigationBarAppearance()
@@ -46,10 +46,10 @@ class HomeViewController: UIViewController {
       appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
       appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
       appearance.shadowColor = nil
-      self.navigationController?.navigationBar.tintColor = .white
-      self.navigationController?.navigationBar.standardAppearance = appearance
-      self.navigationController?.navigationBar.compactAppearance = appearance
-      self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+      self.coordinator?.navigationController.navigationBar.tintColor = .white
+      self.coordinator?.navigationController.navigationBar.standardAppearance = appearance
+      self.coordinator?.navigationController.navigationBar.compactAppearance = appearance
+      self.coordinator?.navigationController.navigationBar.scrollEdgeAppearance = appearance
     }
     
     homeViewModel.update {
@@ -122,7 +122,6 @@ extension HomeViewController {
 }
 
 // MARK: - TableViewDataDelegate
-
 extension HomeViewController: UITableViewDelegate {
   func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
     let selectedGoal = homeViewModel.goalsArr[indexPath.row]
@@ -166,7 +165,6 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 // MARK: - UINavigationControllerDelegate
-
 extension HomeViewController: UINavigationControllerDelegate {
   func navigationController(_: UINavigationController, didShow _: UIViewController, animated _: Bool) {}
 }

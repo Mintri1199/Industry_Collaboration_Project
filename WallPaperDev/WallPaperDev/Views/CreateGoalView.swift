@@ -38,9 +38,9 @@ extension CreateGoalView {
     addSubview(goalDescriptionTextView)
     addSubview(createButton)
     setupGoalNameLabel()
-    goalNameTextFieldConstraints()
+    setTextField()
     setupDescriptionLabel()
-    goalDescriptionTextViewConstraints()
+    setupTextView()
     setupBlueButton()
   }
   
@@ -54,7 +54,7 @@ extension CreateGoalView {
             ])
   }
   
-  private func goalNameTextFieldConstraints() {
+  private func setTextField() {
     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     toolbar.barStyle = .default
     toolbar.items = [
@@ -81,7 +81,7 @@ extension CreateGoalView {
             ])
   }
   
-  private func goalDescriptionTextViewConstraints() {
+  private func setupTextView() {
     let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
     toolbar.barStyle = .default
     toolbar.items = [

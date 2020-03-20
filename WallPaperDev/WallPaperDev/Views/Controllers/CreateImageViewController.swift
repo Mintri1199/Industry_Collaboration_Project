@@ -35,7 +35,6 @@ class CreateImageViewController: UIViewController {
   private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
   private lazy var emptyView = SelectedGoalsEmptyView()
   
-  private let goalsVC = GoalsSelectionViewController()
   private let viewModel = SelectionViewModel()
   weak var coordinator: MainCoordinator?
   
@@ -46,12 +45,8 @@ class CreateImageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    coordinator?.navigationController.setNavigationBarHidden(false, animated: true)
     setupViews()
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = false
   }
   
   private func expandImageView() {
@@ -160,7 +155,7 @@ extension CreateImageViewController {
     changeGoalsButton.isHidden = true
     changeGoalsButton.label.text = Localized.string("change_goals_action")
     changeGoalsButton.label.textAlignment = .right
-    changeGoalsButton.addTarget(self, action: #selector(changeGoalTapped), for: .touchUpInside)
+    changeGoalsButton.addTarget(self, action: #selector(pushToGoalSelection), for: .touchUpInside)
     NSLayoutConstraint.activate([
       changeGoalsButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
       changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
@@ -218,13 +213,15 @@ extension CreateImageViewController {
   }
   
   @objc private func pushToGoalSelection() {
+    let goalsVC = GoalsSelectionViewController(goals: viewModel.selectedGoals)
     goalsVC.delegate = self
     navigationController?.pushViewController(goalsVC, animated: true)
   }
   
   @objc private func changeGoalTapped() {
     // TODO: Figure out how to use coordinator for passing data back
-    goalsVC.viewModel.preselectGoals(viewModel.selectedGoals)
+    let goalsVC = GoalsSelectionViewController(goals: viewModel.selectedGoals)
+    goalsVC.delegate = self
     navigationController?.pushViewController(goalsVC, animated: true)
   }
   

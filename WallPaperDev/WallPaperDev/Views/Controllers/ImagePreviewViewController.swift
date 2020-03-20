@@ -17,7 +17,7 @@ class ImagePreviewViewController: UIViewController {
   private lazy var previewButton = BigBlueButton(frame: .zero)
   private lazy var recropButton = BigBlueButton(frame: .zero)
   private lazy var buttonStackView = UIStackView(frame: .zero)
-  let viewModel = ImagePreviewViewModel()
+  private let viewModel = ImagePreviewViewModel()
   weak var coordinator: MainCoordinator?
 
   private var image: UIImage? {
@@ -32,6 +32,12 @@ class ImagePreviewViewController: UIViewController {
     .lightContent
   }
 
+  init(_ image: UIImage, _ goals: [Goal]) {
+    super.init(nibName: nil, bundle: nil)
+    viewModel.originalImage = image
+    viewModel.selectedGoals = goals
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
@@ -42,10 +48,13 @@ class ImagePreviewViewController: UIViewController {
       self.image = initialImage
     }
   }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }
 
 // MARK: - UIs setup functions
-
 extension ImagePreviewViewController {
   private func setupViews() {
     setupNavBar()
