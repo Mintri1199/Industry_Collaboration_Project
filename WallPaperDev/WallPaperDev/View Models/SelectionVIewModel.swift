@@ -9,16 +9,8 @@
 import UIKit
 
 final class SelectionViewModel {
-  var imageArray: [UIImage]
   var selectedGoals: [Goal] = []
   var selectedImage: UIImage?
-
-  init() {
-    let currentTheme = ApplicationDependency.manager.currentTheme
-    imageArray = [currentTheme.imageAssets.background1,
-                  currentTheme.imageAssets.background2,
-                  currentTheme.imageAssets.background3]
-  }
 
   func validation(button: UIButton) {
     if selectedGoals.isEmpty || selectedImage == nil {

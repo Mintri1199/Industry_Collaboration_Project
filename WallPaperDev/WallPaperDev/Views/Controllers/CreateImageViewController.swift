@@ -55,13 +55,12 @@ class CreateImageViewController: UIViewController {
   }
   
   private func expandImageView() {
-    if viewModel.selectedImage == nil {
+    if viewModel.selectedImage != nil && selectedImageView.frame.height == 0 {
       selectedImageView.constraints.forEach { constaint in
         if constaint.firstAnchor == selectedImageView.heightAnchor && constaint.constant == 0 {
           let newHeight = view.bounds.height * 0.27
           constaint.constant = newHeight
           selectedImageView.layer.cornerRadius = newHeight / 4
-          selectedImageView.addShadow(width: 0, height: 5, opacity: 0.75, radius: 3)
           UIView.animate(withDuration: 0.5) {
             self.view.layoutIfNeeded()
           }
@@ -100,8 +99,7 @@ extension CreateImageViewController {
     selectedImageView.contentMode = .scaleAspectFill
     selectedImageView.layer.borderColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
     selectedImageView.layer.borderWidth = 5
-    // Placeholder color
-    selectedImageView.backgroundColor = .red
+    selectedImageView.clipsToBounds = true
     view.addSubview(selectedImageView)
     NSLayoutConstraint.activate([
       selectedImageView.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5),
@@ -130,6 +128,7 @@ extension CreateImageViewController {
     ])
     
     unsplashButton.addTarget(self, action: #selector(pushToUnsplash), for: .touchUpInside)
+    imagePickerButton.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
   }
   
   private func setupChooseGoalLabel() {
@@ -229,6 +228,14 @@ extension CreateImageViewController {
     navigationController?.pushViewController(goalsVC, animated: true)
   }
   
+  @objc private func showPicker() {
+    let pickerController = UIImagePickerController()
+    pickerController.sourceType = .photoLibrary
+    pickerController.modalPresentationStyle = .popover
+    pickerController.delegate = self
+    present(pickerController, animated: true, completion: nil)
+  }
+  
   @objc private func pushToUnsplash() {
     let vc = SearchImageViewController()
     vc.delegate = self
@@ -269,6 +276,26 @@ extension CreateImageViewController: UITableViewDataSource {
 // MARK: - SelectedImageDelegate
 extension CreateImageViewController: SelectedImageDelegate {
   func passImageSelected(image: UIImage) {
-    viewModel.imageArray.append(image)
+    viewModel.selectedImage = image
+    selectedImageView.image = image
+    expandImageView()
+  }
+}
+
+// MARK: - ImagePickerDelegate
+extension CreateImageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    return
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    guard let image = info[.originalImage] as? UIImage else {
+      return
+    }
+    
+    viewModel.selectedImage = image
+    selectedImageView.image = image
+    expandImageView()
+    picker.dismiss(animated: true, completion: nil)
   }
 }

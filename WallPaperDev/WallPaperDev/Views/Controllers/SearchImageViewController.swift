@@ -92,12 +92,11 @@ extension SearchImageViewController: UICollectionViewDelegate {
       guard let cell = collectionView.cellForItem(at: indexPath) as? SearchImagesCell else {
         return nil
       }
-      return UnsplashPreviewVC(photo: cell.cellImage)
       
+      return UnsplashPreviewVC(photo: cell.cellImage)
     }, actionProvider: { _ in
       
       let chooseAction = UIAction(title: "Choose") { _ in
-        print("Choose")
       }
       
       let menu = UIMenu(title: "", image: nil, options: [], children: [chooseAction])

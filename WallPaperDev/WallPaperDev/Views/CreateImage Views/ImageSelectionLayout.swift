@@ -8,6 +8,7 @@
 
 import UIKit
 
+// (Jackson) - Might remove due to the recent UI resdesign
 class ImageSelectionLayout: UICollectionViewFlowLayout {
   override func prepare() {
     super.prepare()
