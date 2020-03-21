@@ -6,7 +6,6 @@
 //  Copyright © 2020 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol UnsplashIdentifiable {
@@ -28,10 +27,10 @@ extension UnsplashIdentifiable {
 extension Array where Element: UnsplashIdentifiable {
 
   func item(for configuration: UIContextMenuConfiguration) -> Element? {
-    return first(where: { $0.pictureId == configuration.identifier as? NSString})
+    return first(where: { $0.pictureId == configuration.identifier as? NSString })
   }
 
   func index(for configuration: UIContextMenuConfiguration) -> Index? {
-    return firstIndex(where: { $0.pictureId == configuration.identifier as? NSString})
+    return firstIndex(where: { $0.pictureId == configuration.identifier as? NSString })
   }
 }

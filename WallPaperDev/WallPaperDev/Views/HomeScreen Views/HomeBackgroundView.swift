@@ -44,41 +44,42 @@ final class HomeBackgroundView: UIView {
   
   func setupViews() {
     backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
-    
+
     addSubview(greetingLabel)
     addSubview(currentDateLabel)
-    
+
     titleConstraint()
     dateLabelConstraint()
     
     let part = getPartOfDay()
     var greeting: String
-    // Add to localize string
+    
     switch part {
-    case .morning:
-      greeting = Localized.string("good_morning_title")
-    case .afternoon:
-      greeting = Localized.string("good_afternoon_title")
-    case .evening:
-      greeting = Localized.string("good_evening_title")
+      case .morning:
+        greeting = Localized.string("good_morning_title")
+      case .afternoon:
+        greeting = Localized.string("good_afternoon_title")
+      case .evening:
+        greeting = Localized.string("good_evening_title")
     }
     greetingLabel.text = greeting
     setDateLabel()
+    
   }
   
   fileprivate func getPartOfDay() -> PartOfDay {
     switch Calendar.current.component(.hour, from: Date()) {
-    case 0 ... 11 :
-      return .morning
+      case 0 ... 11 :
+        return .morning
       
-    case 12 ... 18:
-      return .afternoon
+      case 12 ... 18:
+        return .afternoon
       
-    case 19 ... 24:
-      return .evening
-      
-    default:
-      return .morning
+      case 19 ... 24:
+        return .evening
+
+      default:
+        return .morning
     }
   }
   
@@ -91,11 +92,12 @@ final class HomeBackgroundView: UIView {
   fileprivate func titleConstraint() {
     greetingLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      greetingLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 4),
-      greetingLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 10),
-      greetingLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
-      greetingLabel.heightAnchor.constraint(equalToConstant: 120)
+    greetingLabel.leftAnchor.constraint(equalToSystemSpacingAfter: self.leftAnchor, multiplier: 4),
+    greetingLabel.topAnchor.constraint(equalToSystemSpacingBelow: self.topAnchor, multiplier: 10),
+    greetingLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
+    greetingLabel.heightAnchor.constraint(equalToConstant: 120)
     ])
+    
   }
   
   fileprivate func dateLabelConstraint() {

@@ -74,7 +74,7 @@
 		5D7B286123723DDC0014A4D3 /* SearchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */; };
 		5D7B2863237382300014A4D3 /* SearchImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */; };
 		5D7B28652374DC4C0014A4D3 /* SearchImagesCVLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */; };
-		5D7B2869237CC0610014A4D3 /* Photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2868237CC0610014A4D3 /* Photos.swift */; };
+		5D7B2869237CC0610014A4D3 /* UnsplashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7B2868237CC0610014A4D3 /* UnsplashModel.swift */; };
 		5DD33D42233D3FD500137E3C /* WallPaperDev.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D40233D3FD500137E3C /* WallPaperDev.xcdatamodeld */; };
 		5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
 		5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */; };
@@ -92,7 +92,6 @@
 		5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
 		6732F0529D22B7D9B945DC03 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732FE8E3BA48F4F8270A378 /* Reach.swift */; };
 		6732F071BE764E444CE195A1 /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */; };
-		6732FF33F9C52024DD00551F /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */; };
 		E859C967654A0D12EDB6A09B /* Pods_WallPaperDev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */; };
 		FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
 		FA1CCF4B23D6281E00B47ED4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
@@ -205,7 +204,7 @@
 		5D7B286023723DDC0014A4D3 /* SearchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageViewController.swift; sourceTree = "<group>"; };
 		5D7B2862237382300014A4D3 /* SearchImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesViewModel.swift; sourceTree = "<group>"; };
 		5D7B28642374DC4C0014A4D3 /* SearchImagesCVLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImagesCVLayout.swift; sourceTree = "<group>"; };
-		5D7B2868237CC0610014A4D3 /* Photos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photos.swift; sourceTree = "<group>"; };
+		5D7B2868237CC0610014A4D3 /* UnsplashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashModel.swift; sourceTree = "<group>"; };
 		5DD33D41233D3FD500137E3C /* WallPaperDev.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WallPaperDev.xcdatamodel; sourceTree = "<group>"; };
 		5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Goal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -216,7 +215,6 @@
 		5DFF6B97233D7C460077F712 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		5F4445512A1A8742A2E0E6D0 /* Pods-WallPaperDev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.release.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.release.xcconfig"; sourceTree = "<group>"; };
 		6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
-		6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
 		6732FE8E3BA48F4F8270A378 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		6C51E43FA228A1B7D96B26A4 /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
 		7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -306,7 +304,7 @@
 		44671678232DC5D9005C910E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5D7B2868237CC0610014A4D3 /* Photos.swift */,
+				5D7B2868237CC0610014A4D3 /* UnsplashModel.swift */,
 				5D7B2807236A31EB0014A4D3 /* Keys.swift */,
 				5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */,
 				5DD33D44233D433F00137E3C /* Goal+CoreDataProperties.swift */,
@@ -344,7 +342,6 @@
 		44A93F3923FA22520040B589 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				6732F6D6B91812457614B6F2 /* NetworkServiceProtocol.swift */,
 				44A93F4823FA236B0040B589 /* NetworkManager.swift */,
 			);
 			path = Manager;
@@ -961,7 +958,7 @@
 				44F4086123570E5200EE0409 /* WelcomeCellViews.swift in Sources */,
 				5DF925512339BFF5004CE8AA /* AddButton.swift in Sources */,
 				FA1CCF4923D6268B00B47ED4 /* Theme.swift in Sources */,
-				5D7B2869237CC0610014A4D3 /* Photos.swift in Sources */,
+				5D7B2869237CC0610014A4D3 /* UnsplashModel.swift in Sources */,
 				5D051786232C025200B94C4B /* HomeBackgroundView.swift in Sources */,
 				5DD33D46233D433F00137E3C /* Goal+CoreDataProperties.swift in Sources */,
 				5DD33D48233D43A800137E3C /* CoreDataStack.swift in Sources */,
@@ -1004,7 +1001,6 @@
 				44A93F4123FA22D00040B589 /* NetworkRouter.swift in Sources */,
 				6732F0529D22B7D9B945DC03 /* Reach.swift in Sources */,
 				6732F071BE764E444CE195A1 /* MockNetworkService.swift in Sources */,
-				6732FF33F9C52024DD00551F /* NetworkServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

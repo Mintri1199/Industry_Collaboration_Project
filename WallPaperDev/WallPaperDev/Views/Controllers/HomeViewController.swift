@@ -30,10 +30,6 @@ class HomeViewController: UIViewController {
     setupWallpaperButton()
   }
   
-//  override func viewDidLayoutSubviews() {
-//    super.viewDidLayoutSubviews()
-//  }
-  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.coordinator?.navigationController.setNavigationBarHidden(true, animated: true)
@@ -130,7 +126,6 @@ extension HomeViewController: UITableViewDelegate {
 }
 
 // MARK: - TableViewDataSource
-
 extension HomeViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if homeViewModel.goalsArr.isEmpty {
