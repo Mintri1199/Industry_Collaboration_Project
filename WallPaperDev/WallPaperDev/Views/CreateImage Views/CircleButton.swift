@@ -25,11 +25,7 @@ final class CircleButton: UIButton {
   
   func setupBorder(_ corner: CGFloat) {
     layer.cornerRadius = corner / 2
-    layer.shadowColor = ApplicationDependency.manager.currentTheme.colors.shadow.cgColor
-    layer.shadowOffset = CGSize(width: 0, height: 2.5)
-    layer.shadowOpacity = 0.75
-    layer.shadowRadius = 3.0
-    layer.masksToBounds = false
+    addShadow(width: 0, height: 2, opacity: 0.75, radius: 2)
   }
   
   func setupIcon(for icon: IconEnum) {

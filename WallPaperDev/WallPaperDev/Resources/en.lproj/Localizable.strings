@@ -8,13 +8,16 @@
 "goals" = "Goals";
 "goal_details_title" = "Goal Details";
 "good_morning_title" = "Good Morning";
+"good_afternoon_title" = "Good Afternoon";
+"good_evening_title" = "Good Evening";
 "current_date_time_title" = "It is %@";
 "set_goal_today_prompt" = "Set a goal today!";
+
 "create_goal_title" = "Create Goal";
 "invalid" = "Invalid";
-
 "create_goal_error_message" = "You can't create a goal without a name and description";
 "choose_image_title" = "Choose Image";
+"alert_ok" = "OK";
 
 "change_goals_action" = "Change Goals";
 "choose_goal_action" = "Choose Goal";

@@ -9,7 +9,7 @@
 import Foundation
 
 final class ChooseGoalViewModel {
-  let slectedGoalMaxCount = 4
+  let selectedGoalMaxCount = 4
   var selectedGoals: [Goal] = []
   var goals: [Goal] = []
 
@@ -17,9 +17,5 @@ final class ChooseGoalViewModel {
 
   func populateDataSource() {
     goals = coreDataStack.fetchGoals()
-  }
-
-  func preselectGoals(_ array: [Goal]) {
-    selectedGoals = array
   }
 }

@@ -16,7 +16,6 @@ class CreateImageViewController: UIViewController {
   private lazy var selectedImageView = UIImageView(frame: .zero)
   private lazy var chooseImageLabel = BlueLabel(frame: .zero)
   private lazy var chooseGoalLabel = BlueLabel(frame: .zero)
-  private lazy var imageSelectionCV = ImagesSelectionCV(frame: .zero, collectionViewLayout: ImageSelectionLayout())
   private lazy var chooseImageStack = UIStackView()
   private lazy var imagePickerButton: CircleButton = {
     var button = CircleButton()
@@ -36,7 +35,6 @@ class CreateImageViewController: UIViewController {
   private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
   private lazy var emptyView = SelectedGoalsEmptyView()
   
-  private let goalsVC = GoalsSelectionViewController()
   private let viewModel = SelectionViewModel()
   weak var coordinator: MainCoordinator?
   
@@ -47,12 +45,23 @@ class CreateImageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
+    coordinator?.navigationController.setNavigationBarHidden(false, animated: true)
     setupViews()
   }
   
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    navigationController?.navigationBar.isHidden = false
+  private func expandImageView() {
+    if viewModel.selectedImage != nil && selectedImageView.frame.height == 0 {
+      selectedImageView.constraints.forEach { constaint in
+        if constaint.firstAnchor == selectedImageView.heightAnchor && constaint.constant == 0 {
+          let newHeight = view.bounds.height * 0.27
+          constaint.constant = newHeight
+          selectedImageView.layer.cornerRadius = newHeight / 4
+          UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+          }
+        }
+      }
+    }
   }
 }
 
@@ -85,8 +94,7 @@ extension CreateImageViewController {
     selectedImageView.contentMode = .scaleAspectFill
     selectedImageView.layer.borderColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
     selectedImageView.layer.borderWidth = 5
-    // Placeholder color
-    selectedImageView.backgroundColor = .red
+    selectedImageView.clipsToBounds = true
     view.addSubview(selectedImageView)
     NSLayoutConstraint.activate([
       selectedImageView.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5),
@@ -113,18 +121,9 @@ extension CreateImageViewController {
       chooseImageStack.widthAnchor.constraint(equalToConstant: ((view.bounds.width * 0.15) * 2) + 10),
       chooseImageStack.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
     ])
-  }
-  
-  private func setupImageCollectionView() {
-    view.addSubview(imageSelectionCV)
-    imageSelectionCV.delegate = self
-    imageSelectionCV.dataSource = self
-    NSLayoutConstraint.activate([
-      imageSelectionCV.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      imageSelectionCV.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      imageSelectionCV.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
-      imageSelectionCV.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5)
-    ])
+    
+    unsplashButton.addTarget(self, action: #selector(pushToUnsplash), for: .touchUpInside)
+    imagePickerButton.addTarget(self, action: #selector(showPicker), for: .touchUpInside)
   }
   
   private func setupChooseGoalLabel() {
@@ -156,7 +155,7 @@ extension CreateImageViewController {
     changeGoalsButton.isHidden = true
     changeGoalsButton.label.text = Localized.string("change_goals_action")
     changeGoalsButton.label.textAlignment = .right
-    changeGoalsButton.addTarget(self, action: #selector(changeGoalTapped), for: .touchUpInside)
+    changeGoalsButton.addTarget(self, action: #selector(pushToGoalSelection), for: .touchUpInside)
     NSLayoutConstraint.activate([
       changeGoalsButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
       changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
@@ -189,12 +188,6 @@ extension CreateImageViewController {
     navigationItem.title = Localized.string("create_wallpaper_title")
     navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("create_wallpaper_title"))
   }
-  
-  private func showSearchImages() {
-    let vc = SearchImageViewController()
-    vc.selectedImageDelegate = self
-    navigationController?.pushViewController(vc, animated: true)
-  }
 }
 
 // MARK: - CAAnimationDelegate
@@ -220,14 +213,30 @@ extension CreateImageViewController {
   }
   
   @objc private func pushToGoalSelection() {
+    let goalsVC = GoalsSelectionViewController(goals: viewModel.selectedGoals)
     goalsVC.delegate = self
     navigationController?.pushViewController(goalsVC, animated: true)
   }
   
   @objc private func changeGoalTapped() {
     // TODO: Figure out how to use coordinator for passing data back
-    goalsVC.viewModel.preselectGoals(viewModel.selectedGoals)
+    let goalsVC = GoalsSelectionViewController(goals: viewModel.selectedGoals)
+    goalsVC.delegate = self
     navigationController?.pushViewController(goalsVC, animated: true)
+  }
+  
+  @objc private func showPicker() {
+    let pickerController = UIImagePickerController()
+    pickerController.sourceType = .photoLibrary
+    pickerController.modalPresentationStyle = .popover
+    pickerController.delegate = self
+    present(pickerController, animated: true, completion: nil)
+  }
+  
+  @objc private func pushToUnsplash() {
+    let vc = SearchImageViewController()
+    vc.delegate = self
+    navigationController?.pushViewController(vc, animated: true)
   }
 }
 
@@ -237,48 +246,6 @@ extension CreateImageViewController: PassSelectedGoals {
     changeGoalsButton.isHidden = array.isEmpty
     viewModel.validation(button: createImageButton)
     goalsTableView.reloadData()
-  }
-}
-
-// MARK: - CollectionViewDatasource
-extension CreateImageViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    guard let cell = imageSelectionCV.dequeueReusableCell(withReuseIdentifier: imageSelectionCV.cellID, for: indexPath) as? ImageSelectionCell else {
-      return UICollectionViewCell()
-    }
-    indexPath.row == viewModel.imageArray.count ? cell.setupShowMoreViews() : cell.getImage(viewModel.imageArray[indexPath.row])
-    return cell
-  }
-  
-  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
-    viewModel.imageArray.count + 1
-  }
-}
-
-// MARK: - CollectionViewDelegate
-extension CreateImageViewController: UICollectionViewDelegate {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let cell = collectionView.cellForItem(at: indexPath) as? ImageSelectionCell else {
-      return
-    }
-    
-    if cell.lastCell {
-      showSearchImages()
-    } else {
-      imageSelectionCV.indexPathsForVisibleItems.forEach { index in
-        if index != indexPath {
-          if let otherCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-            otherCell.borderLayer.lineWidth = 0
-          }
-        } else {
-          if let selectedCell = imageSelectionCV.cellForItem(at: index) as? ImageSelectionCell {
-            selectedCell.borderLayer.lineWidth = 5
-            viewModel.selectedImage = selectedCell.cellImage
-            viewModel.validation(button: createImageButton)
-          }
-        }
-      }
-    }
   }
 }
 
@@ -306,6 +273,26 @@ extension CreateImageViewController: UITableViewDataSource {
 // MARK: - SelectedImageDelegate
 extension CreateImageViewController: SelectedImageDelegate {
   func passImageSelected(image: UIImage) {
-    viewModel.imageArray.append(image)
+    viewModel.selectedImage = image
+    selectedImageView.image = image
+    expandImageView()
+  }
+}
+
+// MARK: - ImagePickerDelegate
+extension CreateImageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    return
+  }
+  
+  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    guard let image = info[.originalImage] as? UIImage else {
+      return
+    }
+    
+    viewModel.selectedImage = image
+    selectedImageView.image = image
+    expandImageView()
+    picker.dismiss(animated: true, completion: nil)
   }
 }

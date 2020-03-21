@@ -10,10 +10,6 @@ import UIKit
 
 // TODO: (alex) Introduce tests to ensure all assets are present if used
 protocol ImageAsset {
-  var background1: UIImage { get }
-  var background2: UIImage { get }
-  var background3: UIImage { get }
-
   var backgroundPreviewCamera: UIImage { get }
   var backgroundPreviewFlashlight: UIImage { get }
   var logo: UIImage { get }
@@ -29,18 +25,6 @@ protocol ImageAsset {
 struct DefaultImageAsset: ImageAsset {
   var unsplashLogo: UIImage {
     return #imageLiteral(resourceName: "unsplash")
-  }
-
-  var background1: UIImage {
-    return #imageLiteral(resourceName: "background_1")
-  }
-
-  var background2: UIImage {
-    return #imageLiteral(resourceName: "background_2")
-  }
-
-  var background3: UIImage {
-    return #imageLiteral(resourceName: "background_3")
   }
 
   var backgroundPreviewCamera: UIImage {

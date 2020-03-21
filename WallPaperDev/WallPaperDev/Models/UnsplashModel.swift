@@ -1,5 +1,5 @@
 //
-//  Photos.swift
+//  UnsplashModel.swift
 //  WallPaperDev
 //
 //  Created by Jamar Gibbs on 11/13/19.
@@ -16,14 +16,14 @@ struct UnsplashObject: Codable {
   }
 
   let total, totalPages: Int
-  let results: [PhotosUrls]
+  let results: [UnsplashPhotosUrls]
 }
 
-struct PhotosUrls: Codable {
-  let urls: Urls
+struct UnsplashPhotosUrls: Codable {
+  let urls: UnsplashUrls
 }
 
-struct Urls: Codable {
+struct UnsplashUrls: Codable {
   let raw, full, regular, small: String
   let thumb: String
 }

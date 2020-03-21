@@ -24,4 +24,12 @@ extension UIView {
     let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
     layer.beginTime = timeSincePause
   }
+
+  func addShadow(width: CGFloat, height: CGFloat, opacity: Float, radius: CGFloat) {
+    layer.shadowColor = ApplicationDependency.manager.currentTheme.colors.shadow.cgColor
+    layer.shadowOffset = CGSize(width: width, height: height)
+    layer.shadowOpacity = opacity
+    layer.shadowRadius = radius
+    layer.masksToBounds = false
+  }
 }

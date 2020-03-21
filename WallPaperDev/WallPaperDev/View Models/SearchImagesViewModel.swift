@@ -9,8 +9,12 @@
 import Foundation
 import UIKit
 
+struct photoURL: UnsplashIdentifiable {
+  var urlString: String
+}
+
 class SearchImagesViewModel {
-  var imageURLS: [PhotosUrls] = []
+  var imageURLS: [photoURL] = []
 
   var selectedImage: UIImage?
   let networkManager = NetworkManager.shared
@@ -20,7 +24,7 @@ class SearchImagesViewModel {
       networkManager.searchPhoto(query: keyword, completion: { result in
         switch result {
         case let .success(object):
-          self.imageURLS = object.results
+          self.imageURLS = object.results.map { photoURL(urlString: $0.urls.regular) }
           DispatchQueue.main.async {
             cv.reloadData()
           }

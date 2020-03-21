@@ -16,22 +16,40 @@ class GoalsSelectionViewController: UIViewController {
   private let cellId: String = "chooseGoalCell"
   private let tableView = GoalsTableView(frame: .zero, style: .plain)
   weak var delegate: PassSelectedGoals?
-  let viewModel = ChooseGoalViewModel()
+  private let viewModel = ChooseGoalViewModel()
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
     .lightContent
+  }
+
+  init(goals: [Goal]) {
+    super.init(nibName: nil, bundle: nil)
+    viewModel.populateDataSource()
+    viewModel.selectedGoals = goals
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white
     setupUIs()
-    viewModel.populateDataSource()
+
+    for goal in viewModel.selectedGoals {
+      if let index = viewModel.goals.firstIndex(of: goal) {
+        tableView.selectRow(at: IndexPath(row: index, section: 0), animated: false, scrollPosition: .none)
+      }
+    }
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
 // MARK: - UI functions
-
 extension GoalsSelectionViewController {
   private func setupUIs() {
     setupNavBar()
@@ -42,7 +60,7 @@ extension GoalsSelectionViewController {
   private func setupNavBar() {
     let navigationTitle = String(format: Localized.string("choose_goal_title"),
                                  String(viewModel.selectedGoals.count),
-                                 String(viewModel.slectedGoalMaxCount))
+                                 String(viewModel.selectedGoalMaxCount))
     navigationItem.title = navigationTitle
     navigationItem.hidesBackButton = true
 
@@ -73,7 +91,6 @@ extension GoalsSelectionViewController {
 }
 
 // MARK: - Objc functions
-
 extension GoalsSelectionViewController {
   @objc private func newBackButtonTapped() {
     delegate?.passSelectedGoals(viewModel.selectedGoals)
@@ -90,13 +107,10 @@ extension GoalsSelectionViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+
+    let goal = viewModel.goals[indexPath.row]
     cell.accessoryType = .detailButton
-
-    if viewModel.selectedGoals.contains(viewModel.goals[indexPath.row]) {
-      cell.isSelected = true
-    }
-
-    cell.textLabel?.text = viewModel.goals[indexPath.row].name!
+    cell.textLabel?.text = goal.name!
     return cell
   }
 }
@@ -121,11 +135,11 @@ extension GoalsSelectionViewController: UITableViewDelegate {
     viewModel.selectedGoals.append(viewModel.goals[indexPath.row])
     navigationItem.title = String(format: Localized.string("choose_goal_title"),
                                   String(viewModel.selectedGoals.count),
-                                  String(viewModel.slectedGoalMaxCount))
+                                  String(viewModel.selectedGoalMaxCount))
   }
 
   func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-    if viewModel.selectedGoals.count == viewModel.slectedGoalMaxCount {
+    if viewModel.selectedGoals.count == viewModel.selectedGoalMaxCount {
       return nil
     }
     return indexPath
@@ -135,6 +149,6 @@ extension GoalsSelectionViewController: UITableViewDelegate {
     viewModel.selectedGoals = viewModel.selectedGoals.filter({ $0 != viewModel.goals[indexPath.row] })
     navigationItem.title = String(format: Localized.string("choose_goal_title"),
                                   String(viewModel.selectedGoals.count),
-                                  String(viewModel.slectedGoalMaxCount))
+                                  String(viewModel.selectedGoalMaxCount))
   }
 }

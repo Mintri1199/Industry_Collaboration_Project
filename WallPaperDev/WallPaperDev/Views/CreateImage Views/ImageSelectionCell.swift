@@ -8,6 +8,7 @@
 
 import UIKit
 
+// (Jackson) - Might remove due to the recent UI resdesign
 class ImageSelectionCell: UICollectionViewCell {
   // Using layers to hold non interactive images
   lazy var photoLayer = CALayer()

@@ -67,8 +67,7 @@ class MainCoordinator: Coordinator {
   }
 
   func showGoal(selectedGoal: Goal) {
-    let vc = DetailGoalViewController()
-    vc.viewModel.goal = selectedGoal
+    let vc = DetailGoalViewController(goal: selectedGoal)
     vc.coordinator = self
     navigationController.pushViewController(vc, animated: true)
   }
@@ -86,18 +85,13 @@ class MainCoordinator: Coordinator {
   }
 
   func showImagePreview(_ image: UIImage, _ selectedGoals: [Goal]) {
-    let vc = ImagePreviewViewController()
-    vc.viewModel.originalImage = image
-    vc.viewModel.selectedGoals = selectedGoals
+    let vc = ImagePreviewViewController(image, selectedGoals)
     vc.coordinator = self
     navigationController.pushViewController(vc, animated: true)
   }
 
   func showGoalSelection(_ selectedGoals: [Goal] = []) {
-    let vc = GoalsSelectionViewController()
-    if !selectedGoals.isEmpty {
-      vc.viewModel.preselectGoals(selectedGoals)
-    }
+    let vc = GoalsSelectionViewController(goals: selectedGoals)
     navigationController.pushViewController(vc, animated: true)
   }
 
