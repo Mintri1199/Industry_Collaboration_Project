@@ -24,12 +24,12 @@ class CreateGoalViewController: UIViewController {
     coordinator?.navigationController.setNavigationBarHidden(false, animated: true)
     setupUIs()
   }
-  
+
   func setupNavBar() {
     navigationItem.title = Localized.string("create_goal_title")
     coordinator?.navigationController.navigationBar.configGenericNavBar(text: Localized.string("create_goal_title"))
   }
-  
+
   func validInputs() -> Bool {
     if createGoalView.goalNameTextField.text == nil {
       return false
@@ -49,7 +49,7 @@ extension CreateGoalViewController {
     setupNavBar()
     setupButton()
   }
-  
+
   private func setupCreateGoalView() {
     createGoalView.frame = view.frame
     createGoalView.goalDescriptionTextView.delegate = self
@@ -60,7 +60,7 @@ extension CreateGoalViewController {
   private func setupButton() {
     createGoalView.createButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
   }
-  
+
   func presentError() {
     let alertView = UIAlertController(title: Localized.string("invalid"),
                                       message: Localized.string("create_goal_error_message"),
@@ -69,7 +69,6 @@ extension CreateGoalViewController {
     alertView.addAction(action)
     present(alertView, animated: true, completion: nil)
   }
-  
 }
 
 // MARK: - Objc functions
@@ -86,7 +85,6 @@ extension CreateGoalViewController {
       presentError()
     }
   }
-
 }
 
 // MARK: - UITextViewDelegate

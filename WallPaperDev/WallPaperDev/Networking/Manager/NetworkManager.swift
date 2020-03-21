@@ -41,7 +41,7 @@ struct NetworkManager {
 }
 
 // MARK: Networking Methods
-extension NetworkManager: NetworkServiceProtocol {
+extension NetworkManager: UnsplashAPIService {
 
   func searchPhoto(query: String, completion: @escaping (Result<UnsplashObject, Error>) -> Void) {
     unsplashEndpoint.request(.search(id: Keys.clientID, keyword: query)) { data, response, error in
