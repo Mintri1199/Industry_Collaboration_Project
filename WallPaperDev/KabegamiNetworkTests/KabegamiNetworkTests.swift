@@ -35,7 +35,7 @@ class KabegamiNetworkTests: XCTestCase {
 
     // Test all failed response
     for i in 3...5 {
-      XCTAssertTrue(handledResponses[i] == .failure(failResponses[i - 3]))
+      assert(handledResponses[i], containsError: failResponses[i - 3])
     }
   }
 }
