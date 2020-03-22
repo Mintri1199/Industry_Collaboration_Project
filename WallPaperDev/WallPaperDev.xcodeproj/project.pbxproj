@@ -61,6 +61,7 @@
 		44F583C8242607A3008CF121 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583C7242607A3008CF121 /* MockRouter.swift */; };
 		44F583CC2426FD49008CF121 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583CB2426FD49008CF121 /* MockNetworkManager.swift */; };
 		44F583D3242711C6008CF121 /* XCTestCase_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583D2242711C6008CF121 /* XCTestCase_Extension.swift */; };
+		44F583D724273075008CF121 /* UnsplashEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583D624273075008CF121 /* UnsplashEndpointTests.swift */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
 		5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */; };
 		5D03ED1123281620006068CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D03ED1023281620006068CB /* Assets.xcassets */; };
@@ -186,6 +187,7 @@
 		44F583C7242607A3008CF121 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
 		44F583CB2426FD49008CF121 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		44F583D2242711C6008CF121 /* XCTestCase_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase_Extension.swift; sourceTree = "<group>"; };
+		44F583D624273075008CF121 /* UnsplashEndpointTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpointTests.swift; sourceTree = "<group>"; };
 		48CBFAB173315E86A41A167A /* Pods_WallPaperDev_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev_WallPaperDevTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B3161CA966B5C240FD017E /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.debug.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* Kabegami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kabegami.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -414,6 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				44F583BB2425FEA6008CF121 /* KabegamiNetworkTests.swift */,
+				44F583D624273075008CF121 /* UnsplashEndpointTests.swift */,
 				44F583D2242711C6008CF121 /* XCTestCase_Extension.swift */,
 				44F583BD2425FEA6008CF121 /* Info.plist */,
 			);
@@ -937,6 +940,7 @@
 			files = (
 				44F583BC2425FEA6008CF121 /* KabegamiNetworkTests.swift in Sources */,
 				44F583D3242711C6008CF121 /* XCTestCase_Extension.swift in Sources */,
+				44F583D724273075008CF121 /* UnsplashEndpointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

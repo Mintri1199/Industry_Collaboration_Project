@@ -38,4 +38,9 @@ class KabegamiNetworkTests: XCTestCase {
       assert(handledResponses[i], containsError: failResponses[i - 3])
     }
   }
+
+  func testUnsplashEndPoint() {
+    let searchEndpoint = UnsplashAPI.search(id: Keys.clientID, keyword: "")
+    XCTAssertEqual(searchEndpoint.baseURL.absoluteString, "https://api.unsplash.com/search")
+  }
 }
