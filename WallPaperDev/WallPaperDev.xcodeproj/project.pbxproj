@@ -44,7 +44,6 @@
 		44C0B53A2331C5460015110B /* Graphic+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5392331C5460015110B /* Graphic+Extensions.swift */; };
 		44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53D2331D0250015110B /* GoalsTableView.swift */; };
 		44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B540233312450015110B /* CompleteImageVIew.swift */; };
-		44E0AEB12405F058007497F0 /* KabegamiNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0AEB02405F058007497F0 /* KabegamiNetworkTests.swift */; };
 		44E0BA652339B549007AA20D /* GoalsSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA642339B549007AA20D /* GoalsSelectionViewController.swift */; };
 		44E0BA692339B7F0007AA20D /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */; };
 		44E0BA6B233A87DE007AA20D /* GrayTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */; };
@@ -58,6 +57,9 @@
 		44F40869235928F500EE0409 /* WelcomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F40868235928F500EE0409 /* WelcomeCollectionViewCell.swift */; };
 		44F583A324247492008CF121 /* UnsplashCellIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583A224247492008CF121 /* UnsplashCellIdentifiable.swift */; };
 		44F583A524247AFC008CF121 /* UnsplashPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583A424247AFC008CF121 /* UnsplashPreviewVC.swift */; };
+		44F583BC2425FEA6008CF121 /* KabegamiNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583BB2425FEA6008CF121 /* KabegamiNetworkTests.swift */; };
+		44F583C8242607A3008CF121 /* MockRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583C7242607A3008CF121 /* MockRouter.swift */; };
+		44F583CC2426FD49008CF121 /* MockNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F583CB2426FD49008CF121 /* MockNetworkManager.swift */; };
 		5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED092328161E006068CB /* AppDelegate.swift */; };
 		5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D03ED0B2328161E006068CB /* CreateGoalViewController.swift */; };
 		5D03ED1123281620006068CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D03ED1023281620006068CB /* Assets.xcassets */; };
@@ -103,7 +105,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		44E0AEB32405F058007497F0 /* PBXContainerItemProxy */ = {
+		44F583BE2425FEA6008CF121 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5D03ECFE2328161E006068CB /* Project object */;
 			proxyType = 1;
@@ -164,9 +166,6 @@
 		44C0B5392331C5460015110B /* Graphic+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphic+Extensions.swift"; sourceTree = "<group>"; };
 		44C0B53D2331D0250015110B /* GoalsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableView.swift; sourceTree = "<group>"; };
 		44C0B540233312450015110B /* CompleteImageVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteImageVIew.swift; sourceTree = "<group>"; };
-		44E0AEAE2405F058007497F0 /* KabegamiNetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KabegamiNetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		44E0AEB02405F058007497F0 /* KabegamiNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabegamiNetworkTests.swift; sourceTree = "<group>"; };
-		44E0AEB22405F058007497F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44E0BA642339B549007AA20D /* GoalsSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsSelectionViewController.swift; sourceTree = "<group>"; };
 		44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 		44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTextButton.swift; sourceTree = "<group>"; };
@@ -180,6 +179,11 @@
 		44F40868235928F500EE0409 /* WelcomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		44F583A224247492008CF121 /* UnsplashCellIdentifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashCellIdentifiable.swift; sourceTree = "<group>"; };
 		44F583A424247AFC008CF121 /* UnsplashPreviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashPreviewVC.swift; sourceTree = "<group>"; };
+		44F583B92425FEA5008CF121 /* KabegamiNetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KabegamiNetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44F583BB2425FEA6008CF121 /* KabegamiNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabegamiNetworkTests.swift; sourceTree = "<group>"; };
+		44F583BD2425FEA6008CF121 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44F583C7242607A3008CF121 /* MockRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRouter.swift; sourceTree = "<group>"; };
+		44F583CB2426FD49008CF121 /* MockNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManager.swift; sourceTree = "<group>"; };
 		48CBFAB173315E86A41A167A /* Pods_WallPaperDev_WallPaperDevTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev_WallPaperDevTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		59B3161CA966B5C240FD017E /* Pods-WallPaperDev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.debug.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.debug.xcconfig"; sourceTree = "<group>"; };
 		5D03ED062328161E006068CB /* Kabegami.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kabegami.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -235,7 +239,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		44E0AEAB2405F058007497F0 /* Frameworks */ = {
+		44F583B62425FEA5008CF121 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -391,15 +395,6 @@
 			path = "ImagePreview Views";
 			sourceTree = "<group>";
 		};
-		44E0AEAF2405F058007497F0 /* KabegamiNetworkTests */ = {
-			isa = PBXGroup;
-			children = (
-				44E0AEB02405F058007497F0 /* KabegamiNetworkTests.swift */,
-				44E0AEB22405F058007497F0 /* Info.plist */,
-			);
-			path = KabegamiNetworkTests;
-			sourceTree = "<group>";
-		};
 		44E0BA672339B7D4007AA20D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +406,25 @@
 				444955C023952DCB009A1618 /* UIFont+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		44F583BA2425FEA5008CF121 /* KabegamiNetworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				44F583BB2425FEA6008CF121 /* KabegamiNetworkTests.swift */,
+				44F583BD2425FEA6008CF121 /* Info.plist */,
+			);
+			path = KabegamiNetworkTests;
+			sourceTree = "<group>";
+		};
+		44F583C624260672008CF121 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */,
+				44F583C7242607A3008CF121 /* MockRouter.swift */,
+				44F583CB2426FD49008CF121 /* MockNetworkManager.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		520AF099EB16BDCCEC93C998 /* Frameworks */ = {
@@ -429,7 +443,7 @@
 				5D03ED082328161E006068CB /* WallPaperDev */,
 				5D03ED1D23281620006068CB /* WallPaperDevTests */,
 				5D03ED2823281620006068CB /* WallPaperDevUITests */,
-				44E0AEAF2405F058007497F0 /* KabegamiNetworkTests */,
+				44F583BA2425FEA5008CF121 /* KabegamiNetworkTests */,
 				5D03ED072328161E006068CB /* Products */,
 				70F263B6868876A87BE8D070 /* Pods */,
 				520AF099EB16BDCCEC93C998 /* Frameworks */,
@@ -442,7 +456,7 @@
 				5D03ED062328161E006068CB /* Kabegami.app */,
 				5D03ED1A23281620006068CB /* WallPaperDevTests.xctest */,
 				5D03ED2523281620006068CB /* WallPaperDevUITests.xctest */,
-				44E0AEAE2405F058007497F0 /* KabegamiNetworkTests.xctest */,
+				44F583B92425FEA5008CF121 /* KabegamiNetworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -551,7 +565,7 @@
 				44A93F3823FA22450040B589 /* Service */,
 				6732F16EA7C1A6F5DC667314 /* Encoding */,
 				6732FE8E3BA48F4F8270A378 /* Reach.swift */,
-				6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */,
+				44F583C624260672008CF121 /* Mocks */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -596,22 +610,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44E0AEAD2405F058007497F0 /* KabegamiNetworkTests */ = {
+		44F583B82425FEA5008CF121 /* KabegamiNetworkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44E0AEB52405F058007497F0 /* Build configuration list for PBXNativeTarget "KabegamiNetworkTests" */;
+			buildConfigurationList = 44F583C02425FEA6008CF121 /* Build configuration list for PBXNativeTarget "KabegamiNetworkTests" */;
 			buildPhases = (
-				44E0AEAA2405F058007497F0 /* Sources */,
-				44E0AEAB2405F058007497F0 /* Frameworks */,
-				44E0AEAC2405F058007497F0 /* Resources */,
+				44F583B52425FEA5008CF121 /* Sources */,
+				44F583B62425FEA5008CF121 /* Frameworks */,
+				44F583B72425FEA5008CF121 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				44E0AEB42405F058007497F0 /* PBXTargetDependency */,
+				44F583BF2425FEA6008CF121 /* PBXTargetDependency */,
 			);
 			name = KabegamiNetworkTests;
 			productName = KabegamiNetworkTests;
-			productReference = 44E0AEAE2405F058007497F0 /* KabegamiNetworkTests.xctest */;
+			productReference = 44F583B92425FEA5008CF121 /* KabegamiNetworkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		5D03ED052328161E006068CB /* WallPaperDev */ = {
@@ -685,7 +699,7 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Stephen Ouyang";
 				TargetAttributes = {
-					44E0AEAD2405F058007497F0 = {
+					44F583B82425FEA5008CF121 = {
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 5D03ED052328161E006068CB;
 					};
@@ -719,13 +733,13 @@
 				5D03ED052328161E006068CB /* WallPaperDev */,
 				5D03ED1923281620006068CB /* WallPaperDevTests */,
 				5D03ED2423281620006068CB /* WallPaperDevUITests */,
-				44E0AEAD2405F058007497F0 /* KabegamiNetworkTests */,
+				44F583B82425FEA5008CF121 /* KabegamiNetworkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		44E0AEAC2405F058007497F0 /* Resources */ = {
+		44F583B72425FEA5008CF121 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -914,11 +928,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		44E0AEAA2405F058007497F0 /* Sources */ = {
+		44F583B52425FEA5008CF121 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44E0AEB12405F058007497F0 /* KabegamiNetworkTests.swift in Sources */,
+				44F583BC2425FEA6008CF121 /* KabegamiNetworkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -988,9 +1002,11 @@
 				44C0B53A2331C5460015110B /* Graphic+Extensions.swift in Sources */,
 				44F40869235928F500EE0409 /* WelcomeCollectionViewCell.swift in Sources */,
 				443F7E522356BFFE00102331 /* WelcomeCVLayout.swift in Sources */,
+				44F583C8242607A3008CF121 /* MockRouter.swift in Sources */,
 				44C0B51E23302A570015110B /* CreateImageViewController.swift in Sources */,
 				44C0B5282330341A0015110B /* ImageSelectionLayout.swift in Sources */,
 				44C0B52023302A680015110B /* ImagePreviewViewController.swift in Sources */,
+				44F583CC2426FD49008CF121 /* MockNetworkManager.swift in Sources */,
 				44B5660C234D177400DEBB86 /* GoalNameTextField.swift in Sources */,
 				44C0B5382331AFE50015110B /* SelectionVIewModel.swift in Sources */,
 				5D03ED0A2328161E006068CB /* AppDelegate.swift in Sources */,
@@ -1032,10 +1048,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		44E0AEB42405F058007497F0 /* PBXTargetDependency */ = {
+		44F583BF2425FEA6008CF121 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5D03ED052328161E006068CB /* WallPaperDev */;
-			targetProxy = 44E0AEB32405F058007497F0 /* PBXContainerItemProxy */;
+			targetProxy = 44F583BE2425FEA6008CF121 /* PBXContainerItemProxy */;
 		};
 		5D03ED1C23281620006068CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1072,7 +1088,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		44E0AEB62405F058007497F0 /* Debug */ = {
+		44F583C12425FEA6008CF121 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1097,7 +1113,7 @@
 			};
 			name = Debug;
 		};
-		44E0AEB72405F058007497F0 /* XCTest */ = {
+		44F583C22425FEA6008CF121 /* XCTest */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1118,7 +1134,7 @@
 			};
 			name = XCTest;
 		};
-		44E0AEB82405F058007497F0 /* Release */ = {
+		44F583C32425FEA6008CF121 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1467,7 +1483,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = E46Z2WMWDA;
+				DEVELOPMENT_TEAM = XYLZ368J9Q;
 				INFOPLIST_FILE = WallPaperDevTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1506,12 +1522,12 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44E0AEB52405F058007497F0 /* Build configuration list for PBXNativeTarget "KabegamiNetworkTests" */ = {
+		44F583C02425FEA6008CF121 /* Build configuration list for PBXNativeTarget "KabegamiNetworkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				44E0AEB62405F058007497F0 /* Debug */,
-				44E0AEB72405F058007497F0 /* XCTest */,
-				44E0AEB82405F058007497F0 /* Release */,
+				44F583C12425FEA6008CF121 /* Debug */,
+				44F583C22425FEA6008CF121 /* XCTest */,
+				44F583C32425FEA6008CF121 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

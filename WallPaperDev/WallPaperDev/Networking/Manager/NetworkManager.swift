@@ -29,18 +29,19 @@ struct NetworkManager {
   static let shared = NetworkManager()
   private let unsplashEndpoint = Router<UnsplashAPI>()
 
-  private func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String, NetworkResponse> {
+  func handleNetworkResponse(_ response: HTTPURLResponse) -> Result<String, NetworkResponse> {
     switch response.statusCode {
+    case 100...199: return Result.success("Information")
     case 200...299: return Result.success("Success")
-    case 401...500: return Result.failure(.authenticationError)
-    case 501...599: return Result.failure(.badRequest)
-    case 600: return Result.failure(.outdated)
+    case 300...399: return Result.success("Redirect")
+    case 401...499: return Result.failure(.authenticationError)
+    case 500...599: return Result.failure(.badRequest)
     default: return Result.failure(.failed)
     }
   }
 }
 
-// MARK: Networking Methods
+// MARK: - Networking Methods
 extension NetworkManager: UnsplashAPIService {
 
   func searchPhoto(query: String, completion: @escaping (Result<UnsplashObject, Error>) -> Void) {

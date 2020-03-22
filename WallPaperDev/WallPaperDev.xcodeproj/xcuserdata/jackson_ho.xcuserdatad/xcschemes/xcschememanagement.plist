@@ -4,6 +4,13 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>KabegamiNetworkTests.testHandleNetworkResponse.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>WallPaperDev.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -17,7 +24,7 @@
 		<key>WallPaperDevTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		</dict>
 	</dict>
 </dict>
