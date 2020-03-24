@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-class HomeViewModel {
+class HomeViewModel: ViewModelProtocol {
   var goalsArr: [Goal] = []
   private let coreDataStack: CoreDataStack = CoreDataStack.shared
 

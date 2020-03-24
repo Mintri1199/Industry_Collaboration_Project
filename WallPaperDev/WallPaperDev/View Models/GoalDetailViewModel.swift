@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GoalDetailViewModel {
+class GoalDetailViewModel: ViewModelProtocol {
   var goal: Goal?
   private let coreDataStack = CoreDataStack.shared
 

@@ -13,7 +13,7 @@ struct photoURL: UnsplashIdentifiable {
   var urlString: String
 }
 
-class SearchImagesViewModel {
+class SearchImagesViewModel: ViewModelProtocol {
   var imageURLS: [photoURL] = []
 
   var selectedImage: UIImage?

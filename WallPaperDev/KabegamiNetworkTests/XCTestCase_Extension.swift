@@ -11,10 +11,10 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
-  func assert<T,V>(_ result: Result<T,V>?,
-                   containsError expectedError: Error,
-                   in file: StaticString = #file,
-                   line: UInt = #line) {
+  func assert<T, V>(_ result: Result<T, V>?,
+                    containsError expectedError: Error,
+                    in file: StaticString = #file,
+                    line: UInt = #line) {
     switch result {
     case .success?:
       XCTFail("No error thrown", file: file, line: line)
@@ -27,5 +27,30 @@ extension XCTestCase {
     case nil:
       XCTFail("Result was nil", file: file, line: line)
     }
+  }
+
+  func assert<T, E: Error & Equatable>(
+    _ expression: @autoclosure () throws -> T,
+    throws error: E,
+    in file: StaticString = #file,
+    line: UInt = #line
+  ) {
+    var thrownError: Error?
+
+    XCTAssertThrowsError(try expression(),
+                         file: file, line: line) {
+      thrownError = $0
+    }
+
+    XCTAssertTrue(
+      thrownError is E,
+      "Unexpected error type: \(type(of: thrownError))",
+      file: file, line: line
+    )
+
+    XCTAssertEqual(
+      thrownError as? E, error,
+      file: file, line: line
+    )
   }
 }

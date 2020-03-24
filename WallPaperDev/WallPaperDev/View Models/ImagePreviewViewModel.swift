@@ -18,7 +18,7 @@ enum ImageProcessError: String, Error {
   case unableToCreateTextLayer
 }
 
-class ImagePreviewViewModel {
+class ImagePreviewViewModel: ViewModelProtocol {
   var originalImage: UIImage?
   var croppedImage: UIImage?
   var selectedGoals: [Goal] = []

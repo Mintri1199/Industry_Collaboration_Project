@@ -24,22 +24,45 @@ class KabegamiNetworkTests: XCTestCase {
   func testURLParameterEncoder() {
     let baseURL = URL(string: "www.google.com")!
     var request = URLRequest(url: baseURL)
-    let parameters: [String: Any] = ["q": "query", "sort": "desc"]
-    XCTAssertNil(request.value(forHTTPHeaderField: "Content_Type"))
+    let parameters: Parameters = ["q": "query"]
+    var component = URLComponents(string: "www.google.com")
+    component?.queryItems = [
+      URLQueryItem(name: "q", value: "query")
+    ]
     
-    do {
-      try URLParameterEncoder.encode(urlRequest: &request, with: parameters)
-      XCTAssertNotNil(request.url, "The should still exist")
-      XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/x-www-form-urlencoded; charset=utf-8")
-      XCTAssertEqual(request.url?.absoluteString, "www.google.com?q=query&sort=desc")
-    } catch {
-      XCTFail(error.localizedDescription)
-    }
+    XCTAssertNil(request.value(forHTTPHeaderField: "Content_Type"))
+    XCTAssertNoThrow(try URLParameterEncoder.encode(urlRequest: &request, with: parameters), "Should be able encode url parameter")
+    XCTAssertNotNil(request.url, "The should still exist")
     XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/x-www-form-urlencoded; charset=utf-8")
+    XCTAssertEqual(request.url, component?.url)
+    
+    // Test fail case
+    assert(try URLParameterEncoder.encode(urlRequest: &request, with: ["illegaLType": HomeViewModel()]), throws: NetworkError.encodingFailed)
+    
+    request.url = nil
+    assert(try URLParameterEncoder.encode(urlRequest: &request, with: parameters), throws: NetworkError.missingURL)
   }
   
   func testJSONParameterEncoder() {
+    let baseURL = URL(string: "www.google.com")!
+    var request = URLRequest(url: baseURL)
+    let bodyParameters: Parameters = ["token": "example token", "username": "john doe", "phone": 555_555_5555]
+    var data: Data?
     
+    XCTAssertNoThrow(data = try JSONSerialization.data(withJSONObject: bodyParameters, options: .prettyPrinted))
+    
+    XCTAssertNil(request.httpBody)
+    XCTAssertNil(request.value(forHTTPHeaderField: "Content_Type"))
+    
+    // Test Fail
+//    assert(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters), throws: NetworkError.encodingFailed)
+    
+    // Test Success
+    
+    XCTAssertNoThrow(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters),
+                     "Fail to encode with parameters:\n \(bodyParameters)")
+    XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
+    XCTAssertEqual(request.httpBody, data)
   }
   
   func testHandleNetworkResponse() {
