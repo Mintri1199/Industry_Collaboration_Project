@@ -31,11 +31,9 @@ extension HTTPTask: Equatable {
       if let lhs = lhs, let rhs = rhs {
         
         return isEqual(lhs: lhs, rhs: rhs)
-        
       } else if lhs == nil && rhs == nil {
         
         return true
-        
       } else {
         
         return false
@@ -46,13 +44,13 @@ extension HTTPTask: Equatable {
     case (.request, .request):
       return true
       
-    case (let .requestParameter(bodyParameters: bodyParams1, urlParameters: urlParams1),
-          let .requestParameter(bodyParameters: bodyParams2, urlParameters: urlParams2)):
+    case let (.requestParameter(bodyParameters: bodyParams1, urlParameters: urlParams1),
+              .requestParameter(bodyParameters: bodyParams2, urlParameters: urlParams2)):
       
       return compare(lhs: bodyParams1, rhs: bodyParams2) && compare(lhs: urlParams1, rhs: urlParams2)
       
-    case (let .requestParametersAndHeaders(bodyParameters: bodyParams1, urlParameters: urlParams1, additionHeaders: headers1),
-          let .requestParametersAndHeaders(bodyParameters: bodyParams2, urlParameters: urlParams2, additionHeaders: headers2)):
+    case let (.requestParametersAndHeaders(bodyParameters: bodyParams1, urlParameters: urlParams1, additionHeaders: headers1),
+              .requestParametersAndHeaders(bodyParameters: bodyParams2, urlParameters: urlParams2, additionHeaders: headers2)):
       
       return compare(lhs: bodyParams1, rhs: bodyParams2) && compare(lhs: urlParams1, rhs: urlParams2) && compare(lhs: headers1, rhs: headers2)
       

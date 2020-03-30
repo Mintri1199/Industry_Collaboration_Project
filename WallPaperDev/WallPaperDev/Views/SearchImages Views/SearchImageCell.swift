@@ -26,7 +26,7 @@ final class SearchImagesCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     loadingView.frame = bounds
-    loadingView.style = .gray
+    loadingView.style = .medium
     loadingView.hidesWhenStopped = true
     loadingView.startAnimating()
     contentView.addSubview(loadingView)

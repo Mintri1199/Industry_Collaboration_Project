@@ -54,15 +54,14 @@ class KabegamiNetworkTests: XCTestCase {
     XCTAssertNil(request.httpBody)
     XCTAssertNil(request.value(forHTTPHeaderField: "Content_Type"))
     
-    // Test Fail
-//    assert(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters), throws: NetworkError.encodingFailed)
-    
     // Test Success
-    
     XCTAssertNoThrow(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters),
                      "Fail to encode with parameters:\n \(bodyParameters)")
     XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
     XCTAssertEqual(request.httpBody, data)
+    
+    // Test Fail
+    //    assert(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters), throws: NetworkError.encodingFailed)
   }
   
   func testHandleNetworkResponse() {

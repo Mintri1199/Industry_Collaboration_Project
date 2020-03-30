@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension UINavigationBar {
+
   func configLargeText(length: String) -> [NSAttributedString.Key: Any] {
     return length.count > 12 ? [NSAttributedString.Key.foregroundColor: UIColor.white,
                                 NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black32 as Any] :
