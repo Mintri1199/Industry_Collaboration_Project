@@ -26,28 +26,32 @@ class CoreDataTests: XCTestCase {
     description.shouldAddStoreAsynchronously = false
     
     container.persistentStoreDescriptions = [description]
-    container.loadPersistentStores { (description, error) in
+    container.loadPersistentStores { description, error in
       
       if let error = error {
         #if DEBUG
-        fatalError("Something Went wrong \(error)")
+          fatalError("Something Went wrong \(error)")
         #endif
       }
       
       precondition(description.type == NSInMemoryStoreType)
     }
-
+    
     return container
   }()
   
   override func setUpWithError() throws {
     createMockItems()
-//    manager = CoreDataStack
+    manager = CoreDataStack(container: mockPersistentContainer)
   }
   
-  override func tearDownWithError() throws {}
+  override func tearDownWithError() throws {
+    clearData()
+  }
   
-  
+  func testCreateGoal() {
+    XCTAssertTrue(itemsTotalCount() == 3, "\(itemsTotalCount())")
+  }
   
 //  func testCoreDataSave() {
 //    let goalName = "new goal"
@@ -78,43 +82,56 @@ class CoreDataTests: XCTestCase {
 //  }
   
   private func createMockItems() {
-    func insertGoal(title: String, description: String) -> Goal? {
+    func insertGoal(name: String, summary: String) -> Goal? {
       let object = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: mockPersistentContainer.viewContext)
       
-      object.setValue(title, forKey: "title")
-      object.setValue(description, forKey: "description")
+      object.setValue(name, forKey: "name")
+      object.setValue(summary, forKey: "summary")
       
       return object as? Goal
     }
     
     // Create a few goals
-    insertGoal(title: "Get Active", description: "Go to the gym")
-    insertGoal(title: "Buy a Car", description: "Save Money")
-    insertGoal(title: "Get a Job", description: "Apply actively")
+    insertGoal(name: "Get Active",summary: "Go to the gym")
+    insertGoal(name: "Buy a Car", summary: "Save Money")
+    insertGoal(name: "Get a Job", summary: "Apply actively")
     
     // Save the context
     do {
       try mockPersistentContainer.viewContext.save()
     } catch {
       #if DEBUG
-      print("Unable to create mock goals: \(error)")
+        print("Unable to create mock goals: \(error)")
       #endif
     }
   }
   
   private func clearData() {
-    let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Item")
-    let objs = try! mockPersistentContainer.viewContext.fetch(fetchRequest)
-    for case let obj as NSManagedObject in objs {
+    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
+    do {
+      let objs = try mockPersistentContainer.viewContext.fetch(fetchRequest)
+      for case let obj as NSManagedObject in objs {
         mockPersistentContainer.viewContext.delete(obj)
+      }
+      try mockPersistentContainer.viewContext.save()
+    } catch {
+      #if DEBUG
+        print("Can't clear data: \(error)")
+      #endif
     }
-    try! mockPersistentContainer.viewContext.save()
-    
   }
   
   private func itemsTotalCount() -> Int {
     let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Goal")
-    let results = try! mockPersistentContainer.viewContext.fetch(request)
-    return results.count
+    
+    do {
+      let results = try mockPersistentContainer.viewContext.fetch(request)
+      return results.count
+    } catch {
+      #if DEBUG
+        print("Can't count the fetch result: \(error)")
+      #endif
+      return 0
+    }
   }
 }

@@ -7,28 +7,38 @@
 //
 
 import CoreData
-import Foundation
+import UIKit
+
+private let productionContainer: NSPersistentContainer = {
+  let container = NSPersistentContainer(name: "WallPaperDev")
+  container.loadPersistentStores(completionHandler: { _, error in
+    if let error = error as NSError? {
+      fatalError("Unresolved error \(error), \(error.userInfo)")
+    }
+    })
+  return container
+}()
 
 final class CoreDataStack {
-  static let shared = CoreDataStack()
-
-  lazy var persistentContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: "WallPaperDev")
-    container.loadPersistentStores(completionHandler: { _, error in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-        })
-    return container
+  
+  private let persistentContainer: NSPersistentContainer!
+  
+  private lazy var backgroundContext: NSManagedObjectContext = {
+    return self.persistentContainer.newBackgroundContext()
   }()
-
+  
+  static let shared = CoreDataStack()
+  
   lazy var context = persistentContainer.viewContext
-
-  // Why does this need to be here?
-  private init() {}
-
-  // MARK: - Core Data Saving support
-
+  
+  init(container: NSPersistentContainer) {
+    self.persistentContainer = container
+  }
+  
+  convenience init() {
+    self.init(container: productionContainer)
+  }
+  
   func saveContext() {
     let context = persistentContainer.viewContext
     if context.hasChanges {
@@ -40,27 +50,7 @@ final class CoreDataStack {
       }
     }
   }
-
-  // MARK: - Core Data fetch support
-
-//    func fetch<T: NSManagedObject>(_ objectType: T.Type, _ filter: String? = nil) -> [T] {
-//
-//        let entityName = String(describing: objectType)
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-//
-//        if let filter = filter {
-//            let filterPredicate = NSPredicate(format: "name =[c] %@", filter)
-//            fetchRequest.predicate = filterPredicate
-//        }
-//        do {
-//            let fetchedObjects = try context.fetch(fetchRequest) as? [T]
-//            return fetchedObjects ?? [T]()
-//        } catch {
-//            print(error)
-//            return [T]()
-//        }
-//    }
-
+  
   func fetchGoals() -> [Goal] {
     var goalNameArr: [Goal] = []
     let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
@@ -71,37 +61,34 @@ final class CoreDataStack {
         print("Could not fetch. \(error), \(error.userInfo)")
       #endif
     }
-//        let goals: [Goal] = goalNameArr as? [Goal] ?? []
     return goalNameArr
   }
-
+  
   func delete(_ objectID: NSManagedObjectID) {
     let object = context.object(with: objectID)
     context.delete(object)
     saveContext()
   }
-
+  
   func createGoal(_ name: String, _ summary: String) {
-    let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context)
-    guard let unwrappedEntity = entity else {
-      return
+    if let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context) {
+      let goal = Goal(entity: entity, insertInto: context)
+      goal.name = name
+      goal.summary = summary
+      saveContext()
+    } else {
+      #if DEBUG
+        print("Can't create goal")
+      #endif
     }
-
-//        let goal = NSManagedObject(entity: unwrappedEntity, insertInto: context)
-//        goal.setValue(name, forKey: "name")
-//        goal.setValue(summary, forKey: "summary")
-    let goal = Goal(entity: unwrappedEntity, insertInto: context)
-    goal.name = name
-    goal.summary = summary
-    saveContext()
   }
-
+  
   func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {
     goal.name = name
     goal.summary = summary
     saveContext()
   }
-
+  
   func clearCoreData() {
     let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
