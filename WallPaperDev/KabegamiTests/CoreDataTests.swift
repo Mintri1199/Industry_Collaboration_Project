@@ -36,21 +36,34 @@ class CoreDataTests: XCTestCase {
       
       precondition(description.type == NSInMemoryStoreType)
     }
-    
+    container.viewContext.name = "Mock"
     return container
   }()
   
   override func setUpWithError() throws {
-    createMockItems()
     manager = CoreDataStack(container: mockPersistentContainer)
+    createMockGoals()
   }
   
   override func tearDownWithError() throws {
     clearData()
   }
   
+  func testFetchGoals() {
+    XCTAssertTrue(itemsTotalCount() == 3)
+    XCTAssertTrue(manager.fetchGoals().count == 3)
+  }
+  
   func testCreateGoal() {
-    XCTAssertTrue(itemsTotalCount() == 3, "\(itemsTotalCount())")
+    XCTAssertTrue(itemsTotalCount() == 3, "CreateMockGoals is not working properly")
+    let name = "New Goal"
+    let summary = "Goal summary"
+    
+    manager.createGoal(name, summary)
+    
+    XCTAssertTrue(itemsTotalCount() == 4, "Unable to add new goal")
+    
+    _ = manager.fetchGoals()
   }
   
 //  func testCoreDataSave() {
@@ -81,9 +94,9 @@ class CoreDataTests: XCTestCase {
 //    XCTAssert(!goals.isEmpty)
 //  }
   
-  private func createMockItems() {
+  private func createMockGoals() {
     func insertGoal(name: String, summary: String) -> Goal? {
-      let object = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: mockPersistentContainer.viewContext)
+      let object = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: manager.context)
       
       object.setValue(name, forKey: "name")
       object.setValue(summary, forKey: "summary")
@@ -92,7 +105,7 @@ class CoreDataTests: XCTestCase {
     }
     
     // Create a few goals
-    insertGoal(name: "Get Active",summary: "Go to the gym")
+    insertGoal(name: "Get Active", summary: "Go to the gym")
     insertGoal(name: "Buy a Car", summary: "Save Money")
     insertGoal(name: "Get a Job", summary: "Apply actively")
     

@@ -16,16 +16,17 @@ private let productionContainer: NSPersistentContainer = {
       fatalError("Unresolved error \(error), \(error.userInfo)")
     }
     })
+  container.viewContext.name = "Production"
   return container
 }()
 
 final class CoreDataStack {
   
-  private let persistentContainer: NSPersistentContainer!
-  
   private lazy var backgroundContext: NSManagedObjectContext = {
     return self.persistentContainer.newBackgroundContext()
   }()
+  
+  let persistentContainer: NSPersistentContainer!
   
   static let shared = CoreDataStack()
   
@@ -33,12 +34,14 @@ final class CoreDataStack {
   
   init(container: NSPersistentContainer) {
     self.persistentContainer = container
+    context = container.viewContext
   }
   
   convenience init() {
     self.init(container: productionContainer)
   }
   
+  // MARK: - Core Data Saving support
   func saveContext() {
     let context = persistentContainer.viewContext
     if context.hasChanges {
@@ -51,11 +54,16 @@ final class CoreDataStack {
     }
   }
   
+  // MARK: - Core Data fetch support
+  
   func fetchGoals() -> [Goal] {
     var goalNameArr: [Goal] = []
     let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
     do {
-      goalNameArr = try context.fetch(fetchRequest)
+      print(context.name)
+      let result = try context.fetch(fetchRequest)
+      print(result)
+      goalNameArr = result
     } catch let error as NSError {
       #if DEBUG
         print("Could not fetch. \(error), \(error.userInfo)")
