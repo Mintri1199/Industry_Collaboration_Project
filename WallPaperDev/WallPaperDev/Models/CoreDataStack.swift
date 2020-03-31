@@ -55,7 +55,6 @@ final class CoreDataStack {
   }
   
   // MARK: - Core Data fetch support
-  
   func fetchGoals() -> [Goal] {
     var goalNameArr: [Goal] = []
     let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")

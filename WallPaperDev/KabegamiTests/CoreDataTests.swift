@@ -95,6 +95,7 @@ class CoreDataTests: XCTestCase {
 //  }
   
   private func createMockGoals() {
+    // TODO: - (jackson) CoreData: warning: Unable to load class named 'KabegamiTests.Goal' for entity 'Goal'.  Class not found, using default NSManagedObject instead.
     func insertGoal(name: String, summary: String) -> Goal? {
       let object = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: manager.context)
       
