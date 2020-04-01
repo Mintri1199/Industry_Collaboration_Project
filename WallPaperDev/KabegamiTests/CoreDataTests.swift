@@ -14,6 +14,7 @@ import XCTest
 class CoreDataTests: XCTestCase {
   var manager: CoreDataStack!
   
+  // I think the problem might be here
   lazy var managedObjectModel: NSManagedObjectModel = {
     let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))] )!
     return managedObjectModel
