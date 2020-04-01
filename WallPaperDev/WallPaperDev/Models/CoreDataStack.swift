@@ -59,7 +59,9 @@ final class CoreDataStack {
     var goalNameArr: [Goal] = []
     let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
     do {
-      print(context.name)
+      #if DEBUG
+        print(context.name ?? "There is no name for this context")
+      #endif
       let result = try context.fetch(fetchRequest)
       print(result)
       goalNameArr = result

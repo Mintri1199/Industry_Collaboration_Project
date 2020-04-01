@@ -41,12 +41,14 @@ class CoreDataTests: XCTestCase {
     return container
   }()
   
-  override func setUpWithError() throws {
+  override func setUp() {
+    super.setUp()
     manager = CoreDataStack(container: mockPersistentContainer)
     createMockGoals()
   }
   
-  override func tearDownWithError() throws {
+  override func tearDown() {
+    super.tearDown()
     clearData()
   }
   

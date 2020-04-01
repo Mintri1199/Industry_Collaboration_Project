@@ -14,10 +14,6 @@ class KabegamiTests: XCTestCase {
   
   private let themeManager = ApplicationDependency.manager
   
-  override func setUpWithError() throws {}
-  
-  override func tearDownWithError() throws {}
-  
   func testThemeColors() {
     
     XCTAssertEqual(themeManager.currentTheme.colors.black, UIColor(red: 0, green: 0, blue: 0, alpha: 1))
