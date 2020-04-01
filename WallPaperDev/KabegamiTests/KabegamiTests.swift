@@ -18,7 +18,36 @@ class KabegamiTests: XCTestCase {
   
   override func tearDownWithError() throws {}
   
-  func testImagesExistence() {
+  func testThemeColors() {
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.black, UIColor(red: 0, green: 0, blue: 0, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.white, UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.navBarBlue, UIColor(red: 0.33, green: 0.71, blue: 0.94, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.sectionBlue, UIColor(red: 0.22, green: 0.65, blue: 0.90, alpha: 1.00))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.wallpaperBlue, UIColor(red: 0.57, green: 0.9, blue: 0.96, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.backgroundOffWhite, UIColor(red: 0.92, green: 0.92, blue: 0.92, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.foregroundWhite, UIColor(red: 1, green: 1, blue: 1, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.placeholderGray, UIColor(red: 0.84, green: 0.84, blue: 0.85, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.layerBackgroundWhite, UIColor(red: 1, green: 1, blue: 1, alpha: 0.2))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.addButtonRed, UIColor(red: 1, green: 0.44, blue: 0.44, alpha: 1))
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.lightGray, UIColor.lightGray)
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.darkGray, UIColor.darkGray)
+    
+    XCTAssertEqual(themeManager.currentTheme.colors.shadow, UIColor(red: 0, green: 0, blue: 0, alpha: 0.25))
+  }
+  
+  func testThemeImagesExistence() {
     var bundlePhoto: UIImage?
     bundlePhoto = UIImage(named: "unsplash")
     
