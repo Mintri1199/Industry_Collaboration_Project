@@ -52,22 +52,22 @@ class CoreDataTests: XCTestCase {
     clearData()
   }
   
-  func testFetchGoals() {
-    XCTAssertTrue(itemsTotalCount() == 3)
-    XCTAssertTrue(manager.fetchGoals().count == 3)
-  }
-  
-  func testCreateGoal() {
-    XCTAssertTrue(itemsTotalCount() == 3, "CreateMockGoals is not working properly")
-    let name = "New Goal"
-    let summary = "Goal summary"
-    
-    manager.createGoal(name, summary)
-    
-    XCTAssertTrue(itemsTotalCount() == 4, "Unable to add new goal")
-    
-    _ = manager.fetchGoals()
-  }
+//  func testFetchGoals() {
+//    XCTAssertTrue(itemsTotalCount() == 3)
+//    XCTAssertTrue(manager.fetchGoals().count == 3)
+//  }
+//
+//  func testCreateGoal() {
+//    XCTAssertTrue(itemsTotalCount() == 3, "CreateMockGoals is not working properly")
+//    let name = "New Goal"
+//    let summary = "Goal summary"
+//
+//    manager.createGoal(name, summary)
+//
+//    XCTAssertTrue(itemsTotalCount() == 4, "Unable to add new goal")
+//
+//    _ = manager.fetchGoals()
+//  }
   
 //  func testCoreDataSave() {
 //    let goalName = "new goal"

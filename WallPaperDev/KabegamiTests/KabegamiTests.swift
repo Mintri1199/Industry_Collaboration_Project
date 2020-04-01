@@ -14,6 +14,34 @@ class KabegamiTests: XCTestCase {
   
   private let themeManager = ApplicationDependency.manager
   
+  func testThemeFonts() {
+    var controlFont: UIFont?
+    
+    controlFont = UIFont(name: "Avenir-Medium", size: 16)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.medium16, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Medium", size: 20)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.medium20, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Medium", size: 24)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.medium24, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Heavy", size: 20)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.heavy20, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Heavy", size: 24)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.heavy24, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Black", size: 32)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.black32, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Black", size: 40)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.black40, controlFont)
+    
+    controlFont = UIFont(name: "Avenir-Heavy", size: 24)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.titleRegular, controlFont)
+  }
+  
   func testThemeColors() {
     
     XCTAssertEqual(themeManager.currentTheme.colors.black, UIColor(red: 0, green: 0, blue: 0, alpha: 1))
@@ -90,4 +118,5 @@ class KabegamiTests: XCTestCase {
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialWelcomeBanner, bundlePhoto)
   }
+  
 }
