@@ -10,12 +10,12 @@ target 'WallPaperDev' do
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'
 
-  target 'WallPaperDevTests' do
-    # Pods for testing
-  end
+  # target 'WallPaperDevTests' do
+  #   # Pods for testing
+  # end
 
-  target 'WallPaperDevUITests' do
-    # Pods for testing
-  end
+  # target 'WallPaperDevUITests' do
+  #   # Pods for testing
+  # end
 
 end
