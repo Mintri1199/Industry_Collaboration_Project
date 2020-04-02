@@ -1,0 +1,43 @@
+{
+  "configurations" : [
+    {
+      "id" : "5FE1ACDD-41FF-4487-BD42-049E7E4DB982",
+      "name" : "English",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:WallPaperDev.xcodeproj",
+      "identifier" : "5D03ED052328161E006068CB",
+      "name" : "WallPaperDev"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:WallPaperDev.xcodeproj",
+        "identifier" : "5D03ED2423281620006068CB",
+        "name" : "WallPaperDevUITests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:WallPaperDev.xcodeproj",
+        "identifier" : "44F583B82425FEA5008CF121",
+        "name" : "KabegamiNetworkTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:WallPaperDev.xcodeproj",
+        "identifier" : "44105B212432AB5C005DD9D5",
+        "name" : "KabegamiTests"
+      }
+    }
+  ],
+  "version" : 1
+}

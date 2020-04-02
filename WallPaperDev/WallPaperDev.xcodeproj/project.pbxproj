@@ -134,6 +134,7 @@
 		44105B242432AB5C005DD9D5 /* KabegamiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabegamiTests.swift; sourceTree = "<group>"; };
 		44105B262432AB5C005DD9D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44105B2D2432E4AD005DD9D5 /* CoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTests.swift; sourceTree = "<group>"; };
+		44105B342435D7F7005DD9D5 /* WallPaperDev.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WallPaperDev.xctestplan; sourceTree = "<group>"; };
 		442D2E37234ECD6A00EE9991 /* GoalDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailViewModel.swift; sourceTree = "<group>"; };
 		443F7E47235683F700102331 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		443F7E4C23569B1100102331 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				44105B242432AB5C005DD9D5 /* KabegamiTests.swift */,
+				44105B342435D7F7005DD9D5 /* WallPaperDev.xctestplan */,
 				44105B2D2432E4AD005DD9D5 /* CoreDataTests.swift */,
 				44105B262432AB5C005DD9D5 /* Info.plist */,
 			);
