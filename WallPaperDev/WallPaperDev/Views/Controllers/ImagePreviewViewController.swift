@@ -155,26 +155,28 @@ extension ImagePreviewViewController {
       return
     }
 
-    func savingImageHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
-      if let error = error {
-        let ac = UIAlertController(title: Localized.string("save_wallpaper_error_title"),
-                                   message: error.localizedDescription,
-                                   preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: Localized.string("ok_action"),
-                                   style: .default))
-        present(ac, animated: true)
-      } else {
-        let ac = UIAlertController(title: Localized.string("save_wallpaper_success_title"),
-                                   message: Localized.string("save_wallpaper_success_message"),
-                                   preferredStyle: .alert)
+    UIImageWriteToSavedPhotosAlbum(image, self, #selector(savingImageHandler(_:didFinishSavingWithError:contextInfo:)), nil)
+  }
 
-        let add = UIAlertAction(title: Localized.string("ok_action"),
-                                style: .default) { _ in
-          self.coordinator?.popToHome()
-        }
-        ac.addAction(add)
-        present(ac, animated: true)
+  @objc private func savingImageHandler(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    if let error = error {
+      let ac = UIAlertController(title: Localized.string("save_wallpaper_error_title"),
+                                 message: error.localizedDescription,
+                                 preferredStyle: .alert)
+      ac.addAction(UIAlertAction(title: Localized.string("ok_action"),
+                                 style: .default))
+      present(ac, animated: true)
+    } else {
+      let ac = UIAlertController(title: Localized.string("save_wallpaper_success_title"),
+                                 message: Localized.string("save_wallpaper_success_message"),
+                                 preferredStyle: .alert)
+
+      let add = UIAlertAction(title: Localized.string("ok_action"),
+                              style: .default) { _ in
+        self.coordinator?.popToHome()
       }
+      ac.addAction(add)
+      present(ac, animated: true)
     }
   }
 }

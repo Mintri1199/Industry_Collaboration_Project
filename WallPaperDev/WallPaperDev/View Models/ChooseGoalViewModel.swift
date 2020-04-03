@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ChooseGoalViewModel {
+final class ChooseGoalViewModel: ViewModelProtocol {
   let selectedGoalMaxCount = 4
   var selectedGoals: [Goal] = []
   var goals: [Goal] = []

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SelectionViewModel {
+final class SelectionViewModel: ViewModelProtocol {
   var selectedGoals: [Goal] = []
   var selectedImage: UIImage?
 

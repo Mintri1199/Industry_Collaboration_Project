@@ -4,6 +4,8 @@
 
 An iOS application that lets the user generate a picture with their personal goals on it for their lock screen background.
 
+[![Build Status](https://app.bitrise.io/app/ccfb296fe534b3f7/status.svg?token=Y5jAaa4vfNi3rmZqOE8oug)](https://app.bitrise.io/app/ccfb296fe534b3f7)
+
 [TEST FLIGHT](https://testflight.apple.com/join/zNGYLyia)
 
 ### Prerequisites

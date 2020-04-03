@@ -8,7 +8,6 @@
 
 import UIKit
 
-// TODO: (alex) Introduce tests to ensure all assets are present if used
 protocol ImageAsset {
   var backgroundPreviewCamera: UIImage { get }
   var backgroundPreviewFlashlight: UIImage { get }

@@ -13,7 +13,7 @@ protocol SaveChange: AnyObject {
   func applyChanges(_ textFrame: CGRect, _ layerRotation: CGFloat)
 }
 
-class EditTextViewModel {
+class EditTextViewModel: ViewModelProtocol {
   var labelFrame: CGRect?
   var labelRotation: CGFloat?
   weak var delegate: SaveChange?

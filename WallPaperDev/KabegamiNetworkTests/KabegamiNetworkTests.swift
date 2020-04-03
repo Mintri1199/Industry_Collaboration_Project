@@ -2,61 +2,83 @@
 //  KabegamiNetworkTests.swift
 //  KabegamiNetworkTests
 //
-//  Created by Jackson Ho on 2/25/20.
+//  Created by Jackson Ho on 3/21/20.
 //  Copyright © 2020 Stephen Ouyang. All rights reserved.
 //
+import Foundation
 
 import XCTest
 
-// TODO: (Jackson) - Implement Network unit test
+@testable import Kabegami
+
 class KabegamiNetworkTests: XCTestCase {
-
+  private var manager = MockNetworkManager.shared
   override func setUp() {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    super.setUp()
   }
-
+  
   override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    super.tearDown()
   }
-
-  func testExample() {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+  
+  func testURLParameterEncoder() {
+    let baseURL = URL(string: "www.google.com")!
+    var request = URLRequest(url: baseURL)
+    let parameters: Parameters = ["q": "query"]
+    var component = URLComponents(string: "www.google.com")
+    component?.queryItems = [
+      URLQueryItem(name: "q", value: "query")
+    ]
+    
+    XCTAssertNil(request.value(forHTTPHeaderField: "Content_Type"))
+    XCTAssertNoThrow(try URLParameterEncoder.encode(urlRequest: &request, with: parameters), "Should be able encode url parameter")
+    XCTAssertNotNil(request.url, "The should still exist")
+    XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/x-www-form-urlencoded; charset=utf-8")
+    XCTAssertEqual(request.url, component?.url)
+    
+    // Test fail case
+    assert(try URLParameterEncoder.encode(urlRequest: &request, with: ["illegaLType": HomeViewModel()]), throws: NetworkError.encodingFailed)
+    
+    request.url = nil
+    assert(try URLParameterEncoder.encode(urlRequest: &request, with: parameters), throws: NetworkError.missingURL)
   }
-
-//
-//  func testRetrieveProductsValidResponse() {
-//    // we have a locally stored product list in JSON format to test against.
-//    let testBundle = Bundle(forClass: type(of: self))
-//    let filepath = testBundle.pathForResource("products", ofType: "txt")
-//    let data = Data(contentsOfFile: filepath!)
-//    let urlResponse = HTTPURLResponse(url: URL(string: "https://anyurl.doesntmatter.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-//    // setup our mock response with the above data and fake response.
-//    MockSession.mockResponse = (data, urlResponse: urlResponse, error: nil)
-//    let requestsClass = RequestManager()
-//    // All our network calls are in here.
-//    requestsClass.Session = MockSession.self
-//    // Replace NSURLSession with our own MockSession.
-//    // We still need to test as if it's asynchronous. Because well, it is.
-//    let expectation = XCTestExpectation(description: "ready")
-//    // For this test, no need to pass in anything useful since it doesn't affect our mocked response.
-//    // This particular function fetches JSON, converts it to custom objects, and returns them.
-//    requestsClass.retrieveProducts("N/A", products: { (products) -> () in
-//      XCTAssertTrue(products.count == 7)
-//      expectation.fulfill()
-//    }) { (error) -> () in
-//      XCTAssertFalse(error == Errors.NetworkError, "Its a network error")
-//      XCTAssertFalse(error == Errors.ParseError, "Its a parsing error")
-//      XCTFail("Error not covered by previous asserts.")
-//      expectation.fulfill()
-//    }
-//    waitForExpectations(timeout: 3.0, handler: nil)
-//  }
-
-  func testPerformanceExample() {
-    // This is an example of a performance test case.
-    measure {
-      // Put the code you want to measure the time of here.
+  
+  func testJSONParameterEncoder() {
+    let baseURL = URL(string: "www.google.com")!
+    var request = URLRequest(url: baseURL)
+    let bodyParameters: Parameters = ["token": "example token", "username": "john doe", "phone": 555_555_5555]
+    var data: Data?
+    
+    XCTAssertNoThrow(data = try JSONSerialization.data(withJSONObject: bodyParameters, options: .prettyPrinted))
+    
+    XCTAssertNil(request.httpBody)
+    XCTAssertNil(request.value(forHTTPHeaderField: "Content_Type"))
+    
+    // Test Success
+    XCTAssertNoThrow(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters),
+                     "Fail to encode with parameters:\n \(bodyParameters)")
+    XCTAssertEqual(request.value(forHTTPHeaderField: "Content-Type"), "application/json")
+    XCTAssertEqual(request.httpBody, data)
+    
+    // Test Fail
+    //    assert(try JSONParameterEncoder.encode(urlRequest: &request, with: bodyParameters), throws: NetworkError.encodingFailed)
+  }
+  
+  func testHandleNetworkResponse() {
+    let url = URL(string: "www.google.com")!
+    let responses: [HTTPURLResponse] = [100, 200, 300, 400, 500, 600].compactMap { HTTPURLResponse(url: url, statusCode: $0, httpVersion: "2", headerFields: nil) }
+    let successMessages = ["Information", "Success", "Redirect"]
+    let failResponses: [MockNetworkManager.NetworkResponse] = [.authenticationError, .badRequest, .failed]
+    let handledResponses = responses.compactMap { manager.handleNetworkResponse($0) }
+    
+    // Test all success response
+    for i in 0...2 {
+      XCTAssertTrue(handledResponses[i] == .success(successMessages[i]))
+    }
+    
+    // Test all failed response
+    for i in 3...5 {
+      assert(handledResponses[i], containsError: failResponses[i - 3])
     }
   }
 }

@@ -132,7 +132,6 @@ class CustomView: UIView {
   
   func animatePhone(for style: WelcomeStyle) {
     switch style {
-      
     case .showcase:
       animateShowcase()
     case.demo:
@@ -155,7 +154,7 @@ class CustomView: UIView {
     let panDown = CABasicAnimation(keyPath: "position.y")
     panDown.fromValue = fingerLayer.position.y
     panDown.toValue = textLayer.position.y
-    panDown.duration = 0.75
+    panDown.duration = 0.5
     panDown.timingFunction = CAMediaTimingFunction(name: .easeOut)
     textLayer.add(panDown, forKey: nil)
     panDown.autoreverses = true

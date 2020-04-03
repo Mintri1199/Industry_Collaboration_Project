@@ -10,4 +10,5 @@
 import CoreData
 import Foundation
 
+@objc(Goal)
 public class Goal: NSManagedObject {}

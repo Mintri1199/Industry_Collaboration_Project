@@ -7,11 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var coordinator: MainCoordinator?
+
+  // Core Data
+  lazy var productionContainer: NSPersistentContainer = {
+    let container = NSPersistentContainer(name: "WallPaperDev")
+    container.loadPersistentStores(completionHandler: { _, error in
+      if let error = error as NSError? {
+        fatalError("Unresolved error \(error), \(error.userInfo)")
+      }
+    })
+    container.viewContext.name = "Production"
+    return container
+  }()
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GoalDetailViewModel {
+class GoalDetailViewModel: ViewModelProtocol {
   var goal: Goal?
   private let coreDataStack = CoreDataStack.shared
 
@@ -22,6 +22,7 @@ class GoalDetailViewModel {
   func updateGoal(_ name: String, _ description: String) {
     if let goal = goal, updateValidation(name, description) {
       coreDataStack.updateGoal(goal, name, description)
+      coreDataStack.saveContext()
     }
   }
 
@@ -30,5 +31,6 @@ class GoalDetailViewModel {
       return
     }
     coreDataStack.delete(goal.objectID)
+    coreDataStack.saveContext()
   }
 }

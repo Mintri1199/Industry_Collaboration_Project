@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8CD95E178619E25A4E5662AC24FB1032"
-               BuildableName = "Pods_WallPaperDev.framework"
-               BlueprintName = "Pods-WallPaperDev"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "44F583B82425FEA5008CF121"
+               BuildableName = "KabegamiNetworkTests.xctest"
+               BlueprintName = "KabegamiNetworkTests"
+               ReferencedContainer = "container:WallPaperDev.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,8 +25,28 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "44F583B82425FEA5008CF121"
+               BuildableName = "KabegamiNetworkTests.xctest"
+               BlueprintName = "KabegamiNetworkTests"
+               ReferencedContainer = "container:WallPaperDev.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "44105B212432AB5C005DD9D5"
+               BuildableName = "KabegamiTests.xctest"
+               BlueprintName = "KabegamiTests"
+               ReferencedContainer = "container:WallPaperDev.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -47,6 +66,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "44F583B82425FEA5008CF121"
+            BuildableName = "KabegamiNetworkTests.xctest"
+            BlueprintName = "KabegamiNetworkTests"
+            ReferencedContainer = "container:WallPaperDev.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

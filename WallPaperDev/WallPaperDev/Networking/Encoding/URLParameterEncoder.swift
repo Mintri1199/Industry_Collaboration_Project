@@ -6,9 +6,22 @@
 //  Copyright © 2020 Stephen Ouyang. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-public struct URLParameterEncoder: ParameterEncoder {
+public struct URLParameterEncoder {
+  static let illegalTypeArray: [Any] = [UIViewController.self, ViewModelProtocol.self]
+
+  static func isIllegal<T>(_ value: T) -> Bool {
+    if value as? ViewModelProtocol != nil {
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+extension URLParameterEncoder: ParameterEncoder {
+
   public static func encode(urlRequest: inout URLRequest, with parameters: Parameters) throws {
     guard let url = urlRequest.url else { throw NetworkError.missingURL }
 
@@ -16,6 +29,9 @@ public struct URLParameterEncoder: ParameterEncoder {
       urlComponents.queryItems = [URLQueryItem]()
 
       for (key, value) in parameters {
+        if isIllegal(value) {
+          throw NetworkError.encodingFailed
+        }
         let queryItem = URLQueryItem(name: key, value: "\(value)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))
         urlComponents.queryItems?.append(queryItem)
       }
