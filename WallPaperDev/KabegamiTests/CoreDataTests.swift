@@ -6,7 +6,6 @@
 //  Copyright © 2020 Stephen Ouyang. All rights reserved.
 //
 import CoreData
-
 import XCTest
 
 @testable import Kabegami
@@ -21,120 +20,103 @@ class CoreDataTests: XCTestCase {
   }()
   
   lazy var mockPersistentContainer: NSPersistentContainer = {
+    
     let container = NSPersistentContainer(name: "WallPaperDev", managedObjectModel: self.managedObjectModel)
     let description = NSPersistentStoreDescription()
     description.type = NSInMemoryStoreType
-    description.shouldAddStoreAsynchronously = false
+    description.shouldAddStoreAsynchronously = false // Make it simpler in test env
     
     container.persistentStoreDescriptions = [description]
     container.loadPersistentStores { description, error in
+      // Check if the data store is in memory
+      precondition( description.type == NSInMemoryStoreType )
       
+      // Check if creating container wrong
       if let error = error {
-        #if DEBUG
-          fatalError("Something Went wrong \(error)")
-        #endif
+        fatalError("Create an in-mem coordinator failed \(error)")
       }
-      
-      precondition(description.type == NSInMemoryStoreType)
     }
-    container.viewContext.name = "Mock"
     return container
   }()
   
   override func setUp() {
     super.setUp()
+    initGoalStubs()
     manager = CoreDataStack(container: mockPersistentContainer)
-    createMockGoals()
   }
   
   override func tearDown() {
+    do {
+      try flushData()
+    } catch {
+      print(error)
+    }
     super.tearDown()
-    clearData()
   }
   
-//  func testFetchGoals() {
-//    XCTAssertTrue(itemsTotalCount() == 3)
-//    XCTAssertTrue(manager.fetchGoals().count == 3)
-//  }
-//
-//  func testCreateGoal() {
-//    XCTAssertTrue(itemsTotalCount() == 3, "CreateMockGoals is not working properly")
-//    let name = "New Goal"
-//    let summary = "Goal summary"
-//
-//    manager.createGoal(name, summary)
-//
-//    XCTAssertTrue(itemsTotalCount() == 4, "Unable to add new goal")
-//
-//    _ = manager.fetchGoals()
-//  }
+  func testCreateGoal() {
+    let name = "NewGoal"
+    let summary = "New summary"
+    let goal = manager.createGoal(name, summary)
+    XCTAssertNotNil(goal)
+  }
   
-//  func testCoreDataSave() {
-//    let goalName = "new goal"
-//    let goalSummary = "goal summary"
-//
-//    coreDataStack.createGoal(goalName, goalSummary)
-//
-//    let goals = coreDataStack.fetchGoals()
-//    let retGoalName = goals.filter {
-//      $0.name == goalName
-//    }
-//    XCTAssertEqual(goalName, retGoalName[0].name)
-//  }
-//
-//  func testCoreDataDelete() {
-//    let goals = coreDataStack.fetchGoals()
-//    let goalName = "goal name"
-//
-//    let retGoals = goals.filter {
-//      $0.name == goalName
-//    }
-//    coreDataStack.delete(retGoals[0].objectID)
-//  }
-//
-//  func testCoreDataRetrieve() {
-//    let goals = coreDataStack.fetchGoals()
-//    XCTAssert(!goals.isEmpty)
-//  }
+  func testFetchGoals() {
+    XCTAssertTrue(itemsTotalCount() == 3)
+    XCTAssertTrue(manager.fetchGoals().count == 3)
+  }
   
-  private func createMockGoals() {
-    // TODO: - (jackson) CoreData: warning: Unable to load class named 'KabegamiTests.Goal' for entity 'Goal'.  Class not found, using default NSManagedObject instead.
-    func insertGoal(name: String, summary: String) -> Goal? {
-      let object = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: manager.context)
-      
-      object.setValue(name, forKey: "name")
-      object.setValue(summary, forKey: "summary")
-      
-      return object as? Goal
-    }
+  func testSave() {
+    let name = "NewGoal"
+    let summary = "NewSummary"
     
+    _ = manager.createGoal(name, summary)
+    manager.saveContext()
+    
+    let goals = manager.fetchGoals()
+    XCTAssertEqual(goals.count, 4)
+    
+    let filteredList = goals.filter { $0.name == name && $0.summary == summary }
+    XCTAssertFalse(filteredList.isEmpty)
+  }
+  
+  func testCoreDataDelete() {
+    let goals = manager.fetchGoals()
+    let goalToDelete = goals[0]
+    let goalName = goalToDelete.name
+    
+    manager.delete(goalToDelete.objectID)
+    manager.saveContext()
+    XCTAssertTrue(itemsTotalCount() == 2)
+    let newGoalsList = manager.fetchGoals()
+    for goal in newGoalsList {
+      XCTAssertFalse(goal.name == goalName)
+    }
+  }
+}
+
+// MARK: - Helper Functions
+extension CoreDataTests {
+  
+  private func initGoalStubs() {
+    
+    func insertGoal( name: String, summary: String ) -> Goal? {
+      let obj = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: mockPersistentContainer.viewContext)
+      
+      obj.setValue(name, forKey: "name")
+      obj.setValue(summary, forKey: "summary")
+      
+      return obj as? Goal
+    }
     // Create a few goals
-    insertGoal(name: "Get Active", summary: "Go to the gym")
-    insertGoal(name: "Buy a Car", summary: "Save Money")
-    insertGoal(name: "Get a Job", summary: "Apply actively")
+    _ = insertGoal(name: "Get Active", summary: "Go to the gym")
+    _ = insertGoal(name: "Buy a Car", summary: "Save Money")
+    _ = insertGoal(name: "Get a Job", summary: "Apply actively")
     
-    // Save the context
     do {
       try mockPersistentContainer.viewContext.save()
     } catch {
-      #if DEBUG
-        print("Unable to create mock goals: \(error)")
-      #endif
-    }
-  }
-  
-  private func clearData() {
-    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
-    do {
-      let objs = try mockPersistentContainer.viewContext.fetch(fetchRequest)
-      for case let obj as NSManagedObject in objs {
-        mockPersistentContainer.viewContext.delete(obj)
-      }
-      try mockPersistentContainer.viewContext.save()
-    } catch {
-      #if DEBUG
-        print("Can't clear data: \(error)")
-      #endif
+      print("create fakes error \(error)")
     }
   }
   
@@ -150,5 +132,14 @@ class CoreDataTests: XCTestCase {
       #endif
       return 0
     }
+  }
+  
+  private func flushData() throws {
+    let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
+    let objs = try mockPersistentContainer.viewContext.fetch(fetchRequest)
+    for case let obj as NSManagedObject in objs {
+      mockPersistentContainer.viewContext.delete(obj)
+    }
+    try mockPersistentContainer.viewContext.save()
   }
 }

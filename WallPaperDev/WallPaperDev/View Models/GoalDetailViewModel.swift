@@ -22,6 +22,7 @@ class GoalDetailViewModel: ViewModelProtocol {
   func updateGoal(_ name: String, _ description: String) {
     if let goal = goal, updateValidation(name, description) {
       coreDataStack.updateGoal(goal, name, description)
+      coreDataStack.saveContext()
     }
   }
 
@@ -30,5 +31,6 @@ class GoalDetailViewModel: ViewModelProtocol {
       return
     }
     coreDataStack.delete(goal.objectID)
+    coreDataStack.saveContext()
   }
 }

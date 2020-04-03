@@ -14,8 +14,7 @@ extension Goal {
   @NSManaged public var name: String?
   @NSManaged public var summary: String?
 
-  @nonobjc
-  public class func fetchRequest() -> NSFetchRequest<Goal> {
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Goal> {
     NSFetchRequest<Goal>(entityName: "Goal")
   }
 }

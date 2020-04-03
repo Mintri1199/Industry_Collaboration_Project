@@ -9,17 +9,6 @@
 import CoreData
 import UIKit
 
-private let productionContainer: NSPersistentContainer = {
-  let container = NSPersistentContainer(name: "WallPaperDev")
-  container.loadPersistentStores(completionHandler: { _, error in
-    if let error = error as NSError? {
-      fatalError("Unresolved error \(error), \(error.userInfo)")
-    }
-    })
-  container.viewContext.name = "Production"
-  return container
-}()
-
 final class CoreDataStack {
   
   private lazy var backgroundContext: NSManagedObjectContext = {
@@ -30,20 +19,21 @@ final class CoreDataStack {
   
   static let shared = CoreDataStack()
   
-  lazy var context = persistentContainer.viewContext
-  
   init(container: NSPersistentContainer) {
     self.persistentContainer = container
-    context = container.viewContext
+    self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
   }
   
   convenience init() {
-    self.init(container: productionContainer)
+    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+      fatalError("Can not get shared app delegate")
+    }
+    self.init(container: appDelegate.productionContainer)
   }
   
   // MARK: - Core Data Saving support
   func saveContext() {
-    let context = persistentContainer.viewContext
+    let context = backgroundContext
     if context.hasChanges {
       do {
         try context.save()
@@ -56,54 +46,38 @@ final class CoreDataStack {
   
   // MARK: - Core Data fetch support
   func fetchGoals() -> [Goal] {
-    var goalNameArr: [Goal] = []
-    let fetchRequest = NSFetchRequest<Goal>(entityName: "Goal")
-    do {
-      #if DEBUG
-        print(context.name ?? "There is no name for this context")
-      #endif
-      let result = try context.fetch(fetchRequest)
-      print(result)
-      goalNameArr = result
-    } catch let error as NSError {
-      #if DEBUG
-        print("Could not fetch. \(error), \(error.userInfo)")
-      #endif
-    }
-    return goalNameArr
+    let request: NSFetchRequest<Goal> = Goal.fetchRequest()
+    let results = try? persistentContainer.viewContext.fetch(request)
+    return results ?? [Goal]()
   }
   
   func delete(_ objectID: NSManagedObjectID) {
-    let object = context.object(with: objectID)
-    context.delete(object)
+    let object = backgroundContext.object(with: objectID)
+    backgroundContext.delete(object)
     saveContext()
   }
   
-  func createGoal(_ name: String, _ summary: String) {
-    if let entity = NSEntityDescription.entity(forEntityName: "Goal", in: context) {
-      let goal = Goal(entity: entity, insertInto: context)
-      goal.name = name
-      goal.summary = summary
-      saveContext()
-    } else {
-      #if DEBUG
-        print("Can't create goal")
-      #endif
+  func createGoal(_ name: String, _ summary: String) -> Goal? {
+    guard let entity = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: backgroundContext) as? Goal else {
+      return nil
     }
+    entity.name = name
+    entity.summary = summary
+    
+    return entity
   }
   
   func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {
     goal.name = name
     goal.summary = summary
-    saveContext()
   }
   
   func clearCoreData() {
     let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Goal")
     let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
     do {
-      try context.execute(deleteRequest)
-      try context.save()
+      try persistentContainer.viewContext.execute(deleteRequest)
+      try persistentContainer.viewContext.save()
     } catch {
       #if DEBUG
         print(error.localizedDescription)

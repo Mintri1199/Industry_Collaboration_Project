@@ -80,7 +80,8 @@ extension CreateGoalViewController {
         let userGoalSummary = createGoalView.goalDescriptionTextView.text else {
         return
       }
-      coreDataStack.createGoal(userGoalName, userGoalSummary)
+      _ = coreDataStack.createGoal(userGoalName, userGoalSummary)
+      coreDataStack.saveContext()
       navigationController?.popViewController(animated: true)
     } else {
       presentError()
