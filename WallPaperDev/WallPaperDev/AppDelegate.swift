@@ -14,6 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
   var coordinator: MainCoordinator?
 
+  // Core Data
+  lazy var productionContainer: NSPersistentContainer = {
+    let container = NSPersistentContainer(name: "WallPaperDev")
+    container.loadPersistentStores(completionHandler: { _, error in
+      if let error = error as NSError? {
+        fatalError("Unresolved error \(error), \(error.userInfo)")
+      }
+    })
+    container.viewContext.name = "Production"
+    return container
+  }()
+
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
     let nav = UINavigationController()
@@ -44,18 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       UINavigationBar.appearance().barTintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
     }
   }
-
-  // Core Data
-  lazy var productionContainer: NSPersistentContainer = {
-    let container = NSPersistentContainer(name: "WallPaperDev")
-    container.loadPersistentStores(completionHandler: { _, error in
-      if let error = error as NSError? {
-        fatalError("Unresolved error \(error), \(error.userInfo)")
-      }
-    })
-    container.viewContext.name = "Production"
-    return container
-  }()
 
   func applicationWillResignActive(_: UIApplication) {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
