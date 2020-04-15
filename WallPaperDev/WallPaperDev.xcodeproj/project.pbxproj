@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06AEDAB3E8E1DABCA4FC60E4 /* Pods_WallPaperDev_WallPaperDevUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086AB7A3367DA59F51FB9DBB /* Pods_WallPaperDev_WallPaperDevUITests.framework */; };
 		4402347F2421E87B001DFBA3 /* CircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4402347E2421E87B001DFBA3 /* CircleButton.swift */; };
 		44105B252432AB5C005DD9D5 /* KabegamiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44105B242432AB5C005DD9D5 /* KabegamiTests.swift */; };
 		44105B2E2432E4AD005DD9D5 /* CoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44105B2D2432E4AD005DD9D5 /* CoreDataTests.swift */; };
@@ -127,9 +126,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		086AB7A3367DA59F51FB9DBB /* Pods_WallPaperDev_WallPaperDevUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev_WallPaperDevUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EF51983C38FFEF57380D54B /* Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig"; sourceTree = "<group>"; };
-		3C08A7A8A1F9F99104A33261 /* Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4402347E2421E87B001DFBA3 /* CircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButton.swift; sourceTree = "<group>"; };
 		44105B222432AB5C005DD9D5 /* KabegamiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KabegamiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44105B242432AB5C005DD9D5 /* KabegamiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KabegamiTests.swift; sourceTree = "<group>"; };
@@ -226,7 +222,6 @@
 		6C51E43FA228A1B7D96B26A4 /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
 		7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WallPaperDev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DFDC969613835FA62CA8F0C /* Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevTests/Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig"; sourceTree = "<group>"; };
-		99B535F2F269527CF4C73B23 /* Pods-WallPaperDev-WallPaperDevUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevUITests.debug.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		DFCECF7D5C146828DBDD26ED /* Pods-WallPaperDev-WallPaperDevTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevTests.release.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevTests/Pods-WallPaperDev-WallPaperDevTests.release.xcconfig"; sourceTree = "<group>"; };
 		E38AC00229195E327319C298 /* Pods-WallPaperDev-WallPaperDevTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev-WallPaperDevTests.debug.xcconfig"; path = "Target Support Files/Pods-WallPaperDev-WallPaperDevTests/Pods-WallPaperDev-WallPaperDevTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA1CCF4823D6268B00B47ED4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -268,7 +263,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06AEDAB3E8E1DABCA4FC60E4 /* Pods_WallPaperDev_WallPaperDevUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +443,6 @@
 			children = (
 				7DE5CB436DC1396A3760F039 /* Pods_WallPaperDev.framework */,
 				48CBFAB173315E86A41A167A /* Pods_WallPaperDev_WallPaperDevTests.framework */,
-				086AB7A3367DA59F51FB9DBB /* Pods_WallPaperDev_WallPaperDevUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -586,9 +579,6 @@
 				E38AC00229195E327319C298 /* Pods-WallPaperDev-WallPaperDevTests.debug.xcconfig */,
 				8DFDC969613835FA62CA8F0C /* Pods-WallPaperDev-WallPaperDevTests.xctest.xcconfig */,
 				DFCECF7D5C146828DBDD26ED /* Pods-WallPaperDev-WallPaperDevTests.release.xcconfig */,
-				99B535F2F269527CF4C73B23 /* Pods-WallPaperDev-WallPaperDevUITests.debug.xcconfig */,
-				1EF51983C38FFEF57380D54B /* Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig */,
-				3C08A7A8A1F9F99104A33261 /* Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -678,11 +668,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D03ED3423281620006068CB /* Build configuration list for PBXNativeTarget "WallPaperDevUITests" */;
 			buildPhases = (
-				CAB13C816DE763287ACCE1AF /* [CP] Check Pods Manifest.lock */,
 				5D03ED2123281620006068CB /* Sources */,
 				5D03ED2223281620006068CB /* Frameworks */,
 				5D03ED2323281620006068CB /* Resources */,
-				835BEF17FF7285B6F5CE5BC7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -833,45 +821,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
-		835BEF17FF7285B6F5CE5BC7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WallPaperDev-WallPaperDevUITests/Pods-WallPaperDev-WallPaperDevUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CAB13C816DE763287ACCE1AF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WallPaperDev-WallPaperDevUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 		FAE29B9E23E0B7C900365D9C /* Run SwiftFormat Script on Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1347,7 +1296,6 @@
 		};
 		5D03ED3523281620006068CB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 99B535F2F269527CF4C73B23 /* Pods-WallPaperDev-WallPaperDevUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1368,7 +1316,6 @@
 		};
 		5D03ED3623281620006068CB /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3C08A7A8A1F9F99104A33261 /* Pods-WallPaperDev-WallPaperDevUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1469,7 +1416,6 @@
 		};
 		5DD33D6023453C4D00137E3C /* XCTest */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1EF51983C38FFEF57380D54B /* Pods-WallPaperDev-WallPaperDevUITests.xctest.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
