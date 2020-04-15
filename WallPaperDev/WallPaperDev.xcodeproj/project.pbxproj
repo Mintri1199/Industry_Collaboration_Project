@@ -48,6 +48,11 @@
 		44C0B53A2331C5460015110B /* Graphic+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5392331C5460015110B /* Graphic+Extensions.swift */; };
 		44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53D2331D0250015110B /* GoalsTableView.swift */; };
 		44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B540233312450015110B /* CompleteImageVIew.swift */; };
+		44D7D82C2446D509008E905F /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82A2446D509008E905F /* Milestone+CoreDataClass.swift */; };
+		44D7D82F2446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
+		44D7D8302446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
+		44D7D8312446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
+		44D7D8322446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
 		44E0BA652339B549007AA20D /* GoalsSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA642339B549007AA20D /* GoalsSelectionViewController.swift */; };
 		44E0BA692339B7F0007AA20D /* TableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */; };
 		44E0BA6B233A87DE007AA20D /* GrayTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */; };
@@ -167,6 +172,8 @@
 		44C0B5392331C5460015110B /* Graphic+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphic+Extensions.swift"; sourceTree = "<group>"; };
 		44C0B53D2331D0250015110B /* GoalsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableView.swift; sourceTree = "<group>"; };
 		44C0B540233312450015110B /* CompleteImageVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteImageVIew.swift; sourceTree = "<group>"; };
+		44D7D82A2446D509008E905F /* Milestone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		44E0BA642339B549007AA20D /* GoalsSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsSelectionViewController.swift; sourceTree = "<group>"; };
 		44E0BA682339B7F0007AA20D /* TableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableView+Extensions.swift"; sourceTree = "<group>"; };
 		44E0BA6A233A87DE007AA20D /* GrayTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayTextButton.swift; sourceTree = "<group>"; };
@@ -315,6 +322,8 @@
 		44671678232DC5D9005C910E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */,
+				44D7D82A2446D509008E905F /* Milestone+CoreDataClass.swift */,
 				5D7B2868237CC0610014A4D3 /* UnsplashModel.swift */,
 				5D7B2807236A31EB0014A4D3 /* Keys.swift */,
 				5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */,
@@ -847,6 +856,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44D7D8322446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
 				44105B30243326FF005DD9D5 /* WallPaperDev.xcdatamodeld in Sources */,
 				44105B2E2432E4AD005DD9D5 /* CoreDataTests.swift in Sources */,
 				44105B252432AB5C005DD9D5 /* KabegamiTests.swift in Sources */,
@@ -861,6 +871,7 @@
 				44F583BC2425FEA6008CF121 /* KabegamiNetworkTests.swift in Sources */,
 				44F583D3242711C6008CF121 /* XCTestCase_Extension.swift in Sources */,
 				44F583D724273075008CF121 /* UnsplashEndpointTests.swift in Sources */,
+				44D7D8312446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,6 +923,7 @@
 				5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
+				44D7D82F2446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
 				44F583A524247AFC008CF121 /* UnsplashPreviewVC.swift in Sources */,
 				FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */,
 				44A93F4723FA235B0040B589 /* UnsplashEndpoint.swift in Sources */,
@@ -928,6 +940,7 @@
 				4495E41724297DC10042D3C8 /* ViewModelProtocol.swift in Sources */,
 				443F7E542356DAE600102331 /* PageIndicator.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
+				44D7D82C2446D509008E905F /* Milestone+CoreDataClass.swift in Sources */,
 				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,
 				44C0B53A2331C5460015110B /* Graphic+Extensions.swift in Sources */,
 				44F40869235928F500EE0409 /* WelcomeCollectionViewCell.swift in Sources */,
@@ -956,6 +969,7 @@
 			files = (
 				44105B3324332702005DD9D5 /* WallPaperDev.xcdatamodeld in Sources */,
 				5D03ED2A23281620006068CB /* WallPaperDevUITests.swift in Sources */,
+				44D7D8302446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
