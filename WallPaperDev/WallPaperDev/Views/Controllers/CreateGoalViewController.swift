@@ -11,8 +11,10 @@ import UIKit
 class CreateGoalViewController: UIViewController {
 
   let createGoalView = CreateGoalView()
+  let blueButton = BigBlueButton(frame: .zero)
   let coreDataStack = CoreDataStack.shared
   weak var coordinator: MainCoordinator?
+  var buttonTopAnchor: NSLayoutConstraint?
 
   override var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
@@ -40,6 +42,21 @@ class CreateGoalViewController: UIViewController {
       return true
     }
   }
+
+  func setupBlueButton() {
+    buttonTopAnchor = blueButton.topAnchor.constraint(equalToSystemSpacingBelow: createGoalView.goalDescriptionTextView.bottomAnchor,
+                                                      multiplier: 15)
+    view.addSubview(blueButton)
+    blueButton.setTitle(Localized.string("create_action"), for: .normal)
+    NSLayoutConstraint.activate([
+      blueButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+      blueButton.heightAnchor.constraint(equalToConstant: 50),
+      buttonTopAnchor!,
+      blueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    ])
+
+    blueButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
+  }
 }
 
 // MARK: Setup UI functions
@@ -48,7 +65,7 @@ extension CreateGoalViewController {
   private func setupUIs() {
     setupCreateGoalView()
     setupNavBar()
-    setupButton()
+    setupBlueButton()
   }
 
   private func setupCreateGoalView() {
@@ -56,10 +73,6 @@ extension CreateGoalViewController {
     createGoalView.goalDescriptionTextView.delegate = self
     createGoalView.goalNameTextField.delegate = self
     view.addSubview(createGoalView)
-  }
-
-  private func setupButton() {
-    createGoalView.createButton.addTarget(self, action: #selector(createTapped), for: .touchUpInside)
   }
 
   func presentError() {

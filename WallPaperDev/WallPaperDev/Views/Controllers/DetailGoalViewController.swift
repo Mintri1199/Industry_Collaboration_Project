@@ -22,7 +22,7 @@ class DetailGoalViewController: CreateGoalViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    configButton()
+    setupBlueButton()
     createGoalView.goalNameTextField.resignFirstResponder()
     configTextFields(goal: viewModel.goal)
     setupMilestoneLabel()
@@ -38,6 +38,20 @@ class DetailGoalViewController: CreateGoalViewController {
     navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details_title"))
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
   }
+  
+  override func setupBlueButton() {
+    view.addSubview(blueButton)
+    blueButton.setTitle(Localized.string("update_action"), for: .normal)
+    blueButton.removeTarget(nil, action: nil, for: .allEvents)
+    NSLayoutConstraint.activate([
+      blueButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
+      blueButton.heightAnchor.constraint(equalToConstant: 50),
+      blueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      blueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+    ])
+    
+    blueButton.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
+  }
 }
 
 // MARK: - UI setup function
@@ -49,12 +63,6 @@ extension DetailGoalViewController {
     createGoalView.goalNameTextField.text = unwrappedName
     createGoalView.goalDescriptionTextView.text = unwrappedDescription
     createGoalView.goalDescriptionTextView.textColor = ApplicationDependency.manager.currentTheme.colors.black
-  }
-  
-  private func configButton() {
-    createGoalView.createButton.setTitle(Localized.string("update_action"), for: .normal)
-    createGoalView.createButton.removeTarget(nil, action: nil, for: .allEvents)
-    createGoalView.createButton.addTarget(self, action: #selector(updateTapped), for: .touchUpInside)
   }
   
   private func setupMilestoneLabel() {
