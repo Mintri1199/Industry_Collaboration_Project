@@ -12,9 +12,9 @@ import CoreData
 
 extension Milestone {
 
-  @NSManaged public var currentNumber: Double
+  @NSManaged public var createdAt: Date
   @NSManaged public var name: String?
-  @NSManaged public var totalNumber: Double
+  @NSManaged public var completed: Bool
   @NSManaged public var goal: Goal?
 
   @nonobjc

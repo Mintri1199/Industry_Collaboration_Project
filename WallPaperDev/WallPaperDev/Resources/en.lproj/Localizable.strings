@@ -17,7 +17,9 @@
 "invalid" = "Invalid";
 "create_goal_error_message" = "You can't create a goal without a name and description";
 "choose_image_title" = "Choose Image";
+"milestone_title" = "Milestones";
 "alert_ok" = "OK";
+
 
 "change_goals_action" = "Change Goals";
 "choose_goal_action" = "Choose Goal";
@@ -40,8 +42,8 @@
 "skip_action" = "Skip";
 "start_action" = "Start";
 "add_action" = "Add";
+"wallpaper_action" = "Wallpaper";
 "previous_action" = "Previous";
-"show_more_title" = "Show more";
 
 // first fill in is total count out of max total
 "choose_goal_title" = "Choose Goal %@ / %@";

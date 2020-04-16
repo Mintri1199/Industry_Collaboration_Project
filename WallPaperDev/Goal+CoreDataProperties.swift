@@ -12,13 +12,14 @@ import CoreData
 
 extension Goal {
   
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Goal> {
-    return NSFetchRequest<Goal>(entityName: "Goal")
-  }
-  
   @NSManaged public var name: String?
   @NSManaged public var summary: String?
   @NSManaged public var milestones: NSSet?
+  
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Goal> {
+    return NSFetchRequest<Goal>(entityName: "Goal")
+  }
 }
 
 // MARK: Generated accessors for milestones

@@ -15,7 +15,7 @@ final class CoreDataStack {
     return self.persistentContainer.newBackgroundContext()
   }()
   
-  let persistentContainer: NSPersistentContainer!
+  private let persistentContainer: NSPersistentContainer
   
   static let shared = CoreDataStack()
   
@@ -70,6 +70,31 @@ final class CoreDataStack {
   func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {
     goal.name = name
     goal.summary = summary
+  }
+  
+  // TODO: Implement the following core data methods
+  
+  func createMileStone(_ description: String, _ goal: Goal) {
+    // Create milestone and add it to the accociated goal
+  }
+  
+  func deleteMileStone(_ mileStoneID: NSManagedObjectID) {
+    // Delete milestone from accociated goal
+  }
+  
+  func updateMilestone(for milestone: NSManagedObjectID, completed: Bool) {
+    // Change the completed attribute for milestone
+  }
+  
+  func fetchMilestones(for goal: Goal) -> [Milestone] {
+    // Fetch all milestone for goal
+    
+    return []
+  }
+  
+  func countAllCompletedMileStones(for goal: Goal) -> Int {
+    // fetch all completed milestones for associated goal
+    return 0
   }
   
   func clearCoreData() {
