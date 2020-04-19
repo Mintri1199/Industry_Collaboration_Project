@@ -10,7 +10,7 @@ import UIKit
 
 class EmptyStateView: UIView {
 
-  private let noGoalsLabel: UILabel = {
+  let noGoalsLabel: UILabel = {
     let label = UILabel()
     label.text = Localized.string("set_goal_today_prompt")
     label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
@@ -37,7 +37,7 @@ class EmptyStateView: UIView {
 
   private func noGoalsLabelConstraints() {
     noGoalsLabel.translatesAutoresizingMaskIntoConstraints = false
-    noGoalsLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
+    noGoalsLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
     noGoalsLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
     noGoalsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     noGoalsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true

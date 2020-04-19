@@ -13,7 +13,6 @@ import XCTest
 class CoreDataTests: XCTestCase {
   var manager: CoreDataStack!
   
-  // I think the problem might be here
   lazy var managedObjectModel: NSManagedObjectModel = {
     let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))] )!
     return managedObjectModel
@@ -24,8 +23,7 @@ class CoreDataTests: XCTestCase {
     let container = NSPersistentContainer(name: "WallPaperDev", managedObjectModel: self.managedObjectModel)
     let description = NSPersistentStoreDescription()
     description.type = NSInMemoryStoreType
-    description.shouldAddStoreAsynchronously = false // Make it simpler in test env
-    
+    description.shouldAddStoreAsynchronously = false
     container.persistentStoreDescriptions = [description]
     container.loadPersistentStores { description, error in
       // Check if the data store is in memory
@@ -93,6 +91,21 @@ class CoreDataTests: XCTestCase {
       XCTAssertFalse(goal.name == goalName)
     }
   }
+  
+  // Create
+  func testMilestoneCreationToGoal() {}
+  
+  // Fetch All
+  func testFetchAllMilestoneFromGoal() {}
+  
+  // Update
+  func testUpdateMilestone() {}
+  
+  // Count completed methods
+  func testCountCompletedMilestonesFromGoal() {}
+  
+  // Delete
+  func testDeleteMilestoneFromGoal() {}
 }
 
 // MARK: - Helper Functions

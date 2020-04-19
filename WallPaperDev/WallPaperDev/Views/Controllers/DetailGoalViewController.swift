@@ -27,6 +27,7 @@ class DetailGoalViewController: CreateGoalViewController {
     configTextFields(goal: viewModel.goal)
     setupMilestoneLabel()
     setupAddButton()
+    setupTable()
   }
   
   required init?(coder: NSCoder) {
@@ -90,14 +91,22 @@ extension DetailGoalViewController {
   }
   
   private func setupTable() {
-    // setup the table in a way that it's big enough to show 1-3 cells
-    if !viewModel.milestones.isEmpty {
-      // Don't show the tableView
-    } else if viewModel.milestones.count <= 2 {
-      // Add the tableView so that it will only fits 2 cells
-    } else {
-      // Add the tableView to fit three cells
-    }
+    view.addSubview(milestonesTableView)
+    milestonesTableView.dataSource = self
+    milestonesTableView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      milestonesTableView.topAnchor.constraint(equalTo: mileStoneLabel.bottomAnchor, constant: 15),
+      milestonesTableView.leadingAnchor.constraint(equalTo: mileStoneLabel.leadingAnchor),
+      milestonesTableView.trailingAnchor.constraint(equalTo: addButton.trailingAnchor),
+      milestonesTableView.heightAnchor.constraint(equalToConstant: 200)
+    ])
+  }
+  
+  private func setupCustomEmptyView() {
+    let emptyView = EmptyStateView()
+    emptyView.frame = milestonesTableView.bounds
+    emptyView.noGoalsLabel.text = Localized.string("no_milestone_prompt")
+    milestonesTableView.backgroundView = emptyView
   }
   
   // adjust table view height function
@@ -126,6 +135,8 @@ extension DetailGoalViewController {
 
 extension DetailGoalViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    viewModel.milestones.isEmpty ? setupCustomEmptyView() : tableView.restore()
+    
     return viewModel.milestones.count
   }
   
