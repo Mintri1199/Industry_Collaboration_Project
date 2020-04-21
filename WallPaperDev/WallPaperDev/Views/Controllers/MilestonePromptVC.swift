@@ -32,5 +32,32 @@ extension MilestonePromptVC {
     ])
     view.layoutIfNeeded()
     formView.setupMaskLayer()
+    formView.textField.delegate = self
+    formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
+  }
+}
+
+// MARK: objc methods
+extension MilestonePromptVC {
+  @objc private func buttonAnimation() {
+
+    if let text = formView.textField.text {
+      print("textField text: \(text)")
+      print(text.isEmpty)
+      print(formView.saveButton.isHidden)
+      if text.isEmpty && !formView.saveButton.isHidden {
+        formView.hideSaveButton()
+        print("button is hidden: \(formView.saveButton.isHidden)")
+      } else if !text.isEmpty && formView.saveButton.isHidden {
+        formView.showSaveButton()
+        print("button is hidden: \(formView.saveButton.isHidden)")
+      }
+    }
+  }
+}
+
+extension MilestonePromptVC: UITextFieldDelegate {
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    // KEYboard
   }
 }

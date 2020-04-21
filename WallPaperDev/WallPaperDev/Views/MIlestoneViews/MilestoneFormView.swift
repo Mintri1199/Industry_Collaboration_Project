@@ -66,7 +66,7 @@ class MilestoneFormView: UIView {
   }
   
   private func setupSaveButton() {
-    buttonCenterXConstraint = saveButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 1000)
+    buttonCenterXConstraint = saveButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 300)
     addSubview(saveButton)
     // Flag: text
     
@@ -82,22 +82,26 @@ class MilestoneFormView: UIView {
       buttonCenterXConstraint!
     ])
     saveButton.isEnabled = false
+    saveButton.isHidden = true
   }
   
   func showSaveButton() {
     buttonCenterXConstraint?.constant = 0
+    saveButton.isHidden = false 
     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
       self.layoutIfNeeded()
-    }) { _ in
+    }, completion: { _ in
       self.saveButton.isEnabled = true
-    }
+    })
   }
   
   func hideSaveButton() {
     saveButton.isEnabled = false
-    buttonCenterXConstraint?.constant = 1000
-    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+    buttonCenterXConstraint?.constant = 300
+    UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
       self.layoutIfNeeded()
+    }, completion: { _ in
+      self.saveButton.isHidden = true
     })
   }
 }
