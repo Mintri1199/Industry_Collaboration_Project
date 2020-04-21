@@ -40,6 +40,11 @@ class MilestoneFormView: UIView {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func layoutIfNeeded() {
+    super.layoutIfNeeded()
+    setupMaskLayer()
+  }
+  
   private func setupLabel() {
     addSubview(label)
     NSLayoutConstraint.activate([
@@ -58,18 +63,15 @@ class MilestoneFormView: UIView {
     ])
   }
   
-  func setupMaskLayer() {
-    // Have a mask layer to shape the view and hide the save button during animation
+  private func setupMaskLayer() {
     maskLayer.frame = bounds
     maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 15).cgPath
     layer.mask = maskLayer
   }
   
   private func setupSaveButton() {
-    buttonCenterXConstraint = saveButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 300)
+    buttonCenterXConstraint = saveButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 1000)
     addSubview(saveButton)
-    // Flag: text
-    
     saveButton.setTitle(Localized.string("save_action"), for: .normal)
     saveButton.titleLabel?.font = ApplicationDependency.manager.currentTheme.fontSchema.medium24
     saveButton.sizeToFit()
@@ -88,7 +90,7 @@ class MilestoneFormView: UIView {
   func showSaveButton() {
     buttonCenterXConstraint?.constant = 0
     saveButton.isHidden = false 
-    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
+    UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
       self.layoutIfNeeded()
     }, completion: { _ in
       self.saveButton.isEnabled = true
@@ -97,7 +99,7 @@ class MilestoneFormView: UIView {
   
   func hideSaveButton() {
     saveButton.isEnabled = false
-    buttonCenterXConstraint?.constant = 300
+    buttonCenterXConstraint?.constant = 1000
     UIView.animate(withDuration: 0.3, delay: 0, options: [.curveEaseIn], animations: {
       self.layoutIfNeeded()
     }, completion: { _ in
