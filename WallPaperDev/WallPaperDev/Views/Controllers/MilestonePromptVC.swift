@@ -8,10 +8,15 @@
 
 import UIKit
 
+protocol passMilestoneData: class {
+  func passMilestone(_ description: String)
+}
+
 final class MilestonePromptVC: UIViewController {
   
   private var formView: MilestoneFormView = MilestoneFormView()
   private var keyboardHeight: CGFloat = 0
+  weak var delegate: passMilestoneData?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,7 +31,6 @@ final class MilestonePromptVC: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
-  
   
   private func displayKeyboard(_ value: Bool) {
     if value {
@@ -64,6 +68,8 @@ extension MilestonePromptVC {
     view.layoutIfNeeded()
     formView.textField.delegate = self
     formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
+    
+    formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
   }
 }
 
@@ -94,6 +100,14 @@ extension MilestonePromptVC {
     if view.frame.origin.y != 0 {
       self.view.frame.origin.y = 0
     }
+  }
+  
+  @objc private func saveMilestone() {
+    guard let text = formView.textField.text, !text.isEmpty else {
+      return
+    }
+    delegate?.passMilestone(text)
+    dismiss(animated: true, completion: nil)
   }
 }
 

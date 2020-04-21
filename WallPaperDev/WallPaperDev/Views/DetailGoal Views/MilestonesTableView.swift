@@ -14,8 +14,9 @@ class MilestonesTableView: UITableView {
     // FLAG color
     backgroundColor = .red
     separatorStyle = .none
-    estimatedRowHeight = 50
+    estimatedRowHeight = 40
     rowHeight = UITableView.automaticDimension
+    layer.cornerRadius = 15
     register(MilestoneCell.self, forCellReuseIdentifier: MilestoneCell.id)
   }
 

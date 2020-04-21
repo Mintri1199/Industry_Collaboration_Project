@@ -14,14 +14,11 @@ class CheckBoxButton: UIButton {
     layer.borderColor = ApplicationDependency.manager.currentTheme.colors.lightGray.cgColor
     layer.borderWidth = 1.5
     layer.cornerRadius = 5
+    let checkMark = UIImage(systemName: "checkmark")?.withRenderingMode(.alwaysTemplate)
+    setImage(checkMark!, for: .selected)
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-
-  // FLAG: animation method
-  func toggleCheckBox(_ value: Bool) {
-    // This method is responsble for animating the check box
   }
 }

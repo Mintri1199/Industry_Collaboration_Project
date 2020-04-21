@@ -88,6 +88,7 @@ extension DetailGoalViewController {
       addButton.topAnchor.constraint(equalTo: mileStoneLabel.topAnchor),
       addButton.trailingAnchor.constraint(equalTo: createGoalView.goalDescriptionTextView.trailingAnchor)
     ])
+    addButton.addTarget(self, action: #selector(showMilestoneprompt), for: .touchUpInside)
   }
   
   private func setupTable() {
@@ -98,7 +99,7 @@ extension DetailGoalViewController {
       milestonesTableView.topAnchor.constraint(equalTo: mileStoneLabel.bottomAnchor, constant: 15),
       milestonesTableView.leadingAnchor.constraint(equalTo: mileStoneLabel.leadingAnchor),
       milestonesTableView.trailingAnchor.constraint(equalTo: addButton.trailingAnchor),
-      milestonesTableView.heightAnchor.constraint(equalToConstant: 200)
+      milestonesTableView.bottomAnchor.constraint(equalTo: blueButton.topAnchor, constant: -15)
     ])
   }
   
@@ -130,6 +131,19 @@ extension DetailGoalViewController {
   @objc private func deleteTapped() {
     viewModel.delete()
     navigationController?.popViewController(animated: true)
+  }
+  
+  @objc private func showMilestoneprompt() {
+    let promptVC = MilestonePromptVC()
+    promptVC.delegate = self
+    promptVC.modalPresentationStyle = .fullScreen
+    present(promptVC, animated: true, completion: nil)
+  }
+}
+
+extension DetailGoalViewController: passMilestoneData {
+  func passMilestone(_ description: String) {
+    print(description)
   }
 }
 
