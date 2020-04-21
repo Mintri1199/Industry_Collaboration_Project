@@ -25,10 +25,10 @@ class MilestoneFormView: UIView {
   let textField = PaddingTextField()
   
   let saveButton = BigBlueButton()
+  var buttonCenterXConstraint: NSLayoutConstraint?
   
   override init(frame: CGRect) {
-    super.init(frame: frame)
-    // FLAG: color
+    super.init(frame: frame) // FLAG: color
     backgroundColor = .white
     setupLabel()
     setupTextField()
@@ -45,64 +45,59 @@ class MilestoneFormView: UIView {
     NSLayoutConstraint.activate([
       label.topAnchor.constraint(equalTo: topAnchor),
       label.leadingAnchor.constraint(equalTo: leadingAnchor),
-      label.trailingAnchor.constraint(equalTo: trailingAnchor),
-      // Flag: Refactor this to have dynamic height
-      label.heightAnchor.constraint(equalToConstant: 30)
+      label.trailingAnchor.constraint(equalTo: trailingAnchor)
     ])
   }
   
   private func setupTextField() {
     addSubview(textField)
-    
     NSLayoutConstraint.activate([
       textField.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 15),
       textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-      textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+      textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
     ])
   }
   
-  private func setupMaskLayer() {
+  func setupMaskLayer() {
     // Have a mask layer to shape the view and hide the save button during animation
     maskLayer.frame = bounds
-    maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.size.width / 5).cgPath
+    maskLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 15).cgPath
+    layer.mask = maskLayer
   }
   
   private func setupSaveButton() {
-    saveButton.center.x = center.x + bounds.width
+    buttonCenterXConstraint = saveButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 1000)
     addSubview(saveButton)
     // Flag: text
-    saveButton.setTitle("Save", for: .normal)
     
+    saveButton.setTitle(Localized.string("save_action"), for: .normal)
+    saveButton.titleLabel?.font = ApplicationDependency.manager.currentTheme.fontSchema.medium24
+    saveButton.sizeToFit()
+    saveButton.layer.cornerRadius = saveButton.frame.height / 3
     NSLayoutConstraint.activate([
       saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25),
-      saveButton.widthAnchor.constraint(equalTo: widthAnchor, constant: 0.5),
-      // FLAG: refactor for dymanic height
-      saveButton.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3)
+      saveButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
+      saveButton.topAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: textField.bottomAnchor, multiplier: 3),
+      // FLAG: figure out a way to add it to the middle without constraint
+      buttonCenterXConstraint!
     ])
-    
-    saveButton.isHidden = true
-    saveButton.isEnabled = true
+    saveButton.isEnabled = false
   }
   
   func showSaveButton() {
+    buttonCenterXConstraint?.constant = 0
     UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveEaseInOut, animations: {
-      self.saveButton.isHidden = false
-      self.saveButton.center.x = self.center.x
-    }) { completed in
+      self.layoutIfNeeded()
+    }) { _ in
       self.saveButton.isEnabled = true
     }
   }
   
   func hideSaveButton() {
     saveButton.isEnabled = false
-    UIView.animate(withDuration: 0.7, delay: 0, options: [.curveEaseIn], animations: {
-      self.saveButton.isHidden = true
-      self.saveButton.center.x = self.center.x + self.bounds.width
+    buttonCenterXConstraint?.constant = 1000
+    UIView.animate(withDuration: 0.5, delay: 0, options: [.curveEaseIn], animations: {
+      self.layoutIfNeeded()
     })
   }
-  
-  // Needed UI
-  // action label
-  //  textfield
-  // submit button
 }

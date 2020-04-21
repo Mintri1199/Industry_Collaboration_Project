@@ -22,13 +22,15 @@ final class MilestonePromptVC: UIViewController {
 // MARK: UI setup methods
 extension MilestonePromptVC {
   private func setupUI() {
+    formView.sizeToFit()
     view.addSubview(formView)
     formView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       formView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       formView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
-      formView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      formView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5)
+      formView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
     ])
+    view.layoutIfNeeded()
+    formView.setupMaskLayer()
   }
 }

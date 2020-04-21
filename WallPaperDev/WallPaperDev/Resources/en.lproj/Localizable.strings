@@ -42,6 +42,7 @@
 "next_action" = "Next";
 "skip_action" = "Skip";
 "start_action" = "Start";
+"save_action" = "Save";
 "add_action" = "Add";
 "wallpaper_action" = "Wallpaper";
 "previous_action" = "Previous";
