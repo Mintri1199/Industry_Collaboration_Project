@@ -23,7 +23,6 @@ class MilestoneCell: UITableViewCell {
     return label
   }()
   
-  
   init(_ milestone: Milestone) {
     self.milestone = milestone
     super.init(style: .default, reuseIdentifier: MilestoneCell.id)
@@ -37,13 +36,13 @@ class MilestoneCell: UITableViewCell {
   
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-  
+    
     checkBox.isSelected = true
-    let attributedText : NSMutableAttributedString =  NSMutableAttributedString(string: milestone.description)
+    let attributedText : NSMutableAttributedString = NSMutableAttributedString(string: milestone.description)
     attributedText.addAttributes([
-                    NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
-                    NSAttributedString.Key.strikethroughColor: ApplicationDependency.manager.currentTheme.colors.lightGray,
-                    NSAttributedString.Key.font : ApplicationDependency.manager.currentTheme.fontSchema.medium16
+      NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+      NSAttributedString.Key.strikethroughColor: ApplicationDependency.manager.currentTheme.colors.lightGray,
+      NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.medium16
                     ], range: NSMakeRange(0, attributedText.length))
     
     milestoneLabel.attributedText = attributedText

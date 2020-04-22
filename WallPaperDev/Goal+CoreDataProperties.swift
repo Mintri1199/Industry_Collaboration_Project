@@ -16,6 +16,19 @@ extension Goal {
   @NSManaged public var summary: String?
   @NSManaged public var milestones: NSSet?
   
+  public var milestonesArray: [Milestone] {
+    let set = milestones as? Set<Milestone> ?? []
+    return set.sorted { $0.createdAt < $1.createdAt }
+  }
+  
+  public var completedMilestones: Int {
+    if let set = milestones as? Set<Milestone> {
+      return set.reduce(0, { num, milestone in milestone.completed ? num + 1 : num })
+    } else {
+      return 0
+    }
+  }
+  
   @nonobjc
   public class func fetchRequest() -> NSFetchRequest<Goal> {
     return NSFetchRequest<Goal>(entityName: "Goal")

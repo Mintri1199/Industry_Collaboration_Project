@@ -57,6 +57,11 @@ class CoreDataTests: XCTestCase {
     let summary = "New summary"
     let goal = manager.createGoal(name, summary)
     XCTAssertNotNil(goal)
+    XCTAssertTrue(goal?.name == name)
+    XCTAssertTrue(goal?.summary == summary)
+    XCTAssertTrue((goal?.milestonesArray.isEmpty) != nil)
+    XCTAssertNotNil(goal?.completedMilestones)
+    XCTAssertEqual(goal?.completedMilestones, 0)
   }
   
   func testFetchGoals() {
@@ -92,27 +97,110 @@ class CoreDataTests: XCTestCase {
     }
   }
   
-  // Create
-  func testMilestoneCreationToGoal() {}
+  func testMilestoneCreationToGoal() {
+    let name = "NewGoal"
+    let summary = "NewSummary"
+    let milestoneName = "NewMilestone"
+    let newGoal = manager.createGoal(name, summary)
+    let milestone = manager.createMileStone(milestoneName, newGoal!)
+    let testDate = Date()
+    let milestoneDate = milestone?.createdAt
+    let milestoneDateString = DateFormatter.localizedString(from: milestoneDate!, dateStyle: .short, timeStyle: .none)
+    let testDateString = DateFormatter.localizedString(from: testDate, dateStyle: .short, timeStyle: .none)
+    manager.saveContext()
+    
+    // Check properties of milestone entity
+    XCTAssertNotNil(milestone)
+    XCTAssertNotNil(milestone?.createdAt)
+    XCTAssertNil(milestone?.completedAt)
+    XCTAssertNotNil(milestone?.name)
+    XCTAssertNotNil(milestone?.completed)
+    XCTAssertEqual(milestoneName, milestone?.name!)
+    XCTAssertEqual(false, milestone?.completed)
+    XCTAssertEqual(milestoneDateString, testDateString)
+    XCTAssertNotNil(milestone?.goal)
+    XCTAssertEqual(milestone?.goal, newGoal)
+    
+    // Check milestone related properties in goal entity
+    XCTAssertFalse(newGoal!.milestonesArray.isEmpty)
+    XCTAssertEqual(newGoal?.milestonesArray.count, 1)
+    XCTAssertTrue(newGoal!.milestones!.contains(milestone!))
+  }
   
-  // Fetch All
-  func testFetchAllMilestoneFromGoal() {}
+  func testMultipleMilestones() {
+    let name = "NewGoal"
+    let summary = "NewSummary"
+    let newGoal = manager.createGoal(name, summary)!
+    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, newGoal) }
+    
+    manager.saveContext()
+    XCTAssertFalse(newGoal.milestonesArray.isEmpty)
+    XCTAssertEqual(newGoal.milestonesArray.count, 3)
+    testMilestones.forEach { value in
+      XCTAssertTrue(newGoal.milestones!.contains(value))
+    }
+  }
   
-  // Update
-  func testUpdateMilestone() {}
+  func testUpdateMilestone() {
+    let name = "NewGoal"
+    let summary = "NewSummary"
+    let goal = manager.createGoal(name, summary)!
+    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, goal) }
+    let testMilestone = testMilestones[0]
+    
+    manager.updateMilestone(for: testMilestone, name: "update", completed: true)
+    manager.saveContext()
+    
+    XCTAssertNotNil(testMilestone.completedAt)
+    XCTAssertTrue(testMilestone.completed)
+    XCTAssertEqual(testMilestone.name, "update")
+    
+    let testDate = Date()
+    let completeDate = testMilestone.completedAt
+    let completeDateString = DateFormatter.localizedString(from: completeDate!, dateStyle: .short, timeStyle: .none)
+    let testDateString = DateFormatter.localizedString(from: testDate, dateStyle: .short, timeStyle: .none)
+    XCTAssertEqual(completeDateString, testDateString)
+    XCTAssertTrue(goal.milestones!.contains(testMilestone))
+  }
   
-  // Count completed methods
-  func testCountCompletedMilestonesFromGoal() {}
+  func testCountCompletedMilestonesFromGoal() {
+    let name = "NewGoal"
+    let summary = "NewSummary"
+    let goal = manager.createGoal(name, summary)!
+    _ = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, goal) }
+      .compactMap { manager.updateMilestone(for: $0, name: nil, completed: true) }
+    manager.saveContext()
+    
+    XCTAssertEqual(goal.completedMilestones, 3)
+  }
   
-  // Delete
-  func testDeleteMilestoneFromGoal() {}
+  func testDeleteMilestoneFromGoal() {
+    let name = "NewGoal"
+    let summary = "NewSummary"
+    let goalToDelete = manager.createGoal(name, summary)!
+    var deleteMileStones = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, goalToDelete) }
+    let deleteSingleMilestone = deleteMileStones.remove(at: 0)
+    manager.saveContext()
+    XCTAssertEqual(manager.fetchMilestones().count, 3)
+    
+    manager.delete(deleteSingleMilestone.objectID)
+    manager.saveContext()
+    
+    XCTAssertEqual(goalToDelete.milestonesArray.count, 2)
+    XCTAssertEqual(manager.fetchMilestones().count, 2)
+    XCTAssertEqual(goalToDelete.milestonesArray.filter { $0.name == "new" }.count, 0)
+    
+    manager.delete(goalToDelete.objectID)
+    manager.saveContext()
+    
+    XCTAssertEqual(manager.fetchMilestones().count, 0)
+  }
 }
 
 // MARK: - Helper Functions
 extension CoreDataTests {
   
   private func initGoalStubs() {
-    
     func insertGoal( name: String, summary: String ) -> Goal? {
       let obj = NSEntityDescription.insertNewObject(forEntityName: "Goal", into: mockPersistentContainer.viewContext)
       

@@ -51,6 +51,12 @@ final class CoreDataStack {
     return results ?? [Goal]()
   }
   
+  func fetchMilestones() -> [Milestone] {
+    let request: NSFetchRequest<Milestone> = Milestone.fetchRequest()
+    let results = try? persistentContainer.viewContext.fetch(request)
+    return results ?? [Milestone]()
+  }
+  
   func delete(_ objectID: NSManagedObjectID) {
     let object = backgroundContext.object(with: objectID)
     backgroundContext.delete(object)
@@ -72,29 +78,30 @@ final class CoreDataStack {
     goal.summary = summary
   }
   
-  // TODO: Implement the following core data methods
-  
-  func createMileStone(_ description: String, _ goal: Goal) {
-    // Create milestone and add it to the accociated goal
+  func createMileStone(_ name: String, _ goal: Goal) -> Milestone? {
+    guard let entity = NSEntityDescription.insertNewObject(forEntityName: "Milestone", into: backgroundContext) as? Milestone else {
+      return nil
+    }
+    entity.name = name
+    entity.completed = false
+    entity.createdAt = Date()
+    entity.completedAt = nil
+    goal.addToMilestones(entity)
+    return entity
   }
   
-  func deleteMileStone(_ mileStoneID: NSManagedObjectID) {
-    // Delete milestone from accociated goal
-  }
-  
-  func updateMilestone(for milestone: NSManagedObjectID, completed: Bool) {
-    // Change the completed attribute for milestone
-  }
-  
-  func fetchMilestones(for goal: Goal) -> [Milestone] {
-    // Fetch all milestone for goal
+  func updateMilestone(for milestone: Milestone, name: String?, completed: Bool) {
+    if let newName = name {
+      milestone.name = newName
+    }
     
-    return []
-  }
-  
-  func countAllCompletedMileStones(for goal: Goal) -> Int {
-    // fetch all completed milestones for associated goal
-    return 0
+    if completed {
+      milestone.completed = completed
+      milestone.completedAt = Date()
+    } else {
+      milestone.completed = completed
+      milestone.completedAt = nil
+    }
   }
   
   func clearCoreData() {

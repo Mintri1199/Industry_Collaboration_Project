@@ -52,7 +52,6 @@ class KabegamiTests: XCTestCase {
     XCTAssertEqual(Localized.string("start_action"), "Start")
     XCTAssertEqual(Localized.string("add_action"), "Add")
     XCTAssertEqual(Localized.string("previous_action"), "Previous")
-    XCTAssertEqual(Localized.string("show_more_title"), "Show more")
     
     XCTAssertEqual(String(format: Localized.string("choose_goal_title"), String(1), String(4)), "Choose Goal 1 / 4")
     XCTAssertEqual(Localized.string("message_for_goal_with_no_description"), "There is no description for this goal")

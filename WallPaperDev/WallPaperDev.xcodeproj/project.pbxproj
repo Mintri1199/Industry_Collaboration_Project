@@ -34,6 +34,20 @@
 		44A93F4523FA23140040B589 /* EndpointTypeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A93F4423FA23140040B589 /* EndpointTypeProtocol.swift */; };
 		44A93F4723FA235B0040B589 /* UnsplashEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A93F4623FA235B0040B589 /* UnsplashEndpoint.swift */; };
 		44A93F4923FA236B0040B589 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A93F4823FA236B0040B589 /* NetworkManager.swift */; };
+		44A94BC4245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC2245033EB00AE6BB7 /* Milestone+CoreDataClass.swift */; };
+		44A94BC5245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC2245033EB00AE6BB7 /* Milestone+CoreDataClass.swift */; };
+		44A94BC6245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC2245033EB00AE6BB7 /* Milestone+CoreDataClass.swift */; };
+		44A94BC7245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC2245033EB00AE6BB7 /* Milestone+CoreDataClass.swift */; };
+		44A94BC8245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC3245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift */; };
+		44A94BC9245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC3245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift */; };
+		44A94BCA245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC3245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift */; };
+		44A94BCB245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A94BC3245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift */; };
+		44A94BD22450360C00AE6BB7 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
+		44A94BD32450360D00AE6BB7 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
+		44A94BD42450360E00AE6BB7 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFF6B97233D7C460077F712 /* PaddingLabel.swift */; };
+		44A94BD52450366500AE6BB7 /* ApplicationDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */; };
+		44A94BD62450366500AE6BB7 /* ApplicationDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */; };
+		44A94BD72450366600AE6BB7 /* ApplicationDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF5023D632C400B47ED4 /* ApplicationDependency.swift */; };
 		44B56606234D165400DEBB86 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
 		44B56608234D168C00DEBB86 /* CreateGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56607234D168C00DEBB86 /* CreateGoalView.swift */; };
 		44B5660A234D16C100DEBB86 /* BlueLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56609234D16C100DEBB86 /* BlueLabel.swift */; };
@@ -49,11 +63,33 @@
 		44C0B53A2331C5460015110B /* Graphic+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B5392331C5460015110B /* Graphic+Extensions.swift */; };
 		44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B53D2331D0250015110B /* GoalsTableView.swift */; };
 		44C0B541233312450015110B /* CompleteImageVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C0B540233312450015110B /* CompleteImageVIew.swift */; };
-		44D7D82C2446D509008E905F /* Milestone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82A2446D509008E905F /* Milestone+CoreDataClass.swift */; };
-		44D7D82F2446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
-		44D7D8302446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
-		44D7D8312446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
-		44D7D8322446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */; };
+		44C6B87B245037FE0062B8D4 /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
+		44C6B87C245038000062B8D4 /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
+		44C6B87D245038000062B8D4 /* Goal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */; };
+		44C6B87E245038090062B8D4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
+		44C6B87F245038090062B8D4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
+		44C6B8802450380A0062B8D4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4823D6268B00B47ED4 /* Theme.swift */; };
+		44C6B881245038110062B8D4 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF6623D6444600B47ED4 /* Localized.swift */; };
+		44C6B882245038110062B8D4 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF6623D6444600B47ED4 /* Localized.swift */; };
+		44C6B883245038120062B8D4 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF6623D6444600B47ED4 /* Localized.swift */; };
+		44C6B884245038190062B8D4 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496C8ED244C51DF00AE7532 /* PaddingTextField.swift */; };
+		44C6B8852450381A0062B8D4 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496C8ED244C51DF00AE7532 /* PaddingTextField.swift */; };
+		44C6B8862450381B0062B8D4 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496C8ED244C51DF00AE7532 /* PaddingTextField.swift */; };
+		44C6B8872450384D0062B8D4 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
+		44C6B8882450384E0062B8D4 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
+		44C6B8892450384F0062B8D4 /* BigBlueButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B56605234D165400DEBB86 /* BigBlueButton.swift */; };
+		44C6B88A245038680062B8D4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
+		44C6B88B245038680062B8D4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
+		44C6B88C245038690062B8D4 /* ColorSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4A23D6281E00B47ED4 /* ColorSchema.swift */; };
+		44C6B88D245038700062B8D4 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */; };
+		44C6B88E245038700062B8D4 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */; };
+		44C6B88F245038710062B8D4 /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4C23D6282700B47ED4 /* ImageAsset.swift */; };
+		44C6B890245038770062B8D4 /* FontSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */; };
+		44C6B891245038770062B8D4 /* FontSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */; };
+		44C6B892245038780062B8D4 /* FontSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CCF4E23D6283200B47ED4 /* FontSchema.swift */; };
+		44C6B893245038840062B8D4 /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
+		44C6B894245038850062B8D4 /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
+		44C6B895245038850062B8D4 /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
 		44D7D8352446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
 		44D7D8362446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
 		44D7D8372446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
@@ -63,9 +99,6 @@
 		44D7D83C2447B42F008E905F /* MilestonesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8392447B42F008E905F /* MilestonesTableView.swift */; };
 		44D7D83D2447B42F008E905F /* MilestonesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8392447B42F008E905F /* MilestonesTableView.swift */; };
 		44D7D83F2447B483008E905F /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
-		44D7D8402447B483008E905F /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
-		44D7D8412447B483008E905F /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
-		44D7D8422447B483008E905F /* MilestoneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D83E2447B483008E905F /* MilestoneCell.swift */; };
 		44D7D844244832A8008E905F /* MilestonePromptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D843244832A8008E905F /* MilestonePromptVC.swift */; };
 		44D7D845244832A8008E905F /* MilestonePromptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D843244832A8008E905F /* MilestonePromptVC.swift */; };
 		44D7D846244832A8008E905F /* MilestonePromptVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D843244832A8008E905F /* MilestonePromptVC.swift */; };
@@ -179,6 +212,8 @@
 		44A93F4423FA23140040B589 /* EndpointTypeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointTypeProtocol.swift; sourceTree = "<group>"; };
 		44A93F4623FA235B0040B589 /* UnsplashEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpoint.swift; sourceTree = "<group>"; };
 		44A93F4823FA236B0040B589 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		44A94BC2245033EB00AE6BB7 /* Milestone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		44A94BC3245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		44B56605234D165400DEBB86 /* BigBlueButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BigBlueButton.swift; path = ../BigBlueButton.swift; sourceTree = "<group>"; };
 		44B56607234D168C00DEBB86 /* CreateGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreateGoalView.swift; path = ../CreateGoalView.swift; sourceTree = "<group>"; };
 		44B56609234D16C100DEBB86 /* BlueLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BlueLabel.swift; path = ../BlueLabel.swift; sourceTree = "<group>"; };
@@ -194,8 +229,6 @@
 		44C0B5392331C5460015110B /* Graphic+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Graphic+Extensions.swift"; sourceTree = "<group>"; };
 		44C0B53D2331D0250015110B /* GoalsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableView.swift; sourceTree = "<group>"; };
 		44C0B540233312450015110B /* CompleteImageVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteImageVIew.swift; sourceTree = "<group>"; };
-		44D7D82A2446D509008E905F /* Milestone+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Milestone+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		44D7D8342446EBEF008E905F /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		44D7D8392447B42F008E905F /* MilestonesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesTableView.swift; sourceTree = "<group>"; };
 		44D7D83E2447B483008E905F /* MilestoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCell.swift; sourceTree = "<group>"; };
@@ -349,8 +382,8 @@
 		44671678232DC5D9005C910E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				44D7D82E2446D575008E905F /* Milestone+CoreDataProperties.swift */,
-				44D7D82A2446D509008E905F /* Milestone+CoreDataClass.swift */,
+				44A94BC2245033EB00AE6BB7 /* Milestone+CoreDataClass.swift */,
+				44A94BC3245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift */,
 				5D7B2868237CC0610014A4D3 /* UnsplashModel.swift */,
 				5D7B2807236A31EB0014A4D3 /* Keys.swift */,
 				5DD33D43233D433F00137E3C /* Goal+CoreDataClass.swift */,
@@ -905,15 +938,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44D7D8322446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
 				44105B30243326FF005DD9D5 /* WallPaperDev.xcdatamodeld in Sources */,
 				44D7D84D2448332C008E905F /* MilestoneFormView.swift in Sources */,
-				44D7D8422447B483008E905F /* MilestoneCell.swift in Sources */,
+				44C6B87D245038000062B8D4 /* Goal+CoreDataClass.swift in Sources */,
 				44D7D83D2447B42F008E905F /* MilestonesTableView.swift in Sources */,
+				44C6B8892450384F0062B8D4 /* BigBlueButton.swift in Sources */,
+				44C6B8862450381B0062B8D4 /* PaddingTextField.swift in Sources */,
+				44C6B88F245038710062B8D4 /* ImageAsset.swift in Sources */,
+				44C6B8802450380A0062B8D4 /* Theme.swift in Sources */,
+				44C6B883245038120062B8D4 /* Localized.swift in Sources */,
+				44A94BCB245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */,
+				44A94BD72450366600AE6BB7 /* ApplicationDependency.swift in Sources */,
+				44C6B88C245038690062B8D4 /* ColorSchema.swift in Sources */,
 				44D7D8382446EBEF008E905F /* CheckBoxButton.swift in Sources */,
+				44C6B890245038770062B8D4 /* FontSchema.swift in Sources */,
+				44C6B893245038840062B8D4 /* MilestoneCell.swift in Sources */,
 				44D7D847244832A8008E905F /* MilestonePromptVC.swift in Sources */,
 				44105B2E2432E4AD005DD9D5 /* CoreDataTests.swift in Sources */,
+				44A94BC7245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */,
 				44105B252432AB5C005DD9D5 /* KabegamiTests.swift in Sources */,
+				44A94BD42450360E00AE6BB7 /* PaddingLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -921,16 +965,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44A94BD22450360C00AE6BB7 /* PaddingLabel.swift in Sources */,
+				44C6B8852450381A0062B8D4 /* PaddingTextField.swift in Sources */,
+				44A94BC6245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */,
 				44D7D846244832A8008E905F /* MilestonePromptVC.swift in Sources */,
 				44105B3224332702005DD9D5 /* WallPaperDev.xcdatamodeld in Sources */,
+				44A94BCA245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */,
 				44D7D83C2447B42F008E905F /* MilestonesTableView.swift in Sources */,
 				44F583BC2425FEA6008CF121 /* KabegamiNetworkTests.swift in Sources */,
+				44C6B87C245038000062B8D4 /* Goal+CoreDataClass.swift in Sources */,
 				44F583D3242711C6008CF121 /* XCTestCase_Extension.swift in Sources */,
+				44C6B88B245038680062B8D4 /* ColorSchema.swift in Sources */,
+				44C6B891245038770062B8D4 /* FontSchema.swift in Sources */,
 				44F583D724273075008CF121 /* UnsplashEndpointTests.swift in Sources */,
+				44C6B88E245038700062B8D4 /* ImageAsset.swift in Sources */,
+				44C6B8882450384E0062B8D4 /* BigBlueButton.swift in Sources */,
+				44C6B882245038110062B8D4 /* Localized.swift in Sources */,
+				44C6B894245038850062B8D4 /* MilestoneCell.swift in Sources */,
 				44D7D8372446EBEF008E905F /* CheckBoxButton.swift in Sources */,
 				44D7D84C2448332C008E905F /* MilestoneFormView.swift in Sources */,
-				44D7D8412447B483008E905F /* MilestoneCell.swift in Sources */,
-				44D7D8312446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
+				44A94BD62450366500AE6BB7 /* ApplicationDependency.swift in Sources */,
+				44C6B87F245038090062B8D4 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,17 +1041,18 @@
 				5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
-				44D7D82F2446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
 				44F583A524247AFC008CF121 /* UnsplashPreviewVC.swift in Sources */,
 				FA1CCF4F23D6283200B47ED4 /* FontSchema.swift in Sources */,
 				44A93F4723FA235B0040B589 /* UnsplashEndpoint.swift in Sources */,
 				5DD33D45233D433F00137E3C /* Goal+CoreDataClass.swift in Sources */,
 				44A93F3F23FA22B40040B589 /* HTTPTask.swift in Sources */,
 				5DFF6B98233D7C460077F712 /* PaddingLabel.swift in Sources */,
+				44A94BC4245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */,
 				5D7B2863237382300014A4D3 /* SearchImagesViewModel.swift in Sources */,
 				5DFF6B96233D64760077F712 /* HomeViewModel.swift in Sources */,
 				44F408672359261800EE0409 /* UIView+Extension.swift in Sources */,
 				5D2285352397276D00B40B78 /* SearchImageCell.swift in Sources */,
+				44A94BC8245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */,
 				44C0B51C233023EF0015110B /* GoalDescriptionTextView.swift in Sources */,
 				44D7D83F2447B483008E905F /* MilestoneCell.swift in Sources */,
 				44C0B52623302FE80015110B /* ImagesSelectionCV.swift in Sources */,
@@ -1004,7 +1060,6 @@
 				4495E41724297DC10042D3C8 /* ViewModelProtocol.swift in Sources */,
 				443F7E542356DAE600102331 /* PageIndicator.swift in Sources */,
 				44C0B53E2331D0250015110B /* GoalsTableView.swift in Sources */,
-				44D7D82C2446D509008E905F /* Milestone+CoreDataClass.swift in Sources */,
 				44E0BA71233C6076007AA20D /* ChooseGoalViewModel.swift in Sources */,
 				44C0B53A2331C5460015110B /* Graphic+Extensions.swift in Sources */,
 				44F40869235928F500EE0409 /* WelcomeCollectionViewCell.swift in Sources */,
@@ -1033,13 +1088,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				44105B3324332702005DD9D5 /* WallPaperDev.xcdatamodeld in Sources */,
+				44C6B88D245038700062B8D4 /* ImageAsset.swift in Sources */,
+				44C6B8872450384D0062B8D4 /* BigBlueButton.swift in Sources */,
 				44D7D84B2448332C008E905F /* MilestoneFormView.swift in Sources */,
 				5D03ED2A23281620006068CB /* WallPaperDevUITests.swift in Sources */,
+				44C6B892245038780062B8D4 /* FontSchema.swift in Sources */,
 				44D7D8362446EBEF008E905F /* CheckBoxButton.swift in Sources */,
+				44A94BC5245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */,
 				44D7D83B2447B42F008E905F /* MilestonesTableView.swift in Sources */,
+				44A94BD32450360D00AE6BB7 /* PaddingLabel.swift in Sources */,
+				44C6B87B245037FE0062B8D4 /* Goal+CoreDataClass.swift in Sources */,
 				44D7D845244832A8008E905F /* MilestonePromptVC.swift in Sources */,
-				44D7D8402447B483008E905F /* MilestoneCell.swift in Sources */,
-				44D7D8302446D575008E905F /* Milestone+CoreDataProperties.swift in Sources */,
+				44C6B884245038190062B8D4 /* PaddingTextField.swift in Sources */,
+				44C6B87E245038090062B8D4 /* Theme.swift in Sources */,
+				44C6B88A245038680062B8D4 /* ColorSchema.swift in Sources */,
+				44A94BD52450366500AE6BB7 /* ApplicationDependency.swift in Sources */,
+				44C6B881245038110062B8D4 /* Localized.swift in Sources */,
+				44C6B895245038850062B8D4 /* MilestoneCell.swift in Sources */,
+				44A94BC9245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
