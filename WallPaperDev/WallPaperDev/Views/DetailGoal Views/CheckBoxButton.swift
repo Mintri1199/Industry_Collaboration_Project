@@ -11,6 +11,7 @@ import UIKit
 class CheckBoxButton: UIButton {
   override init(frame: CGRect) {
     super.init(frame: frame)
+    translatesAutoresizingMaskIntoConstraints = false
     layer.borderColor = ApplicationDependency.manager.currentTheme.colors.lightGray.cgColor
     layer.borderWidth = 1.5
     layer.cornerRadius = 5

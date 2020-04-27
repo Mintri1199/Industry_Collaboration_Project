@@ -9,9 +9,9 @@
 import UIKit
 
 protocol passMilestoneData: class {
-  func saveMilestone(_ description: String)
+  func saveMilestone(_ name: String)
   
-  func updateMilestone(_ description: String)
+  func updateMilestone(for milestone: Milestone, _ name: String)
 }
 
 final class MilestonePromptVC: UIViewController {
@@ -148,10 +148,10 @@ extension MilestonePromptVC {
   }
   
   @objc private func updateMilestone() {
-    guard let text = formView.textField.text, !text.isEmpty else {
+    guard let text = formView.textField.text, !text.isEmpty, let milestone = milestone else {
       return
     }
-    delegate?.updateMilestone(text)
+    delegate?.updateMilestone(for: milestone, text)
     dismiss(animated: true, completion: nil)
   }
 }

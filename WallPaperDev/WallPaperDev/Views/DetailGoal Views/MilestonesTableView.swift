@@ -15,7 +15,10 @@ class MilestonesTableView: UITableView {
     estimatedRowHeight = 40
     rowHeight = UITableView.automaticDimension
     layer.cornerRadius = 15
+    layer.borderColor = ApplicationDependency.manager.currentTheme.colors.lightGray.cgColor
+    separatorInset = UIEdgeInsets(top: 0, left: 62, bottom: 0, right: 0)
     register(MilestoneCell.self, forCellReuseIdentifier: MilestoneCell.id)
+    tableFooterView = UIView(frame: .zero)
   }
 
   required init?(coder: NSCoder) {
