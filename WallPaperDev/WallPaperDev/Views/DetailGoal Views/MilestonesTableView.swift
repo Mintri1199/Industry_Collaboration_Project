@@ -11,8 +11,6 @@ import UIKit
 class MilestonesTableView: UITableView {
   override init(frame: CGRect, style: UITableView.Style) {
     super.init(frame: frame, style: style)
-    // FLAG color
-    backgroundColor = .red
     separatorStyle = .none
     estimatedRowHeight = 40
     rowHeight = UITableView.automaticDimension

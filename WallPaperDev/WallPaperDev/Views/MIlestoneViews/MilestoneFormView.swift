@@ -28,8 +28,8 @@ class MilestoneFormView: UIView {
   var buttonCenterXConstraint: NSLayoutConstraint?
   
   override init(frame: CGRect) {
-    super.init(frame: frame) // FLAG: color
-    backgroundColor = .white
+    super.init(frame: frame)
+    backgroundColor = ApplicationDependency.manager.currentTheme.colors.white
     setupLabel()
     setupTextField()
     setupSaveButton()
@@ -80,7 +80,6 @@ class MilestoneFormView: UIView {
       saveButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -25),
       saveButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
       saveButton.topAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: textField.bottomAnchor, multiplier: 3),
-      // FLAG: figure out a way to add it to the middle without constraint
       buttonCenterXConstraint!
     ])
     saveButton.isEnabled = false

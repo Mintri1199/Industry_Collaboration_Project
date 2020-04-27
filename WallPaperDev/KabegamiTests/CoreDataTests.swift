@@ -102,7 +102,7 @@ class CoreDataTests: XCTestCase {
     let summary = "NewSummary"
     let milestoneName = "NewMilestone"
     let newGoal = manager.createGoal(name, summary)
-    let milestone = manager.createMileStone(milestoneName, newGoal!)
+    let milestone = manager.createMilestone(milestoneName, newGoal!)
     let testDate = Date()
     let milestoneDate = milestone?.createdAt
     let milestoneDateString = DateFormatter.localizedString(from: milestoneDate!, dateStyle: .short, timeStyle: .none)
@@ -131,7 +131,7 @@ class CoreDataTests: XCTestCase {
     let name = "NewGoal"
     let summary = "NewSummary"
     let newGoal = manager.createGoal(name, summary)!
-    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, newGoal) }
+    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, newGoal) }
     
     manager.saveContext()
     XCTAssertFalse(newGoal.milestonesArray.isEmpty)
@@ -145,7 +145,7 @@ class CoreDataTests: XCTestCase {
     let name = "NewGoal"
     let summary = "NewSummary"
     let goal = manager.createGoal(name, summary)!
-    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, goal) }
+    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goal) }
     let testMilestone = testMilestones[0]
     
     manager.updateMilestone(for: testMilestone, name: "update", completed: true)
@@ -167,7 +167,7 @@ class CoreDataTests: XCTestCase {
     let name = "NewGoal"
     let summary = "NewSummary"
     let goal = manager.createGoal(name, summary)!
-    _ = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, goal) }
+    _ = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goal) }
       .compactMap { manager.updateMilestone(for: $0, name: nil, completed: true) }
     manager.saveContext()
     
@@ -178,7 +178,7 @@ class CoreDataTests: XCTestCase {
     let name = "NewGoal"
     let summary = "NewSummary"
     let goalToDelete = manager.createGoal(name, summary)!
-    var deleteMileStones = ["new", "milestone", "names"].compactMap { manager.createMileStone($0, goalToDelete) }
+    var deleteMileStones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goalToDelete) }
     let deleteSingleMilestone = deleteMileStones.remove(at: 0)
     manager.saveContext()
     XCTAssertEqual(manager.fetchMilestones().count, 3)

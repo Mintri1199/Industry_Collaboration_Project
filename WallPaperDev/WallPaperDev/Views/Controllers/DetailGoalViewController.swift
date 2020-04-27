@@ -88,7 +88,7 @@ extension DetailGoalViewController {
       addButton.topAnchor.constraint(equalTo: mileStoneLabel.topAnchor),
       addButton.trailingAnchor.constraint(equalTo: createGoalView.goalDescriptionTextView.trailingAnchor)
     ])
-    addButton.addTarget(self, action: #selector(showMilestoneprompt), for: .touchUpInside)
+    addButton.addTarget(self, action: #selector(showMilestonePrompt), for: .touchUpInside)
   }
   
   private func setupTable() {
@@ -133,7 +133,7 @@ extension DetailGoalViewController {
     navigationController?.popViewController(animated: true)
   }
   
-  @objc private func showMilestoneprompt() {
+  @objc private func showMilestonePrompt() {
     let promptVC = MilestonePromptVC()
     promptVC.delegate = self
     promptVC.modalPresentationStyle = .fullScreen

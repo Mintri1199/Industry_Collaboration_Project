@@ -78,7 +78,7 @@ final class CoreDataStack {
     goal.summary = summary
   }
   
-  func createMileStone(_ name: String, _ goal: Goal) -> Milestone? {
+  func createMilestone(_ name: String, _ goal: Goal) -> Milestone? {
     guard let entity = NSEntityDescription.insertNewObject(forEntityName: "Milestone", into: backgroundContext) as? Milestone else {
       return nil
     }
