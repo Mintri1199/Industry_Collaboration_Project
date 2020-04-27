@@ -3,8 +3,17 @@
     <entity name="Goal" representedClassName="Goal" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
+        <relationship name="milestones" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Milestone" inverseName="goal" inverseEntity="Milestone"/>
+    </entity>
+    <entity name="Milestone" representedClassName="Milestone" syncable="YES">
+        <attribute name="completed" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="goal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="milestones" inverseEntity="Goal"/>
     </entity>
     <elements>
-        <element name="Goal" positionX="-45" positionY="0" width="128" height="73"/>
+        <element name="Goal" positionX="-45" positionY="0" width="128" height="88"/>
+        <element name="Milestone" positionX="-36" positionY="27" width="128" height="118"/>
     </elements>
 </model>

@@ -88,10 +88,9 @@ class ImagePreviewViewModel: ViewModelProtocol {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
 
-    // TODO: Flagging font
     let bestFont = UIFont.bestFittingFont(for: goalsText,
                                           in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width * 0.65, height: cropRect.size.height / 6)),
-                                          fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
+                                          fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.medium20.fontDescriptor)
 
     let textAttr: [NSAttributedString.Key: Any] = [ NSAttributedString.Key.font: bestFont,
                                                     NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -127,7 +126,7 @@ class ImagePreviewViewModel: ViewModelProtocol {
         let context = UIGraphicsGetCurrentContext()!
         image.draw(in: cropRect)
         context.translateBy(x: textLayer.frame.origin.x, y: textLayer.frame.origin.y)
-        // TODO: Figure out how to draw rotate textlayer while keeping it original shape
+        // MARK: - Figure out how to draw rotate textlayer while keeping it original shape
         //                if let rotation = self.textLayerRotation {
 //                    print(rotation)
 //                    context.rotate(by: rotation)

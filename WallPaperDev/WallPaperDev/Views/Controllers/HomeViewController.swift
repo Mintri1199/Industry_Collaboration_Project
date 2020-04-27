@@ -68,7 +68,7 @@ extension HomeViewController {
     view.addSubview(wallpaperButton)
     wallpaperButton.backgroundColor = ApplicationDependency.manager.currentTheme.colors.wallpaperBlue
     wallpaperButton.titleLabel?.adjustsFontSizeToFitWidth = true
-    wallpaperButton.setTitle("Wallpaper", for: .normal)
+    wallpaperButton.setTitle(Localized.string("wallpaper_action"), for: .normal)
     wallpaperButton.addTarget(self, action: #selector(wallpaperButtonTapped), for: .touchUpInside)
     wallpaperButton.isHidden = true
   }
@@ -105,6 +105,7 @@ extension HomeViewController {
     
     addButton.frame = addButtonFrame
     addButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+    addButton.setTitle(Localized.string("add_action"), for: .normal)
     view.addSubview(addButton)
   }
   

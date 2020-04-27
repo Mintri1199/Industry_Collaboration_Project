@@ -13,7 +13,6 @@ class CreateGoalView: UIView {
   // MARK: - Custom UIViews
   lazy var goalNameLabel = BlueLabel(frame: .zero)
   lazy var goalDescriptionLabel = BlueLabel(frame: .zero)
-  lazy var createButton = BigBlueButton(frame: .zero)
   lazy var goalNameTextField = GoalNameTextField(frame: .zero)
   lazy var goalDescriptionTextView = GoalDescriptionTextView(frame: .zero, textContainer: nil)
   
@@ -36,12 +35,10 @@ extension CreateGoalView {
     addSubview(goalNameTextField)
     addSubview(goalDescriptionLabel)
     addSubview(goalDescriptionTextView)
-    addSubview(createButton)
     setupGoalNameLabel()
     setTextField()
     setupDescriptionLabel()
     setupTextView()
-    setupBlueButton()
   }
   
   private func setupGoalNameLabel() {
@@ -95,17 +92,6 @@ extension CreateGoalView {
       goalDescriptionTextView.heightAnchor.constraint(equalTo: goalNameTextField.heightAnchor, multiplier: 3),
       goalDescriptionTextView.topAnchor.constraint(equalToSystemSpacingBelow: goalDescriptionLabel.topAnchor, multiplier: 6),
       goalDescriptionTextView.leftAnchor.constraint(equalTo: goalDescriptionLabel.leftAnchor)
-            ])
-  }
-  
-  private func setupBlueButton() {
-    createButton.setTitle(Localized.string("create_action"), for: .normal)
-    NSLayoutConstraint.activate([
-      createButton.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
-      createButton.heightAnchor.constraint(equalToConstant: 50),
-      createButton.topAnchor.constraint(equalToSystemSpacingBelow: goalDescriptionTextView.bottomAnchor,
-                                        multiplier: 15),
-      createButton.centerXAnchor.constraint(equalTo: self.centerXAnchor)
             ])
   }
   

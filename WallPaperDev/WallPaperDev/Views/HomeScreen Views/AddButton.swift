@@ -19,7 +19,6 @@ final class AddButton: UIButton {
   }
 
   private func configButton() {
-    self.setTitle(Localized.string("add_action"), for: .normal)
     self.backgroundColor = ApplicationDependency.manager.currentTheme.colors.addButtonRed
     self.setTitleColor(ApplicationDependency.manager.currentTheme.colors.white, for: .normal)
     self.setTitleColor(ApplicationDependency.manager.currentTheme.colors.darkGray, for: .highlighted)

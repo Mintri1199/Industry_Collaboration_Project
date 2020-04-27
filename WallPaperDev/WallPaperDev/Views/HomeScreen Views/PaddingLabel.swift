@@ -9,19 +9,15 @@
 import UIKit
 
 class PaddingLabel: UILabel {
-  private var topInset: CGFloat = 5.0
-  private var bottomInset: CGFloat = 5.0
-  private var leftInset: CGFloat = 14.0
-  private var rightInset: CGFloat = 14.0
+  private let insets = UIEdgeInsets(top: 15, left: 15, bottom: 5, right: 15)
 
   override var intrinsicContentSize: CGSize {
     let size = super.intrinsicContentSize
-    return CGSize(width: size.width + leftInset + rightInset,
-                  height: size.height + topInset + bottomInset)
+    return CGSize(width: size.width + insets.left + insets.right,
+                  height: size.height + insets.top + insets.bottom)
   }
 
   override func drawText(in rect: CGRect) {
-    let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
     super.drawText(in: rect.inset(by: insets))
   }
 }

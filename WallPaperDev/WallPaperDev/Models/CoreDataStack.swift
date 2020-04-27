@@ -15,7 +15,7 @@ final class CoreDataStack {
     return self.persistentContainer.newBackgroundContext()
   }()
   
-  let persistentContainer: NSPersistentContainer!
+  private let persistentContainer: NSPersistentContainer
   
   static let shared = CoreDataStack()
   
@@ -51,6 +51,12 @@ final class CoreDataStack {
     return results ?? [Goal]()
   }
   
+  func fetchMilestones() -> [Milestone] {
+    let request: NSFetchRequest<Milestone> = Milestone.fetchRequest()
+    let results = try? persistentContainer.viewContext.fetch(request)
+    return results ?? [Milestone]()
+  }
+  
   func delete(_ objectID: NSManagedObjectID) {
     let object = backgroundContext.object(with: objectID)
     backgroundContext.delete(object)
@@ -70,6 +76,32 @@ final class CoreDataStack {
   func updateGoal(_ goal: Goal, _ name: String, _ summary: String) {
     goal.name = name
     goal.summary = summary
+  }
+  
+  func createMilestone(_ name: String, _ goal: Goal) -> Milestone? {
+    guard let entity = NSEntityDescription.insertNewObject(forEntityName: "Milestone", into: backgroundContext) as? Milestone else {
+      return nil
+    }
+    entity.name = name
+    entity.completed = false
+    entity.createdAt = Date()
+    entity.completedAt = nil
+    goal.addToMilestones(entity)
+    return entity
+  }
+  
+  func updateMilestone(for milestone: Milestone, name: String?, completed: Bool) {
+    if let newName = name {
+      milestone.name = newName
+    }
+    
+    if completed {
+      milestone.completed = completed
+      milestone.completedAt = Date()
+    } else {
+      milestone.completed = completed
+      milestone.completedAt = nil
+    }
   }
   
   func clearCoreData() {
