@@ -27,7 +27,7 @@ class MilestoneCell: UITableViewCell {
     self.milestone = milestone
     super.init(style: .default, reuseIdentifier: MilestoneCell.id)
     setupCheckBox()
-    setupTextField()
+    setupLabel()
   }
   
   required init?(coder: NSCoder) {
@@ -37,15 +37,15 @@ class MilestoneCell: UITableViewCell {
   override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
-    checkBox.isSelected = true
-    let attributedText : NSMutableAttributedString = NSMutableAttributedString(string: milestone.description)
-    attributedText.addAttributes([
-      NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
-      NSAttributedString.Key.strikethroughColor: ApplicationDependency.manager.currentTheme.colors.lightGray,
-      NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.medium16
-                    ], range: NSMakeRange(0, attributedText.length))
-    
-    milestoneLabel.attributedText = attributedText
+//    checkBox.isSelected = true
+//    let attributedText: NSMutableAttributedString = NSMutableAttributedString(string: milestone.name!)
+//    attributedText.addAttributes([
+//      NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue,
+//      NSAttributedString.Key.strikethroughColor: ApplicationDependency.manager.currentTheme.colors.darkGray,
+//      NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.medium16
+//    ], range: NSRange(location: 0, length: attributedText.length))
+//
+//    milestoneLabel.attributedText = attributedText
   }
   
   private func setupCheckBox() {
@@ -58,14 +58,17 @@ class MilestoneCell: UITableViewCell {
     ])
   }
   
-  private func setupTextField() {
+  private func setupLabel() {
     addSubview(milestoneLabel)
     NSLayoutConstraint.activate([
       milestoneLabel.topAnchor.constraint(equalTo: topAnchor, constant: 13),
       milestoneLabel.leadingAnchor.constraint(equalTo: checkBox.trailingAnchor, constant: 15),
       milestoneLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
       milestoneLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -13)
-      
     ])
+    
+    if let cellText = milestone.name {
+      milestoneLabel.text = cellText
+    }
   }
 }

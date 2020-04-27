@@ -69,19 +69,20 @@ final class MilestonePromptVC: UIViewController {
 // MARK: UI setup methods
 extension MilestonePromptVC {
   private func setupUI() {
-    formView.sizeToFit()
-    view.addSubview(formView)
-    formView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      formView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      formView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
-      formView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-    ])
-    view.layoutIfNeeded()
-    formView.textField.delegate = self
-    formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
-    
-    formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
+//    formView.sizeToFit()
+//    view.addSubview(formView)
+//    formView.translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      formView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//      formView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+//      formView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+//    ])
+//    view.layoutIfNeeded()
+//    formView.textField.delegate = self
+//    formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
+//
+//    formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
+    setupForm()
   }
   
   private func setupForm() {

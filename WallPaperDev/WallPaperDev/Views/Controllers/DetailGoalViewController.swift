@@ -154,12 +154,12 @@ extension DetailGoalViewController: passMilestoneData {
 extension DetailGoalViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     viewModel.milestones.isEmpty ? setupCustomEmptyView() : tableView.restore()
-    
     return viewModel.milestones.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    let cell = MilestoneCell(viewModel.milestones[indexPath.row])
+    return cell
   }
 }
 

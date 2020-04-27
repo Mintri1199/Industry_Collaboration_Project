@@ -38,7 +38,7 @@ class GoalDetailViewModel: ViewModelProtocol {
   }
 
   func addMilestoneToGoal(_ description: String) {
-    _ = coreDataStack.createMilestone(description, goal)
+    _ = coreDataStack.createMilestone(description, goal.objectID)
     coreDataStack.saveContext()
     /*
      TODO: There could be improvement here
@@ -53,7 +53,7 @@ class GoalDetailViewModel: ViewModelProtocol {
     milestones.remove(at: index)
   }
 
-  func updateMilestone(for milestone: Milestone, description: String, completed: Bool=false) {
+  func updateMilestone(for milestone: Milestone, description: String, completed: Bool = false) {
     coreDataStack.updateMilestone(for: milestone, name: description, completed: completed)
     coreDataStack.saveContext()
   }
