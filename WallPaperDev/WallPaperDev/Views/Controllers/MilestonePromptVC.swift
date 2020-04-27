@@ -9,14 +9,26 @@
 import UIKit
 
 protocol passMilestoneData: class {
-  func passMilestone(_ description: String)
+  func saveMilestone(_ description: String)
+  
+  func updateMilestone(_ description: String)
 }
 
 final class MilestonePromptVC: UIViewController {
   
   private var formView: MilestoneFormView = MilestoneFormView()
   private var keyboardHeight: CGFloat = 0
+  private var milestone: Milestone?
   weak var delegate: passMilestoneData?
+  
+  init(milestone: Milestone?) {
+    super.init(nibName: nil, bundle: nil)
+    self.milestone = milestone
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -71,6 +83,31 @@ extension MilestonePromptVC {
     
     formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
   }
+  
+  private func setupForm() {
+    formView.sizeToFit()
+    view.addSubview(formView)
+    formView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      formView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      formView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
+      formView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+    ])
+    view.layoutIfNeeded()
+    formView.textField.delegate = self
+    formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
+    
+    if milestone != nil {
+      formView.label.text = Localized.string("update_milestone_title")
+      formView.saveButton.addTarget(self, action: #selector(updateMilestone), for: .touchUpInside)
+    } else {
+      formView.label.text = Localized.string("create_milestone_title")
+      formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
+    }
+
+    
+    formView.saveButton.setTitle( milestone != nil ? Localized.string("update_action") : Localized.string("save_action"), for: .normal)
+  }
 }
 
 // MARK: objc methods
@@ -106,7 +143,15 @@ extension MilestonePromptVC {
     guard let text = formView.textField.text, !text.isEmpty else {
       return
     }
-    delegate?.passMilestone(text)
+    delegate?.saveMilestone(text)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  @objc private func updateMilestone() {
+    guard let text = formView.textField.text, !text.isEmpty else {
+      return
+    }
+    delegate?.updateMilestone(text)
     dismiss(animated: true, completion: nil)
   }
 }

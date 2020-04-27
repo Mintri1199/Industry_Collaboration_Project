@@ -12,11 +12,10 @@ class MilestoneFormView: UIView {
   
   private let maskLayer = CAShapeLayer()
   
-  private let label: PaddingLabel = {
+  let label: PaddingLabel = {
     var label = PaddingLabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textAlignment = .natural
-    label.text = Localized.string("create_milestone_title")
     label.textColor = ApplicationDependency.manager.currentTheme.colors.black
     label.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy20
     return label
@@ -72,7 +71,6 @@ class MilestoneFormView: UIView {
   private func setupSaveButton() {
     buttonCenterXConstraint = saveButton.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 1000)
     addSubview(saveButton)
-    saveButton.setTitle(Localized.string("save_action"), for: .normal)
     saveButton.titleLabel?.font = ApplicationDependency.manager.currentTheme.fontSchema.medium24
     saveButton.sizeToFit()
     saveButton.layer.cornerRadius = saveButton.frame.height / 3

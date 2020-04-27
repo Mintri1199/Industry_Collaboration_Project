@@ -16,8 +16,8 @@ class DetailGoalViewController: CreateGoalViewController {
   private let addButton = UIButton()
   
   init(goal: Goal) {
-    viewModel = GoalDetailViewModel(goal: goal)
     super.init(nibName: nil, bundle: nil)
+    viewModel = GoalDetailViewModel(goal: goal)
   }
   
   override func viewDidLoad() {
@@ -109,8 +109,6 @@ extension DetailGoalViewController {
     emptyView.noGoalsLabel.text = Localized.string("no_milestone_prompt")
     milestonesTableView.backgroundView = emptyView
   }
-  
-  // adjust table view height function
 }
 
 // MARK: - OBJC methods
@@ -134,7 +132,7 @@ extension DetailGoalViewController {
   }
   
   @objc private func showMilestonePrompt() {
-    let promptVC = MilestonePromptVC()
+    let promptVC = MilestonePromptVC(milestone: nil)
     promptVC.delegate = self
     promptVC.modalPresentationStyle = .fullScreen
     present(promptVC, animated: true, completion: nil)
@@ -142,8 +140,14 @@ extension DetailGoalViewController {
 }
 
 extension DetailGoalViewController: passMilestoneData {
-  func passMilestone(_ description: String) {
-    print(description)
+  func saveMilestone(_ description: String) {
+    viewModel.addMilestoneToGoal(description)
+    // TODO: refactor this to use table view insert instead of reload data
+    milestonesTableView.reloadData()
+  }
+  
+  func updateMilestone(_ description: String) {
+    // TODO: Add update functionality
   }
 }
 
@@ -162,6 +166,7 @@ extension DetailGoalViewController: UITableViewDataSource {
 extension DetailGoalViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
+      viewModel.deleteMilestone(viewModel.milestones[indexPath.row], index: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .left)
     }
   }

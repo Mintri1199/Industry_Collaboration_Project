@@ -25,6 +25,7 @@
 "choose_goal_action" = "Choose Goal";
 "create_wallpaper_title" = "Create Wallpaper";
 "create_milestone_title" = "Create Milestone";
+"update_milestone_title" = "Update Milestone";
 "crop_action" = "Crop";
 "save_image_action" = "Save Image";
 
