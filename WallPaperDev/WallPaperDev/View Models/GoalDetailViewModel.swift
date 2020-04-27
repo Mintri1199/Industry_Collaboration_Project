@@ -36,24 +36,24 @@ class GoalDetailViewModel: ViewModelProtocol {
     coreDataStack.delete(goal.objectID)
     coreDataStack.saveContext()
   }
-  
+
   func addMilestoneToGoal(_ description: String) {
     _ = coreDataStack.createMilestone(description, goal)
     coreDataStack.saveContext()
     /*
-    TODO: There could be improvement here
-    Rational: everytime goal.milestonesArray is invoke, it sort it by date, whether it is insertion or deletion.
-    */
+     TODO: There could be improvement here
+     Rational: everytime goal.milestonesArray is invoke, it sort it by date, whether it is insertion or deletion.
+     */
     milestones = goal.milestonesArray
   }
-  
+
   func deleteMilestone(_ milestone: Milestone, index: Int) {
     coreDataStack.delete(milestone.objectID)
     coreDataStack.saveContext()
     milestones.remove(at: index)
   }
-  
-  func updateMilestone(for milestone: Milestone, description: String,  completed: Bool=false) {
+
+  func updateMilestone(for milestone: Milestone, description: String, completed: Bool=false) {
     coreDataStack.updateMilestone(for: milestone, name: description, completed: completed)
     coreDataStack.saveContext()
   }

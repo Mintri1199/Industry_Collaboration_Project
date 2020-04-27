@@ -104,7 +104,6 @@ extension MilestonePromptVC {
       formView.label.text = Localized.string("create_milestone_title")
       formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
     }
-
     
     formView.saveButton.setTitle( milestone != nil ? Localized.string("update_action") : Localized.string("save_action"), for: .normal)
   }

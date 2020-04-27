@@ -16,8 +16,8 @@ class DetailGoalViewController: CreateGoalViewController {
   private let addButton = UIButton()
   
   init(goal: Goal) {
-    super.init(nibName: nil, bundle: nil)
     viewModel = GoalDetailViewModel(goal: goal)
+    super.init(nibName: nil, bundle: nil)
   }
   
   override func viewDidLoad() {
