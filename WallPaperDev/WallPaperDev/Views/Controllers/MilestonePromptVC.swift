@@ -9,18 +9,42 @@
 import UIKit
 
 protocol passMilestoneData: class {
-  func passMilestone(_ description: String)
+  func saveMilestone(_ name: String)
+  
+  func updateMilestone(for milestone: Milestone, _ name: String)
 }
 
 final class MilestonePromptVC: UIViewController {
   
   private var formView: MilestoneFormView = MilestoneFormView()
+  private var closeButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.contentVerticalAlignment = .center
+    button.contentHorizontalAlignment = .center
+    button.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.tintColor = ApplicationDependency.manager.currentTheme.colors.white
+    button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+    return button
+  }()
+  
   private var keyboardHeight: CGFloat = 0
+  private var milestone: Milestone?
   weak var delegate: passMilestoneData?
+  
+  init(milestone: Milestone?) {
+    super.init(nibName: nil, bundle: nil)
+    self.milestone = milestone
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .black
+    self.modalPresentationStyle = .pageSheet
+    view.backgroundColor = .clear
     setupUI()
     setupKeyboardNotifications()
   }
@@ -57,6 +81,11 @@ final class MilestonePromptVC: UIViewController {
 // MARK: UI setup methods
 extension MilestonePromptVC {
   private func setupUI() {
+    setupForm()
+    setupCloseButton()
+  }
+  
+  private func setupForm() {
     formView.sizeToFit()
     view.addSubview(formView)
     formView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,7 +98,26 @@ extension MilestonePromptVC {
     formView.textField.delegate = self
     formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
     
-    formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
+    if let milestone = milestone {
+      formView.label.text = Localized.string("update_milestone_title")
+      formView.textField.text = milestone.name
+      formView.saveButton.addTarget(self, action: #selector(updateMilestone), for: .touchUpInside)
+    } else {
+      formView.label.text = Localized.string("create_milestone_title")
+      formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
+    }
+    
+    formView.saveButton.setTitle( milestone != nil ? Localized.string("update_action") : Localized.string("save_action"), for: .normal)
+  }
+  
+  private func setupCloseButton() {
+    view.addSubview(closeButton)
+    NSLayoutConstraint.activate([
+      closeButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: 0),
+      closeButton.bottomAnchor.constraint(equalTo: formView.topAnchor, constant: -5),
+      closeButton.heightAnchor.constraint(equalTo: formView.widthAnchor, multiplier: 0.075),
+      closeButton.widthAnchor.constraint(equalTo: closeButton.heightAnchor)
+    ])
   }
 }
 
@@ -106,8 +154,20 @@ extension MilestonePromptVC {
     guard let text = formView.textField.text, !text.isEmpty else {
       return
     }
-    delegate?.passMilestone(text)
+    delegate?.saveMilestone(text)
     dismiss(animated: true, completion: nil)
+  }
+  
+  @objc private func updateMilestone() {
+    guard let text = formView.textField.text, !text.isEmpty, let milestone = milestone else {
+      return
+    }
+    delegate?.updateMilestone(for: milestone, text)
+    dismiss(animated: true, completion: nil)
+  }
+  
+  @objc private func dismissVC() {
+    self.dismiss(animated: true, completion: nil)
   }
 }
 

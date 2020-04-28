@@ -84,6 +84,7 @@ extension HomeViewController {
     homeTableView.dataSource = self
     homeTableView.layer.cornerRadius = 25
     homeTableView.separatorStyle = .none
+    homeTableView.separatorInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
     homeTableView.center.x = view.center.x
     homeTableView.backgroundColor = ApplicationDependency.manager.currentTheme.colors.foregroundWhite
     homeTableView.bounces = false

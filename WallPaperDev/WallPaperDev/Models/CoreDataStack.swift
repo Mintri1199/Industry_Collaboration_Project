@@ -78,10 +78,11 @@ final class CoreDataStack {
     goal.summary = summary
   }
   
-  func createMilestone(_ name: String, _ goal: Goal) -> Milestone? {
-    guard let entity = NSEntityDescription.insertNewObject(forEntityName: "Milestone", into: backgroundContext) as? Milestone else {
+  func createMilestone(_ name: String, _ goalID: NSManagedObjectID) -> Milestone? {
+    guard let entity = NSEntityDescription.insertNewObject(forEntityName: "Milestone", into: backgroundContext) as? Milestone, let goal = backgroundContext.object(with: goalID) as? Goal else {
       return nil
     }
+    
     entity.name = name
     entity.completed = false
     entity.createdAt = Date()

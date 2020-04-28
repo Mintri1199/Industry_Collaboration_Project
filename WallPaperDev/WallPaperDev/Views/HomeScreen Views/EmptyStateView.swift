@@ -13,9 +13,10 @@ class EmptyStateView: UIView {
   let noGoalsLabel: UILabel = {
     let label = UILabel()
     label.text = Localized.string("set_goal_today_prompt")
-    label.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+    label.textColor = ApplicationDependency.manager.currentTheme.colors.darkGray
     label.font = ApplicationDependency.manager.currentTheme.fontSchema.medium20
     label.textAlignment = .center
+    label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
 
@@ -25,8 +26,7 @@ class EmptyStateView: UIView {
   }
 
   private func configView() {
-    backgroundColor = .white
-    layer.cornerRadius = 25
+    backgroundColor = ApplicationDependency.manager.currentTheme.colors.white
     addSubview(noGoalsLabel)
     noGoalsLabelConstraints()
   }

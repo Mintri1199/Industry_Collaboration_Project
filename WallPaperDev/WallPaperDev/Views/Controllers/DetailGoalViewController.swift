@@ -94,7 +94,7 @@ extension DetailGoalViewController {
   private func setupTable() {
     view.addSubview(milestonesTableView)
     milestonesTableView.dataSource = self
-    milestonesTableView.translatesAutoresizingMaskIntoConstraints = false
+    milestonesTableView.delegate = self
     NSLayoutConstraint.activate([
       milestonesTableView.topAnchor.constraint(equalTo: mileStoneLabel.bottomAnchor, constant: 15),
       milestonesTableView.leadingAnchor.constraint(equalTo: mileStoneLabel.leadingAnchor),
@@ -109,8 +109,6 @@ extension DetailGoalViewController {
     emptyView.noGoalsLabel.text = Localized.string("no_milestone_prompt")
     milestonesTableView.backgroundView = emptyView
   }
-  
-  // adjust table view height function
 }
 
 // MARK: - OBJC methods
@@ -134,35 +132,53 @@ extension DetailGoalViewController {
   }
   
   @objc private func showMilestonePrompt() {
-    let promptVC = MilestonePromptVC()
+    let promptVC = MilestonePromptVC(milestone: nil)
     promptVC.delegate = self
-    promptVC.modalPresentationStyle = .fullScreen
     present(promptVC, animated: true, completion: nil)
   }
+  
+  // TODO: write function for check box function
+  @objc private func toggleCompletion(button: UIButton) {}
 }
 
 extension DetailGoalViewController: passMilestoneData {
-  func passMilestone(_ description: String) {
-    print(description)
+  func updateMilestone(for milestone: Milestone, _ name: String) {
+    viewModel.updateMilestone(for: milestone, description: name)
+    milestonesTableView.reloadData()
+  }
+  
+  func saveMilestone(_ description: String) {
+    viewModel.addMilestoneToGoal(description)
+    // TODO: refactor this to use table view insert instead of reload data
+    milestonesTableView.reloadData()
   }
 }
 
 extension DetailGoalViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     viewModel.milestones.isEmpty ? setupCustomEmptyView() : tableView.restore()
-    
+    tableView.layer.borderWidth = viewModel.milestones.isEmpty ? 0 : 0.5
     return viewModel.milestones.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    return UITableViewCell()
+    let cell = MilestoneCell(viewModel.milestones[indexPath.row])
+    return cell
   }
 }
 
 extension DetailGoalViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
+      viewModel.deleteMilestone(viewModel.milestones[indexPath.row], index: indexPath.row)
       tableView.deleteRows(at: [indexPath], with: .left)
     }
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    // show prompt with milestone
+    let promptVC = MilestonePromptVC(milestone: viewModel.milestones[indexPath.row])
+    promptVC.delegate = self
+    present(promptVC, animated: true, completion: nil)
   }
 }

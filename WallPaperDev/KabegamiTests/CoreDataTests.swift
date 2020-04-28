@@ -98,11 +98,9 @@ class CoreDataTests: XCTestCase {
   }
   
   func testMilestoneCreationToGoal() {
-    let name = "NewGoal"
-    let summary = "NewSummary"
+    let newGoal = manager.fetchGoals()[0]
     let milestoneName = "NewMilestone"
-    let newGoal = manager.createGoal(name, summary)
-    let milestone = manager.createMilestone(milestoneName, newGoal!)
+    let milestone = manager.createMilestone(milestoneName, newGoal.objectID)
     let testDate = Date()
     let milestoneDate = milestone?.createdAt
     let milestoneDateString = DateFormatter.localizedString(from: milestoneDate!, dateStyle: .short, timeStyle: .none)
@@ -119,33 +117,29 @@ class CoreDataTests: XCTestCase {
     XCTAssertEqual(false, milestone?.completed)
     XCTAssertEqual(milestoneDateString, testDateString)
     XCTAssertNotNil(milestone?.goal)
-    XCTAssertEqual(milestone?.goal, newGoal)
+    XCTAssertEqual(milestone?.goal?.objectID, newGoal.objectID)
     
     // Check milestone related properties in goal entity
-    XCTAssertFalse(newGoal!.milestonesArray.isEmpty)
-    XCTAssertEqual(newGoal?.milestonesArray.count, 1)
-    XCTAssertTrue(newGoal!.milestones!.contains(milestone!))
+    XCTAssertFalse(newGoal.milestonesArray.isEmpty)
+    XCTAssertEqual(newGoal.milestonesArray.count, 1)
+    XCTAssertTrue((newGoal.milestones?.contains(milestone!)) != nil)
   }
   
   func testMultipleMilestones() {
-    let name = "NewGoal"
-    let summary = "NewSummary"
-    let newGoal = manager.createGoal(name, summary)!
-    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, newGoal) }
+    let newGoal = manager.fetchGoals()[0]
+    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, newGoal.objectID) }
     
     manager.saveContext()
     XCTAssertFalse(newGoal.milestonesArray.isEmpty)
     XCTAssertEqual(newGoal.milestonesArray.count, 3)
     testMilestones.forEach { value in
-      XCTAssertTrue(newGoal.milestones!.contains(value))
+      XCTAssertTrue((newGoal.milestones?.contains(value)) != nil)
     }
   }
   
   func testUpdateMilestone() {
-    let name = "NewGoal"
-    let summary = "NewSummary"
-    let goal = manager.createGoal(name, summary)!
-    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goal) }
+    let newGoal = manager.fetchGoals()[0]
+    let testMilestones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, newGoal.objectID) }
     let testMilestone = testMilestones[0]
     
     manager.updateMilestone(for: testMilestone, name: "update", completed: true)
@@ -160,25 +154,21 @@ class CoreDataTests: XCTestCase {
     let completeDateString = DateFormatter.localizedString(from: completeDate!, dateStyle: .short, timeStyle: .none)
     let testDateString = DateFormatter.localizedString(from: testDate, dateStyle: .short, timeStyle: .none)
     XCTAssertEqual(completeDateString, testDateString)
-    XCTAssertTrue(goal.milestones!.contains(testMilestone))
+    XCTAssertTrue((newGoal.milestones?.contains(testMilestone)) != nil)
   }
   
   func testCountCompletedMilestonesFromGoal() {
-    let name = "NewGoal"
-    let summary = "NewSummary"
-    let goal = manager.createGoal(name, summary)!
-    _ = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goal) }
+    let newGoal = manager.fetchGoals()[0]
+    _ = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, newGoal.objectID) }
       .compactMap { manager.updateMilestone(for: $0, name: nil, completed: true) }
     manager.saveContext()
     
-    XCTAssertEqual(goal.completedMilestones, 3)
+    XCTAssertEqual(newGoal.completedMilestones, 3)
   }
   
   func testDeleteMilestoneFromGoal() {
-    let name = "NewGoal"
-    let summary = "NewSummary"
-    let goalToDelete = manager.createGoal(name, summary)!
-    var deleteMileStones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goalToDelete) }
+    let goalToDelete = manager.fetchGoals()[0]
+    var deleteMileStones = ["new", "milestone", "names"].compactMap { manager.createMilestone($0, goalToDelete.objectID) }
     let deleteSingleMilestone = deleteMileStones.remove(at: 0)
     manager.saveContext()
     XCTAssertEqual(manager.fetchMilestones().count, 3)
