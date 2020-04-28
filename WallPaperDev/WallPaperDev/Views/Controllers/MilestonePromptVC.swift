@@ -43,7 +43,8 @@ final class MilestonePromptVC: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .black
+    self.modalPresentationStyle = .pageSheet
+    view.backgroundColor = .clear
     setupUI()
     setupKeyboardNotifications()
   }

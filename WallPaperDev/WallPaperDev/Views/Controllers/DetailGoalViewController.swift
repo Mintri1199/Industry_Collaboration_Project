@@ -35,9 +35,9 @@ class DetailGoalViewController: CreateGoalViewController {
   }
   
   override func setupNavBar() {
-    coordinator?.navigationController.navigationItem.title = Localized.string("goal_details_title")
-    coordinator?.navigationController.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details_title"))
-    coordinator?.navigationController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
+    navigationItem.title = Localized.string("goal_details_title")
+    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details_title"))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
   }
   
   override func setupBlueButton() {
@@ -134,7 +134,6 @@ extension DetailGoalViewController {
   @objc private func showMilestonePrompt() {
     let promptVC = MilestonePromptVC(milestone: nil)
     promptVC.delegate = self
-    promptVC.modalPresentationStyle = .fullScreen
     present(promptVC, animated: true, completion: nil)
   }
   
@@ -180,7 +179,6 @@ extension DetailGoalViewController: UITableViewDelegate {
     // show prompt with milestone
     let promptVC = MilestonePromptVC(milestone: viewModel.milestones[indexPath.row])
     promptVC.delegate = self
-    promptVC.modalPresentationStyle = .fullScreen
     present(promptVC, animated: true, completion: nil)
   }
 }
