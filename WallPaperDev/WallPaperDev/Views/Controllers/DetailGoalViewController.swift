@@ -35,9 +35,9 @@ class DetailGoalViewController: CreateGoalViewController {
   }
   
   override func setupNavBar() {
-    navigationItem.title = Localized.string("goal_details_title")
-    navigationController?.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details_title"))
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
+    coordinator?.navigationController.navigationItem.title = Localized.string("goal_details_title")
+    coordinator?.navigationController.navigationBar.largeTitleTextAttributes = navigationController?.navigationBar.configLargeText(length: Localized.string("goal_details_title"))
+    coordinator?.navigationController.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteTapped))
   }
   
   override func setupBlueButton() {
@@ -95,7 +95,6 @@ extension DetailGoalViewController {
     view.addSubview(milestonesTableView)
     milestonesTableView.dataSource = self
     milestonesTableView.delegate = self
-    milestonesTableView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       milestonesTableView.topAnchor.constraint(equalTo: mileStoneLabel.bottomAnchor, constant: 15),
       milestonesTableView.leadingAnchor.constraint(equalTo: mileStoneLabel.leadingAnchor),
@@ -146,6 +145,7 @@ extension DetailGoalViewController {
 extension DetailGoalViewController: passMilestoneData {
   func updateMilestone(for milestone: Milestone, _ name: String) {
     viewModel.updateMilestone(for: milestone, description: name)
+    milestonesTableView.reloadData()
   }
   
   func saveMilestone(_ description: String) {
@@ -172,10 +172,7 @@ extension DetailGoalViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       viewModel.deleteMilestone(viewModel.milestones[indexPath.row], index: indexPath.row)
-      tableView.reloadData()
-//      tableView.deleteRows(at: [indexPath], with: .left)
-      
-//      print(viewModel.milestones.count)
+      tableView.deleteRows(at: [indexPath], with: .left)
     }
   }
   

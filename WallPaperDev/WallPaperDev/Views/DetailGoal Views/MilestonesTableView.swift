@@ -11,7 +11,7 @@ import UIKit
 class MilestonesTableView: UITableView {
   override init(frame: CGRect, style: UITableView.Style) {
     super.init(frame: frame, style: style)
-    separatorStyle = .none
+    translatesAutoresizingMaskIntoConstraints = false
     estimatedRowHeight = 40
     rowHeight = UITableView.automaticDimension
     layer.cornerRadius = 15

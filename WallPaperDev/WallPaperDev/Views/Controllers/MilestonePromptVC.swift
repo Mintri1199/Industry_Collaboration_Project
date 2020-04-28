@@ -17,6 +17,17 @@ protocol passMilestoneData: class {
 final class MilestonePromptVC: UIViewController {
   
   private var formView: MilestoneFormView = MilestoneFormView()
+  private var closeButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.contentVerticalAlignment = .center
+    button.contentHorizontalAlignment = .center
+    button.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.tintColor = ApplicationDependency.manager.currentTheme.colors.white
+    button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
+    return button
+  }()
+  
   private var keyboardHeight: CGFloat = 0
   private var milestone: Milestone?
   weak var delegate: passMilestoneData?
@@ -69,20 +80,8 @@ final class MilestonePromptVC: UIViewController {
 // MARK: UI setup methods
 extension MilestonePromptVC {
   private func setupUI() {
-//    formView.sizeToFit()
-//    view.addSubview(formView)
-//    formView.translatesAutoresizingMaskIntoConstraints = false
-//    NSLayoutConstraint.activate([
-//      formView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//      formView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.75),
-//      formView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-//    ])
-//    view.layoutIfNeeded()
-//    formView.textField.delegate = self
-//    formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
-//
-//    formView.saveButton.addTarget(self, action: #selector(saveMilestone), for: .touchUpInside)
     setupForm()
+    setupCloseButton()
   }
   
   private func setupForm() {
@@ -98,8 +97,9 @@ extension MilestonePromptVC {
     formView.textField.delegate = self
     formView.textField.addTarget(self, action: #selector(buttonAnimation), for: .allEditingEvents)
     
-    if milestone != nil {
+    if let milestone = milestone {
       formView.label.text = Localized.string("update_milestone_title")
+      formView.textField.text = milestone.name
       formView.saveButton.addTarget(self, action: #selector(updateMilestone), for: .touchUpInside)
     } else {
       formView.label.text = Localized.string("create_milestone_title")
@@ -107,6 +107,16 @@ extension MilestonePromptVC {
     }
     
     formView.saveButton.setTitle( milestone != nil ? Localized.string("update_action") : Localized.string("save_action"), for: .normal)
+  }
+  
+  private func setupCloseButton() {
+    view.addSubview(closeButton)
+    NSLayoutConstraint.activate([
+      closeButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: 0),
+      closeButton.bottomAnchor.constraint(equalTo: formView.topAnchor, constant: -5),
+      closeButton.heightAnchor.constraint(equalTo: formView.widthAnchor, multiplier: 0.075),
+      closeButton.widthAnchor.constraint(equalTo: closeButton.heightAnchor)
+    ])
   }
 }
 
@@ -153,6 +163,10 @@ extension MilestonePromptVC {
     }
     delegate?.updateMilestone(for: milestone, text)
     dismiss(animated: true, completion: nil)
+  }
+  
+  @objc private func dismissVC() {
+    self.dismiss(animated: true, completion: nil)
   }
 }
 
