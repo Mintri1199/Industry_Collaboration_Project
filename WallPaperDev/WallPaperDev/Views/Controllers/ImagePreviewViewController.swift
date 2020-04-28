@@ -11,13 +11,12 @@ import UIKit
 
 class ImagePreviewViewController: UIViewController {
   // MARK: Custom UIs
-
   private lazy var imageView = CompleteImageVIew(frame: .zero)
   private lazy var saveButton = BigBlueButton(frame: .zero)
   private lazy var previewButton = BigBlueButton(frame: .zero)
   private lazy var recropButton = BigBlueButton(frame: .zero)
   private lazy var buttonStackView = UIStackView(frame: .zero)
-  private let viewModel = ImagePreviewViewModel()
+  private let viewModel: ImagePreviewViewModel
   weak var coordinator: MainCoordinator?
 
   private var image: UIImage? {
@@ -33,9 +32,8 @@ class ImagePreviewViewController: UIViewController {
   }
 
   init(_ image: UIImage, _ goals: [Goal]) {
+    self.viewModel = ImagePreviewViewModel(image: image, goals: goals)
     super.init(nibName: nil, bundle: nil)
-    viewModel.originalImage = image
-    viewModel.selectedGoals = goals
   }
 
   override func viewDidLoad() {
@@ -73,8 +71,8 @@ extension ImagePreviewViewController {
   }
 
   private func setupButtonStackView() {
-    let blankButton = UIButton()
-    blankButton.translatesAutoresizingMaskIntoConstraints = false
+    let blankView = UIView()
+    blankView.translatesAutoresizingMaskIntoConstraints = false
     buttonStackView.addArrangedSubview(recropButton)
     buttonStackView.addArrangedSubview(saveButton)
     buttonStackView.addArrangedSubview(previewButton)
@@ -101,14 +99,8 @@ extension ImagePreviewViewController {
       buttonStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
       buttonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       buttonStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-//            blankButton.widthAnchor.constraint(equalTo: previewButton.widthAnchor, multiplier: 1)
       recropButton.widthAnchor.constraint(equalTo: previewButton.widthAnchor, multiplier: 1)
         ])
-
-    // Comment the following lines when debugging
-    recropButton.isEnabled = false //
-    recropButton.backgroundColor = .clear //
-    recropButton.titleLabel?.textColor = UIColor.clear //
   }
 
   private func setupNavBar() {
@@ -201,7 +193,6 @@ extension ImagePreviewViewController: SaveChange {
 }
 
 // MARK: - CropViewController Delegate
-
 extension ImagePreviewViewController: CropViewControllerDelegate {
   func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
     viewModel.croppedImage = image

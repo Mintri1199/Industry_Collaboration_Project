@@ -24,12 +24,14 @@ class CreateImageViewController: UIViewController {
     button.setupIcon(for: .camera)
     return button
   }()
+  
   private lazy var unsplashButton: CircleButton = {
     var button = CircleButton()
     button.frame = CGRect(origin: .zero, size: CGSize(width: view.bounds.width * 0.15, height: view.bounds.width * 0.15))
     button.setupIcon(for: .unsplash)
     return button
   }()
+  
   private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
   private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
   private lazy var emptyView = SelectedGoalsEmptyView()
