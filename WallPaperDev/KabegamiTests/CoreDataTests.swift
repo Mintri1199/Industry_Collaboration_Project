@@ -207,7 +207,9 @@ extension CoreDataTests {
     do {
       try mockPersistentContainer.viewContext.save()
     } catch {
-      print("create fakes error \(error)")
+      #if DEBUG
+        print("create fakes error \(error)")
+      #endif
     }
   }
   
