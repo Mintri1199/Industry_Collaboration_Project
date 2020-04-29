@@ -195,10 +195,7 @@ extension ImagePreviewViewController: SaveChange {
 // MARK: - CropViewController Delegate
 extension ImagePreviewViewController: CropViewControllerDelegate {
   func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
-    viewModel.croppedImage = image
-    viewModel.currentCropRect = cropRect
-    viewModel.rotate = angle
-    viewModel.updateImage { result in
+    viewModel.updateCroppedImage(new: image, newCropRect: cropRect, angle: angle) { result in
       switch result {
       case let .success(processedImage):
         self.image = processedImage
@@ -208,6 +205,7 @@ extension ImagePreviewViewController: CropViewControllerDelegate {
         #endif
       }
     }
+
     cropViewController.dismiss(animated: true, completion: nil)
   }
 }
