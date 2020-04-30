@@ -293,6 +293,7 @@ extension CreateImageViewController: UIImagePickerControllerDelegate, UINavigati
     viewModel.selectedImage = image
     selectedImageView.image = image
     expandImageView()
+    // Make it so that it also check whether the user fullfill require inputs for the update button to appear
     picker.dismiss(animated: true, completion: nil)
   }
 }

@@ -34,13 +34,14 @@ class ImagePreviewViewModel: ViewModelProtocol {
     return currentCropRect.size.height / 6
   }
   
+  private var rotate: Int = 0
+  private var currentCropRect = CGRect(origin: .zero, size: .zero)
+  
   var croppedImage: UIImage?
   var selectedGoals: [Goal]
-  var currentCropRect = CGRect(origin: .zero, size: .zero)
   var textLayerRect = CGRect(origin: .zero, size: .zero)
   var textLayerRotation: CGFloat?
   var labelText: String
-  var rotate: Int = 0
   
   init(image: UIImage, goals: [Goal]) {
     self.originalImage = image
@@ -58,8 +59,6 @@ class ImagePreviewViewModel: ViewModelProtocol {
     cropVC.customAspectRatio = UIScreen.main.bounds.size
     cropVC.aspectRatioLockEnabled = true
     cropVC.resetAspectRatioEnabled = false
-    // FLAG: Hide rotate buttons for the time being
-    cropVC.rotateButtonsHidden = true
     cropVC.aspectRatioPickerButtonHidden = true
     cropVC.toolbarPosition = .bottom
     return cropVC
@@ -85,7 +84,7 @@ class ImagePreviewViewModel: ViewModelProtocol {
       textLayerRect = defaultTextLayerFrame(for: initialCropImage)
     }
     
-    let textAttr = generateTextAttributes(font: nil, rect: nil)
+    let textAttr = generateTextAttributes(font: nil)
     
     UIGraphicsBeginImageContextWithOptions(initialCropImage.size, false, UIScreen.main.scale)
     initialCropImage.draw(in: CGRect(origin: .zero, size: currentCropRect.size))
@@ -193,29 +192,25 @@ class ImagePreviewViewModel: ViewModelProtocol {
   }
   
   func updateCroppedImage(new image: UIImage, newCropRect: CGRect, angle: Int, completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
+    // TODO: Fix the bug where text is not drawing properly for zoomed in image
+    
+    // Get the scalling factor for the new cropRect
     let heightFactor = newCropRect.size.height / currentCropRect.size.height
     let widthFactor = newCropRect.size.width / currentCropRect.size.width
+    
+    // Apply scaling factor to the textLayerRect
     let transform = CGAffineTransform(scaleX: widthFactor, y: heightFactor)
-    let newTextRect = textLayerRect.applying(transform)
-//    // apply factor to textLayer size
-//    let newTextSize = CGSize(width: textLayerRect.size.width * newWidthFactor, height: textLayerRect.size.height * newHeightFactor)
+    textLayerRect = textLayerRect.applying(transform)
+    rotate = angle
+    currentCropRect = newCropRect
+    croppedImage = image
     
     // Handle any changes on the cropped image
     UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
     image.draw(in: CGRect(origin: .zero, size: image.size))
-    
-    // TODO: Fix this urgently
-    // Might have to tranlate or scale due to the user zoom or rotate the image
-    // update the textFrame to accomodate these changes
-    
-    labelText.draw(in: newTextRect, withAttributes: generateTextAttributes(font: nil, rect: newTextRect))
+    labelText.draw(in: textLayerRect, withAttributes: generateTextAttributes(font: nil))
     let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    
-    textLayerRect = newTextRect
-    rotate = angle
-    currentCropRect = newCropRect
-    croppedImage = image
     
     if let newImage = drawnImage {
       completion(.success(newImage))
@@ -228,12 +223,12 @@ class ImagePreviewViewModel: ViewModelProtocol {
     // update the height
   }
   
-  private func generateTextAttributes(font: UIFont?, rect: CGRect?) -> [NSAttributedString.Key: Any] {
+  private func generateTextAttributes(font: UIFont?) -> [NSAttributedString.Key: Any] {
     var bestFont: UIFont
     if let font = font {
       bestFont = font
     } else {
-      bestFont = UIFont.bestFittingFont(for: labelText, in: rect ?? textLayerRect, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.heavy20.fontDescriptor)
+      bestFont = UIFont.bestFittingFont(for: labelText, in: textLayerRect, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.heavy20.fontDescriptor)
     }
     
     return [ NSAttributedString.Key.font: bestFont,

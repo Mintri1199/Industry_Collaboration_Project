@@ -20,7 +20,7 @@ class EditTextLabelViewController: UIViewController {
 
   private lazy var toolBar = UIToolbar(frame: .zero)
 //    TODO: Figure out how to make the tool bar shrink down when the user interact with the label
-//    private lazy var heightContraint: NSLayoutConstraint? = nil
+  private var heightContraint: NSLayoutConstraint?
 //    private lazy var toolBarBottomContraint: NSLayoutConstraint? = nil
   var viewModel = EditTextViewModel()
 
@@ -30,8 +30,9 @@ class EditTextLabelViewController: UIViewController {
     return label
   }()
 
-  lazy var livePreview: UIImageView = {
-    let view = UIImageView(frame: UIScreen.main.bounds)
+  lazy var imagePreview: UIImageView = {
+    let view = UIImageView()
+    view.translatesAutoresizingMaskIntoConstraints = false
     view.contentMode = .scaleAspectFit
     return view
   }()
@@ -42,6 +43,7 @@ class EditTextLabelViewController: UIViewController {
     setupDraggablelabel()
     setupIconsLayers()
     setupToolBar()
+    setupGestureRecognizers()
   }
 
   private func toggleIcons(_ isHidden: Bool) {
@@ -57,17 +59,37 @@ class EditTextLabelViewController: UIViewController {
 }
 
 // MARK: - UIs functions
-
 extension EditTextLabelViewController {
 
   private func setupLivePreview() {
-    view.addSubview(livePreview)
-    livePreview.backgroundColor = .white
+    view.addSubview(imagePreview)
+
+    NSLayoutConstraint.activate([
+      imagePreview.topAnchor.constraint(equalTo: view.topAnchor),
+      imagePreview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      imagePreview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      imagePreview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    ])
+  }
+
+  private func setupGestureRecognizers() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(unhideToolBar))
     let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissPreview))
     swipeDown.direction = .down
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(unhideToolBar))
+
     view.addGestureRecognizer(swipeDown)
     view.addGestureRecognizer(tapGesture)
+
+    let panView = UIPanGestureRecognizer(target: self, action: #selector(movingLabel(_:)))
+    // Focus on pan gesture for now
+    textLabel.addGestureRecognizer(panView)
+//    let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(scaleLabel(_:)))
+//    scaleGesture.delegate = self
+//    let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(rotateLabel(_:)))
+//    rotateGesture.delegate = self
+
+//    textLabel.addGestureRecognizer(scaleGesture)
+//    textLabel.addGestureRecognizer(rotateGesture)
   }
 
   private func setupDraggablelabel() {
@@ -76,27 +98,17 @@ extension EditTextLabelViewController {
 
     let bestFont = UIFont.bestFittingFont(for: viewModel.labelText!,
                                           in: viewModel.labelFrame!,
-                                          fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
+                                          fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.heavy20.fontDescriptor)
 
     let textAttributes: [NSAttributedString.Key: Any] = [
-      NSAttributedString.Key.foregroundColor: UIColor.white,
       NSAttributedString.Key.font: bestFont,
-      NSAttributedString.Key.paragraphStyle: paragraphStyle
+      NSAttributedString.Key.paragraphStyle: paragraphStyle,
+      NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white
     ]
     textLabel.attributedText = NSAttributedString(string: viewModel.labelText!, attributes: textAttributes)
     view.addSubview(textLabel)
 
     textLabel.isUserInteractionEnabled = true
-
-    let moveView = UIPanGestureRecognizer(target: self, action: #selector(movingLabel(_:)))
-    let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(scaleLabel(_:)))
-    scaleGesture.delegate = self
-    let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(rotateLabel(_:)))
-    rotateGesture.delegate = self
-
-    textLabel.addGestureRecognizer(moveView)
-//        textLabel.addGestureRecognizer(scaleGesture)
-//        textLabel.addGestureRecognizer(rotateGesture)
     textBorderLayer.frame = textLabel.bounds
     textBorderLayer.strokeColor = UIColor.white.cgColor
     textBorderLayer.fillColor = UIColor.clear.cgColor

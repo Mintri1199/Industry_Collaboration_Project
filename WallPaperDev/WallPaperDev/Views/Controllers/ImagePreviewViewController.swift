@@ -41,7 +41,6 @@ class ImagePreviewViewController: UIViewController {
     view.backgroundColor = .white
 
     setupViews()
-
     viewModel.initialGenerate { initialImage in
       self.image = initialImage
     }
@@ -130,11 +129,8 @@ extension ImagePreviewViewController {
 
   @objc private func presentPreview() {
     let vc = EditTextLabelViewController()
-
-    if #available(iOS 13.0, *) {
-      vc.modalPresentationStyle = .fullScreen
-    }
-    vc.livePreview.image = viewModel.croppedImage
+    vc.modalPresentationStyle = .fullScreen
+    vc.imagePreview.image = viewModel.croppedImage
     vc.viewModel.delegate = self
     vc.viewModel.labelText = viewModel.labelText
     vc.viewModel.labelRotation = viewModel.textLayerRotation ?? 0
