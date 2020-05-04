@@ -19,6 +19,13 @@ enum ImageProcessError: String, Error {
 }
 
 class ImagePreviewViewModel: ViewModelProtocol {
+  
+  private enum ScaleText {
+    case resize
+    case resizeToScreen
+    case resizeFromScreen
+  }
+  
   private let originalImage: UIImage
   private var defaultParagraphStyle: NSMutableParagraphStyle {
     let style = NSMutableParagraphStyle()
@@ -192,22 +199,33 @@ class ImagePreviewViewModel: ViewModelProtocol {
   }
   
   func updateCroppedImage(new image: UIImage, newCropRect: CGRect, angle: Int, completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
-    // TODO: Fix the bug where text is not drawing properly for zoomed in image
     
-    // Get the scalling factor for the new cropRect
-    let heightFactor = newCropRect.size.height / currentCropRect.size.height
-    let widthFactor = newCropRect.size.width / currentCropRect.size.width
+    // The new crop rect is smaller than the screen of the device
+    let resizeToScreen: Bool = newCropRect.size.height < UIScreen.main.bounds.size.height && newCropRect.size.width < UIScreen.main.bounds.width
+    
+    // Keep the new cropped image if the size is greater than the screen of the device. Otherwise resize it
+    let usingImage: UIImage = resizeToScreen ? resizeImageToScreen(image: image) : image
+    
+    var textScaleFactor: (CGFloat, CGFloat)
+    
+    // Get the scaling factor for the textRect
+    if resizeToScreen {
+      textScaleFactor = textLayerScaleFactor(option: .resizeToScreen, cropSize: newCropRect.size)
+    } else if croppedImage?.size == UIScreen.main.bounds.size {
+      textScaleFactor = textLayerScaleFactor(option: .resizeFromScreen, cropSize: newCropRect.size)
+    } else {
+      textScaleFactor = textLayerScaleFactor(option: .resize, cropSize: newCropRect.size)
+    }
     
     // Apply scaling factor to the textLayerRect
-    let transform = CGAffineTransform(scaleX: widthFactor, y: heightFactor)
+    let transform = CGAffineTransform(scaleX: textScaleFactor.0, y: textScaleFactor.1)
     textLayerRect = textLayerRect.applying(transform)
     rotate = angle
     currentCropRect = newCropRect
-    croppedImage = image
+    croppedImage = usingImage
     
-    // Handle any changes on the cropped image
-    UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
-    image.draw(in: CGRect(origin: .zero, size: image.size))
+    UIGraphicsBeginImageContextWithOptions(usingImage.size, false, UIScreen.main.scale)
+    image.draw(in: CGRect(origin: .zero, size: usingImage.size))
     labelText.draw(in: textLayerRect, withAttributes: generateTextAttributes(font: nil))
     let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
@@ -219,8 +237,15 @@ class ImagePreviewViewModel: ViewModelProtocol {
     }
   }
   
-  private func updateTextRect() {
-    // update the height
+  private func textLayerScaleFactor( option: ScaleText, cropSize: CGSize) -> (CGFloat, CGFloat) {
+    switch option {
+    case .resize:
+      return (cropSize.width / currentCropRect.size.width, cropSize.width / currentCropRect.size.width)
+    case .resizeToScreen:
+      return (UIScreen.main.bounds.size.height / currentCropRect.size.height, UIScreen.main.bounds.size.width / currentCropRect.size.width)
+    case .resizeFromScreen:
+      return (cropSize.width / UIScreen.main.bounds.size.width, cropSize.width / UIScreen.main.bounds.size.width)
+    }
   }
   
   private func generateTextAttributes(font: UIFont?) -> [NSAttributedString.Key: Any] {
@@ -252,5 +277,21 @@ class ImagePreviewViewModel: ViewModelProtocol {
                                                                      NSAttributedString.Key.foregroundColor: UIColor.white])
     
     completion(.success(textLayer))
+  }
+  
+  private func resizeImageToScreen(image: UIImage) -> UIImage {
+    let widthRatio = UIScreen.main.bounds.size.width / image.size.width
+    let newSize = CGSize(width: image.size.width * widthRatio, height: image.size.height * widthRatio)
+    
+    // This is the rect that we've calculated out and this is what is actually used below
+    let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+    
+    // Actually do the resizing to the rect using the ImageContext stuff
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+    image.draw(in: rect)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return newImage!
   }
 }
