@@ -24,6 +24,7 @@ class ImagePreviewViewModel: ViewModelProtocol {
     case resize
     case resizeToScreen
     case resizeFromScreen
+    case noChanges
   }
   
   private let originalImage: UIImage
@@ -66,6 +67,7 @@ class ImagePreviewViewModel: ViewModelProtocol {
     cropVC.customAspectRatio = UIScreen.main.bounds.size
     cropVC.aspectRatioLockEnabled = true
     cropVC.resetAspectRatioEnabled = false
+    cropVC.rotateButtonsHidden = true // TODO: Fix rotate image later
     cropVC.aspectRatioPickerButtonHidden = true
     cropVC.toolbarPosition = .bottom
     return cropVC
@@ -160,44 +162,6 @@ class ImagePreviewViewModel: ViewModelProtocol {
                   size: CGSize(width: cropWidth, height: cropHeight))
   }
   
-  func updateImage(completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
-    guard let image = croppedImage else {
-      completion(.failure(.noImage))
-      return
-    }
-    
-    generateTextLayer { result in
-      switch result {
-      case let .success(textLayer):
-        UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()!
-        image.draw(in: self.currentCropRect)
-        context.translateBy(x: textLayer.frame.origin.x, y: textLayer.frame.origin.y)
-        // MARK: - Figure out how to draw rotate textlayer while keeping it original shape
-        //                if let rotation = self.textLayerRotation {
-        //                    print(rotation)
-        //                    context.rotate(by: rotation)
-        //                }
-        textLayer.draw(in: context)
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        if let newImage = newImage {
-          completion(.success(newImage))
-        } else {
-          completion(.failure(.unableToProcessImage))
-        }
-        
-      case let .failure(error):
-        #if DEBUG
-          print(error.rawValue)
-        #endif
-        completion(.failure(.noText))
-      }
-    }
-  }
-  
   func updateCroppedImage(new image: UIImage, newCropRect: CGRect, angle: Int, completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
     
     // The new crop rect is smaller than the screen of the device
@@ -210,7 +174,12 @@ class ImagePreviewViewModel: ViewModelProtocol {
     
     // Get the scaling factor for the textRect
     if resizeToScreen {
-      textScaleFactor = textLayerScaleFactor(option: .resizeToScreen, cropSize: newCropRect.size)
+      // Check whether this is the first time creating a stetch image
+      if croppedImage?.size != UIScreen.main.bounds.size {
+        textScaleFactor = textLayerScaleFactor(option: .resizeToScreen, cropSize: newCropRect.size)
+      } else {
+        textScaleFactor = textLayerScaleFactor(option: .noChanges, cropSize: newCropRect.size)
+      }
     } else if croppedImage?.size == UIScreen.main.bounds.size {
       textScaleFactor = textLayerScaleFactor(option: .resizeFromScreen, cropSize: newCropRect.size)
     } else {
@@ -218,8 +187,11 @@ class ImagePreviewViewModel: ViewModelProtocol {
     }
     
     // Apply scaling factor to the textLayerRect
-    let transform = CGAffineTransform(scaleX: textScaleFactor.0, y: textScaleFactor.1)
-    textLayerRect = textLayerRect.applying(transform)
+    if textScaleFactor != (0, 0) {
+      let transform = CGAffineTransform(scaleX: textScaleFactor.0, y: textScaleFactor.1)
+      textLayerRect = textLayerRect.applying(transform)
+    }
+    
     rotate = angle
     currentCropRect = newCropRect
     croppedImage = usingImage
@@ -245,6 +217,8 @@ class ImagePreviewViewModel: ViewModelProtocol {
       return (UIScreen.main.bounds.size.height / currentCropRect.size.height, UIScreen.main.bounds.size.width / currentCropRect.size.width)
     case .resizeFromScreen:
       return (cropSize.width / UIScreen.main.bounds.size.width, cropSize.width / UIScreen.main.bounds.size.width)
+    case .noChanges:
+      return (0, 0)
     }
   }
   
@@ -281,7 +255,8 @@ class ImagePreviewViewModel: ViewModelProtocol {
   
   private func resizeImageToScreen(image: UIImage) -> UIImage {
     let widthRatio = UIScreen.main.bounds.size.width / image.size.width
-    let newSize = CGSize(width: image.size.width * widthRatio, height: image.size.height * widthRatio)
+    let heightRatio = UIScreen.main.bounds.size.height / image.size.height
+    let newSize = CGSize(width: image.size.width * widthRatio, height: image.size.height * heightRatio)
     
     // This is the rect that we've calculated out and this is what is actually used below
     let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
@@ -291,7 +266,6 @@ class ImagePreviewViewModel: ViewModelProtocol {
     image.draw(in: rect)
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-    
     return newImage!
   }
 }
