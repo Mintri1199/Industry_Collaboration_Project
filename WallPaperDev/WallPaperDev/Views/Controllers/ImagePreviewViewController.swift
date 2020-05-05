@@ -172,18 +172,16 @@ extension ImagePreviewViewController {
 
 extension ImagePreviewViewController: SaveChange {
   func applyChanges(_ textFrame: CGRect, _ layerRotation: CGFloat) {
-    viewModel.textLayerRect = textFrame
-    viewModel.textLayerRotation = layerRotation
-//    viewModel.updateImage { result in
-//      switch result {
-//      case let .success(image):
-//        self.image = image
-//      case let .failure(error):
-//        #if DEBUG
-//          print(error)
-//        #endif
-//      }
-//    }
+    viewModel.updateTextLayer(frame: textFrame, rotation: layerRotation) { result in
+      switch result {
+      case let .success(image):
+        self.image = image
+      case let .failure(error):
+        #if DEBUG
+          print(error)
+        #endif
+      }
+    }
   }
 }
 

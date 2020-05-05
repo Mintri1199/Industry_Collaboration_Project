@@ -13,6 +13,8 @@ class EditTextLabelViewController: UIViewController {
   private var labelInteraction: Bool = false
   private lazy var flashlightLayer = CALayer()
   private lazy var cameraLayer = CALayer()
+  private lazy var timeLayer = CALayer()
+  private lazy var dateLayer = CALayer()
   private lazy var textBorderLayer = CAShapeLayer()
   override var preferredStatusBarStyle: UIStatusBarStyle {
     .lightContent
@@ -157,17 +159,31 @@ extension EditTextLabelViewController {
     flashlightLayer.mask = flashlightCircleLayer
 
     let cameraImageLayer = CALayer()
-    cameraImageLayer.contentsGravity = .resizeAspect
-    cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.75, height: flashlightLayer.bounds.size.height * 0.75))
-    cameraImageLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewCamera.cgImage
     cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
+    cameraImageLayer.frame = CGRect(origin: .zero,
+                                    size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
+    cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
+    cameraImageLayer.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
+    
+    let cameraMask = CALayer()
+    cameraMask.contentsGravity = .resizeAspect
+    cameraMask.frame = cameraImageLayer.bounds
+    cameraMask.contents = UIImage(systemName: "camera.fill")?.cgImage
+    cameraImageLayer.mask = cameraMask
+    
 
     let flashflightImageLayer = CALayer()
     flashflightImageLayer.contentsGravity = .resizeAspect
-    flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.6, height: flashlightLayer.bounds.size.height * 0.6))
+    flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
     flashflightImageLayer.position = CGPoint(x: flashlightLayer.bounds.midX, y: flashlightLayer.bounds.midY)
-    flashflightImageLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewFlashlight.cgImage
+    flashflightImageLayer.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
 
+    let flashlightMask = CALayer()
+    flashlightMask.contentsGravity = .resizeAspect
+    flashlightMask.frame = flashflightImageLayer.bounds
+    flashlightMask.contents = UIImage(systemName: "flashlight.off.fill")?.cgImage
+    flashflightImageLayer.mask = flashlightMask
+    
     cameraLayer.addSublayer(cameraImageLayer)
     flashlightLayer.addSublayer(flashflightImageLayer)
     cameraLayer.isHidden = true
@@ -199,6 +215,8 @@ extension EditTextLabelViewController {
 
     toolBar.setItems(items, animated: true)
   }
+
+  private func setupTimeDateLayers() {}
 }
 
 // MARK: - OBJC functions
@@ -214,7 +232,8 @@ extension EditTextLabelViewController {
   }
 
   @objc private func saveTapped() {
-    viewModel.updateText(newFrame: textLabel.frame, newRotation: viewModel.newRotation ?? 0)
+    viewModel.delegate?.applyChanges(textLabel.frame, viewModel.newRotation ?? 0)
+    //    viewModel.updateText(newFrame: textLabel.frame, newRotation: viewModel.newRotation ?? 0)
     dismissPreview()
   }
 
@@ -234,7 +253,7 @@ extension EditTextLabelViewController {
       }
 
       let translation = sender.translation(in: view)
-      let keywindow = UIApplication.shared.windows.filter(\.isKeyWindow).first
+      let keywindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
       let statusFrame = keywindow?.windowScene?.statusBarManager?.statusBarFrame
 
       if let senderView = sender.view {
@@ -261,10 +280,9 @@ extension EditTextLabelViewController {
       }
 
       if let centerX = sender.view?.center.x, let centerY = sender.view?.center.y {
-        sender.view?.center = CGPoint(x: centerX + translation.x , y: centerY + translation.y)
+        sender.view?.center = CGPoint(x: centerX + translation.x, y: centerY + translation.y)
         sender.setTranslation(CGPoint.zero, in: self.view)
       }
-
     } else if sender.state == .ended {
       labelInteraction = false
       textBorderLayer.isHidden = true

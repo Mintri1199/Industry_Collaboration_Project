@@ -44,10 +44,10 @@ class ImagePreviewViewModel: ViewModelProtocol {
   
   private var rotate: Int = 0
   private var currentCropRect = CGRect(origin: .zero, size: .zero)
+  private(set) var textLayerRect = CGRect(origin: .zero, size: .zero)
+  private(set) var textLayerRotation: CGFloat?
   var croppedImage: UIImage
   var selectedGoals: [Goal]
-  var textLayerRect = CGRect(origin: .zero, size: .zero)
-  var textLayerRotation: CGFloat?
   var labelText: String
   
   init(image: UIImage, goals: [Goal]) {
@@ -226,6 +226,29 @@ class ImagePreviewViewModel: ViewModelProtocol {
     return [ NSAttributedString.Key.font: bestFont,
              NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white,
              NSAttributedString.Key.paragraphStyle: defaultParagraphStyle ]
+  }
+  
+  func updateTextLayer(frame: CGRect, rotation: CGFloat, completion: (Result<UIImage, ImageProcessError>) -> Void) {
+    // Get scale factor for orginal image and device screen to apply to the textRect
+    
+    if croppedImage.size != UIScreen.main.bounds.size {
+      let scaleFactor = (croppedImage.size.height / UIScreen.main.bounds.size.height, croppedImage.size.width / UIScreen.main.bounds.size.width)
+      let transform = CGAffineTransform(scaleX: scaleFactor.0, y: scaleFactor.1)
+      textLayerRect = frame.applying(transform)
+    }
+    
+    // re draw text layer
+    UIGraphicsBeginImageContextWithOptions(croppedImage.size, false, UIScreen.main.scale)
+    croppedImage.draw(in: CGRect(origin: .zero, size: croppedImage.size))
+    labelText.draw(in: textLayerRect, withAttributes: generateTextAttributes(font: nil))
+    let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    if let image = drawnImage {
+      completion(.success(image))
+    } else {
+      completion(.failure(.unableToProcessImage))
+    }
   }
   
   private func generateTextLayer(completion: @escaping (Result<CATextLayer, ImageProcessError>) -> Void) {

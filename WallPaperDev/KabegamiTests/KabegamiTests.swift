@@ -143,16 +143,6 @@ class KabegamiTests: XCTestCase {
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.unsplashLogo, bundlePhoto)
     
-    bundlePhoto = UIImage(named: "background_preview_camera")
-    
-    XCTAssertNotNil(bundlePhoto)
-    XCTAssertEqual(themeManager.currentTheme.imageAssets.backgroundPreviewCamera, bundlePhoto)
-    
-    bundlePhoto = UIImage(named: "background_preview_flashlight")
-    
-    XCTAssertNotNil(bundlePhoto)
-    XCTAssertEqual(themeManager.currentTheme.imageAssets.backgroundPreviewFlashlight, bundlePhoto)
-    
     bundlePhoto = UIImage(named: "tutorial_example_1")
     
     XCTAssertNotNil(bundlePhoto)
