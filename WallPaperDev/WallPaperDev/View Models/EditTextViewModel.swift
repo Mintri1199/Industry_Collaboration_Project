@@ -14,19 +14,38 @@ protocol SaveChange: AnyObject {
 }
 
 class EditTextViewModel: ViewModelProtocol {
-  var labelFrame: CGRect?
-  var labelRotation: CGFloat?
+  private(set) var labelText: String
+  private(set) var labelFrame: CGRect
+  private(set) var labelRotation: CGFloat
+  private(set) var image: UIImage
   weak var delegate: SaveChange?
   var newRotation: CGFloat?
-  var labelText: String?
-
-  func updateText(newFrame: CGRect, newRotation: CGFloat) {
-    guard let prevFrame = labelFrame, let prevRotation = labelRotation else {
-      return
+  
+  init(_ textObject: EditLabelObject) {
+    labelFrame = textObject.frame
+    labelText = textObject.text
+    labelRotation = textObject.rotation
+    image = textObject.image
+    
+    if image.size != UIScreen.main.bounds.size {
+      makeTextSmaller()
     }
-
-    if prevFrame != newFrame || prevRotation != newRotation {
+  }
+  
+  func updateText(newFrame: CGRect, newRotation: CGFloat) {
+    if labelFrame != newFrame || labelRotation != newRotation {
       delegate?.applyChanges(newFrame, newRotation)
     }
+  }
+  
+  private func makeTextSmaller() {
+    let widthRatio = UIScreen.main.bounds.size.width / image.size.width
+    let heightRatio = UIScreen.main.bounds.size.height / image.size.height
+    
+    // Flag: print statement
+    print((widthRatio, heightRatio))
+    
+    let transform = CGAffineTransform(scaleX: widthRatio, y: heightRatio)
+    labelFrame = labelFrame.applying(transform)
   }
 }

@@ -22,10 +22,9 @@ class EditTextLabelViewController: UIViewController {
 //    TODO: Figure out how to make the tool bar shrink down when the user interact with the label
   private var heightContraint: NSLayoutConstraint?
 //    private lazy var toolBarBottomContraint: NSLayoutConstraint? = nil
-  var viewModel = EditTextViewModel()
-
+  var viewModel: EditTextViewModel
   private lazy var textLabel: UILabel = {
-    let label = UILabel(frame: viewModel.labelFrame!)
+    let label = UILabel(frame: viewModel.labelFrame)
     label.numberOfLines = 10
     return label
   }()
@@ -36,6 +35,15 @@ class EditTextLabelViewController: UIViewController {
     view.contentMode = .scaleAspectFit
     return view
   }()
+
+  init(object textObject: EditLabelObject) {
+    viewModel = EditTextViewModel(textObject)
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -68,7 +76,7 @@ extension EditTextLabelViewController {
       imagePreview.topAnchor.constraint(equalTo: view.topAnchor),
       imagePreview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       imagePreview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      imagePreview.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      imagePreview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
   }
 
@@ -96,8 +104,8 @@ extension EditTextLabelViewController {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
 
-    let bestFont = UIFont.bestFittingFont(for: viewModel.labelText!,
-                                          in: viewModel.labelFrame!,
+    let bestFont = UIFont.bestFittingFont(for: viewModel.labelText,
+                                          in: viewModel.labelFrame,
                                           fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.heavy20.fontDescriptor)
 
     let textAttributes: [NSAttributedString.Key: Any] = [
@@ -105,7 +113,7 @@ extension EditTextLabelViewController {
       NSAttributedString.Key.paragraphStyle: paragraphStyle,
       NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white
     ]
-    textLabel.attributedText = NSAttributedString(string: viewModel.labelText!, attributes: textAttributes)
+    textLabel.attributedText = NSAttributedString(string: viewModel.labelText, attributes: textAttributes)
     view.addSubview(textLabel)
 
     textLabel.isUserInteractionEnabled = true
@@ -150,13 +158,13 @@ extension EditTextLabelViewController {
 
     let cameraImageLayer = CALayer()
     cameraImageLayer.contentsGravity = .resizeAspect
-    cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
+    cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.75, height: flashlightLayer.bounds.size.height * 0.75))
     cameraImageLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewCamera.cgImage
     cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
 
     let flashflightImageLayer = CALayer()
     flashflightImageLayer.contentsGravity = .resizeAspect
-    flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
+    flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.6, height: flashlightLayer.bounds.size.height * 0.6))
     flashflightImageLayer.position = CGPoint(x: flashlightLayer.bounds.midX, y: flashlightLayer.bounds.midY)
     flashflightImageLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewFlashlight.cgImage
 
@@ -226,8 +234,37 @@ extension EditTextLabelViewController {
       }
 
       let translation = sender.translation(in: view)
-      textLabel.center = CGPoint(x: textLabel.center.x + translation.x, y: textLabel.center.y + translation.y)
-      sender.setTranslation(CGPoint.zero, in: view)
+      let keywindow = UIApplication.shared.windows.filter(\.isKeyWindow).first
+      let statusFrame = keywindow?.windowScene?.statusBarManager?.statusBarFrame
+
+      if let senderView = sender.view {
+
+        // Restrict x axis from going too far left
+        if senderView.frame.origin.x < 0.0 {
+          senderView.frame.origin = CGPoint(x: 0.0, y: senderView.frame.origin.y)
+        }
+
+        // Restrict y axis from going too far up
+        if senderView.frame.origin.y < statusFrame!.height {
+          senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: statusFrame!.height)
+        }
+
+        // Restrict x axis from going too far right
+        if senderView.frame.origin.x + senderView.frame.size.width > view.frame.width {
+          senderView.frame.origin = CGPoint(x: view.frame.width - senderView.frame.size.width, y: senderView.frame.origin.y)
+        }
+
+        // Restrict y axis from going too far down
+        if senderView.frame.origin.y + senderView.frame.size.height > view.frame.height {
+          senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: view.frame.height - senderView.frame.size.height)
+        }
+      }
+
+      if let centerX = sender.view?.center.x, let centerY = sender.view?.center.y {
+        sender.view?.center = CGPoint(x: centerX + translation.x , y: centerY + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self.view)
+      }
+
     } else if sender.state == .ended {
       labelInteraction = false
       textBorderLayer.isHidden = true
@@ -285,16 +322,16 @@ extension EditTextLabelViewController {
 }
 
 extension EditTextLabelViewController: UIGestureRecognizerDelegate {
-  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-    guard gestureRecognizer.view === textLabel, otherGestureRecognizer.view === textLabel else {
-      return false
-    }
-
-    if gestureRecognizer is UILongPressGestureRecognizer ||
-      otherGestureRecognizer is UILongPressGestureRecognizer {
-      return false
-    }
-
-    return true
-  }
+//  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//    guard gestureRecognizer.view === textLabel, otherGestureRecognizer.view === textLabel else {
+//      return false
+//    }
+//
+//    if gestureRecognizer is UILongPressGestureRecognizer ||
+//      otherGestureRecognizer is UILongPressGestureRecognizer {
+//      return false
+//    }
+//
+//    return true
+//  }
 }

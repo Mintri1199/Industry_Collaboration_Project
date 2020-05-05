@@ -128,13 +128,12 @@ extension ImagePreviewViewController {
   }
 
   @objc private func presentPreview() {
-    let vc = EditTextLabelViewController()
+    let textObject = EditLabelObject(image: viewModel.croppedImage, frame: viewModel.textLayerRect, text: viewModel.labelText, rotation: 0)
+
+    let vc = EditTextLabelViewController(object: textObject)
     vc.modalPresentationStyle = .fullScreen
     vc.imagePreview.image = viewModel.croppedImage
     vc.viewModel.delegate = self
-    vc.viewModel.labelText = viewModel.labelText
-    vc.viewModel.labelRotation = viewModel.textLayerRotation ?? 0
-    vc.viewModel.labelFrame = viewModel.textLayerRect
     present(vc, animated: true, completion: nil)
   }
 

@@ -44,8 +44,7 @@ class ImagePreviewViewModel: ViewModelProtocol {
   
   private var rotate: Int = 0
   private var currentCropRect = CGRect(origin: .zero, size: .zero)
-  
-  var croppedImage: UIImage?
+  var croppedImage: UIImage
   var selectedGoals: [Goal]
   var textLayerRect = CGRect(origin: .zero, size: .zero)
   var textLayerRotation: CGFloat?
@@ -55,6 +54,8 @@ class ImagePreviewViewModel: ViewModelProtocol {
     self.originalImage = image
     self.selectedGoals = goals
     self.labelText = goals.compactMap { $0.name }.joined(separator: "\n")
+    self.croppedImage = UIImage()
+    self.croppedImage = createInitialCroppedImage()
   }
   
   func configureCropVC() -> CropViewController? {
@@ -73,30 +74,23 @@ class ImagePreviewViewModel: ViewModelProtocol {
     return cropVC
   }
   
+  private func createInitialCroppedImage() -> UIImage {
+    currentCropRect = defaultCropRect()
+    let cropImage = originalImage.cgImage?.cropping(to: currentCropRect)
+    return UIImage(cgImage: cropImage!)
+  }
+  
   func initialGenerate(completion: @escaping (UIImage) -> Void) {
     // This function will generate a wallpaper initially when the user preview the picture
     
-    if currentCropRect.origin == .zero && currentCropRect.size == .zero {
-      currentCropRect = defaultCropRect()
-    }
-    
-    // Create the cropped image
-    guard let cropImage = originalImage.cgImage?.cropping(to: currentCropRect) else {
-      return
-    }
-    
-    // Focus on getting the right crop image first
-    let initialCropImage = UIImage(cgImage: cropImage)
-    croppedImage = initialCropImage
-    
     if textLayerRect.origin == .zero && textLayerRect.size == .zero {
-      textLayerRect = defaultTextLayerFrame(for: initialCropImage)
+      textLayerRect = defaultTextLayerFrame(for: croppedImage)
     }
     
     let textAttr = generateTextAttributes(font: nil)
     
-    UIGraphicsBeginImageContextWithOptions(initialCropImage.size, false, UIScreen.main.scale)
-    initialCropImage.draw(in: CGRect(origin: .zero, size: currentCropRect.size))
+    UIGraphicsBeginImageContextWithOptions(croppedImage.size, false, UIScreen.main.scale)
+    croppedImage.draw(in: CGRect(origin: .zero, size: currentCropRect.size))
     labelText.draw(in: textLayerRect, withAttributes: textAttr)
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
@@ -104,7 +98,7 @@ class ImagePreviewViewModel: ViewModelProtocol {
     if let generatedImage = newImage {
       completion(generatedImage)
     } else {
-      completion(initialCropImage)
+      completion(croppedImage)
     }
   }
   
@@ -138,7 +132,6 @@ class ImagePreviewViewModel: ViewModelProtocol {
      The CGRect should also be in the center of the image
      */
     
-    // constants
     let imageSize = originalImage.size
     let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
     let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
@@ -175,12 +168,12 @@ class ImagePreviewViewModel: ViewModelProtocol {
     // Get the scaling factor for the textRect
     if resizeToScreen {
       // Check whether this is the first time creating a stetch image
-      if croppedImage?.size != UIScreen.main.bounds.size {
+      if croppedImage.size != UIScreen.main.bounds.size {
         textScaleFactor = textLayerScaleFactor(option: .resizeToScreen, cropSize: newCropRect.size)
       } else {
         textScaleFactor = textLayerScaleFactor(option: .noChanges, cropSize: newCropRect.size)
       }
-    } else if croppedImage?.size == UIScreen.main.bounds.size {
+    } else if croppedImage.size == UIScreen.main.bounds.size {
       textScaleFactor = textLayerScaleFactor(option: .resizeFromScreen, cropSize: newCropRect.size)
     } else {
       textScaleFactor = textLayerScaleFactor(option: .resize, cropSize: newCropRect.size)
@@ -268,4 +261,11 @@ class ImagePreviewViewModel: ViewModelProtocol {
     UIGraphicsEndImageContext()
     return newImage!
   }
+}
+
+struct EditLabelObject {
+  let image: UIImage
+  let frame: CGRect
+  let text: String
+  let rotation: CGFloat
 }
