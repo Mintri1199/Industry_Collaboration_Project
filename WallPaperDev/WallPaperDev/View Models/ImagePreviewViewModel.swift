@@ -235,6 +235,8 @@ class ImagePreviewViewModel: ViewModelProtocol {
       let scaleFactor = (croppedImage.size.height / UIScreen.main.bounds.size.height, croppedImage.size.width / UIScreen.main.bounds.size.width)
       let transform = CGAffineTransform(scaleX: scaleFactor.0, y: scaleFactor.1)
       textLayerRect = frame.applying(transform)
+    } else if frame != textLayerRect {
+      textLayerRect = frame
     }
     
     // re draw text layer
