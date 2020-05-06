@@ -13,6 +13,8 @@ class EditTextLabelViewController: UIViewController {
   private var labelInteraction: Bool = false
   private lazy var flashlightLayer = CALayer()
   private lazy var cameraLayer = CALayer()
+  private lazy var timeLayer = CATextLayer()
+  private lazy var dateLayer = CATextLayer()
   private lazy var textBorderLayer = CAShapeLayer()
   override var preferredStatusBarStyle: UIStatusBarStyle {
     .lightContent
@@ -20,21 +22,30 @@ class EditTextLabelViewController: UIViewController {
 
   private lazy var toolBar = UIToolbar(frame: .zero)
 //    TODO: Figure out how to make the tool bar shrink down when the user interact with the label
-//    private lazy var heightContraint: NSLayoutConstraint? = nil
+  private var heightContraint: NSLayoutConstraint?
 //    private lazy var toolBarBottomContraint: NSLayoutConstraint? = nil
-  var viewModel = EditTextViewModel()
-
+  var viewModel: EditTextViewModel
   private lazy var textLabel: UILabel = {
-    let label = UILabel(frame: viewModel.labelFrame!)
+    let label = UILabel(frame: viewModel.labelFrame)
     label.numberOfLines = 10
     return label
   }()
 
-  lazy var livePreview: UIImageView = {
-    let view = UIImageView(frame: UIScreen.main.bounds)
+  lazy var imagePreview: UIImageView = {
+    let view = UIImageView()
+    view.translatesAutoresizingMaskIntoConstraints = false
     view.contentMode = .scaleAspectFit
     return view
   }()
+
+  init(object textObject: EditLabelObject) {
+    viewModel = EditTextViewModel(textObject)
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -42,11 +53,15 @@ class EditTextLabelViewController: UIViewController {
     setupDraggablelabel()
     setupIconsLayers()
     setupToolBar()
+    setupGestureRecognizers()
+    setupTimeDateLayers()
   }
 
   private func toggleIcons(_ isHidden: Bool) {
     flashlightLayer.isHidden = isHidden
     cameraLayer.isHidden = isHidden
+    dateLayer.isHidden = isHidden
+    timeLayer.isHidden = isHidden
   }
 
   private func showToolBar(_ isHidden: Bool) {
@@ -54,49 +69,83 @@ class EditTextLabelViewController: UIViewController {
       self.toolBar.isHidden = isHidden
     }
   }
+
+  private func viewShouldBeInBounds(for senderView: UIView) {
+    let keywindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+    let statusFrame = keywindow?.windowScene?.statusBarManager?.statusBarFrame
+    // Restrict x axis from going too far left
+    if senderView.frame.origin.x < 0.0 {
+      senderView.frame.origin = CGPoint(x: 0.0, y: senderView.frame.origin.y)
+    }
+
+    // Restrict y axis from going too far up
+    if senderView.frame.origin.y < statusFrame!.height {
+      senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: statusFrame!.height)
+    }
+
+    // Restrict x axis from going too far right
+    if senderView.frame.origin.x + senderView.frame.size.width > view.frame.width {
+      senderView.frame.origin = CGPoint(x: view.frame.width - senderView.frame.size.width, y: senderView.frame.origin.y)
+    }
+
+    // Restrict y axis from going too far down
+    if senderView.frame.origin.y + senderView.frame.size.height > view.frame.height {
+      senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: view.frame.height - senderView.frame.size.height)
+    }
+  }
 }
 
 // MARK: - UIs functions
-
 extension EditTextLabelViewController {
 
   private func setupLivePreview() {
-    view.addSubview(livePreview)
-    livePreview.backgroundColor = .white
+    view.addSubview(imagePreview)
+
+    NSLayoutConstraint.activate([
+      imagePreview.topAnchor.constraint(equalTo: view.topAnchor),
+      imagePreview.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      imagePreview.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      imagePreview.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+  }
+
+  private func setupGestureRecognizers() {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(unhideToolBar))
     let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(dismissPreview))
     swipeDown.direction = .down
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(unhideToolBar))
+
     view.addGestureRecognizer(swipeDown)
     view.addGestureRecognizer(tapGesture)
+
+    let panView = UIPanGestureRecognizer(target: self, action: #selector(movingLabel(_:)))
+    // Focus on pan gesture for now
+    textLabel.addGestureRecognizer(panView)
+//    let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(scaleLabel(_:)))
+//    scaleGesture.delegate = self
+//    let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(rotateLabel(_:)))
+//    rotateGesture.delegate = self
+
+//    textLabel.addGestureRecognizer(scaleGesture)
+//    textLabel.addGestureRecognizer(rotateGesture)
   }
 
   private func setupDraggablelabel() {
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
 
-    let bestFont = UIFont.bestFittingFont(for: viewModel.labelText!,
-                                          in: viewModel.labelFrame!,
-                                          fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
+    let bestFont = UIFont.bestFittingFont(for: viewModel.labelText,
+                                          in: viewModel.labelFrame,
+                                          fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.heavy20.fontDescriptor)
 
     let textAttributes: [NSAttributedString.Key: Any] = [
-      NSAttributedString.Key.foregroundColor: UIColor.white,
       NSAttributedString.Key.font: bestFont,
-      NSAttributedString.Key.paragraphStyle: paragraphStyle
+      NSAttributedString.Key.paragraphStyle: paragraphStyle,
+      NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white
     ]
-    textLabel.attributedText = NSAttributedString(string: viewModel.labelText!, attributes: textAttributes)
+    textLabel.attributedText = NSAttributedString(string: viewModel.labelText, attributes: textAttributes)
     view.addSubview(textLabel)
 
     textLabel.isUserInteractionEnabled = true
-
-    let moveView = UIPanGestureRecognizer(target: self, action: #selector(movingLabel(_:)))
-    let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(scaleLabel(_:)))
-    scaleGesture.delegate = self
-    let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(rotateLabel(_:)))
-    rotateGesture.delegate = self
-
-    textLabel.addGestureRecognizer(moveView)
-//        textLabel.addGestureRecognizer(scaleGesture)
-//        textLabel.addGestureRecognizer(rotateGesture)
     textBorderLayer.frame = textLabel.bounds
     textBorderLayer.strokeColor = UIColor.white.cgColor
     textBorderLayer.fillColor = UIColor.clear.cgColor
@@ -137,16 +186,29 @@ extension EditTextLabelViewController {
     flashlightLayer.mask = flashlightCircleLayer
 
     let cameraImageLayer = CALayer()
-    cameraImageLayer.contentsGravity = .resizeAspect
-    cameraImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
-    cameraImageLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewCamera.cgImage
     cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
+    cameraImageLayer.frame = CGRect(origin: .zero,
+                                    size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
+    cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
+    cameraImageLayer.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
+
+    let cameraMask = CALayer()
+    cameraMask.contentsGravity = .resizeAspect
+    cameraMask.frame = cameraImageLayer.bounds
+    cameraMask.contents = UIImage(systemName: "camera.fill")?.cgImage
+    cameraImageLayer.mask = cameraMask
 
     let flashflightImageLayer = CALayer()
     flashflightImageLayer.contentsGravity = .resizeAspect
     flashflightImageLayer.frame = CGRect(origin: .zero, size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
     flashflightImageLayer.position = CGPoint(x: flashlightLayer.bounds.midX, y: flashlightLayer.bounds.midY)
-    flashflightImageLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewFlashlight.cgImage
+    flashflightImageLayer.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
+
+    let flashlightMask = CALayer()
+    flashlightMask.contentsGravity = .resizeAspect
+    flashlightMask.frame = flashflightImageLayer.bounds
+    flashlightMask.contents = UIImage(systemName: "flashlight.off.fill")?.cgImage
+    flashflightImageLayer.mask = flashlightMask
 
     cameraLayer.addSublayer(cameraImageLayer)
     flashlightLayer.addSublayer(flashflightImageLayer)
@@ -179,6 +241,44 @@ extension EditTextLabelViewController {
 
     toolBar.setItems(items, animated: true)
   }
+
+  private func setupTimeDateLayers() {
+    let timeFormatter = DateFormatter()
+
+    let localSetting = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)
+    if localSetting?.firstIndex(of: "a") == nil {
+      timeFormatter.dateFormat = "H:mm"
+    } else {
+      timeFormatter.dateFormat = "h:mm"
+    }
+
+    let dayFormatter = DateFormatter()
+    dayFormatter.dateFormat = "EEEE, MMM d"
+    let timeString = timeFormatter.string(from: Date())
+    let dateString = dayFormatter.string(from: Date())
+
+    let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+    let statusFrame = keyWindow?.windowScene?.statusBarManager?.statusBarFrame
+    let defaultSize = CGSize(width: UIScreen.main.bounds.size.width / 2, height: UIScreen.main.bounds.size.height / 8)
+    let defaultOrigin = CGPoint(x: UIScreen.main.bounds.midX - (defaultSize.width / 2), y: statusFrame!.size.height + defaultSize.height / 2)
+
+    timeLayer.frame = CGRect(origin: defaultOrigin, size: defaultSize)
+    timeLayer.alignmentMode = .center
+    let attributedString = NSAttributedString(string: timeString, attributes: [ NSAttributedString.Key.font : UIFont.bestFittingFont(for: timeString, in: timeLayer.bounds, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.light20.fontDescriptor),
+                                                                                NSAttributedString.Key.foregroundColor : ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+    timeLayer.string = attributedString
+
+    dateLayer.frame = CGRect(origin: CGPoint(x: defaultOrigin.x, y: timeLayer.frame.maxY), size: CGSize(width: defaultSize.width, height: defaultSize.height / 2))
+    dateLayer.alignmentMode = .center
+    let dateAttributedString = NSAttributedString(string: dateString, attributes: [ NSAttributedString.Key.font : UIFont.bestFittingFont(for: dateString, in: dateLayer.bounds, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.regular20.fontDescriptor),
+                                                                                    NSAttributedString.Key.foregroundColor : ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+    dateLayer.string = dateAttributedString
+
+    dateLayer.isHidden = true
+    timeLayer.isHidden = true
+    view.layer.insertSublayer(dateLayer, above: textLabel.layer)
+    view.layer.insertSublayer(timeLayer, above: textLabel.layer)
+  }
 }
 
 // MARK: - OBJC functions
@@ -194,7 +294,8 @@ extension EditTextLabelViewController {
   }
 
   @objc private func saveTapped() {
-    viewModel.updateText(newFrame: textLabel.frame, newRotation: viewModel.newRotation ?? 0)
+    viewModel.delegate?.applyChanges(textLabel.frame, viewModel.newRotation ?? 0)
+    //    viewModel.updateText(newFrame: textLabel.frame, newRotation: viewModel.newRotation ?? 0)
     dismissPreview()
   }
 
@@ -214,9 +315,20 @@ extension EditTextLabelViewController {
       }
 
       let translation = sender.translation(in: view)
-      textLabel.center = CGPoint(x: textLabel.center.x + translation.x, y: textLabel.center.y + translation.y)
-      sender.setTranslation(CGPoint.zero, in: view)
+
+      if let senderView = sender.view {
+        viewShouldBeInBounds(for: senderView)
+      }
+
+      if let centerX = sender.view?.center.x, let centerY = sender.view?.center.y {
+        sender.view?.center = CGPoint(x: centerX + translation.x, y: centerY + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self.view)
+      }
     } else if sender.state == .ended {
+      if let senderView = sender.view {
+        viewShouldBeInBounds(for: senderView)
+      }
+
       labelInteraction = false
       textBorderLayer.isHidden = true
       toggleIcons(true)
@@ -273,16 +385,16 @@ extension EditTextLabelViewController {
 }
 
 extension EditTextLabelViewController: UIGestureRecognizerDelegate {
-  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-    guard gestureRecognizer.view === textLabel, otherGestureRecognizer.view === textLabel else {
-      return false
-    }
-
-    if gestureRecognizer is UILongPressGestureRecognizer ||
-      otherGestureRecognizer is UILongPressGestureRecognizer {
-      return false
-    }
-
-    return true
-  }
+//  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//    guard gestureRecognizer.view === textLabel, otherGestureRecognizer.view === textLabel else {
+//      return false
+//    }
+//
+//    if gestureRecognizer is UILongPressGestureRecognizer ||
+//      otherGestureRecognizer is UILongPressGestureRecognizer {
+//      return false
+//    }
+//
+//    return true
+//  }
 }

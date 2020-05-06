@@ -19,157 +19,278 @@ enum ImageProcessError: String, Error {
 }
 
 class ImagePreviewViewModel: ViewModelProtocol {
-  var originalImage: UIImage?
-  var croppedImage: UIImage?
-  var selectedGoals: [Goal] = []
-  var currentCropRect: CGRect?
-  var textLayerRect: CGRect?
-  var textLayerRotation: CGFloat?
-  var labelText: String?
-  var rotate: Int?
-
+  
+  private enum ScaleText {
+    case resize
+    case resizeToScreen
+    case resizeFromScreen
+    case noChanges
+  }
+  
+  private let originalImage: UIImage
+  private var defaultParagraphStyle: NSMutableParagraphStyle {
+    let style = NSMutableParagraphStyle()
+    style.alignment = .center
+    return style
+  }
+  
+  private var defaultTextLayerWidth: CGFloat {
+    return currentCropRect.size.width * 0.65
+  }
+  
+  private var defaultTextLayerHeight: CGFloat {
+    return currentCropRect.size.height / 6
+  }
+  
+  private var rotate: Int = 0
+  private var currentCropRect = CGRect(origin: .zero, size: .zero)
+  private(set) var textLayerRect = CGRect(origin: .zero, size: .zero)
+  private(set) var textLayerRotation: CGFloat?
+  var croppedImage: UIImage
+  var selectedGoals: [Goal]
+  var labelText: String
+  
+  init(image: UIImage, goals: [Goal]) {
+    self.originalImage = image
+    self.selectedGoals = goals
+    self.labelText = goals.compactMap { $0.name }.joined(separator: "\n")
+    self.croppedImage = UIImage()
+    self.croppedImage = createInitialCroppedImage()
+  }
+  
   func configureCropVC() -> CropViewController? {
     // Build an instance of CropViewController for the VC to present
-    guard let image = originalImage else {
-      return nil
-    }
-    let cropVC = CropViewController(croppingStyle: .default, image: image)
-    if #available(iOS 13, *) {
-      cropVC.modalPresentationStyle = .fullScreen
-    }
-    if let rect = currentCropRect {
-      cropVC.imageCropFrame = rect
-    }
-    if let angle = rotate {
-      cropVC.angle = angle
-    }
-
+    let cropVC = CropViewController(croppingStyle: .default, image: originalImage)
+    cropVC.modalPresentationStyle = .fullScreen
+    cropVC.imageCropFrame = currentCropRect
+    cropVC.angle = rotate
     cropVC.aspectRatioPreset = .presetCustom
     cropVC.customAspectRatio = UIScreen.main.bounds.size
     cropVC.aspectRatioLockEnabled = true
     cropVC.resetAspectRatioEnabled = false
+    cropVC.rotateButtonsHidden = true // TODO: Fix rotate image later
     cropVC.aspectRatioPickerButtonHidden = true
     cropVC.toolbarPosition = .bottom
     return cropVC
   }
-
+  
+  private func createInitialCroppedImage() -> UIImage {
+    currentCropRect = defaultCropRect()
+    let cropImage = originalImage.cgImage?.cropping(to: currentCropRect)
+    return UIImage(cgImage: cropImage!)
+  }
+  
   func initialGenerate(completion: @escaping (UIImage) -> Void) {
     // This function will generate a wallpaper initially when the user preview the picture
-    guard let image = originalImage else {
-      return
+    
+    if textLayerRect.origin == .zero && textLayerRect.size == .zero {
+      textLayerRect = defaultTextLayerFrame(for: croppedImage)
     }
-    // Find the correct CGRect to crop the image to the Screen ratio
-    // Calculate the Width and Height ratios
-    let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
-    let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
-
-    var cropHeight: CGFloat = image.size.height
-    var cropWidth: CGFloat = image.size.width
-    // Configure the cropping size to the screen ratio
-    if image.size.width * screenHeightRatio > image.size.height {
-      cropWidth = image.size.height * screenWidthRatio
-    } else if image.size.height * screenWidthRatio > image.size.width {
-      cropHeight = image.size.width * screenHeightRatio
-    }
-    // Set the cropping rect
-    let cropRect = CGRect(origin: .zero, size: CGSize(width: cropWidth, height: cropHeight))
-    // assign it to the current rect so we can use it later
-    currentCropRect = cropRect
-    // Create the cropped image
-    guard let cropImage = image.cgImage?.cropping(to: cropRect) else {
-      return
-    }
-    let initialCropImage = UIImage(cgImage: cropImage)
-    croppedImage = initialCropImage
-
-    let goalsText: String = selectedGoals.compactMap { $0.name }.joined(separator: "\n")
-    labelText = goalsText
-    // Configure the attributes and font for the string
-    let paragraphStyle = NSMutableParagraphStyle()
-    paragraphStyle.alignment = .center
-
-    let bestFont = UIFont.bestFittingFont(for: goalsText,
-                                          in: CGRect(origin: cropRect.origin, size: CGSize(width: cropRect.size.width * 0.65, height: cropRect.size.height / 6)),
-                                          fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.medium20.fontDescriptor)
-
-    let textAttr: [NSAttributedString.Key: Any] = [ NSAttributedString.Key.font: bestFont,
-                                                    NSAttributedString.Key.foregroundColor: UIColor.white,
-                                                    NSAttributedString.Key.paragraphStyle: paragraphStyle ]
-    // Get the size to fit the text
-    let textSize = goalsText.size(withAttributes: textAttr)
-    // Configure the CGRect with the text size and position it at the bottom of the screen
-    let drawTextRect = CGRect(origin: CGPoint(x: (initialCropImage.size.width - textSize.width) / 2, y: initialCropImage.size.height - (textSize.height * 1.5 )),
-                              size: textSize)
-    textLayerRect = drawTextRect
-    // Draw the image with the text on it
-    UIGraphicsBeginImageContextWithOptions(initialCropImage.size, false, UIScreen.main.scale)
-    initialCropImage.draw(in: cropRect)
-    goalsText.draw(in: drawTextRect, withAttributes: textAttr)
+    
+    let textAttr = generateTextAttributes(font: nil)
+    
+    UIGraphicsBeginImageContextWithOptions(croppedImage.size, false, UIScreen.main.scale)
+    croppedImage.draw(in: CGRect(origin: .zero, size: currentCropRect.size))
+    labelText.draw(in: textLayerRect, withAttributes: textAttr)
     let newImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
-
-    if let newImage = newImage {
-      completion(newImage)
+    
+    if let generatedImage = newImage {
+      completion(generatedImage)
+    } else {
+      completion(croppedImage)
     }
   }
-
-  func updateImage(completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
-    guard let image = croppedImage, let cropRect = currentCropRect else {
-      completion(.failure(.noImage))
-      return
+  
+  private func defaultTextLayerFrame(for croppedImage: UIImage) -> CGRect {
+    /*
+     This method is responsible for generating a default CGRect for the textLayer
+     The CGRect be near the bottom
+     The CGRect should be in in the center X of the cropped image
+     The CGRect height should also be the cropped image height / 6
+     The CGRect width should also be the cropped image width * 0.65
+     */
+    let bestFont = UIFont.bestFittingFont(for: labelText,
+                                          in: CGRect(origin: currentCropRect.origin, size: CGSize(width: defaultTextLayerWidth, height: defaultTextLayerHeight)),
+                                          fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.medium20.fontDescriptor)
+    
+    let textAttr = [ NSAttributedString.Key.font: bestFont,
+                     NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white,
+                     NSAttributedString.Key.paragraphStyle: defaultParagraphStyle ]
+    
+    let textSize = labelText.size(withAttributes: textAttr)
+    
+    // Configure the CGRect with the text size and position it near the bottom of the screen
+    return CGRect(origin: CGPoint(x: (croppedImage.size.width - textSize.width) / 2, y: croppedImage.size.height - (textSize.height * 1.5 )),
+                  size: textSize)
+  }
+  
+  private func defaultCropRect() -> CGRect {
+    /*
+     This method is responsible for generating a default CGRect for the cropping
+     The CGRect should fill in the original image size while keeping the device's aspect ratio
+     The CGRect should also be in the center of the image
+     */
+    
+    let imageSize = originalImage.size
+    let screenWidthRatio = UIScreen.main.bounds.width / UIScreen.main.bounds.height
+    let screenHeightRatio = UIScreen.main.bounds.height / UIScreen.main.bounds.width
+    
+    // initial crop size height and width
+    var cropHeight: CGFloat = imageSize.height
+    var cropWidth: CGFloat = imageSize.width
+    
+    // Configure the cropping size to the screen ratio
+    if imageSize.width * screenHeightRatio > imageSize.height {
+      cropWidth = imageSize.height * screenWidthRatio
+    } else if imageSize.height * screenWidthRatio > imageSize.width {
+      cropHeight = imageSize.width * screenHeightRatio
     }
-
-    generateTextLayer { result in
-      switch result {
-      case let .success(textLayer):
-        UIGraphicsBeginImageContextWithOptions(image.size, false, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()!
-        image.draw(in: cropRect)
-        context.translateBy(x: textLayer.frame.origin.x, y: textLayer.frame.origin.y)
-        // MARK: - Figure out how to draw rotate textlayer while keeping it original shape
-        //                if let rotation = self.textLayerRotation {
-//                    print(rotation)
-//                    context.rotate(by: rotation)
-//                }
-        textLayer.draw(in: context)
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        if let newImage = newImage {
-          completion(.success(newImage))
-        } else {
-          completion(.failure(.unableToProcessImage))
-        }
-
-      case let .failure(error):
-        #if DEBUG
-          print(error.rawValue)
-        #endif
-        completion(.failure(.noText))
+    
+    // Configure the origin that will adjust the crop size to the center of the image
+    let cropOriginX = (imageSize.width / 2) - (cropWidth / 2)
+    let cropOriginY = (imageSize.height / 2) - (cropHeight / 2)
+    
+    return CGRect(origin: CGPoint(x: cropOriginX, y: cropOriginY),
+                  size: CGSize(width: cropWidth, height: cropHeight))
+  }
+  
+  func updateCroppedImage(new image: UIImage, newCropRect: CGRect, angle: Int, completion: @escaping (Result<UIImage, ImageProcessError>) -> Void) {
+    
+    // The new crop rect is smaller than the screen of the device
+    let resizeToScreen: Bool = newCropRect.size.height < UIScreen.main.bounds.size.height && newCropRect.size.width < UIScreen.main.bounds.width
+    
+    // Keep the new cropped image if the size is greater than the screen of the device. Otherwise resize it
+    let usingImage: UIImage = resizeToScreen ? resizeImageToScreen(image: image) : image
+    
+    var textScaleFactor: (CGFloat, CGFloat)
+    
+    // Get the scaling factor for the textRect
+    if resizeToScreen {
+      // Check whether this is the first time creating a stetch image
+      if croppedImage.size != UIScreen.main.bounds.size {
+        textScaleFactor = textLayerScaleFactor(option: .resizeToScreen, cropSize: newCropRect.size)
+      } else {
+        textScaleFactor = textLayerScaleFactor(option: .noChanges, cropSize: newCropRect.size)
       }
+    } else if croppedImage.size == UIScreen.main.bounds.size {
+      textScaleFactor = textLayerScaleFactor(option: .resizeFromScreen, cropSize: newCropRect.size)
+    } else {
+      textScaleFactor = textLayerScaleFactor(option: .resize, cropSize: newCropRect.size)
+    }
+    
+    // Apply scaling factor to the textLayerRect
+    if textScaleFactor != (0, 0) {
+      let transform = CGAffineTransform(scaleX: textScaleFactor.0, y: textScaleFactor.1)
+      textLayerRect = textLayerRect.applying(transform)
+    }
+    
+    rotate = angle
+    currentCropRect = newCropRect
+    croppedImage = usingImage
+    
+    UIGraphicsBeginImageContextWithOptions(usingImage.size, false, UIScreen.main.scale)
+    image.draw(in: CGRect(origin: .zero, size: usingImage.size))
+    labelText.draw(in: textLayerRect, withAttributes: generateTextAttributes(font: nil))
+    let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    if let newImage = drawnImage {
+      completion(.success(newImage))
+    } else {
+      completion(.failure(.unableToProcessImage))
     }
   }
-
-  private func generateTextLayer(completion: @escaping (Result<CATextLayer, ImageProcessError>) -> Void) {
-    guard let textRect = textLayerRect else {
-      completion(.failure(.unableToCreateTextLayer))
-      return
+  
+  private func textLayerScaleFactor( option: ScaleText, cropSize: CGSize) -> (CGFloat, CGFloat) {
+    switch option {
+    case .resize:
+      return (cropSize.width / currentCropRect.size.width, cropSize.width / currentCropRect.size.width)
+    case .resizeToScreen:
+      return (UIScreen.main.bounds.size.height / currentCropRect.size.height, UIScreen.main.bounds.size.width / currentCropRect.size.width)
+    case .resizeFromScreen:
+      return (cropSize.width / UIScreen.main.bounds.size.width, cropSize.width / UIScreen.main.bounds.size.width)
+    case .noChanges:
+      return (0, 0)
     }
+  }
+  
+  private func generateTextAttributes(font: UIFont?) -> [NSAttributedString.Key: Any] {
+    var bestFont: UIFont
+    if let font = font {
+      bestFont = font
+    } else {
+      bestFont = UIFont.bestFittingFont(for: labelText, in: textLayerRect, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.heavy20.fontDescriptor)
+    }
+    
+    return [ NSAttributedString.Key.font: bestFont,
+             NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white,
+             NSAttributedString.Key.paragraphStyle: defaultParagraphStyle ]
+  }
+  
+  func updateTextLayer(frame: CGRect, rotation: CGFloat, completion: (Result<UIImage, ImageProcessError>) -> Void) {
+    // Get scale factor for orginal image and device screen to apply to the textRect
+    
+    if croppedImage.size != UIScreen.main.bounds.size {
+      let scaleFactor = (croppedImage.size.height / UIScreen.main.bounds.size.height, croppedImage.size.width / UIScreen.main.bounds.size.width)
+      let transform = CGAffineTransform(scaleX: scaleFactor.0, y: scaleFactor.1)
+      textLayerRect = frame.applying(transform)
+    } else if frame != textLayerRect {
+      textLayerRect = frame
+    }
+    
+    // re draw text layer
+    UIGraphicsBeginImageContextWithOptions(croppedImage.size, false, UIScreen.main.scale)
+    croppedImage.draw(in: CGRect(origin: .zero, size: croppedImage.size))
+    labelText.draw(in: textLayerRect, withAttributes: generateTextAttributes(font: nil))
+    let drawnImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    if let image = drawnImage {
+      completion(.success(image))
+    } else {
+      completion(.failure(.unableToProcessImage))
+    }
+  }
+  
+  private func generateTextLayer(completion: @escaping (Result<CATextLayer, ImageProcessError>) -> Void) {
     // TODO: Figure out how to configure this more
     let text = selectedGoals.compactMap { $0.name }.joined(separator: "\n")
     labelText = text
-    let bestFont = UIFont.bestFittingFont(for: text, in: textRect, fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
+    let bestFont = UIFont.bestFittingFont(for: text, in: textLayerRect, fontDescriptor: UIFontDescriptor(name: "Helvetica Bold", size: 20))
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.alignment = .center
-
+    
     let textLayer = CATextLayer()
-    textLayer.frame = textRect // CGRect(x: (textRect.origin.x * image.scale), y: (textRect.origin.y * image.scale), width: (textRect.width * image.scale), height: (textRect.height * image.scale))
+    textLayer.frame = textLayerRect // CGRect(x: (textRect.origin.x * image.scale), y: (textRect.origin.y * image.scale), width: (textRect.width * image.scale), height: (textRect.height * image.scale))
     textLayer.alignmentMode = .center
     textLayer.string = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: bestFont,
                                                                      NSAttributedString.Key.paragraphStyle: paragraphStyle,
                                                                      NSAttributedString.Key.foregroundColor: UIColor.white])
-
+    
     completion(.success(textLayer))
   }
+  
+  private func resizeImageToScreen(image: UIImage) -> UIImage {
+    let widthRatio = UIScreen.main.bounds.size.width / image.size.width
+    let heightRatio = UIScreen.main.bounds.size.height / image.size.height
+    let newSize = CGSize(width: image.size.width * widthRatio, height: image.size.height * heightRatio)
+    
+    // This is the rect that we've calculated out and this is what is actually used below
+    let rect = CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height)
+    
+    // Actually do the resizing to the rect using the ImageContext stuff
+    UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+    image.draw(in: rect)
+    let newImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return newImage!
+  }
+}
+
+struct EditLabelObject {
+  let image: UIImage
+  let frame: CGRect
+  let text: String
+  let rotation: CGFloat
 }

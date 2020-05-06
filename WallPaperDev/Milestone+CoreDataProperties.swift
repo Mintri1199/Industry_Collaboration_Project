@@ -18,7 +18,8 @@ extension Milestone {
   @NSManaged public var completedAt: Date?
   @NSManaged public var goal: Goal?
 
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Milestone> {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Milestone> {
     return NSFetchRequest<Milestone>(entityName: "Milestone")
   }
 }

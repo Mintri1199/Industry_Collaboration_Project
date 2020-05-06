@@ -32,10 +32,13 @@ final class CircleButton: UIButton {
     
     switch icon {
     case .camera:
-      let image = ApplicationDependency.manager.currentTheme.imageAssets.backgroundPreviewCamera.withRenderingMode(.alwaysTemplate)
+      let image = UIImage(systemName: "camera.fill")?.withRenderingMode(.alwaysTemplate)
       tintColor = ApplicationDependency.manager.currentTheme.colors.darkGray
       self.imageView?.contentMode = .scaleAspectFit
       setImage(image, for: .normal)
+      self.contentHorizontalAlignment = .fill
+      self.contentVerticalAlignment = .fill
+      self.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     case .unsplash:
       let logo = ApplicationDependency.manager.currentTheme.imageAssets.unsplashLogo.withRenderingMode(.alwaysTemplate)
       tintColor = ApplicationDependency.manager.currentTheme.colors.black

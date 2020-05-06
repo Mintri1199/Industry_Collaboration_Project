@@ -17,6 +17,7 @@ class CreateImageViewController: UIViewController {
   private lazy var chooseImageLabel = BlueLabel(frame: .zero)
   private lazy var chooseGoalLabel = BlueLabel(frame: .zero)
   private lazy var chooseImageStack = UIStackView()
+  private var imageViewHeightConstraint: NSLayoutConstraint?
   private lazy var imagePickerButton: CircleButton = {
     var button = CircleButton()
     button.frame = CGRect(origin: .zero, size: CGSize(width: view.bounds.width * 0.15, height: view.bounds.width * 0.15))
@@ -51,15 +52,11 @@ class CreateImageViewController: UIViewController {
   
   private func expandImageView() {
     if viewModel.selectedImage != nil && selectedImageView.frame.height == 0 {
-      selectedImageView.constraints.forEach { constaint in
-        if constaint.firstAnchor == selectedImageView.heightAnchor && constaint.constant == 0 {
-          let newHeight = view.bounds.height * 0.27
-          constaint.constant = newHeight
-          selectedImageView.layer.cornerRadius = newHeight / 4
-          UIView.animate(withDuration: 0.5) {
-            self.view.layoutIfNeeded()
-          }
-        }
+      let newHeight = view.bounds.height * 0.27
+      imageViewHeightConstraint?.constant = newHeight
+      selectedImageView.layer.cornerRadius = newHeight / 4
+      UIView.animate(withDuration: 0.5) {
+        self.view.layoutIfNeeded()
       }
     }
   }
@@ -95,13 +92,16 @@ extension CreateImageViewController {
     selectedImageView.layer.borderColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
     selectedImageView.layer.borderWidth = 5
     selectedImageView.clipsToBounds = true
+    
     view.addSubview(selectedImageView)
     NSLayoutConstraint.activate([
       selectedImageView.topAnchor.constraint(equalToSystemSpacingBelow: chooseImageLabel.bottomAnchor, multiplier: 0.5),
       selectedImageView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
-      selectedImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-      selectedImageView.heightAnchor.constraint(equalToConstant: 0)
+      selectedImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)
     ])
+    
+    imageViewHeightConstraint = selectedImageView.heightAnchor.constraint(equalToConstant: 0)
+    imageViewHeightConstraint?.isActive = true
   }
   
   private func setupChooseImageStackView() {
@@ -151,6 +151,7 @@ extension CreateImageViewController {
   }
   
   private func setupChangeGoalsButtonButton() {
+    // TODO: Change button into edit image instead
     self.view.addSubview(changeGoalsButton)
     changeGoalsButton.isHidden = true
     changeGoalsButton.label.text = Localized.string("change_goals_action")
@@ -219,7 +220,6 @@ extension CreateImageViewController {
   }
   
   @objc private func changeGoalTapped() {
-    // TODO: Figure out how to use coordinator for passing data back
     let goalsVC = GoalsSelectionViewController(goals: viewModel.selectedGoals)
     goalsVC.delegate = self
     navigationController?.pushViewController(goalsVC, animated: true)
@@ -293,6 +293,7 @@ extension CreateImageViewController: UIImagePickerControllerDelegate, UINavigati
     viewModel.selectedImage = image
     selectedImageView.image = image
     expandImageView()
+    // Make it so that it also check whether the user fullfill require inputs for the update button to appear
     picker.dismiss(animated: true, completion: nil)
   }
 }

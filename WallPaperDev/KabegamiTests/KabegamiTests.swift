@@ -105,6 +105,12 @@ class KabegamiTests: XCTestCase {
     
     controlFont = UIFont(name: "Avenir-Heavy", size: 24)
     XCTAssertEqual(themeManager.currentTheme.fontSchema.titleRegular, controlFont)
+    
+    controlFont = UIFont.systemFont(ofSize: 20, weight: .light)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.light20, controlFont)
+    
+    controlFont = UIFont.systemFont(ofSize: 20, weight: .regular)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.regular20, controlFont)
   }
   
   func testThemeColors() {
@@ -142,16 +148,6 @@ class KabegamiTests: XCTestCase {
     
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.unsplashLogo, bundlePhoto)
-    
-    bundlePhoto = UIImage(named: "background_preview_camera")
-    
-    XCTAssertNotNil(bundlePhoto)
-    XCTAssertEqual(themeManager.currentTheme.imageAssets.backgroundPreviewCamera, bundlePhoto)
-    
-    bundlePhoto = UIImage(named: "background_preview_flashlight")
-    
-    XCTAssertNotNil(bundlePhoto)
-    XCTAssertEqual(themeManager.currentTheme.imageAssets.backgroundPreviewFlashlight, bundlePhoto)
     
     bundlePhoto = UIImage(named: "tutorial_example_1")
     
