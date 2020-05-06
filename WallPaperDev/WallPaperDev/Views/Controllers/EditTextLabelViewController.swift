@@ -13,8 +13,8 @@ class EditTextLabelViewController: UIViewController {
   private var labelInteraction: Bool = false
   private lazy var flashlightLayer = CALayer()
   private lazy var cameraLayer = CALayer()
-  private lazy var timeLayer = CALayer()
-  private lazy var dateLayer = CALayer()
+  private lazy var timeLayer = CATextLayer()
+  private lazy var dateLayer = CATextLayer()
   private lazy var textBorderLayer = CAShapeLayer()
   override var preferredStatusBarStyle: UIStatusBarStyle {
     .lightContent
@@ -54,16 +54,43 @@ class EditTextLabelViewController: UIViewController {
     setupIconsLayers()
     setupToolBar()
     setupGestureRecognizers()
+    setupTimeDateLayers()
   }
 
   private func toggleIcons(_ isHidden: Bool) {
     flashlightLayer.isHidden = isHidden
     cameraLayer.isHidden = isHidden
+    dateLayer.isHidden = isHidden
+    timeLayer.isHidden = isHidden
   }
 
   private func showToolBar(_ isHidden: Bool) {
     UIView.animate(withDuration: 0.5) {
       self.toolBar.isHidden = isHidden
+    }
+  }
+
+  private func viewShouldBeInBounds(for senderView: UIView) {
+    let keywindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+    let statusFrame = keywindow?.windowScene?.statusBarManager?.statusBarFrame
+    // Restrict x axis from going too far left
+    if senderView.frame.origin.x < 0.0 {
+      senderView.frame.origin = CGPoint(x: 0.0, y: senderView.frame.origin.y)
+    }
+
+    // Restrict y axis from going too far up
+    if senderView.frame.origin.y < statusFrame!.height {
+      senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: statusFrame!.height)
+    }
+
+    // Restrict x axis from going too far right
+    if senderView.frame.origin.x + senderView.frame.size.width > view.frame.width {
+      senderView.frame.origin = CGPoint(x: view.frame.width - senderView.frame.size.width, y: senderView.frame.origin.y)
+    }
+
+    // Restrict y axis from going too far down
+    if senderView.frame.origin.y + senderView.frame.size.height > view.frame.height {
+      senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: view.frame.height - senderView.frame.size.height)
     }
   }
 }
@@ -164,13 +191,12 @@ extension EditTextLabelViewController {
                                     size: CGSize(width: flashlightLayer.bounds.size.width * 0.5, height: flashlightLayer.bounds.size.height * 0.5))
     cameraImageLayer.position = CGPoint(x: cameraLayer.bounds.midX, y: cameraLayer.bounds.midY)
     cameraImageLayer.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white.cgColor
-    
+
     let cameraMask = CALayer()
     cameraMask.contentsGravity = .resizeAspect
     cameraMask.frame = cameraImageLayer.bounds
     cameraMask.contents = UIImage(systemName: "camera.fill")?.cgImage
     cameraImageLayer.mask = cameraMask
-    
 
     let flashflightImageLayer = CALayer()
     flashflightImageLayer.contentsGravity = .resizeAspect
@@ -183,7 +209,7 @@ extension EditTextLabelViewController {
     flashlightMask.frame = flashflightImageLayer.bounds
     flashlightMask.contents = UIImage(systemName: "flashlight.off.fill")?.cgImage
     flashflightImageLayer.mask = flashlightMask
-    
+
     cameraLayer.addSublayer(cameraImageLayer)
     flashlightLayer.addSublayer(flashflightImageLayer)
     cameraLayer.isHidden = true
@@ -216,7 +242,43 @@ extension EditTextLabelViewController {
     toolBar.setItems(items, animated: true)
   }
 
-  private func setupTimeDateLayers() {}
+  private func setupTimeDateLayers() {
+    let timeFormatter = DateFormatter()
+
+    let localSetting = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)
+    if localSetting?.firstIndex(of: "a") == nil {
+      timeFormatter.dateFormat = "H:mm"
+    } else {
+      timeFormatter.dateFormat = "h:mm"
+    }
+
+    let dayFormatter = DateFormatter()
+    dayFormatter.dateFormat = "EEEE, MMM d"
+    let timeString = timeFormatter.string(from: Date())
+    let dateString = dayFormatter.string(from: Date())
+
+    let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+    let statusFrame = keyWindow?.windowScene?.statusBarManager?.statusBarFrame
+    let defaultSize = CGSize(width: UIScreen.main.bounds.size.width / 2, height: UIScreen.main.bounds.size.height / 8)
+    let defaultOrigin = CGPoint(x: UIScreen.main.bounds.midX - (defaultSize.width / 2), y: statusFrame!.size.height + defaultSize.height / 2)
+
+    timeLayer.frame = CGRect(origin: defaultOrigin, size: defaultSize)
+    timeLayer.alignmentMode = .center
+    let attributedString = NSAttributedString(string: timeString, attributes: [ NSAttributedString.Key.font : UIFont.bestFittingFont(for: timeString, in: timeLayer.bounds, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.light20.fontDescriptor),
+                                                                                NSAttributedString.Key.foregroundColor : ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+    timeLayer.string = attributedString
+
+    dateLayer.frame = CGRect(origin: CGPoint(x: defaultOrigin.x, y: timeLayer.frame.maxY), size: CGSize(width: defaultSize.width, height: defaultSize.height / 2))
+    dateLayer.alignmentMode = .center
+    let dateAttributedString = NSAttributedString(string: dateString, attributes: [ NSAttributedString.Key.font : UIFont.bestFittingFont(for: dateString, in: dateLayer.bounds, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.regular20.fontDescriptor),
+                                                                                    NSAttributedString.Key.foregroundColor : ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+    dateLayer.string = dateAttributedString
+
+    dateLayer.isHidden = true
+    timeLayer.isHidden = true
+    view.layer.insertSublayer(dateLayer, above: textLabel.layer)
+    view.layer.insertSublayer(timeLayer, above: textLabel.layer)
+  }
 }
 
 // MARK: - OBJC functions
@@ -253,30 +315,9 @@ extension EditTextLabelViewController {
       }
 
       let translation = sender.translation(in: view)
-      let keywindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
-      let statusFrame = keywindow?.windowScene?.statusBarManager?.statusBarFrame
 
       if let senderView = sender.view {
-
-        // Restrict x axis from going too far left
-        if senderView.frame.origin.x < 0.0 {
-          senderView.frame.origin = CGPoint(x: 0.0, y: senderView.frame.origin.y)
-        }
-
-        // Restrict y axis from going too far up
-        if senderView.frame.origin.y < statusFrame!.height {
-          senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: statusFrame!.height)
-        }
-
-        // Restrict x axis from going too far right
-        if senderView.frame.origin.x + senderView.frame.size.width > view.frame.width {
-          senderView.frame.origin = CGPoint(x: view.frame.width - senderView.frame.size.width, y: senderView.frame.origin.y)
-        }
-
-        // Restrict y axis from going too far down
-        if senderView.frame.origin.y + senderView.frame.size.height > view.frame.height {
-          senderView.frame.origin = CGPoint(x: senderView.frame.origin.x, y: view.frame.height - senderView.frame.size.height)
-        }
+        viewShouldBeInBounds(for: senderView)
       }
 
       if let centerX = sender.view?.center.x, let centerY = sender.view?.center.y {
@@ -284,6 +325,10 @@ extension EditTextLabelViewController {
         sender.setTranslation(CGPoint.zero, in: self.view)
       }
     } else if sender.state == .ended {
+      if let senderView = sender.view {
+        viewShouldBeInBounds(for: senderView)
+      }
+
       labelInteraction = false
       textBorderLayer.isHidden = true
       toggleIcons(true)

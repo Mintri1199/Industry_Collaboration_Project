@@ -105,6 +105,12 @@ class KabegamiTests: XCTestCase {
     
     controlFont = UIFont(name: "Avenir-Heavy", size: 24)
     XCTAssertEqual(themeManager.currentTheme.fontSchema.titleRegular, controlFont)
+    
+    controlFont = UIFont.systemFont(ofSize: 20, weight: .light)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.light20, controlFont)
+    
+    controlFont = UIFont.systemFont(ofSize: 20, weight: .regular)
+    XCTAssertEqual(themeManager.currentTheme.fontSchema.regular20, controlFont)
   }
   
   func testThemeColors() {

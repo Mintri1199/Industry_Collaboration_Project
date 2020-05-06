@@ -25,6 +25,8 @@ protocol FontSchema {
 
   var black32: UIFont { get }
   var black40: UIFont { get }
+  var light20: UIFont { get }
+  var regular20: UIFont { get }
 
   // MARK: Font templates
   var titleRegular: UIFont { get }
@@ -60,6 +62,14 @@ struct DefaultFontSchema: FontSchema {
     return font(style: .black, size: 40)
   }
 
+  var light20: UIFont {
+    return UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.light)
+  }
+
+  var regular20: UIFont {
+    return UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular)
+  }
+
   // MARK: Font templates
   var titleRegular: UIFont {
     return heavy24
@@ -72,6 +82,7 @@ struct DefaultFontSchema: FontSchema {
   private func font(style: FontStyle, size: CGFloat) -> UIFont {
     var name: String
     switch style {
+
     case .medium:
       name = "Avenir-Medium"
 
