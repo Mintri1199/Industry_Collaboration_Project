@@ -194,6 +194,5 @@ class KabegamiTests: XCTestCase {
     bundlePhoto = UIImage(named: "stephen_cropped")
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.stephenProfile, bundlePhoto)
-    
   }
 }

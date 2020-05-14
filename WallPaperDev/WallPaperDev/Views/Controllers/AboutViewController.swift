@@ -17,26 +17,29 @@ class AboutViewController: UIViewController {
   }
 
   enum ItemType {
-    case profile, text, library
+    case profile
+    case text(bodyText: String)
+    case library(title: String, license: String)
   }
 
   struct Item: Hashable {
+
     let name: String?
     let type: ItemType
     let bodyText: String?
 
-    init(type: ItemType, name: String?, text: String?) {
+    init(type: ItemType) {
       self.type = type
       switch type {
       case .profile:
         self.name = nil
         self.bodyText = nil
-      case .text:
-        self.bodyText = text
+      case let .text(bodyText):
+        self.bodyText = bodyText
         self.name = nil
-      case .library:
-        self.bodyText = text
-        self.name = name
+      case let .library(title, license):
+        self.name = title
+        self.bodyText = license
       }
     }
 
@@ -44,11 +47,16 @@ class AboutViewController: UIViewController {
     func hash(into hasher: inout Hasher) {
       hasher.combine( self.identifier)
     }
+
+    static func == (lhs: AboutViewController.Item, rhs: AboutViewController.Item) -> Bool {
+      return lhs.identifier == rhs.identifier
+    }
   }
 
   let tableView = UITableView(frame: .zero, style: .insetGrouped)
   private var dataSource: UITableViewDiffableDataSource<Section, Item>!
   private var currentSnapshot: NSDiffableDataSourceSnapshot<Section, Item>!
+  private let viewModel = AboutViewModel()
   static let reuseIdentifier = "reuse-identifier"
 
   override func viewDidLoad() {
@@ -67,6 +75,8 @@ extension AboutViewController {
     self.view.addSubview(tableView)
     tableView.translatesAutoresizingMaskIntoConstraints = false
     tableView.estimatedRowHeight = 200
+    tableView.separatorStyle = .none
+
     tableView.rowHeight = UITableView.automaticDimension
     NSLayoutConstraint.activate([
       tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -102,9 +112,10 @@ extension AboutViewController {
 
   private func updateUI() {
     currentSnapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-    let profileItem = Item(type: .profile, name: nil, text: nil)
-    currentSnapshot.appendSections([.profiles])
-    currentSnapshot.appendItems([profileItem], toSection: .profiles)
+
+    let licenseItems = viewModel.getLicenseMaterials().map { Item(type: .library(title: $0.0, license: $0.1)) }
+    currentSnapshot.appendSections([.libraries])
+    currentSnapshot.appendItems(licenseItems, toSection: .libraries)
 
     self.dataSource.apply(currentSnapshot, animatingDifferences: true)
   }

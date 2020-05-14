@@ -14,7 +14,7 @@ final class AboutTableViewCell: UITableViewCell {
 
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
-    label.font = ApplicationDependency.manager.currentTheme.fontSchema.black40
+    label.font = ApplicationDependency.manager.currentTheme.fontSchema.black32
     label.textColor = ApplicationDependency.manager.currentTheme.colors.black
     label.textAlignment = .left
     label.adjustsFontSizeToFitWidth = true
@@ -25,7 +25,7 @@ final class AboutTableViewCell: UITableViewCell {
 
   private lazy var bodyTextLabel: UILabel = {
     let label = UILabel()
-    label.font = ApplicationDependency.manager.currentTheme.fontSchema.regular20
+    label.font = ApplicationDependency.manager.currentTheme.fontSchema.medium16
     label.textColor = ApplicationDependency.manager.currentTheme.colors.black
     label.textAlignment = .left
     label.numberOfLines = 0
@@ -36,6 +36,7 @@ final class AboutTableViewCell: UITableViewCell {
   private lazy var profileCollectionView = DevProfileCollectionView()
 
   func prepareProfiles(completion: (UICollectionView) -> Void) {
+    profileCollectionView.frame = CGRect(origin: .zero, size: CGSize(width: UIScreen.main.bounds.width - 30, height: UIScreen.main.bounds.height / 3))
     addSubview(profileCollectionView)
     NSLayoutConstraint.activate([
       profileCollectionView.topAnchor.constraint(equalTo: topAnchor),

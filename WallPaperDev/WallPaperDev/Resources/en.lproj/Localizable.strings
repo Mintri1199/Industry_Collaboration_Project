@@ -76,4 +76,8 @@
 "goal_description_title" = "Goal Description";
 "unsplash_searchbar_placeholder" = "Search for images";
 
+// Credits
 "onboard_images_credit" = "Designed by rawpixel.com / Freepik";
+"swiftLint_title" = "SwiftLint";
+"cropVC_title" = "ToCropViewController";
+"swiftFormat_title" = "SwiftFormat";

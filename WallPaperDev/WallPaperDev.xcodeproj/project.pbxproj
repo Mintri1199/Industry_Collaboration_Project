@@ -93,6 +93,18 @@
 		44C6B899246B9FE20062B8D4 /* DevProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B898246B9FE20062B8D4 /* DevProfileCell.swift */; };
 		44C6B89B246BA01A0062B8D4 /* DevProfileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B89A246BA01A0062B8D4 /* DevProfileCollectionView.swift */; };
 		44C6B89D246BA0380062B8D4 /* DevProfileLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B89C246BA0380062B8D4 /* DevProfileLayout.swift */; };
+		44C6B8A7246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */; };
+		44C6B8A8246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */; };
+		44C6B8A9246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */; };
+		44C6B8AA246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */; };
+		44C6B8AB246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */; };
+		44C6B8AC246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */; };
+		44C6B8AD246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */; };
+		44C6B8AE246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */; };
+		44C6B8AF246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
+		44C6B8B0246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
+		44C6B8B1246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
+		44C6B8B2246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
 		44D7D8352446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
 		44D7D8362446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
 		44D7D8372446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
@@ -239,6 +251,9 @@
 		44C6B898246B9FE20062B8D4 /* DevProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevProfileCell.swift; sourceTree = "<group>"; };
 		44C6B89A246BA01A0062B8D4 /* DevProfileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevProfileCollectionView.swift; sourceTree = "<group>"; };
 		44C6B89C246BA0380062B8D4 /* DevProfileLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevProfileLayout.swift; sourceTree = "<group>"; };
+		44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SwiftFormatLicense.txt; path = /Users/jackson_ho/dev/Industry_Collaboration_Project/WallPaperDev/WallPaperDev/Licenses/SwiftFormatLicense.txt; sourceTree = "<absolute>"; };
+		44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToCropViewControllerLicense.txt; sourceTree = "<group>"; };
+		44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftLintLicense.txt; sourceTree = "<group>"; };
 		44D7D8342446EBEF008E905F /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		44D7D8392447B42F008E905F /* MilestonesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesTableView.swift; sourceTree = "<group>"; };
 		44D7D83E2447B483008E905F /* MilestoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCell.swift; sourceTree = "<group>"; };
@@ -297,7 +312,7 @@
 		6732F07E59313E460E9A8B58 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		6732F5E4C46CA7A435CF59B4 /* MockNetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		6732F6320B5495E1D143C982 /* AboutTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableView.swift; sourceTree = "<group>"; };
-		6732F7937D0571DF5B45623D /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewModel.swift; sourceTree = "<group>"; };
+		6732F7937D0571DF5B45623D /* AboutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutViewModel.swift; path = "/Users/jackson_ho/dev/Industry_Collaboration_Project/WallPaperDev/WallPaperDev/View Models/AboutViewModel.swift"; sourceTree = "<absolute>"; };
 		6732F889A6BE02A0F2002C30 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		6732FE8E3BA48F4F8270A378 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		6C51E43FA228A1B7D96B26A4 /* Pods-WallPaperDev.xctest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WallPaperDev.xctest.xcconfig"; path = "Target Support Files/Pods-WallPaperDev/Pods-WallPaperDev.xctest.xcconfig"; sourceTree = "<group>"; };
@@ -611,7 +626,6 @@
 				44E0BA672339B7D4007AA20D /* Extensions */,
 				5D03ED1523281620006068CB /* Info.plist */,
 				5D03ED1023281620006068CB /* Assets.xcassets */,
-				6732F7BF978742512E8E5F63 /* Licenses */,
 			);
 			path = WallPaperDev;
 			sourceTree = "<group>";
@@ -628,6 +642,7 @@
 		5D7B2806236A31870014A4D3 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				6732F7BF978742512E8E5F63 /* Licenses */,
 			);
 			name = SupportingFiles;
 			sourceTree = "<group>";
@@ -691,6 +706,9 @@
 		6732F7BF978742512E8E5F63 /* Licenses */ = {
 			isa = PBXGroup;
 			children = (
+				44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */,
+				44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */,
+				44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */,
 			);
 			path = Licenses;
 			sourceTree = "<group>";
@@ -888,6 +906,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C6B8AE246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */,
+				44C6B8B2246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */,
+				44C6B8AA246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +916,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C6B8AD246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */,
+				44C6B8B1246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */,
+				44C6B8A9246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +927,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D03ED1423281620006068CB /* LaunchScreen.storyboard in Resources */,
+				44C6B8AF246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */,
+				44C6B8AB246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */,
+				44C6B8A7246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */,
 				FA1CCF6123D6439900B47ED4 /* Localizable.strings in Resources */,
 				5D03ED1123281620006068CB /* Assets.xcassets in Resources */,
 			);
@@ -912,6 +939,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44C6B8AC246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt in Resources */,
+				44C6B8B0246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */,
+				44C6B8A8246D1E8E0062B8D4 /* SwiftFormatLicense.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,16 +65,19 @@ struct DefaultImageAsset: ImageAsset {
   var tutorialWelcomeBanner: UIImage {
     return #imageLiteral(resourceName: "tutorial_welcome_banner")
   }
-  
+
   var jacksonProfile: UIImage {
     return #imageLiteral(resourceName: "jackson_cropped")
   }
+
   var jamarProfile: UIImage {
     return #imageLiteral(resourceName: "jamar_cropped")
   }
+
   var alexProfile: UIImage {
     return #imageLiteral(resourceName: "alex_cropped")
   }
+
   var stephenProfile: UIImage {
     return #imageLiteral(resourceName: "stephen_cropped")
   }
