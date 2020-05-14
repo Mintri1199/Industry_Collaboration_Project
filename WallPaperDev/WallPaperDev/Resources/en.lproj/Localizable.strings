@@ -5,6 +5,7 @@
   Created by Alexander Dejeu on 1/20/20.
   Copyright © 2020 Stephen Ouyang. All rights reserved.
 */
+"app_name" = "Kabegami";
 "goals" = "Goals";
 "goal_details_title" = "Goal Details";
 "good_morning_title" = "Good Morning";
@@ -74,3 +75,5 @@
 "goal_name_title" = "Goal Name";
 "goal_description_title" = "Goal Description";
 "unsplash_searchbar_placeholder" = "Search for images";
+
+"onboard_images_credit" = "Designed by rawpixel.com / Freepik";

@@ -178,5 +178,22 @@ class KabegamiTests: XCTestCase {
     
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialWelcomeBanner, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "jackson_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.jacksonProfile, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "alex_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.alexProfile, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "jamar_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.jamarProfile, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "stephen_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.stephenProfile, bundlePhoto)
+    
   }
 }
