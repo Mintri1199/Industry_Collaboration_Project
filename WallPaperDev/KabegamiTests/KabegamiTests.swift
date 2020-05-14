@@ -195,4 +195,15 @@ class KabegamiTests: XCTestCase {
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.stephenProfile, bundlePhoto)
   }
+  
+  func testLicensesExistence() {
+    let path = Bundle.main.resourcePath!
+    let fileManager = FileManager.default
+    let libraryNames = [Localized.string("swiftLint_title"), Localized.string("swiftFormat_title"), Localized.string("cropVC_title")]
+    let libraryPaths = libraryNames.map { path + "/\($0)License.txt" }
+    
+    for index in 0 ..< libraryNames.count {
+      XCTAssertTrue(fileManager.fileExists(atPath: libraryPaths[index]), "License doesn't exist for pod: \(libraryNames[index])")
+    }
+  }
 }
