@@ -105,6 +105,10 @@
 		44C6B8B0246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
 		44C6B8B1246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
 		44C6B8B2246D1E8E0062B8D4 /* SwiftLintLicense.txt in Resources */ = {isa = PBXBuildFile; fileRef = 44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */; };
+		44C6B8B4246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B8B3246D3E070062B8D4 /* NSAttributredString+Extension.swift */; };
+		44C6B8B5246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B8B3246D3E070062B8D4 /* NSAttributredString+Extension.swift */; };
+		44C6B8B6246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B8B3246D3E070062B8D4 /* NSAttributredString+Extension.swift */; };
+		44C6B8B7246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C6B8B3246D3E070062B8D4 /* NSAttributredString+Extension.swift */; };
 		44D7D8352446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
 		44D7D8362446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
 		44D7D8372446EBEF008E905F /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D7D8342446EBEF008E905F /* CheckBoxButton.swift */; };
@@ -254,6 +258,7 @@
 		44C6B8A4246D1E8E0062B8D4 /* SwiftFormatLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SwiftFormatLicense.txt; path = /Users/jackson_ho/dev/Industry_Collaboration_Project/WallPaperDev/WallPaperDev/Licenses/SwiftFormatLicense.txt; sourceTree = "<absolute>"; };
 		44C6B8A5246D1E8E0062B8D4 /* ToCropViewControllerLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToCropViewControllerLicense.txt; sourceTree = "<group>"; };
 		44C6B8A6246D1E8E0062B8D4 /* SwiftLintLicense.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SwiftLintLicense.txt; sourceTree = "<group>"; };
+		44C6B8B3246D3E070062B8D4 /* NSAttributredString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributredString+Extension.swift"; sourceTree = "<group>"; };
 		44D7D8342446EBEF008E905F /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
 		44D7D8392447B42F008E905F /* MilestonesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestonesTableView.swift; sourceTree = "<group>"; };
 		44D7D83E2447B483008E905F /* MilestoneCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneCell.swift; sourceTree = "<group>"; };
@@ -553,6 +558,7 @@
 				44F408662359261800EE0409 /* UIView+Extension.swift */,
 				44105B372436973E005DD9D5 /* NSManagedObject+Extensions.swift */,
 				444955C023952DCB009A1618 /* UIFont+Extension.swift */,
+				44C6B8B3246D3E070062B8D4 /* NSAttributredString+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1044,6 +1050,7 @@
 				44D7D8382446EBEF008E905F /* CheckBoxButton.swift in Sources */,
 				44C6B890245038770062B8D4 /* FontSchema.swift in Sources */,
 				44C6B893245038840062B8D4 /* MilestoneCell.swift in Sources */,
+				44C6B8B7246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */,
 				44D7D847244832A8008E905F /* MilestonePromptVC.swift in Sources */,
 				44105B2E2432E4AD005DD9D5 /* CoreDataTests.swift in Sources */,
 				44A94BC7245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */,
@@ -1064,6 +1071,7 @@
 				44A94BCA245033EB00AE6BB7 /* Milestone+CoreDataProperties.swift in Sources */,
 				44D7D83C2447B42F008E905F /* MilestonesTableView.swift in Sources */,
 				44F583BC2425FEA6008CF121 /* KabegamiNetworkTests.swift in Sources */,
+				44C6B8B6246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */,
 				44C6B87C245038000062B8D4 /* Goal+CoreDataClass.swift in Sources */,
 				44F583D3242711C6008CF121 /* XCTestCase_Extension.swift in Sources */,
 				44C6B88B245038680062B8D4 /* ColorSchema.swift in Sources */,
@@ -1132,6 +1140,7 @@
 				44A93F4923FA236B0040B589 /* NetworkManager.swift in Sources */,
 				5D0B462C234D4933005BBBF6 /* DetailGoalViewController.swift in Sources */,
 				5D7B2808236A31EB0014A4D3 /* Keys.swift in Sources */,
+				44C6B8B4246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */,
 				5D03ED0C2328161E006068CB /* CreateGoalViewController.swift in Sources */,
 				44E0BA6D233AC9F6007AA20D /* SelectedGoalsEmptyView.swift in Sources */,
 				44F583A524247AFC008CF121 /* UnsplashPreviewVC.swift in Sources */,
@@ -1193,6 +1202,7 @@
 				44C6B892245038780062B8D4 /* FontSchema.swift in Sources */,
 				44D7D8362446EBEF008E905F /* CheckBoxButton.swift in Sources */,
 				44A94BC5245033EB00AE6BB7 /* Milestone+CoreDataClass.swift in Sources */,
+				44C6B8B5246D3E070062B8D4 /* NSAttributredString+Extension.swift in Sources */,
 				44D7D83B2447B42F008E905F /* MilestonesTableView.swift in Sources */,
 				44A94BD32450360D00AE6BB7 /* PaddingLabel.swift in Sources */,
 				44C6B87B245037FE0062B8D4 /* Goal+CoreDataClass.swift in Sources */,

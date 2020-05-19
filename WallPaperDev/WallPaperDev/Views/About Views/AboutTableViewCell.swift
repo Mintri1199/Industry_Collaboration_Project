@@ -8,9 +8,18 @@ import UIKit
 final class AboutTableViewCell: UITableViewCell {
 
   enum CellType {
-    case credits(text: String)
+    case credits(text: NSAttributedString)
     case library(title: String, license: String)
   }
+
+  private lazy var feedbackTextView: UITextView = {
+    let textView = UITextView()
+    textView.translatesAutoresizingMaskIntoConstraints = false
+    textView.textAlignment = .natural
+    textView.isScrollEnabled = false
+    textView.isEditable = false
+    return textView
+  }()
 
   private lazy var titleLabel: UILabel = {
     let label = UILabel()
@@ -50,11 +59,15 @@ final class AboutTableViewCell: UITableViewCell {
   func prepare(type: CellType) {
     switch type {
     case let .credits(text):
-      bodyTextLabel.frame = bounds
-      addSubview(bodyTextLabel)
-      bodyTextLabel.text = text
-      bodyTextLabel.sizeToFit()
+      feedbackTextView.attributedText = text
+      feedbackTextView.font = ApplicationDependency.manager.currentTheme.fontSchema.medium20
+      feedbackTextView.textColor = ApplicationDependency.manager.currentTheme.colors.black
+      setupTextView()
+
     case let .library(title, license):
+      if subviews.contains(feedbackTextView) {
+        feedbackTextView.removeFromSuperview()
+      }
       titleLabel.text = title
       setupTitleLabel()
       bodyTextLabel.text = license
@@ -81,5 +94,17 @@ final class AboutTableViewCell: UITableViewCell {
       bodyTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
     bodyTextLabel.sizeToFit()
+  }
+
+  private func setupTextView() {
+    addSubview(feedbackTextView)
+    NSLayoutConstraint.activate([
+      feedbackTextView.topAnchor.constraint(equalTo: topAnchor),
+      feedbackTextView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      feedbackTextView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      feedbackTextView.bottomAnchor.constraint(equalTo: bottomAnchor)
+    ])
+
+    feedbackTextView.sizeToFit()
   }
 }

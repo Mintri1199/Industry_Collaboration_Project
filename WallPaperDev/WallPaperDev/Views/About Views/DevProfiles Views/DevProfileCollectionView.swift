@@ -7,14 +7,10 @@
 //
 
 import UIKit
-struct DevProfile {
-  let name: String
-  let githubUrlString: String
-}
 
 class DevProfileCollectionView: UICollectionView {
   // TODO: Replace with array of Developer objects
-  private let developers: [String] = ["Jackson Ho", "Alex", "Stephen", "Jamar"]
+
   private let titleLabel: UILabel = {
     let label = UILabel()
     label.font = ApplicationDependency.manager.currentTheme.fontSchema.heavy24
@@ -44,7 +40,8 @@ class DevProfileCollectionView: UICollectionView {
 extension DevProfileCollectionView: UICollectionViewDataSource {
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return developers.count
+    return 0
+//    return developers.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,23 +50,23 @@ extension DevProfileCollectionView: UICollectionViewDataSource {
     }
 
     cell.backgroundColor = .red
-    cell.prepare(name: developers[indexPath.row])
+//    cell.prepare(name: developers[indexPath.row])
     return cell
   }
 
-//  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//    switch kind {
-//      case UICollectionView.elementKindSectionHeader:
-//      <#code#>
-//      default:
-//      <#code#>
-//    }
-//  }
+  //  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+  //    switch kind {
+  //      case UICollectionView.elementKindSectionHeader:
+  //      <#code#>
+  //      default:
+  //      <#code#>
+  //    }
+  //  }
 }
 
 extension DevProfileCollectionView: UICollectionViewDelegate {
   public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     // Either launch webview of github profile or go into the github app and pull up profile there
-    print(developers[indexPath.row])
+//    print(developers[indexPath.row])
   }
 }
