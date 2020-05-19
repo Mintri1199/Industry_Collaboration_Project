@@ -13,13 +13,22 @@ import SafariServices
 // *
 
 class AboutViewController: UIViewController {
-  enum Section: CaseIterable {
-    case profiles, credits, libraries
+  enum Section: Int, CaseIterable {
+    case profiles, feedback, libraries
+    
+    var columnCount: Int {
+      switch self {
+      case .profiles:
+        return 2
+      default:
+        return 1
+      }
+    }
   }
   
   enum ItemType {
     case profile(dev: DevProfile)
-    case credit(text: NSAttributedString)
+    case feedback(text: NSAttributedString)
     case library(title: String, license: String)
   }
   
@@ -58,6 +67,30 @@ class AboutViewController: UIViewController {
 // MARK: UICollectionViewCompositional Layout
 extension AboutViewController {
   private func createLayout() -> UICollectionViewLayout {
+    
+    let compositionLayout = UICollectionViewCompositionalLayout { (sectionIndex: Int, _ : NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+      guard let sectionLayoutKind = Section(rawValue: sectionIndex) else {
+        return nil
+      }
+      let columns = sectionLayoutKind.columnCount
+      
+      let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                            heightDimension: columns == 1 ? .estimated(250) : .fractionalHeight(1.0))
+      
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)      
+      let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                             heightDimension: .estimated(175))
+      
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: columns)
+      group.interItemSpacing = .fixed(20)
+      
+      let section = NSCollectionLayoutSection(group: group)
+      section.interGroupSpacing = 20
+      section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20)
+      
+      return section
+    }
+    
     let profileSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
                                              heightDimension: .fractionalHeight(1.0))
     
@@ -70,8 +103,22 @@ extension AboutViewController {
     
     let profileSection = NSCollectionLayoutSection(group: profileGroup)
     
+    let creditSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                            heightDimension: .fractionalHeight(1.0))
+    
+    let creditItem = NSCollectionLayoutItem(layoutSize: creditSize)
+    creditItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+    
+    let creditGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                 heightDimension: .estimated(200))
+    
+    let creditGroup = NSCollectionLayoutGroup.vertical(layoutSize: creditGroupSize, subitems: [creditItem])
+    
+    let creditSection = NSCollectionLayoutSection(group: creditGroup)
+    
     let layout = UICollectionViewCompositionalLayout(section: profileSection)
-    return layout
+    
+    return compositionLayout
   }
   
   private func setupCollectionView() {
@@ -79,6 +126,8 @@ extension AboutViewController {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.backgroundColor = .systemBackground
     collectionView.register(DevProfileCell.self, forCellWithReuseIdentifier: DevProfileCell.id)
+    collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
+    collectionView.register(CreditCollectionViewCell.self, forCellWithReuseIdentifier: CreditCollectionViewCell.id)
     view.addSubview(collectionView)
     NSLayoutConstraint.activate([
       collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -99,6 +148,12 @@ extension AboutViewController {
         cell.prepare(for: dev)
         return cell
         
+      case let .feedback(text: string):
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CreditCollectionViewCell.id, for: indexPath) as? CreditCollectionViewCell else {
+          return nil
+        }
+        cell.prepare(text: string)
+        return cell
       default:
         return nil
       }
@@ -106,10 +161,12 @@ extension AboutViewController {
     
     var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
     
-    snapshot.appendSections([.profiles])
+    snapshot.appendSections([.profiles, .feedback])
     let profileItems = viewModel.devProfiles.compactMap { Item(type: .profile(dev: $0)) }
     snapshot.appendItems(profileItems, toSection: .profiles)
     
+    let feedbackItem = Item(type: .feedback(text: viewModel.contructFeedbackText()))
+    snapshot.appendItems([feedbackItem], toSection: .feedback)
     dataSource.apply(snapshot, animatingDifferences: false)
   }
 }
