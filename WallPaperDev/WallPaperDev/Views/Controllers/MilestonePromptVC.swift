@@ -20,9 +20,10 @@ final class MilestonePromptVC: UIViewController {
   private var closeButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.contentVerticalAlignment = .center
-    button.contentHorizontalAlignment = .center
-    button.setImage(UIImage(systemName: "xmark")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.contentVerticalAlignment = .fill
+    button.contentHorizontalAlignment = .fill
+    button.setImage(UIImage(systemName: "xmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?.withRenderingMode(.automatic), for: .normal)
+    button.imageView?.contentMode = .scaleAspectFill
     button.tintColor = ApplicationDependency.manager.currentTheme.colors.white
     button.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
     return button
@@ -47,6 +48,7 @@ final class MilestonePromptVC: UIViewController {
     view.backgroundColor = .clear
     setupUI()
     setupKeyboardNotifications()
+    formView.textField.resignFirstResponder()
   }
   
   private func setupKeyboardNotifications() {
@@ -116,7 +118,7 @@ extension MilestonePromptVC {
       closeButton.trailingAnchor.constraint(equalTo: formView.trailingAnchor, constant: 0),
       closeButton.bottomAnchor.constraint(equalTo: formView.topAnchor, constant: -5),
       closeButton.heightAnchor.constraint(equalTo: formView.widthAnchor, multiplier: 0.075),
-      closeButton.widthAnchor.constraint(equalTo: closeButton.heightAnchor)
+      closeButton.widthAnchor.constraint(equalTo: formView.widthAnchor, multiplier: 0.075)
     ])
   }
 }
