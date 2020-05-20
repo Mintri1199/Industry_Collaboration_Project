@@ -16,6 +16,7 @@ protocol ImageAsset {
   var tutorialFinger: UIImage { get }
   var tutorialGoalTextExample: UIImage { get }
   var tutorialPhone: UIImage { get }
+  var tutorialPhone8: UIImage { get }
   var tutorialTodoBanner: UIImage { get }
   var tutorialWelcomeBanner: UIImage { get }
   var unsplashLogo: UIImage { get }
@@ -56,6 +57,10 @@ struct DefaultImageAsset: ImageAsset {
 
   var tutorialPhone: UIImage {
     return #imageLiteral(resourceName: "tutorial_phone")
+  }
+
+  var tutorialPhone8: UIImage {
+    return #imageLiteral(resourceName: "iphone8")
   }
 
   var tutorialTodoBanner: UIImage {

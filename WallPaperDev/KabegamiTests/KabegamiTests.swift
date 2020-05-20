@@ -169,6 +169,11 @@ class KabegamiTests: XCTestCase {
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialPhone, bundlePhoto)
     
+    bundlePhoto = UIImage(named: "iphone8")
+    
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialPhone8, bundlePhoto)
+    
     bundlePhoto = UIImage(named: "tutorial_todo_banner")
     
     XCTAssertNotNil(bundlePhoto)

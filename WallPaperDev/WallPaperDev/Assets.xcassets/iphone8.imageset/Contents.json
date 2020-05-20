@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "new_iphonex.png",
+      "filename" : "iphone8.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "new_iphonex@2x.png",
+      "filename" : "iphone8@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "new_iphonex@3x.png",
+      "filename" : "iphone8@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
