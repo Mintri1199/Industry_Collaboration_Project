@@ -11,7 +11,7 @@ import XCTest
 @testable import Kabegami
 
 class CoreDataTests: XCTestCase {
-  var manager: CoreDataStack!
+  private var manager: CoreDataStack!
   
   lazy var managedObjectModel: NSManagedObjectModel = {
     let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))] )!

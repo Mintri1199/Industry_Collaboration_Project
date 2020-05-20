@@ -8,8 +8,8 @@
 import UIKit
 import SafariServices
 
-
 class AboutViewController: UIViewController {
+  
   enum Section: Int, CaseIterable {
     case profiles, feedback, libraries
     
@@ -29,6 +29,7 @@ class AboutViewController: UIViewController {
     case library(title: String, license: String)
   }
   
+  // CollectionViewCompositional Item object
   struct Item: Hashable {
     
     private(set) var type: ItemType
@@ -46,19 +47,23 @@ class AboutViewController: UIViewController {
   private var collectionView: UICollectionView!
   private var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
   private let viewModel = AboutViewModel()
+  weak var coordinator: MainCoordinator?
+  static let sectionHeaderElementKind = "section-header-element-kind"
   
-  static let reuseIdentifier = "reuse-identifier"
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // FLAG: color
-    view.backgroundColor = .white
+    view.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white
+    setupNavBar()
     setupCollectionView()
     configureDataSource()
   }
 }
 
-// MARK: UICollectionViewCompositional Layout
+// MARK: DifferableDataSource and CompositionalLayout
 extension AboutViewController {
   private func createLayout() -> UICollectionViewLayout {
     let compositionLayout = UICollectionViewCompositionalLayout { (sectionIndex: Int, _ : NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
@@ -81,30 +86,22 @@ extension AboutViewController {
       section.interGroupSpacing = 20
       section.contentInsets = NSDirectionalEdgeInsets(top: 20, leading: 20, bottom: 0, trailing: 20)
       
+      let sectionHeaderSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                     heightDimension: .estimated(10))
+      
+      let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+        layoutSize: sectionHeaderSize,
+        elementKind: AboutViewController.sectionHeaderElementKind, alignment: .top)
+      
+      section.boundarySupplementaryItems = [sectionHeader]
       return section
     }
     
     return compositionLayout
   }
   
-  private func setupCollectionView() {
-    collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.backgroundColor = .systemBackground
-    collectionView.register(DevProfileCell.self, forCellWithReuseIdentifier: DevProfileCell.id)
-    collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
-    collectionView.register(CreditCollectionViewCell.self, forCellWithReuseIdentifier: CreditCollectionViewCell.id)
-    view.addSubview(collectionView)
-    NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-    ])
-    collectionView.delegate = self
-  }
-  
   private func configureDataSource() {
+    
     dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
       switch item.type {
       case let .profile(dev):
@@ -120,15 +117,26 @@ extension AboutViewController {
         }
         cell.prepare(text: string)
         return cell
-      
-        case let .library(title, license):
-          guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.id, for: indexPath) as? LibraryCollectionViewCell else {
-            return nil
-          }
-          cell.prepare(title: title, bodyText: license)
-          return cell
+        
+      case let .library(title, license):
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LibraryCollectionViewCell.id, for: indexPath) as? LibraryCollectionViewCell else {
+          return nil
+        }
+        cell.prepare(title: title, bodyText: license)
+        return cell
       }
     })
+    
+    dataSource.supplementaryViewProvider = { ( collectionView: UICollectionView, kind: String, indexPath: IndexPath) -> UICollectionReusableView? in
+      guard let supplementaryView = collectionView.dequeueReusableSupplementaryView(
+        ofKind: kind,
+        withReuseIdentifier: TitleSectionView.reuseIdentifier,
+        for: indexPath) as? TitleSectionView else { fatalError("Cannot create new supplementary") }
+      
+      (indexPath.section == 0 && kind == AboutViewController.sectionHeaderElementKind) ? nil : supplementaryView.removeLabel()
+      
+      return supplementaryView
+    }
     
     var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
     
@@ -149,7 +157,29 @@ extension AboutViewController {
 // MARK: UI Methods
 extension AboutViewController {
   
-  func configureColletionView() {}
+  private func setupNavBar() {
+    coordinator?.navigationController.setNavigationBarHidden(false, animated: true)
+    navigationItem.title = Localized.string("credits")
+    coordinator?.navigationController.navigationBar.prefersLargeTitles = false
+  }
+  
+  private func setupCollectionView() {
+    collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.backgroundColor = .systemBackground
+    collectionView.register(DevProfileCell.self, forCellWithReuseIdentifier: DevProfileCell.id)
+    collectionView.register(LibraryCollectionViewCell.self, forCellWithReuseIdentifier: LibraryCollectionViewCell.id)
+    collectionView.register(CreditCollectionViewCell.self, forCellWithReuseIdentifier: CreditCollectionViewCell.id)
+    collectionView.register(TitleSectionView.self, forSupplementaryViewOfKind: AboutViewController.sectionHeaderElementKind, withReuseIdentifier: TitleSectionView.reuseIdentifier)
+    view.addSubview(collectionView)
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+    ])
+    collectionView.delegate = self
+  }
 }
 
 extension AboutViewController: UICollectionViewDelegate {

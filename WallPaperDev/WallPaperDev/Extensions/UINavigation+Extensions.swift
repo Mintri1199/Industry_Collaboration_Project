@@ -23,14 +23,8 @@ extension UINavigationBar {
                                         NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black32 as Any] :
       [NSAttributedString.Key.foregroundColor: UIColor.white,
        NSAttributedString.Key.font: ApplicationDependency.manager.currentTheme.fontSchema.black40 as Any]
-    if #available(iOS 13, *) {
-      backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
-      largeTitleTextAttributes = attributes
-    } else {
-      barTintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
-      tintColor = .white
-      largeTitleTextAttributes = attributes
-    }
+    backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
+    largeTitleTextAttributes = attributes
   }
 }
 

@@ -27,6 +27,7 @@
 		447F36AE2473B1A900F37DAC /* AboutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6732F7937D0571DF5B45623D /* AboutViewModel.swift */; };
 		447F36B02473C2DD00F37DAC /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F36AF2473C2DD00F37DAC /* CreditCollectionViewCell.swift */; };
 		447F36B22473C2ED00F37DAC /* LibraryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F36B12473C2ED00F37DAC /* LibraryCollectionViewCell.swift */; };
+		447F36B42474BB9D00F37DAC /* TitleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447F36B32474BB9D00F37DAC /* TitleSectionView.swift */; };
 		4495E41724297DC10042D3C8 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495E41624297DC10042D3C8 /* ViewModelProtocol.swift */; };
 		4496C8EE244C51DF00AE7532 /* PaddingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4496C8ED244C51DF00AE7532 /* PaddingTextField.swift */; };
 		44A93F3123FA20FD0040B589 /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A93F3023FA20FD0040B589 /* JSONParameterEncoder.swift */; };
@@ -226,6 +227,7 @@
 		444955C423995FD9009A1618 /* EditTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTextViewModel.swift; sourceTree = "<group>"; };
 		447F36AF2473C2DD00F37DAC /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
 		447F36B12473C2ED00F37DAC /* LibraryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryCollectionViewCell.swift; sourceTree = "<group>"; };
+		447F36B32474BB9D00F37DAC /* TitleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSectionView.swift; sourceTree = "<group>"; };
 		4495E41624297DC10042D3C8 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		4496C8ED244C51DF00AE7532 /* PaddingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingTextField.swift; sourceTree = "<group>"; };
 		44A93F3023FA20FD0040B589 /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				44C6B898246B9FE20062B8D4 /* DevProfileCell.swift */,
 				447F36AF2473C2DD00F37DAC /* CreditCollectionViewCell.swift */,
 				447F36B12473C2ED00F37DAC /* LibraryCollectionViewCell.swift */,
+				447F36B32474BB9D00F37DAC /* TitleSectionView.swift */,
 			);
 			path = "About Views";
 			sourceTree = "<group>";
@@ -1086,6 +1089,7 @@
 				444955C523995FD9009A1618 /* EditTextViewModel.swift in Sources */,
 				5D7B28652374DC4C0014A4D3 /* SearchImagesCVLayout.swift in Sources */,
 				44D7D83A2447B42F008E905F /* MilestonesTableView.swift in Sources */,
+				447F36B42474BB9D00F37DAC /* TitleSectionView.swift in Sources */,
 				44C0B52A233034580015110B /* ImageSelectionCell.swift in Sources */,
 				44A93F3D23FA22910040B589 /* HTTPMethod.swift in Sources */,
 				44E0BA77233D723E007AA20D /* EditTextLabelViewController.swift in Sources */,

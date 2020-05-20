@@ -34,7 +34,6 @@ final class SearchImageViewController: UIViewController {
 }
 
 // MARK: - UI setup methods
-// TODO: Implement Context menu for when the user hold on the cell
 extension SearchImageViewController {
   
   private func setupViews() {
@@ -85,7 +84,6 @@ extension SearchImageViewController: UICollectionViewDelegate {
     navigationController?.popViewController(animated: true)
   }
   
-  @available(iOS 13.0, *)
   func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
     guard let cell = collectionView.cellForItem(at: indexPath) as? SearchImagesCell else {
       return nil

@@ -19,6 +19,17 @@ class HomeViewController: UIViewController {
   private let addButton = AddButton(frame: .zero)
   private let wallpaperButton = AddButton(frame: .zero)
   private let homeViewModel = HomeViewModel()
+  private let aboutButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.contentVerticalAlignment = .fill
+    button.contentHorizontalAlignment = .fill
+    let infoIcon = UIImage(systemName: "info.circle")?.withRenderingMode(.alwaysTemplate)
+    button.tintColor = ApplicationDependency.manager.currentTheme.colors.white
+    button.setImage(infoIcon!, for: .normal)
+    return button
+  }()
+  
   weak var coordinator: MainCoordinator?
   
   override func viewDidLoad() {
@@ -28,6 +39,7 @@ class HomeViewController: UIViewController {
     setupTableView()
     initButton()
     setupWallpaperButton()
+    setupAboutButton()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -36,17 +48,15 @@ class HomeViewController: UIViewController {
     self.coordinator?.navigationController.navigationItem.hidesBackButton = true
     self.coordinator?.navigationController.navigationBar.prefersLargeTitles = true
     
-    if #available(iOS 13.0, *) {
-      let appearance = UINavigationBarAppearance()
-      appearance.backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
-      appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-      appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-      appearance.shadowColor = nil
-      self.coordinator?.navigationController.navigationBar.tintColor = .white
-      self.coordinator?.navigationController.navigationBar.standardAppearance = appearance
-      self.coordinator?.navigationController.navigationBar.compactAppearance = appearance
-      self.coordinator?.navigationController.navigationBar.scrollEdgeAppearance = appearance
-    }
+    let appearance = UINavigationBarAppearance()
+    appearance.backgroundColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
+    appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+    appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    appearance.shadowColor = nil
+    self.coordinator?.navigationController.navigationBar.tintColor = .white
+    self.coordinator?.navigationController.navigationBar.standardAppearance = appearance
+    self.coordinator?.navigationController.navigationBar.compactAppearance = appearance
+    self.coordinator?.navigationController.navigationBar.scrollEdgeAppearance = appearance
     
     homeViewModel.update {
       DispatchQueue.main.async {
@@ -108,6 +118,21 @@ extension HomeViewController {
     addButton.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
     addButton.setTitle(Localized.string("add_action"), for: .normal)
     view.addSubview(addButton)
+  }
+  
+  private func setupAboutButton() {
+    view.addSubview(aboutButton)
+    NSLayoutConstraint.activate([
+      aboutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+      aboutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+      aboutButton.widthAnchor.constraint(equalToConstant: 25),
+      aboutButton.heightAnchor.constraint(equalToConstant: 25)
+    ])
+    aboutButton.addTarget(self, action: #selector(aboutTapped), for: .touchUpInside)
+  }
+  
+  @objc private func aboutTapped() {
+    coordinator?.showAbout()
   }
   
   @objc private func addTapped() {
