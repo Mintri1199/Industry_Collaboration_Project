@@ -1,7 +1,7 @@
 PODS:
   - CropViewController (2.5.2)
-  - SwiftFormat/CLI (0.44.2)
-  - SwiftLint (0.39.1)
+  - SwiftFormat/CLI (0.44.10)
+  - SwiftLint (0.39.2)
 
 DEPENDENCIES:
   - CropViewController
@@ -16,8 +16,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
-  SwiftFormat: 53968b5cc5d466727e796f789fa9be6c38da34cb
-  SwiftLint: 55e96a4a4d537d4a3156859fc1c54bd24851a046
+  SwiftFormat: b72e592ea0979aeee53f6052abff291181364933
+  SwiftLint: 22ccbbe3b8008684be5955693bab135e0ed6a447
 
 PODFILE CHECKSUM: d6fbf225ae93441816cf75cbe1607b2ac7abeed3
 

@@ -207,4 +207,8 @@ fabric.properties
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
 
+
+### Bitrise ###
+.bitrise.secrets.yml
+
 # End of https://www.gitignore.io/api/swift,xcode,firebase,cocoapods,xcodeinjection
