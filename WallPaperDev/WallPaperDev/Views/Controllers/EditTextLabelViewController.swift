@@ -246,7 +246,7 @@ extension EditTextLabelViewController {
     let timeFormatter = DateFormatter()
 
     let localSetting = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: Locale.current)
-    if localSetting?.firstIndex(of: "a") == nil {
+    if !(localSetting?.contains("a") ?? false) {
       timeFormatter.dateFormat = "H:mm"
     } else {
       timeFormatter.dateFormat = "h:mm"
@@ -264,14 +264,23 @@ extension EditTextLabelViewController {
 
     timeLayer.frame = CGRect(origin: defaultOrigin, size: defaultSize)
     timeLayer.alignmentMode = .center
-    let attributedString = NSAttributedString(string: timeString, attributes: [ NSAttributedString.Key.font : UIFont.bestFittingFont(for: timeString, in: timeLayer.bounds, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.light20.fontDescriptor),
-                                                                                NSAttributedString.Key.foregroundColor : ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+    let attributedString = NSAttributedString(
+      string: timeString,
+      attributes: [NSAttributedString.Key.font: UIFont.bestFittingFont(for: timeString,
+                                                                       in: timeLayer.bounds,
+                                                                       fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.light20.fontDescriptor),
+                   NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white.cgColor])
     timeLayer.string = attributedString
 
     dateLayer.frame = CGRect(origin: CGPoint(x: defaultOrigin.x, y: timeLayer.frame.maxY), size: CGSize(width: defaultSize.width, height: defaultSize.height / 2))
     dateLayer.alignmentMode = .center
-    let dateAttributedString = NSAttributedString(string: dateString, attributes: [ NSAttributedString.Key.font : UIFont.bestFittingFont(for: dateString, in: dateLayer.bounds, fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.regular20.fontDescriptor),
-                                                                                    NSAttributedString.Key.foregroundColor : ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+    let dateAttributedString = NSAttributedString(
+      string: dateString,
+      attributes: [NSAttributedString.Key.font: UIFont.bestFittingFont(for: dateString,
+                                                                       in: dateLayer.bounds,
+                                                                       fontDescriptor: ApplicationDependency.manager.currentTheme.fontSchema.regular20.fontDescriptor),
+                   NSAttributedString.Key.foregroundColor: ApplicationDependency.manager.currentTheme.colors.white.cgColor])
+
     dateLayer.string = dateAttributedString
 
     dateLayer.isHidden = true
@@ -282,7 +291,6 @@ extension EditTextLabelViewController {
 }
 
 // MARK: - OBJC functions
-
 extension EditTextLabelViewController {
   @objc private func dismissPreview() {
     dismiss(animated: true, completion: nil)
@@ -295,7 +303,6 @@ extension EditTextLabelViewController {
 
   @objc private func saveTapped() {
     viewModel.delegate?.applyChanges(textLabel.frame, viewModel.newRotation ?? 0)
-    //    viewModel.updateText(newFrame: textLabel.frame, newRotation: viewModel.newRotation ?? 0)
     dismissPreview()
   }
 

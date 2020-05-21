@@ -41,7 +41,7 @@ final class CircleButton: UIButton {
       self.imageEdgeInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     case .unsplash:
       let logo = ApplicationDependency.manager.currentTheme.imageAssets.unsplashLogo.withRenderingMode(.alwaysTemplate)
-      tintColor = ApplicationDependency.manager.currentTheme.colors.black
+      tintColor = ApplicationDependency.manager.currentTheme.colors.darkGray
       self.imageView?.contentMode = .scaleAspectFit
       setImage(logo, for: .normal)
     }

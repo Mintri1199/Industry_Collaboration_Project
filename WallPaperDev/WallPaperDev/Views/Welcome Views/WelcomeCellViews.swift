@@ -104,7 +104,13 @@ class CustomView: UIView {
     let phoneSize = CGSize(width: bounds.width * 0.6, height: bounds.height - labelStackView.frame.height)
     let phoneXOffset: CGFloat = bounds.width / 5
     phoneLayer.frame = CGRect(origin: CGPoint(x: phoneXOffset, y: 0), size: phoneSize)
-    phoneLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialPhone.cgImage
+    if UIDevice().name.contains("iPhone 1") {
+      phoneLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialPhone.cgImage
+    } else {
+      // iphone 8 and below
+      phoneLayer.contents = ApplicationDependency.manager.currentTheme.imageAssets.tutorialPhone8.cgImage
+    }
+    
     phoneLayer.contentsGravity = .resizeAspect
     layer.addSublayer(phoneLayer)
   }

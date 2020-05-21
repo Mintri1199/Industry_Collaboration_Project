@@ -16,9 +16,14 @@ protocol ImageAsset {
   var tutorialFinger: UIImage { get }
   var tutorialGoalTextExample: UIImage { get }
   var tutorialPhone: UIImage { get }
+  var tutorialPhone8: UIImage { get }
   var tutorialTodoBanner: UIImage { get }
   var tutorialWelcomeBanner: UIImage { get }
   var unsplashLogo: UIImage { get }
+  var jacksonProfile: UIImage { get }
+  var jamarProfile: UIImage { get }
+  var alexProfile: UIImage { get }
+  var stephenProfile: UIImage { get }
 }
 
 struct DefaultImageAsset: ImageAsset {
@@ -54,11 +59,31 @@ struct DefaultImageAsset: ImageAsset {
     return #imageLiteral(resourceName: "tutorial_phone")
   }
 
+  var tutorialPhone8: UIImage {
+    return #imageLiteral(resourceName: "iphone8")
+  }
+
   var tutorialTodoBanner: UIImage {
     return #imageLiteral(resourceName: "tutorial_todo_banner")
   }
 
   var tutorialWelcomeBanner: UIImage {
     return #imageLiteral(resourceName: "tutorial_welcome_banner")
+  }
+
+  var jacksonProfile: UIImage {
+    return #imageLiteral(resourceName: "jackson_cropped")
+  }
+
+  var jamarProfile: UIImage {
+    return #imageLiteral(resourceName: "jamar_cropped")
+  }
+
+  var alexProfile: UIImage {
+    return #imageLiteral(resourceName: "alex_cropped")
+  }
+
+  var stephenProfile: UIImage {
+    return #imageLiteral(resourceName: "stephen_cropped")
   }
 }

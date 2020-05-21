@@ -5,6 +5,7 @@
   Created by Alexander Dejeu on 1/20/20.
   Copyright © 2020 Stephen Ouyang. All rights reserved.
 */
+"app_name" = "Kabegami";
 "goals" = "Goals";
 "goal_details_title" = "Goal Details";
 "good_morning_title" = "Good Morning";
@@ -74,3 +75,14 @@
 "goal_name_title" = "Goal Name";
 "goal_description_title" = "Goal Description";
 "unsplash_searchbar_placeholder" = "Search for images";
+
+// Credits
+"credits" = "Credits";
+"swiftLint_title" = "SwiftLint";
+"cropVC_title" = "ToCropViewController";
+"swiftFormat_title" = "SwiftFormat";
+"email_bodytext" = "If you have any feedback or questions you’re welcome to email Jackson at mintri1199@gmail.com ";
+"feedback_text" = "or fill this feedback form.\n";
+"the_rest_of_feedback" = "\nOnboarding illustrations are designed by rawpixel.com / Freepik\n\nImage fetching is powered by Unsplash\n\nKabegami draws on several open source libraries, which are listed below along with the licenses.";
+"developed_by" = "Kabegami was developed by:";
+

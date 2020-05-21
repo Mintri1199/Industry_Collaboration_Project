@@ -169,6 +169,11 @@ class KabegamiTests: XCTestCase {
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialPhone, bundlePhoto)
     
+    bundlePhoto = UIImage(named: "iphone8")
+    
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialPhone8, bundlePhoto)
+    
     bundlePhoto = UIImage(named: "tutorial_todo_banner")
     
     XCTAssertNotNil(bundlePhoto)
@@ -178,5 +183,32 @@ class KabegamiTests: XCTestCase {
     
     XCTAssertNotNil(bundlePhoto)
     XCTAssertEqual(themeManager.currentTheme.imageAssets.tutorialWelcomeBanner, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "jackson_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.jacksonProfile, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "alex_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.alexProfile, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "jamar_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.jamarProfile, bundlePhoto)
+    
+    bundlePhoto = UIImage(named: "stephen_cropped")
+    XCTAssertNotNil(bundlePhoto)
+    XCTAssertEqual(themeManager.currentTheme.imageAssets.stephenProfile, bundlePhoto)
+  }
+  
+  func testLicensesExistence() {
+    let path = Bundle.main.resourcePath!
+    let fileManager = FileManager.default
+    let libraryNames = [Localized.string("swiftLint_title"), Localized.string("swiftFormat_title"), Localized.string("cropVC_title")]
+    let libraryPaths = libraryNames.map { path + "/\($0)License.txt" }
+    
+    for index in 0 ..< libraryNames.count {
+      XCTAssertTrue(fileManager.fileExists(atPath: libraryPaths[index]), "License doesn't exist for pod: \(libraryNames[index])")
+    }
   }
 }

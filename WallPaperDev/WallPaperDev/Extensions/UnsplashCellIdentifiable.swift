@@ -12,7 +12,6 @@ protocol UnsplashIdentifiable {
   var urlString: String { get }
 }
 
-@available(iOS 13.0, *)
 extension UnsplashIdentifiable {
   var pictureId: NSString {
     NSString(string: urlString)
@@ -23,7 +22,6 @@ extension UnsplashIdentifiable {
   }
 }
 
-@available(iOS 13.0, *)
 extension Array where Element: UnsplashIdentifiable {
 
   func item(for configuration: UIContextMenuConfiguration) -> Element? {

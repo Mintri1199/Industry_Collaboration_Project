@@ -8,7 +8,6 @@
 
 import UIKit
 
-@available(iOS 13.0, *)
 class UnsplashPreviewVC: UIViewController {
   private let imageView = UIImageView()
   

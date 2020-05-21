@@ -33,7 +33,7 @@ class CreateImageViewController: UIViewController {
   }()
   
   private lazy var goalsTableView = GoalsTableView(frame: .zero, style: .plain)
-  private lazy var changeGoalsButton = GrayTextButton(frame: .zero)
+  private lazy var changeGoalsButton = UIButton()
   private lazy var emptyView = SelectedGoalsEmptyView()
   
   private let viewModel = SelectionViewModel()
@@ -111,7 +111,6 @@ extension CreateImageViewController {
     chooseImageStack.translatesAutoresizingMaskIntoConstraints = false
     chooseImageStack.addArrangedSubview(imagePickerButton)
     chooseImageStack.addArrangedSubview(unsplashButton)
-    chooseImageStack.backgroundColor = .red
     imagePickerButton.setupBorder(view.bounds.width * 0.15)
     unsplashButton.setupBorder(view.bounds.width * 0.15)
     view.addSubview(chooseImageStack)
@@ -151,17 +150,22 @@ extension CreateImageViewController {
   }
   
   private func setupChangeGoalsButtonButton() {
-    // TODO: Change button into edit image instead
     self.view.addSubview(changeGoalsButton)
+    changeGoalsButton.translatesAutoresizingMaskIntoConstraints = false
+    changeGoalsButton.contentVerticalAlignment = .fill
+    changeGoalsButton.contentHorizontalAlignment = .fill
     changeGoalsButton.isHidden = true
-    changeGoalsButton.label.text = Localized.string("change_goals_action")
-    changeGoalsButton.label.textAlignment = .right
+    
+    let pencilIcon = UIImage(systemName: "pencil.circle")?.withRenderingMode(.alwaysTemplate)
+    changeGoalsButton.setImage(pencilIcon, for: .normal)
+    changeGoalsButton.tintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
     changeGoalsButton.addTarget(self, action: #selector(pushToGoalSelection), for: .touchUpInside)
+    
     NSLayoutConstraint.activate([
       changeGoalsButton.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-      changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor),
-      changeGoalsButton.topAnchor.constraint(equalTo: chooseGoalLabel.topAnchor),
-      changeGoalsButton.leadingAnchor.constraint(equalTo: chooseGoalLabel.trailingAnchor, constant: 50)
+      changeGoalsButton.heightAnchor.constraint(equalTo: chooseImageLabel.heightAnchor, multiplier: 0.75),
+      changeGoalsButton.centerYAnchor.constraint(equalTo: chooseGoalLabel.centerYAnchor),
+      changeGoalsButton.widthAnchor.constraint(equalTo: chooseImageLabel.heightAnchor, multiplier: 0.75)
     ])
   }
   
@@ -174,7 +178,8 @@ extension CreateImageViewController {
       goalsTableView.topAnchor.constraint(equalTo: chooseGoalLabel.bottomAnchor, constant: 5),
       goalsTableView.leadingAnchor.constraint(equalTo: chooseImageLabel.leadingAnchor),
       goalsTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15),
-      goalsTableView.bottomAnchor.constraint(greaterThanOrEqualTo: createImageButton.topAnchor, constant: -10)//(equalTo: createImageButton.topAnchor, constant: -10)
+      goalsTableView.bottomAnchor.constraint(greaterThanOrEqualTo: createImageButton.topAnchor, constant: -10),
+      goalsTableView.heightAnchor.constraint(greaterThanOrEqualTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3)
     ])
   }
   
@@ -204,7 +209,6 @@ extension CreateImageViewController: CAAnimationDelegate {
 }
 
 // MARK: - Objc functions
-
 extension CreateImageViewController {
   @objc private func pushToPreview() {
     guard let image = viewModel.selectedImage else {
@@ -249,11 +253,6 @@ extension CreateImageViewController: PassSelectedGoals {
   }
 }
 
-// MARK: - TableViewDelegate
-extension CreateImageViewController: UITableViewDelegate {
-  // Currently serving no purpose at the moment but later can use drag to order
-}
-
 // MARK: - TableViewDataSource
 extension CreateImageViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection _: Int) -> Int {
@@ -293,7 +292,7 @@ extension CreateImageViewController: UIImagePickerControllerDelegate, UINavigati
     viewModel.selectedImage = image
     selectedImageView.image = image
     expandImageView()
-    // Make it so that it also check whether the user fullfill require inputs for the update button to appear
+    viewModel.validation(button: createImageButton)
     picker.dismiss(animated: true, completion: nil)
   }
 }

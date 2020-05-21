@@ -95,6 +95,12 @@ class MainCoordinator: Coordinator {
     navigationController.pushViewController(vc, animated: true)
   }
 
+  func showAbout() {
+    let vc = AboutViewController()
+    vc.coordinator = self
+    navigationController.pushViewController(vc, animated: true)
+  }
+
   func popToHome() {
     for vc in navigationController.viewControllers {
       if let vc = vc as? HomeViewController {
