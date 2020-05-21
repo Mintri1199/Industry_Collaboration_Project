@@ -10,7 +10,6 @@ import UIKit
 
 protocol passMilestoneData: class {
   func saveMilestone(_ name: String)
-  
   func updateMilestone(for milestone: Milestone, _ name: String)
 }
 
@@ -48,7 +47,7 @@ final class MilestonePromptVC: UIViewController {
     view.backgroundColor = .clear
     setupUI()
     setupKeyboardNotifications()
-    formView.textField.resignFirstResponder()
+    formView.textField.becomeFirstResponder()
   }
   
   private func setupKeyboardNotifications() {

@@ -31,11 +31,5 @@ class CreditCollectionViewCell: UICollectionViewCell {
       textView.bottomAnchor.constraint(equalTo: bottomAnchor)
     ])
     textView.sizeToFit()
-    sizeToFit()
   }
-
-//  override var intrinsicContentSize: CGSize {
-//    let _ = super.intrinsicContentSize
-//    return textView.bounds.size
-//  }
 }

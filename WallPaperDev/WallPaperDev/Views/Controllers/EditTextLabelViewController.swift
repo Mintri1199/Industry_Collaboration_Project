@@ -117,15 +117,17 @@ extension EditTextLabelViewController {
     view.addGestureRecognizer(swipeDown)
     view.addGestureRecognizer(tapGesture)
 
-    let panView = UIPanGestureRecognizer(target: self, action: #selector(movingLabel(_:)))
-    // Focus on pan gesture for now
-    textLabel.addGestureRecognizer(panView)
-//    let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(scaleLabel(_:)))
-//    scaleGesture.delegate = self
+    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(movingLabel(_:)))
+    textLabel.addGestureRecognizer(panGesture)
+    panGesture.delegate = self
+
+    let scaleGesture = UIPinchGestureRecognizer(target: self, action: #selector(scaleLabel(_:)))
+    scaleGesture.delegate = self
+
 //    let rotateGesture = UIRotationGestureRecognizer(target: self, action: #selector(rotateLabel(_:)))
 //    rotateGesture.delegate = self
 
-//    textLabel.addGestureRecognizer(scaleGesture)
+    textLabel.addGestureRecognizer(scaleGesture)
 //    textLabel.addGestureRecognizer(rotateGesture)
   }
 
@@ -345,8 +347,16 @@ extension EditTextLabelViewController {
   }
 
   @objc private func scaleLabel(_ sender: UIPinchGestureRecognizer) {
-    if sender.state == .began || sender.state == .changed {
-      sender.view?.transform = (sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale))!
+    // Prevent the user from scaling too big or too small
+    if let senderView = sender.view, sender.state == .began || sender.state == .changed {
+
+      let newSize = CGSize(width: senderView.frame.width * sender.scale, height: senderView.frame.height * sender.scale)
+
+      // Prevent the text from scaling too large or too small
+      if 25 ..< self.view.bounds.height ~= newSize.height && 25 ..< self.view.bounds.width ~= newSize.width {
+        senderView.transform = senderView.transform.scaledBy(x: sender.scale, y: sender.scale)
+      }
+
       if !labelInteraction {
         textBorderLayer.isHidden = false
         animateLabelEditing()
@@ -354,6 +364,7 @@ extension EditTextLabelViewController {
         showToolBar(true)
         labelInteraction.toggle()
       }
+
       sender.scale = 1
     } else if sender.state == .ended {
       labelInteraction = false
@@ -392,16 +403,16 @@ extension EditTextLabelViewController {
 }
 
 extension EditTextLabelViewController: UIGestureRecognizerDelegate {
-//  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//    guard gestureRecognizer.view === textLabel, otherGestureRecognizer.view === textLabel else {
-//      return false
-//    }
-//
-//    if gestureRecognizer is UILongPressGestureRecognizer ||
-//      otherGestureRecognizer is UILongPressGestureRecognizer {
-//      return false
-//    }
-//
-//    return true
-//  }
+  func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    guard gestureRecognizer.view === textLabel, otherGestureRecognizer.view === textLabel else {
+      return false
+    }
+
+    if gestureRecognizer is UILongPressGestureRecognizer ||
+      otherGestureRecognizer is UILongPressGestureRecognizer {
+      return false
+    }
+
+    return true
+  }
 }
