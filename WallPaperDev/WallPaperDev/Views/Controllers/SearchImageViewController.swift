@@ -15,7 +15,7 @@ protocol SelectedImageDelegate: class {
 final class SearchImageViewController: UIViewController {
   // MARK: - Custom UIs
   private lazy var searchImagesCV = SearchImagesCV(frame: .zero, collectionViewLayout: SearchImagesCVLayout())
-  private lazy var emptyView = SelectedGoalsEmptyView()
+  private lazy var emptyView: SelectedGoalsEmptyView? = nil
   private lazy var searchController = UISearchController(searchResultsController: nil)
   private let viewModel = SearchImagesViewModel()
   weak var coordinator: MainCoordinator?
@@ -28,7 +28,7 @@ final class SearchImageViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.view.backgroundColor = .white
-    navigationItem.largeTitleDisplayMode = .never
+    
     setupViews()
   }
 }
@@ -55,11 +55,30 @@ extension SearchImageViewController {
   
   private func setupNavBar() {
     searchController.searchBar.delegate = self
+    searchController.searchBar.isTranslucent = false
+    searchController.searchBar.barTintColor = .black
+    searchController.searchBar.searchBarStyle = .prominent
     searchController.searchBar.placeholder = Localized.string("unsplash_searchbar_placeholder")
     searchController.searchBar.autocorrectionType = .default
+    searchController.searchBar.searchTextField.textColor = ApplicationDependency.manager.currentTheme.colors.black
+    searchController.searchBar.searchTextField.backgroundColor = ApplicationDependency.manager.currentTheme.colors.white
     searchController.searchBar.sizeToFit()
     navigationItem.hidesSearchBarWhenScrolling = false
     navigationItem.searchController = searchController
+    navigationItem.largeTitleDisplayMode = .never
+  }
+  
+  private func setupEmptyView() {
+    emptyView = SelectedGoalsEmptyView(frame: searchImagesCV.bounds)
+  }
+  
+  private func removeEmptyView() {
+    guard let cvEmptyView = emptyView else {
+      return
+    }
+    if cvEmptyView.superview == searchImagesCV {
+      searchImagesCV.backgroundView = nil
+    }
   }
 }
 
@@ -110,6 +129,7 @@ extension SearchImageViewController: UICollectionViewDelegate {
 // MARK: - CollectionView DataSource
 extension SearchImageViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
     viewModel.imageURLS.count
   }
   
