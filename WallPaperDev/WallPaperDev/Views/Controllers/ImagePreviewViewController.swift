@@ -120,7 +120,7 @@ extension ImagePreviewViewController {
   }
 
   @objc private func recropButtonTapped() {
-    guard let cropVC = viewModel.configureCropVC() else {
+    guard let cropVC = viewModel.createCropVC() else {
       return
     }
     cropVC.delegate = self

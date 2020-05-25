@@ -43,6 +43,16 @@ class CreateImageViewController: UIViewController {
     .lightContent
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(true)
+    self.navigationItem.title = nil
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.navigationItem.title = Localized.string("create_wallpaper_title")
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .white

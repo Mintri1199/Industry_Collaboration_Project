@@ -18,6 +18,13 @@ enum ImageProcessError: String, Error {
   case unableToCreateTextLayer
 }
 
+struct EditLabelObject {
+  let image: UIImage
+  let frame: CGRect
+  let text: String
+  let rotation: CGFloat
+}
+
 class ImagePreviewViewModel: ViewModelProtocol {
   
   private enum ScaleText {
@@ -54,12 +61,12 @@ class ImagePreviewViewModel: ViewModelProtocol {
     self.originalImage = image
     self.selectedGoals = goals
     self.labelText = goals.compactMap { $0.name }.joined(separator: "\n")
+    print(labelText)
     self.croppedImage = UIImage()
     self.croppedImage = createInitialCroppedImage()
   }
   
-  func configureCropVC() -> CropViewController? {
-    // Build an instance of CropViewController for the VC to present
+  func createCropVC() -> CropViewController? {
     let cropVC = CropViewController(croppingStyle: .default, image: originalImage)
     cropVC.modalPresentationStyle = .fullScreen
     cropVC.imageCropFrame = currentCropRect
@@ -286,11 +293,4 @@ class ImagePreviewViewModel: ViewModelProtocol {
     UIGraphicsEndImageContext()
     return newImage!
   }
-}
-
-struct EditLabelObject {
-  let image: UIImage
-  let frame: CGRect
-  let text: String
-  let rotation: CGFloat
 }

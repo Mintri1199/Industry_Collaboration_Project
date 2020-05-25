@@ -353,7 +353,7 @@ extension EditTextLabelViewController {
       let newSize = CGSize(width: senderView.frame.width * sender.scale, height: senderView.frame.height * sender.scale)
 
       // Prevent the text from scaling too large or too small
-      if 25 ..< self.view.bounds.height ~= newSize.height && 25 ..< self.view.bounds.width ~= newSize.width {
+      if (25 ..< self.view.bounds.height) ~= newSize.height && (25 ..< self.view.bounds.width) ~= newSize.width {
         senderView.transform = senderView.transform.scaledBy(x: sender.scale, y: sender.scale)
       }
 
