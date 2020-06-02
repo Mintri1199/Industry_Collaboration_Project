@@ -166,7 +166,7 @@ extension CreateImageViewController {
     changeGoalsButton.contentHorizontalAlignment = .fill
     changeGoalsButton.isHidden = true
     
-    let pencilIcon = UIImage(systemName: "pencil.circle")?.withRenderingMode(.alwaysTemplate)
+    let pencilIcon = UIImage.templateIcon(for: "pencil.circle")
     changeGoalsButton.setImage(pencilIcon, for: .normal)
     changeGoalsButton.tintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
     changeGoalsButton.addTarget(self, action: #selector(pushToGoalSelection), for: .touchUpInside)

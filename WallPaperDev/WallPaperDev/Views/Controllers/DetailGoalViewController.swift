@@ -79,8 +79,8 @@ extension DetailGoalViewController {
     addButton.tintColor = ApplicationDependency.manager.currentTheme.colors.navBarBlue
     addButton.contentVerticalAlignment = .fill
     addButton.contentHorizontalAlignment = .fill
-    addButton.setImage(UIImage(systemName: "plus.circle")?.withRenderingMode(.alwaysTemplate), for: .highlighted)
-    addButton.setImage(UIImage(systemName: "plus.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    addButton.setImage(UIImage.templateIcon(for: "plus.circle"), for: .highlighted)
+    addButton.setImage(UIImage.templateIcon(for: "plus.circle.fill"), for: .normal)
     view.addSubview(addButton)
     NSLayoutConstraint.activate([
       addButton.heightAnchor.constraint(equalTo: mileStoneLabel.heightAnchor, multiplier: 1),
@@ -150,6 +150,7 @@ extension DetailGoalViewController: passMilestoneData {
   func saveMilestone(_ description: String) {
     viewModel.addMilestoneToGoal(description)
     // TODO: refactor this to use table view insert instead of reload data
+    // Maybe use differableDataSource instead
     milestonesTableView.reloadData()
   }
 }

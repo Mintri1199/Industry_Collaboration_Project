@@ -75,6 +75,10 @@
 "goal_name_title" = "Goal Name";
 "goal_description_title" = "Goal Description";
 "unsplash_searchbar_placeholder" = "Search photos";
+"unsplash_intro" = "Start Searching for Photos";
+"no_resuls" = "No results for\n\"%@\"";
+"unsplash_network_error" = "Network error, check your internet conncection";
+"unsplash_api_error" = "Oops!\nSomething went wrong";
 
 // Credits
 "credits" = "Credits";

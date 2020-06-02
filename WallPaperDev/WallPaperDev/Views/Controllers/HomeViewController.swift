@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     button.translatesAutoresizingMaskIntoConstraints = false
     button.contentVerticalAlignment = .fill
     button.contentHorizontalAlignment = .fill
-    let infoIcon = UIImage(systemName: "info.circle")?.withRenderingMode(.alwaysTemplate)
+    let infoIcon = UIImage.templateIcon(for: "info.circle")
     button.tintColor = ApplicationDependency.manager.currentTheme.colors.white
     button.setImage(infoIcon!, for: .normal)
     return button

@@ -32,7 +32,7 @@ final class CircleButton: UIButton {
     
     switch icon {
     case .camera:
-      let image = UIImage(systemName: "camera.fill")?.withRenderingMode(.alwaysTemplate)
+      let image = UIImage.templateIcon(for: "camera.fill")
       tintColor = ApplicationDependency.manager.currentTheme.colors.darkGray
       self.imageView?.contentMode = .scaleAspectFit
       setImage(image, for: .normal)

@@ -15,7 +15,7 @@ class CheckBoxButton: UIButton {
     layer.borderColor = ApplicationDependency.manager.currentTheme.colors.lightGray.cgColor
     layer.borderWidth = 1.5
     layer.cornerRadius = 5
-    let checkMark = UIImage(systemName: "checkmark")?.withRenderingMode(.alwaysTemplate)
+    let checkMark = UIImage.templateIcon(for: "checkmark")
     setImage(checkMark!, for: .selected)
   }
 
