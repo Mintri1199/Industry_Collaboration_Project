@@ -31,10 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let nav = UINavigationController()
     coordinator = MainCoordinator(navigationController: nav)
     coordinator?.start()
-    setNavigation(navigationBar: nav.navigationBar)
     
+    let mockNav = UINavigationController(rootViewController: SearchImageViewController())
+    setNavigation(navigationBar: mockNav.navigationBar)
     window = UIWindow(frame: UIScreen.main.bounds)
-    window?.rootViewController = nav
+    window?.rootViewController = mockNav // nav
     window?.makeKeyAndVisible()
     return true
   }
